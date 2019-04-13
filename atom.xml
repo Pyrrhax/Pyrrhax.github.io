@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Pyrrhax的个人博客</title>
+  
+  <subtitle>命数如织，当为磐石。</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-09-08T17:18:24.000Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Pyrrhax</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我翻译的文章在这里</title>
+    <link href="http://yoursite.com/2019/04/13/%E6%88%91%E7%BF%BB%E8%AF%91%E7%9A%84%E6%96%87%E7%AB%A0%E5%9C%A8%E8%BF%99%E9%87%8C/"/>
+    <id>http://yoursite.com/2019/04/13/我翻译的文章在这里/</id>
+    <published>2019-04-13T02:32:48.871Z</published>
+    <updated>2018-09-08T17:18:24.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;https://cloud.tencent.com/developer/user/1206354/articles&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="翻译" scheme="http://yoursite.com/categories/%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="翻译" scheme="http://yoursite.com/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用Hexo和GitHubPages搭建博客</title>
+    <link href="http://yoursite.com/2019/04/13/%E7%94%A8Hexo+GitHubPages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2019/04/13/用Hexo+GitHubPages搭建博客/</id>
+    <published>2019-04-13T02:32:48.871Z</published>
+    <updated>2018-08-30T18:14:18.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;拥有自己的网站总是一件很酷的事，早就想自己写一个博客了。因为并没有深入学习前端，之前实验课模仿饿了么的商家入驻页面，一个页面写了几天才搞得差不多。虽然写前端也很吸引人，但果真我还是更喜欢写后台。最近在一个面试群里看到有人发自己的博客。用的是wordpress，听说这样很方便
+        
+      
+    
+    </summary>
+    
+      <category term="网络运维" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="Hexo" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+      <category term="搭建" scheme="http://yoursite.com/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于Java多线程两种实现方式的一点想法</title>
+    <link href="http://yoursite.com/2019/04/13/%E5%85%B3%E4%BA%8EJava%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E7%82%B9%E6%83%B3%E6%B3%95/"/>
+    <id>http://yoursite.com/2019/04/13/关于Java多线程两种实现方式的一点想法/</id>
+    <published>2019-04-13T02:32:48.867Z</published>
+    <updated>2018-09-25T13:08:22.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在看某本书的时候里面讲到继承Thread类和实现Runnable接口的区别。有这么一条是说“继承Thread类不能资源共享，而实现Runnable接口可以。”于是产生了以下问题。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="编程语言" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/"/>
+    
+    
+      <category term="多线程" scheme="http://yoursite.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在Hexo文章中插入图片</title>
+    <link href="http://yoursite.com/2019/04/13/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/"/>
+    <id>http://yoursite.com/2019/04/13/在Hexo文章中插入图片/</id>
+    <published>2019-04-13T02:32:48.867Z</published>
+    <updated>2018-08-30T23:18:50.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在写上一篇博客的时候，发现不知道该怎么往文章中插入图片，于是在网上搜。答案来来回回就那么两篇。于是就打开一个照着步骤做。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="网络运维" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/"/>
+    
+      <category term="Hexo" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>We are different,but we go together.----《深海迷航》</title>
+    <link href="http://yoursite.com/2019/04/13/We%20are%20different,but%20we%20go%20together.----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/"/>
+    <id>http://yoursite.com/2019/04/13/We are different,but we go together.----《深海迷航》/</id>
+    <published>2019-04-13T02:32:48.863Z</published>
+    <updated>2019-01-29T18:51:36.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;leviathan.png&quot; alt&gt;&lt;br&gt;&lt;strong&gt;What is a wave without the ocean,a begining without the end.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;They are different,but they go together.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;Now you go among the stars,and I fall among the sands.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;We are different,but we go together.&lt;/strong&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="游戏" scheme="http://yoursite.com/categories/%E6%B8%B8%E6%88%8F/"/>
+    
+    
+      <category term="科幻" scheme="http://yoursite.com/tags/%E7%A7%91%E5%B9%BB/"/>
+    
+      <category term="生存" scheme="http://yoursite.com/tags/%E7%94%9F%E5%AD%98/"/>
+    
+      <category term="沙盒" scheme="http://yoursite.com/tags/%E6%B2%99%E7%9B%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【编程题】网易2019笔试：牛牛找工作</title>
+    <link href="http://yoursite.com/2019/04/13/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%89%9B%E7%89%9B%E6%89%BE%E5%B7%A5%E4%BD%9C/"/>
+    <id>http://yoursite.com/2019/04/13/【编程题】网易2019笔试：牛牛找工作/</id>
+    <published>2019-04-13T02:32:48.863Z</published>
+    <updated>2018-09-11T10:38:52.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="编程题" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
+    
+      <category term="笔试" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/%E7%AC%94%E8%AF%95/"/>
+    
+    
+      <category term="编程题" scheme="http://yoursite.com/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【编程题】网易2019笔试：瞌睡</title>
+    <link href="http://yoursite.com/2019/04/13/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%9E%8C%E7%9D%A1/"/>
+    <id>http://yoursite.com/2019/04/13/【编程题】网易2019笔试：瞌睡/</id>
+    <published>2019-04-13T02:32:48.863Z</published>
+    <updated>2018-09-11T13:23:18.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="编程题" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
+    
+      <category term="笔试" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/%E7%AC%94%E8%AF%95/"/>
+    
+    
+      <category term="编程题" scheme="http://yoursite.com/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java中二维数组的复制（深拷贝与浅拷贝）</title>
+    <link href="http://yoursite.com/2019/04/13/Java%E4%B8%AD%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%8D%E5%88%B6%EF%BC%88%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D%EF%BC%89/"/>
+    <id>http://yoursite.com/2019/04/13/Java中二维数组的复制（深拷贝与浅拷贝）/</id>
+    <published>2019-04-13T02:32:48.859Z</published>
+    <updated>2018-08-30T18:46:56.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在做一道编程题的时候出现了一处bug。在这道题需要使用多种方法对同一个二维数组进行更改，找出使第二列数之和最大的更改方法。所以每次修改之前，我对原数组进行拷贝，修改的是数组的拷贝。可是程序写完之后，运行结果却出乎意料的是错误的。看了几遍程序流程，觉得逻辑上没有错误。于是打开debug模式一步步看数值变化。调试时发现在第二次循环中，数组本该为0的位置，值却被改成了1,而这是第一次进行修改的结果。此时顿悟，想起很久之前学过的深拷贝和浅拷贝，绝对是clone()的问题。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="编程语言" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/"/>
+    
+    
+      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
+    
+      <category term="函数" scheme="http://yoursite.com/tags/%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,101 +1,223 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-
-  
-  <title>【编程题】网易2019笔试：牛牛找工作 | Pyrrhax的个人博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。">
-<meta name="keywords" content="编程题">
-<meta property="og:type" content="article">
-<meta property="og:title" content="【编程题】网易2019笔试：牛牛找工作">
-<meta property="og:url" content="http://yoursite.com/2019/04/13/【编程题】网易2019笔试：牛牛找工作/index.html">
-<meta property="og:site_name" content="Pyrrhax的个人博客">
-<meta property="og:description" content="做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2018-09-11T10:38:52.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【编程题】网易2019笔试：牛牛找工作">
-<meta name="twitter:description" content="做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。">
-  
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=pyrrhax"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      var gtag = function () {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "pyrrhax");
+    </script>
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
     <link rel="alternate" href="/atom.xml" title="Pyrrhax的个人博客" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-</html>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Pyrrhax的个人博客</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">命数如织，当为磐石。</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          $(e).before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout with line number.
+              return trigger.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          $(e).parent().before("<button class=\"copy button\">复制</button>");
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              // nextElementSibling is figure,highlight.
+              // And following is the sequence of Hexo's internal
+              // highlight layout without line number.
+              return trigger.nextElementSibling.firstChild;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "已复制";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "复制";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>【编程题】网易2019笔试：牛牛找工作 | Pyrrhax的个人博客 - 命数如织，当为磐石。</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN" data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Pyrrhax的个人博客</a></h1>
+        <h2 class="subtitle">命数如织，当为磐石。</h2>
       </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
     </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+      </ul>
+    </nav>
   </div>
 </header>
-      <div class="outer">
-        <section id="main"><article id="post-【编程题】网易2019笔试：牛牛找工作" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/04/13/【编程题】网易2019笔试：牛牛找工作/" class="article-date">
-  <time datetime="2019-04-13T02:32:48.863Z" itemprop="datePublished">2019-04-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/编程题/">编程题</a>►<a class="article-category-link" href="/categories/编程题/笔试/">笔试</a>
-  </div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/13/【编程题】网易2019笔试：牛牛找工作/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="Pyrrhax">
+       <meta itemprop="description" content>
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Pyrrhax的个人博客">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">【编程题】网易2019笔试：牛牛找工作</h1>
+      <div class="post-meta">
         
-  
-    <h1 class="article-title" itemprop="name">
-      【编程题】网易2019笔试：牛牛找工作
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。<br><a id="more"></a></p>
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-04-13T10:32:48+08:00">2019-04-13 10:32:48</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程题/" itemprop="url" rel="index"><span itemprop="name">编程题</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程题/笔试/" itemprop="url" rel="index"><span itemprop="name">笔试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <p>做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。<br><a id="more"></a></p>
 <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>为了找到自己满意的工作，牛牛收集了每种工作的难度和报酬。牛牛选工作的标准是在难度不超过自身能力值的情况下，牛牛选择报酬最高的工作。在牛牛选定了自己的工作后，牛牛的小伙伴们来找牛牛帮忙选工作，牛牛依然使用自己的标准来帮助小伙伴们。牛牛的小伙伴太多了，于是他只好把这个任务交给了你。<br>输入描述:<br>每个输入包含一个测试用例。<br>每个测试用例的第一行包含两个正整数，分别表示工作的数量N(N&lt;=100000)和小伙伴的数量M(M&lt;=100000)。<br>接下来的N行每行包含两个正整数，分别表示该项工作的难度Di(Di&lt;=1000000000)和报酬Pi(Pi&lt;=1000000000)。<br>接下来的一行包含M个正整数，分别表示M个小伙伴的能力值Ai(Ai&lt;=1000000000)。<br>保证不存在两项工作的报酬相同。</p>
 <p>输出描述:<br>对于每个小伙伴，在单独的一行输出一个正整数表示他能得到的最高报酬。一个工作可以被多个人选择。<br>示例1<br>输入<br>3 3<br>1 100<br>10 1000<br>1000000000 1001<br>9 10 1000000000<br>输出<br>100<br>1000<br>1001</p>
 <h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
@@ -115,147 +237,202 @@
 </blockquote>
 <p>index of the search key, if it is contained in the array; otherwise, (-(insertion point) - 1). The insertion point is defined as the point at which the key would be inserted into the array: the index of the first element greater than the key, or a.length if all elements in the array are less than the specified key. Note that this guarantees that the return value will be &gt;= 0 if and only if the key is found.</p>
 
+    </main>
+    <footer class="post-footer">
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/13/【编程题】网易2019笔试：牛牛找工作/" data-id="cjuewnv5d0006qgoslkwo2lu7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程题/">编程题</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/04/13/We are different,but we go together.----《深海迷航》/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+      <div class="post-tags">
         
-          We are different,but we go together.----《深海迷航》
+        <a class="post-tag button" href="/tags/编程题/" rel="tag"><i class="fas fa-tags"></i>编程题</a>
         
       </div>
-    </a>
+      
+    </footer>
+  </article>
   
   
-    <a href="/2019/04/13/【编程题】网易2019笔试：瞌睡/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">【编程题】网易2019笔试：瞌睡</div>
-    </a>
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2019/04/13/【编程题】网易2019笔试：瞌睡/" rel="next" title="【编程题】网易2019笔试：瞌睡"><i class="fas fa-angle-left"></i><span class="nav-title">【编程题】网易2019笔试：瞌睡</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2019/04/13/We are different,but we go together.----《深海迷航》/" rel="prev" title="We are different,but we go together.----《深海迷航》"><span class="nav-title">We are different,but we go together.----《深海迷航》</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
   
-</nav>
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "Pyrrhax",
+      "repo": "Pyrrhax.github.io",
+      "client_id": "ab41dde59a0f57819b1e",
+      "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "【编程题】网易2019笔试：牛牛找工作",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
 
   
-</article>
+</div>
 
-</section>
-        
-          <aside id="sidebar">
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/游戏/">游戏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/Java/">Java</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程题/">编程题</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程题/笔试/">笔试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络运维/">网络运维</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/网络运维/Hexo/">Hexo</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a></li></ul>
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control">
     </div>
   </div>
-
-
+  <div class="search-result-box" id="search-result"></div>
   
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="Pyrrhax">
+  
+  <h1 class="author-name">Pyrrhax</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建/">搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沙盒/">沙盒</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生存/">生存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科幻/">科幻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程题/">编程题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">8</a></div>
     </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/搭建/" style="font-size: 10px;">搭建</a> <a href="/tags/沙盒/" style="font-size: 10px;">沙盒</a> <a href="/tags/生存/" style="font-size: 10px;">生存</a> <a href="/tags/科幻/" style="font-size: 10px;">科幻</a> <a href="/tags/编程题/" style="font-size: 20px;">编程题</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
     </div>
-  </div>
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接<p></p></div>
       <ul>
         
-          <li>
-            <a href="/2019/04/13/我翻译的文章在这里/">我翻译的文章在这里</a>
-          </li>
+        <li><i class="fas fa-envelope"></i><a href="mailto:Pyrrhax.hf@gmail.com" target="_blank">E-Mail</a></li>
         
-          <li>
-            <a href="/2019/04/13/用Hexo+GitHubPages搭建博客/">用Hexo和GitHubPages搭建博客</a>
-          </li>
+        <li>https://github.com/Pyrrhax<a href="https://github.com/" target="_blank">GitHub</a></li>
         
-          <li>
-            <a href="/2019/04/13/关于Java多线程两种实现方式的一点想法/">关于Java多线程两种实现方式的一点想法</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/13/在Hexo文章中插入图片/">在Hexo文章中插入图片</a>
-          </li>
-        
-          <li>
-            <a href="/2019/04/13/We are different,but we go together.----《深海迷航》/">We are different,but we go together.----《深海迷航》</a>
-          </li>
+        <li><i class="fab fa-weibo"></i><a href="https://weibo.com/u/5394845678" target="_blank">Weibo</a></li>
         
       </ul>
     </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
   </div>
-
-  
 </aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2019</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 Pyrrhax<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
-</body>
+  </body>
 </html>
