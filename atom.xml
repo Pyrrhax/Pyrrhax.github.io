@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-13T03:45:33.136Z</updated>
+  <updated>2019-04-13T04:46:02.556Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>We are different,but we go together.----《深海迷航》</title>
+    <link href="http://yoursite.com/2019/04/13/We%20are%20different,but%20we%20go%20together.----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/"/>
+    <id>http://yoursite.com/2019/04/13/We are different,but we go together.----《深海迷航》/</id>
+    <published>2019-04-13T04:45:27.000Z</published>
+    <updated>2019-04-13T04:46:02.556Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/2019/04/13/We are different,but we go together.----《深海迷航》/leviathan.png&quot; alt&gt;&lt;br&gt;&lt;strong&gt;What is a wave without the ocean,a begining without the end.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;They are different,but they go together.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;Now you go among the stars,and I fall among the sands.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;We are different,but we go together.&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="游戏" scheme="http://yoursite.com/categories/%E6%B8%B8%E6%88%8F/"/>
+    
+    
+      <category term="科幻" scheme="http://yoursite.com/tags/%E7%A7%91%E5%B9%BB/"/>
+    
+      <category term="生存" scheme="http://yoursite.com/tags/%E7%94%9F%E5%AD%98/"/>
+    
+      <category term="沙盒" scheme="http://yoursite.com/tags/%E6%B2%99%E7%9B%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>xxx</title>
+    <link href="http://yoursite.com/2019/04/13/xxx/"/>
+    <id>http://yoursite.com/2019/04/13/xxx/</id>
+    <published>2019-04-13T04:45:27.000Z</published>
+    <updated>2019-04-13T04:45:27.664Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>用Hexo和GitHubPages搭建博客</title>
@@ -111,26 +149,24 @@
   </entry>
   
   <entry>
-    <title>We are different,but we go together.----《深海迷航》</title>
-    <link href="http://yoursite.com/2019/04/13/We%20are%20different,but%20we%20go%20together.----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/"/>
-    <id>http://yoursite.com/2019/04/13/We are different,but we go together.----《深海迷航》/</id>
+    <title>【编程题】网易2019笔试：牛牛找工作</title>
+    <link href="http://yoursite.com/2019/04/13/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%89%9B%E7%89%9B%E6%89%BE%E5%B7%A5%E4%BD%9C/"/>
+    <id>http://yoursite.com/2019/04/13/【编程题】网易2019笔试：牛牛找工作/</id>
     <published>2019-04-13T02:32:48.863Z</published>
-    <updated>2019-01-29T18:51:36.000Z</updated>
+    <updated>2018-09-11T10:38:52.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;/2019/04/13/We are different,but we go together.----《深海迷航》/leviathan.png&quot; alt&gt;&lt;br&gt;&lt;strong&gt;What is a wave without the ocean,a begining without the end.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;They are different,but they go together.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;Now you go among the stars,and I fall among the sands.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;We are different,but we go together.&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+      &lt;p&gt;做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
-      <category term="游戏" scheme="http://yoursite.com/categories/%E6%B8%B8%E6%88%8F/"/>
+      <category term="编程题" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
+    
+      <category term="笔试" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/%E7%AC%94%E8%AF%95/"/>
     
     
-      <category term="科幻" scheme="http://yoursite.com/tags/%E7%A7%91%E5%B9%BB/"/>
-    
-      <category term="生存" scheme="http://yoursite.com/tags/%E7%94%9F%E5%AD%98/"/>
-    
-      <category term="沙盒" scheme="http://yoursite.com/tags/%E6%B2%99%E7%9B%92/"/>
+      <category term="编程题" scheme="http://yoursite.com/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
     
   </entry>
   
@@ -150,28 +186,6 @@
           &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot;
         
       
-    
-    </summary>
-    
-      <category term="编程题" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
-    
-      <category term="笔试" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/%E7%AC%94%E8%AF%95/"/>
-    
-    
-      <category term="编程题" scheme="http://yoursite.com/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【编程题】网易2019笔试：牛牛找工作</title>
-    <link href="http://yoursite.com/2019/04/13/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%89%9B%E7%89%9B%E6%89%BE%E5%B7%A5%E4%BD%9C/"/>
-    <id>http://yoursite.com/2019/04/13/【编程题】网易2019笔试：牛牛找工作/</id>
-    <published>2019-04-13T02:32:48.863Z</published>
-    <updated>2018-09-11T10:38:52.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。&lt;br&gt;&lt;/p&gt;
     
     </summary>
     
