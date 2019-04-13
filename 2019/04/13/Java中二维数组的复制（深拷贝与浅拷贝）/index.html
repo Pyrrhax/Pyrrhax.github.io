@@ -188,10 +188,10 @@
 </blockquote>
 <p>从以上两段话我们可以看出：<br>clone( )方法创建调用它的对象的一个复制副本。只有那些实现Cloneable接口的类能被复制。<br>如果对数组T[]进行克隆，返回结果是T[]，T是引用或者基本类型。<br>我们克隆的数组是二维数组，即数组的数组。对于clone()方法来说，这里的T[]，T是一个对数组的引用。<br>也就是说：我们克隆出来的数组的第一维度，和原来那个数组的第一维度。同时指向了同一个第二位度的数组。<br>如下图：</p>
 <p>因此当改变数组b的时候，数组a也被改变。此时的引用关系图如下：</p>
-<p><img src="clone1.png" alt></p>
+<p><img src="/2019/04/13/Java中二维数组的复制（深拷贝与浅拷贝）/clone1.png" alt></p>
 <p>所以，为了实现二维数组的克隆，我们需要分别对第二维度的每一个数组进行克隆。<br>实现如下：<br><figure class="hljs highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs undefined">int b[<span class="hljs-string"></span>][<span class="hljs-symbol"></span>] = new int[<span class="hljs-string">a.length</span>][<span class="hljs-symbol"></span>];<br>for(int i=0;i<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">a.length;i++)&#123;</span><br>	<span class="hljs-attr">b</span>[<span class="hljs-attr">i</span>]=<span class="hljs-string">a[i].clone();</span><br>&#125;</span></span><br></code></pre></td></tr></table></figure></p>
 <p>将之前代码的复制部分改为以上实现，输出结果如下：<br><figure class="hljs highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs undefined"><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> <span class="hljs-number">0</span>  <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span>  <span class="hljs-number">2</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span>  <br><span class="hljs-symbol">0 </span><span class="hljs-number">0</span> <span class="hljs-number">0</span>  <span class="hljs-number">1</span> <span class="hljs-number">3</span> <span class="hljs-number">1</span>  <span class="hljs-number">2</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure></p>
-<p>可以看出使用这种方法，实现了深拷贝，两个数组相互独立，不会互相影响。<br>同样的，Java提供的Arrays.copyof()方法对于二维数组也是浅拷贝，也需要我们为数组中的每一项进行copy。<br>此时的引用关系如下图：<br><img src="Java中二维数组的复制（深拷贝与浅拷贝）/clone2.png" alt></p>
+<p>可以看出使用这种方法，实现了深拷贝，两个数组相互独立，不会互相影响。<br>同样的，Java提供的Arrays.copyof()方法对于二维数组也是浅拷贝，也需要我们为数组中的每一项进行copy。<br>此时的引用关系如下图：<br><img src="/2019/04/13/Java中二维数组的复制（深拷贝与浅拷贝）/clone2.png" alt></p>
 
     </main>
     <footer class="post-footer">
@@ -214,7 +214,7 @@
     </div>
     <div class="page-nav-prev page-nav-item">
       
-      <a href="/2019/04/13/【编程题】网易2019笔试：瞌睡/" rel="prev" title="【编程题】网易2019笔试：瞌睡"><span class="nav-title">【编程题】网易2019笔试：瞌睡</span><i class="fas fa-angle-right"></i></a>
+      <a href="/2019/04/13/【编程题】网易2019笔试：牛牛找工作/" rel="prev" title="【编程题】网易2019笔试：牛牛找工作"><span class="nav-title">【编程题】网易2019笔试：牛牛找工作</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
