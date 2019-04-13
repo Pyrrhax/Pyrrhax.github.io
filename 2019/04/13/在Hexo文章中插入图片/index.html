@@ -1,18 +1,274 @@
-<%- partial('_partial/head') %>
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>在Hexo文章中插入图片 | Pyrrhax的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在写上一篇博客的时候，发现不知道该怎么往文章中插入图片，于是在网上搜。答案来来回回就那么两篇。于是就打开一个照着步骤做。">
+<meta name="keywords" content="Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Hexo文章中插入图片">
+<meta property="og:url" content="http://yoursite.com/2019/04/13/在Hexo文章中插入图片/index.html">
+<meta property="og:site_name" content="Pyrrhax的个人博客">
+<meta property="og:description" content="在写上一篇博客的时候，发现不知道该怎么往文章中插入图片，于是在网上搜。答案来来回回就那么两篇。于是就打开一个照着步骤做。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2019/04/13/在Hexo文章中插入图片/pic01.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/04/13/在Hexo文章中插入图片/pic02.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/08/30/在Hexo文章中插入图片/pic02.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/08/30/在Hexo文章中插入图片/pic04.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/08/30/在Hexo文章中插入图片/pic03.jpg">
+<meta property="og:updated_time" content="2018-08-30T23:18:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在Hexo文章中插入图片">
+<meta name="twitter:description" content="在写上一篇博客的时候，发现不知道该怎么往文章中插入图片，于是在网上搜。答案来来回回就那么两篇。于是就打开一个照着步骤做。">
+<meta name="twitter:image" content="http://yoursite.com/2019/04/13/在Hexo文章中插入图片/pic01.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Pyrrhax的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
 <body>
   <div id="container">
     <div id="wrap">
-      <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
-      <div class="outer">
-        <section id="main"><%- body %></section>
-        <% if (theme.sidebar && theme.sidebar !== 'bottom'){ %>
-          <%- partial('_partial/sidebar', null, {cache: !config.relative_link}) %>
-        <% } %>
-      </div>
-      <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Pyrrhax的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">命数如织，当为磐石。</a>
+        </h2>
+      
     </div>
-    <%- partial('_partial/mobile-nav', null, {cache: !config.relative_link}) %>
-    <%- partial('_partial/after-footer') %>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-在Hexo文章中插入图片" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/13/在Hexo文章中插入图片/" class="article-date">
+  <time datetime="2019-04-13T02:32:48.867Z" itemprop="datePublished">2019-04-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/网络运维/">网络运维</a>►<a class="article-category-link" href="/categories/网络运维/Hexo/">Hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <% if (post.photos && post.photos.length){ %>
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    <% post.photos.foreach(function(photo, i){ %>
+      <a class="article-gallery-img fancybox" href="<%- url_for(photo) %>" rel="gallery_<%= post._id %>">
+        <img src="<%- url_for(photo) %>" itemprop="image">
+      </a>
+    <% }) %>
+  </%></%></div>
+</div>
+<% } %>
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      在Hexo文章中插入图片
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在写上一篇博客的时候，发现不知道该怎么往文章中插入图片，于是在网上搜。答案来来回回就那么两篇。于是就打开一个照着步骤做。<br><a id="more"></a><br>然后在操作的过程中，踩到了各种奇奇怪怪的坑。<br><img src="pic01.jpg" alt><br>汪的一声就哭了<br>虽然在自己的不懈努力下<br>最后终于显示成功了。<br>可是，你不就一个低画质表情包吗！为什么显示这么大！！<br><img src="pic02.jpg" alt><br>觉得可能是hexo主题的问题。既然这样，只能修改CSS。可是主题CSS一改，所有图片的样式都会受到影响。<br>在一番搜索过后，发现hexo可以直接使用img标签,然后把样式写在标签里面。<br>すると：<br><figure class="hljs highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;img <span class="hljs-attribute">src</span>=<span class="hljs-string">"/2018/08/30/在Hexo文章中插入图片/pic02.jpg"</span> <span class="hljs-attribute">alt</span>=<span class="hljs-string">""</span> <span class="hljs-attribute">style</span>=<span class="hljs-string">"width:100px;height:100px"</span>&gt;<br></code></pre></td></tr></table></figure></p>
+<p><img src="/2018/08/30/在Hexo文章中插入图片/pic02.jpg" alt style="width:100px;height:100px"></p>
+<p>完美解决问题。当然，我的第一种插入图片方法只需要下面这几步。</p>
+<ol>
+<li><p>安装插件</p>
+<figure class="hljs highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">cnpm install hexo-asset-<span class="hljs-built_in">image</span> --<span class="hljs-built_in">save</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在要添加图片的md文件所在的位置创建一个同名文件夹，把图片放在里面。</p>
+</li>
+<li>在md文件中使用 !(图片描述)[xxx.png]</li>
+<li>hexo g -d 重新发布</li>
+</ol>
+<p><img src="/2018/08/30/在Hexo文章中插入图片/pic04.jpg" alt style="width:100px;height:100px;float:left;display:block"></p>
+<p>如果出了意外，那就去Google吧。。</p>
+<p> 顺便，在我不断地重新发布并查看页面的时候。明明源码已经修改过来，可是网页上显示的页面还是不变。一定是缓存的问题。于是我清空浏览器缓存，果真OK了。</p>
+<p> 可是！每次调试都要清缓存真的好麻烦。。。<br><img src="/2018/08/30/在Hexo文章中插入图片/pic03.jpg" alt style="width:100px;height:100px" align="right"><br> 好在我发现了ctrl+F5 这个清缓存刷新的神奇快捷键。。。<br> 如果有遇到需要经常清缓存刷新的，这样方便多了。。<br>nice，插入图片已经不是问题了。<br>顺便,👇用这种方法可以把图片显示在文字右边，就像这样👉<br><figure class="hljs highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs undefined">&lt;img <span class="hljs-attribute">src</span>=<span class="hljs-string">"/2018/08/30/在Hexo文章中插入图片/pic03.jpg"</span> <span class="hljs-attribute">alt</span>=<span class="hljs-string">""</span> <span class="hljs-attribute">style</span>=<span class="hljs-string">"width:100px;height:100px"</span> <span class="hljs-attribute">align</span>=<span class="hljs-string">"right"</span>&gt;<br></code></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/13/在Hexo文章中插入图片/" data-id="cjuewnv5h000cqgosk47nf9gr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+    </footer>
+  </%></%></div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/13/关于Java多线程两种实现方式的一点想法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          关于Java多线程两种实现方式的一点想法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/13/We are different,but we go together.----《深海迷航》/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">We are different,but we go together.----《深海迷航》</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/游戏/">游戏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/Java/">Java</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程题/">编程题</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程题/笔试/">笔试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络运维/">网络运维</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/网络运维/Hexo/">Hexo</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建/">搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沙盒/">沙盒</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生存/">生存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科幻/">科幻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程题/">编程题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/搭建/" style="font-size: 10px;">搭建</a> <a href="/tags/沙盒/" style="font-size: 10px;">沙盒</a> <a href="/tags/生存/" style="font-size: 10px;">生存</a> <a href="/tags/科幻/" style="font-size: 10px;">科幻</a> <a href="/tags/编程题/" style="font-size: 20px;">编程题</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/13/我翻译的文章在这里/">我翻译的文章在这里</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/13/用Hexo+GitHubPages搭建博客/">用Hexo和GitHubPages搭建博客</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/13/关于Java多线程两种实现方式的一点想法/">关于Java多线程两种实现方式的一点想法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/13/在Hexo文章中插入图片/">在Hexo文章中插入图片</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/13/We are different,but we go together.----《深海迷航》/">We are different,but we go together.----《深海迷航》</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Pyrrhax<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
   </div>
 </body>
 </html>

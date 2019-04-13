@@ -1,18 +1,271 @@
-<%- partial('_partial/head') %>
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>【编程题】网易2019笔试：牛牛找工作 | Pyrrhax的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。">
+<meta name="keywords" content="编程题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【编程题】网易2019笔试：牛牛找工作">
+<meta property="og:url" content="http://yoursite.com/2019/04/13/【编程题】网易2019笔试：牛牛找工作/index.html">
+<meta property="og:site_name" content="Pyrrhax的个人博客">
+<meta property="og:description" content="做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="2018-09-11T10:38:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【编程题】网易2019笔试：牛牛找工作">
+<meta name="twitter:description" content="做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。">
+  
+    <link rel="alternate" href="/atom.xml" title="Pyrrhax的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
 <body>
   <div id="container">
     <div id="wrap">
-      <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
-      <div class="outer">
-        <section id="main"><%- body %></section>
-        <% if (theme.sidebar && theme.sidebar !== 'bottom'){ %>
-          <%- partial('_partial/sidebar', null, {cache: !config.relative_link}) %>
-        <% } %>
-      </div>
-      <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Pyrrhax的个人博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">命数如织，当为磐石。</a>
+        </h2>
+      
     </div>
-    <%- partial('_partial/mobile-nav', null, {cache: !config.relative_link}) %>
-    <%- partial('_partial/after-footer') %>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-【编程题】网易2019笔试：牛牛找工作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/13/【编程题】网易2019笔试：牛牛找工作/" class="article-date">
+  <time datetime="2019-04-13T02:32:48.863Z" itemprop="datePublished">2019-04-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程题/">编程题</a>►<a class="article-category-link" href="/categories/编程题/笔试/">笔试</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    <% if (post.photos && post.photos.length){ %>
+<div class="article-gallery">
+  <div class="article-gallery-photos">
+    <% post.photos.foreach(function(photo, i){ %>
+      <a class="article-gallery-img fancybox" href="<%- url_for(photo) %>" rel="gallery_<%= post._id %>">
+        <img src="<%- url_for(photo) %>" itemprop="image">
+      </a>
+    <% }) %>
+  </%></%></div>
+</div>
+<% } %>
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【编程题】网易2019笔试：牛牛找工作
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。<br><a id="more"></a></p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>为了找到自己满意的工作，牛牛收集了每种工作的难度和报酬。牛牛选工作的标准是在难度不超过自身能力值的情况下，牛牛选择报酬最高的工作。在牛牛选定了自己的工作后，牛牛的小伙伴们来找牛牛帮忙选工作，牛牛依然使用自己的标准来帮助小伙伴们。牛牛的小伙伴太多了，于是他只好把这个任务交给了你。<br>输入描述:<br>每个输入包含一个测试用例。<br>每个测试用例的第一行包含两个正整数，分别表示工作的数量N(N&lt;=100000)和小伙伴的数量M(M&lt;=100000)。<br>接下来的N行每行包含两个正整数，分别表示该项工作的难度Di(Di&lt;=1000000000)和报酬Pi(Pi&lt;=1000000000)。<br>接下来的一行包含M个正整数，分别表示M个小伙伴的能力值Ai(Ai&lt;=1000000000)。<br>保证不存在两项工作的报酬相同。</p>
+<p>输出描述:<br>对于每个小伙伴，在单独的一行输出一个正整数表示他能得到的最高报酬。一个工作可以被多个人选择。<br>示例1<br>输入<br>3 3<br>1 100<br>10 1000<br>1000000000 1001<br>9 10 1000000000<br>输出<br>100<br>1000<br>1001</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
+<li>首先将工作难度和对应薪资储存在二维数组，按能力要求增序排序。</li>
+<li>排序后需要更新每个难度下的薪资为 可获得的最大值(因为可能存在能力要求高的工作薪资反而低的情况)。</li>
+<li>用二分查找确定能胜任的最大工作难度及其最大报酬。<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="hljs highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs undefined">import java.util.Arrays;<br>import java.util.Scanner;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(String[] args)&#123;<br>        Scanner scanner = <span class="hljs-keyword">new</span> Scanner(System.in);<br>        <span class="hljs-keyword">int</span> N=scanner.nextInt();<br>        <span class="hljs-keyword">int</span> M=scanner.nextInt();<br>        <span class="hljs-keyword">int</span>[][] jobmap= <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[N][<span class="hljs-number">2</span>];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;N;i++)&#123;<br>            jobmap[i][<span class="hljs-number">0</span>]=scanner.nextInt();<br>            jobmap[i][<span class="hljs-number">1</span>]=scanner.nextInt();<br>        &#125;<br>        <span class="hljs-comment">//将 薪资-能力 二维数组按能力要求增序排序</span><br>        Arrays.sort(jobmap,(<span class="hljs-keyword">int</span>[] o1, <span class="hljs-keyword">int</span>[] o2) -&gt;  o1[<span class="hljs-number">0</span>]-o2[<span class="hljs-number">0</span>]);<br>        <span class="hljs-comment">//排序后需要更新每个ability下的薪资为 可获得的最大值(如果低能力要职位的求薪资高于高能力要求职位的薪资，则更新高能力要求职位的薪资为高薪资)</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; jobmap.length - <span class="hljs-number">1</span>; i++) &#123;<br>            <span class="hljs-keyword">if</span> (jobmap[i][<span class="hljs-number">1</span>] &gt; jobmap[i + <span class="hljs-number">1</span>][<span class="hljs-number">1</span>]) &#123;<br>                jobmap[i + <span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = jobmap[i][<span class="hljs-number">1</span>];<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">int</span>[] people = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[M];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;M;i++)&#123;<br>            people[i]=scanner.nextInt();<br>        &#125;<br>        <span class="hljs-comment">// 二分查找确定能胜任的最大工作难度及其最大报酬</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; people.length; i++) &#123;<br>            <span class="hljs-keyword">int</span> <span class="hljs-keyword">index</span> = Arrays.binarySearch(jobmap, <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] &#123;people[i], <span class="hljs-number">0</span>&#125;, (<span class="hljs-keyword">int</span>[] jd1, <span class="hljs-keyword">int</span>[] jd2) -&gt;jd1[<span class="hljs-number">0</span>] - jd2[<span class="hljs-number">0</span>]);<br>            <span class="hljs-keyword">index</span> = <span class="hljs-keyword">index</span> &lt; <span class="hljs-number">0</span> ? -(<span class="hljs-keyword">index</span> + <span class="hljs-number">1</span>) - <span class="hljs-number">1</span>: <span class="hljs-keyword">index</span>;<br>            System.out.println(<span class="hljs-keyword">index</span> &gt;= <span class="hljs-number">0</span> ? jobmap[<span class="hljs-keyword">index</span>][<span class="hljs-number">1</span>] : <span class="hljs-number">0</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>在初次编写代码的时候没有考虑到不一定报酬和工作难度都成正比。考虑不周全，需要注意。</li>
+<li>在初次编写代码的时候，每个人都对所有工作进行遍历查找一次，时间复杂度为O(n²)。在数据量较大时性能不高，导致超时。改为二分查找后时间复杂度为O(log2(n))。</li>
+<li>在使用Arrays.sort(T[] a, Comparator&lt;? super T&gt; c)方法时,使用了lambda表达式替代了匿名内部类。注意返回参数一减参数二的值是增序。</li>
+<li>在使用Arrays.binarySearch(T[] a, T key, Comparator&lt;? super T&gt; c)时也使用了lambda表达式，在使用该方法前需要先使用sort方法排序。当查询的Key存在时，这个方法返回key在该数组中的下标，否则返回(-(insertion point) - 1)，insertion point指的是key在这个数组中应该插入的位置。也就是第一个比key大的值的下标，当key比所有值都大的时候，返回数组长度。所以当且仅当查找到key时，该方法的返回值才是正数。所以我们要寻找的最大报酬的工作的下标为 -(index + 1) - 1。</li>
+</ul>
+<blockquote>
+<p>Java API中对Arrays.binarySearch(T[] a, T key, Comparator&lt;? super T&gt; c)返回值的描述</p>
+</blockquote>
+<p>index of the search key, if it is contained in the array; otherwise, (-(insertion point) - 1). The insertion point is defined as the point at which the key would be inserted into the array: the index of the first element greater than the key, or a.length if all elements in the array are less than the specified key. Note that this guarantees that the return value will be &gt;= 0 if and only if the key is found.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/13/【编程题】网易2019笔试：牛牛找工作/" data-id="cjuewnv5d0006qgoslkwo2lu7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程题/">编程题</a></li></ul>
+
+    </footer>
+  </%></%></div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/04/13/We are different,but we go together.----《深海迷航》/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          We are different,but we go together.----《深海迷航》
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/13/【编程题】网易2019笔试：瞌睡/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">【编程题】网易2019笔试：瞌睡</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/游戏/">游戏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/">编程语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程语言/Java/">Java</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程题/">编程题</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程题/笔试/">笔试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络运维/">网络运维</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/网络运维/Hexo/">Hexo</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/翻译/">翻译</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数/">函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/多线程/">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/搭建/">搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/沙盒/">沙盒</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/生存/">生存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/科幻/">科幻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程题/">编程题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/函数/" style="font-size: 10px;">函数</a> <a href="/tags/多线程/" style="font-size: 10px;">多线程</a> <a href="/tags/搭建/" style="font-size: 10px;">搭建</a> <a href="/tags/沙盒/" style="font-size: 10px;">沙盒</a> <a href="/tags/生存/" style="font-size: 10px;">生存</a> <a href="/tags/科幻/" style="font-size: 10px;">科幻</a> <a href="/tags/编程题/" style="font-size: 20px;">编程题</a> <a href="/tags/翻译/" style="font-size: 10px;">翻译</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/13/我翻译的文章在这里/">我翻译的文章在这里</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/13/用Hexo+GitHubPages搭建博客/">用Hexo和GitHubPages搭建博客</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/13/关于Java多线程两种实现方式的一点想法/">关于Java多线程两种实现方式的一点想法</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/13/在Hexo文章中插入图片/">在Hexo文章中插入图片</a>
+          </li>
+        
+          <li>
+            <a href="/2019/04/13/We are different,but we go together.----《深海迷航》/">We are different,but we go together.----《深海迷航》</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Pyrrhax<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
   </div>
 </body>
 </html>
