@@ -54,22 +54,20 @@
       }
     });
 
-    $(".content article img").each(function (i) {
+    $(".post img").each(function (i) {
       if ($(this).parent().prop("tagName") !== "A") {
-        if (this.alt) {
-          $(this).after("<span class=\"caption\">" + this.alt + "</span>");
-        } else if (this.title) {
-          // Hexo asset_img tag generates title instead of alt.
+        if (this.title) {
+          // Hexo asset_img tag generates title.
           $(this).after("<span class=\"caption\">" + this.title + "</span>");
         }
-          $(this).wrap("<a href=\"" + this.src + "\" class=\"gallery-item\"></a>");
+        $(this).wrap("<a href=\"" + this.src + "\" class=\"gallery-item\"></a>");
       } else {
         // If img is already a link, ignore it.
         $(this).parent().addClass("img-link");
       }
     });
     if (typeof lightGallery != "undefined") {
-      $(".content").each(function (i, entry) {
+      $(".post").each(function (i, entry) {
         lightGallery(entry, {"selector": ".gallery-item"});
       });
     }
