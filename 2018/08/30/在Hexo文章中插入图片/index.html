@@ -238,9 +238,9 @@
     <main class="post-main" itemprop="articleBody">
       <p>在写上一篇博客的时候，发现不知道该怎么往文章中插入图片，于是在网上搜。答案来来回回就那么两篇。于是就打开一个照着步骤做。</p>
 <a id="more"></a>
-<p>然后在操作的过程中，踩到了各种奇奇怪怪的坑。<br><img src="/.com//pic01.jpg" alt><br>汪的一声就哭了<br>虽然在自己的不懈努力下<br>最后终于显示成功了。<br>可是，你不就一个低画质表情包吗！为什么显示这么大！！<br><img src="/.com//pic02.jpg" alt><br>觉得可能是hexo主题的问题。既然这样，只能修改CSS。可是主题CSS一改，所有图片的样式都会受到影响。<br>在一番搜索过后，发现hexo可以直接使用img标签,然后把样式写在标签里面。<br>すると：</p>
+<p>然后在操作的过程中，踩到了各种奇奇怪怪的坑。<br><img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/pic01.jpg" alt><br>汪的一声就哭了<br>虽然在自己的不懈努力下<br>最后终于显示成功了。<br>可是，你不就一个低画质表情包吗！为什么显示这么大！！<br><img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/pic02.jpg" alt><br>觉得可能是hexo主题的问题。既然这样，只能修改CSS。可是主题CSS一改，所有图片的样式都会受到影响。<br>在一番搜索过后，发现hexo可以直接使用img标签,然后把样式写在标签里面。<br>すると：</p>
 <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;img src&#x3D;&quot;&#x2F;2018&#x2F;08&#x2F;30&#x2F;在Hexo文章中插入图片&#x2F;pic02.jpg&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:100px;height:100px&quot;&gt;<br></code></pre></td></tr></table></figure>
-<img src="/.com//08/30/在Hexo文章中插入图片/pic02.jpg" alt style="width:100px;height:100px">
+<img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/08/30/在Hexo文章中插入图片/pic02.jpg" alt style="width:100px;height:100px">
 
 <p>完美解决问题。当然，我的第一种插入图片方法只需要下面这几步。</p>
 <ol>
@@ -254,12 +254,12 @@
 <li><p>hexo g -d 重新发布</p>
 </li>
 </ol>
-<img src="/.com//08/30/在Hexo文章中插入图片/pic04.jpg" alt style="width:100px;height:100px;float:left;display:block">
+<img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/08/30/在Hexo文章中插入图片/pic04.jpg" alt style="width:100px;height:100px;float:left;display:block">
 
 
 <p>如果出了意外，那就去Google吧。。</p>
 <p> 顺便，在我不断地重新发布并查看页面的时候。明明源码已经修改过来，可是网页上显示的页面还是不变。一定是缓存的问题。于是我清空浏览器缓存，果真OK了。</p>
-<p> 可是！每次调试都要清缓存真的好麻烦。。。<br><img src="/.com//08/30/在Hexo文章中插入图片/pic03.jpg" alt style="width:100px;height:100px" align="right"><br> 好在我发现了ctrl+F5 这个清缓存刷新的神奇快捷键。。。<br> 如果有遇到需要经常清缓存刷新的，这样方便多了。。<br>nice，插入图片已经不是问题了。<br>顺便,👇用这种方法可以把图片显示在文字右边，就像这样👉</p>
+<p> 可是！每次调试都要清缓存真的好麻烦。。。<br><img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/08/30/在Hexo文章中插入图片/pic03.jpg" alt style="width:100px;height:100px" align="right"><br> 好在我发现了ctrl+F5 这个清缓存刷新的神奇快捷键。。。<br> 如果有遇到需要经常清缓存刷新的，这样方便多了。。<br>nice，插入图片已经不是问题了。<br>顺便,👇用这种方法可以把图片显示在文字右边，就像这样👉</p>
 <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;img src&#x3D;&quot;&#x2F;2018&#x2F;08&#x2F;30&#x2F;在Hexo文章中插入图片&#x2F;pic03.jpg&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:100px;height:100px&quot; align&#x3D;&quot;right&quot;&gt;<br></code></pre></td></tr></table></figure>
     </main>
     <footer class="post-footer">
