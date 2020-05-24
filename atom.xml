@@ -25,7 +25,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;leviathan.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;What is a wave without the ocean,a begining without the end.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;They are different,but they go together.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;Now you go among the stars,and I fall among the sands.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;We are different,but we go together.&lt;/strong&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;/2019/01/24/We%20are%20different,but%20we%20go%20together/leviathan.png&quot; alt&gt;&lt;br&gt;&lt;strong&gt;What is a wave without the ocean,a begining without the end.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;They are different,but they go together.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;Now you go among the stars,and I fall among the sands.&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;We are different,but we go together.&lt;/strong&gt;&lt;/p&gt;
     
     </summary>
     
@@ -204,9 +204,9 @@
       <category term="Hexo" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/Hexo/"/>
     
     
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
-    
       <category term="搭建" scheme="http://yoursite.com/tags/%E6%90%AD%E5%BB%BA/"/>
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
   </entry>
   
