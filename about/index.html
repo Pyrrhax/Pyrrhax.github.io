@@ -1,40 +1,353 @@
-{% if page.layout === "index" or page.type === "index" or page.title === "index" or is_home() %}
-{% include "index.njk" %}
-{% elif page.layout === "archive" or page.type === "archive" or page.title === "archive" or is_archive() %}
-{% include "archive.njk" %}
-{% elif page.layout === "categories" or page.type === "categories" or page.title === "categories" %}
-{% include "categories.njk" %}
-{% elif page.layout === "category" or page.type === "category" or page.title === "category" or is_category() %}
-{% include "category.njk" %}
-{% elif page.layout === "tags" or page.type === "tags" or page.title === "tags" %}
-{% include "tags.njk" %}
-{% elif page.layout === "tag" or page.type === "tag" or page.title === "tag" or is_tag() %}
-{% include "tag.njk" %}
-{% else %}
-{% extends "_layout.njk" %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    <meta name="keywords" content="Life, Pyrrhax, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Pyrrhax" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
 
-{% block css %}
-<link rel="stylesheet" type="text/css" href="{{ url_for("css/page.css") }}">
-{% endblock %}
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>关于 | Pyrrhax</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Pyrrhax</a></h1>
+        <h2 class="subtitle"></h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/ARIA_logo.png" alt="logo">
+      </div>
+      
+    </div>
+    
+<nav id="nav" class="nav">
+  <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+  <ul id="menu" role="menubar" aria-hidden="false">
+    
+    <li role="menuitem"><a href="/">首页</a></li>
+    
+    <li role="menuitem"><a href="/archives/">归档</a></li>
+    
+    <li role="menuitem"><a href="/categories/">分类</a></li>
+    
+    <li role="menuitem"><a href="/tags/">标签</a></li>
+    
+    <li role="menuitem"><a href="/about/" class="current">关于</a></li>
+    
+  </ul>
+</nav>
 
-{% block title %}{{ __(page.title) }} | {{ config.title }}{% if config.subtitle %} - {{ config.subtitle }}{% endif %}{% endblock %}
 
-{% block content %}
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
 <div id="page" class="page">
-  <article class="page-article card{% if theme.animate %} animate{% endif %}">
+  <article class="page-article card">
     <header class="page-header">
       <h1 class="page-title" itemprop="name headline">
-        <span>{{ __(page.title) }}</span>
+        <span>关于</span>
       </h1>
     </header>
     <main class="page-main">
-      {{ page.content }}
+      <h2 id="Pyrrhax"><a href="#Pyrrhax" class="headerlink" title="Pyrrhax"></a>Pyrrhax</h2><p><strong>Be What You Wanna Be!!!</strong></p>
+<p><strong>GitHub:<a href="https://github.com/Pyrrhax" target="_blank" rel="noopener">@Pyrrhax</a></strong><br><strong>Email:<a href="">pyrrhax.hf@gmail.com</a></strong><br><strong>我的书单：<a href="https://book.douban.com/people/184374019/">https://book.douban.com/people/184374019/</a></strong><br><strong>我的知乎：<a href="https://www.zhihu.com/people/leng-leng-de/activities" target="_blank" rel="noopener">https://www.zhihu.com/people/leng-leng-de/activities</a></strong></p>
+<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>1.Pyrrha当然是《RWBY》里面的Pyrrha啦。</p>
+<p>2.要说几个我喜欢的游戏的话首先是《古墓丽影9》，然后《深海迷航》，还有《去月球》！</p>
+<p>3.比较喜欢玩FPS，游戏历程CF-&gt;逆站-&gt;AVA-&gt;WarFace-&gt;CS:GO-&gt;PUBG-&gt;叛乱-&gt;红色管弦乐。求队友！！！PUBG800+小时，最高日韩服Rank1.5%。希望有长期的队友可以一起玩啊，SteamID很明显你知道的。</p>
+<p>4.之前因为看了某动画，突然想玩MMORPG网游，了解了几天觉得想玩《勇者斗恶龙X》。不过竟然都X了，于是就了解了下《勇者斗恶龙》全系列。没错，于是我就买了NDSi来玩《勇者斗恶龙4》了。然后现在卡在最终boss= =。唔，果真日式RPG需要刷刷刷。不过在当时那个年代大家一定乐此不疲。然后下一个要玩的是《空之轨迹》系列了。然后同时在玩的还有《异域镇魂曲》qwq，感觉好像完全忘记了初衷，不过这个不重要。</p>
+<p>4.沉迷捡垃圾和折腾操作系统。在知乎有个人说：“要把精力专注在业务上，而不是这种杂七杂八的问题。。。然而。。。如果不考虑赚钱多少的话，我还是挺愿意当一个修电脑的哈哈哈哈。现在还在折腾树莓派，想学了解一下kali和无线安全（才不是为了破解wifi密码）。。。不过我猜自己大概几年之后会改折腾电脑为折腾汽车- -毕竟是现实生活中目前唯一可用的机甲，并且可以作为小基地。希望有这样一个小窝哈哈哈。</p>
+<p>5.篮球是不可能打篮球的，这辈子都不可能打篮球的。足球，台球又不会。只有滑轮滑这种东西才能维持得了生活。其实日常家里面躺尸。。。每次出门前都要感叹，哇，现实世界的画质真的需要好复杂的计算，不过看起来竟没有更低一些的画质好看。</p>
+<p>6.《三体》《攻壳机动队》都十分喜欢！！《攻壳机动队》简直是脑机接口发展的成熟阶段啊！！！所以要说崇拜的人大概是Musk吧。说到这些，想到一句话Any sufficiently advanced technology is indistinguishable from magic。</p>
+<p> 7.可能一般情况下生活中话不是很多吧，不过打字就好多了，有时候真的不知道该说什么。（经过我对自己的观察，发现很多时候该我说话的时候，我在大脑里面把说的话说了一遍，然后觉得说不说无所谓，然后就不说了。后来发现其实说的话不一定每句都要十分有”价值“，因为气氛和情绪也是很重要的东西，所以会努力让自己说话的时候随意一点。不过有的时候还是会忘掉这茬- -）唔~其实一直在改啦，毕竟还是要全面发展。。。</p>
+<p>8.希望成为一个fluent English Speaker.毕竟英语是我在计算机方面之外，唯一坚持下来的算的上是爱好的东西。日语也学了一些，加油加油。</p>
+<p>9.怕什么真理无穷，进一寸有一寸的欢喜。</p>
+
     </main>
     <footer class="page-footer"></footer>
   </article>
-  {% if theme.comment.enable %}
-  {% include "comment.njk" %}
-  {% endif %}
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "Pyrrhax",
+      "repo": "Pyrrhax.github.io",
+      "client_id": "ab41dde59a0f57819b1e",
+      "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "关于",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
 </div>
-{% endblock %}
-{% endif %}
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="Pyrrhax">
+  
+  <h1 class="author-name">Pyrrhax</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">8</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">8</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">10</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+
+
+
+
+<hr>
+<div class="post-toc sidebar-item" id="toc-div">
+  <div><i class="fas fa-list-ol"></i>文章目录</div>
+  <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Pyrrhax"><span class="toc-text">Pyrrhax</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#关于我"><span class="toc-text">关于我</span></a></li></ol></div>
+</div>
+
+
+
+    
+    
+    
+<hr>
+<div class="social-link sidebar-item">
+  <div><i class="far fa-address-card"></i>社交链接</p></div>
+  <ul>
+    
+    <li><i class="fas fa-envelope"></i><a href="mailto:Pyrrhax.hf@gmail.com" target="_blank">E-Mail</a></li>
+    
+    <li><i class="fab fa-github"></i><a href="https://github.com/Pyrrhax" target="_blank">GitHub</a></li>
+    
+    <li><i class="fab fa-weibo"></i><a href="https://weibo.com/u/5394845678" target="_blank">Weibo</a></li>
+    
+  </ul>
+</div>
+
+
+    
+    
+    
+<hr>
+<div class="blogroll sidebar-item">
+  <div><i class="fas fa-link"></i>友情链接</div>
+  <ul>
+    
+    <li><a href="https://sh.alynx.xyz/" target="_blank">Alynx</a></li>
+    
+  </ul>
+</div>
+
+
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2020</span><span class="creative-commons"><i class="fab fa-creative-commons"></i><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">BY-NC-SA 4.0</a></span>
+        </div>
+        
+        
+<div class="busuanzi">
+  <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+</div>
+
+
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

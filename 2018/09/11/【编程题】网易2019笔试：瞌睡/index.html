@@ -1,95 +1,434 @@
-{% extends "_layout.njk" %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    <meta name="keywords" content="Life, Pyrrhax, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Pyrrhax" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
 
-{% block css %}
-<link rel="stylesheet" type="text/css" href="{{ url_for("css/page.css") }}">
-<link rel="stylesheet" type="text/css" href="{{ url_for("css/post.css") }}">
-{% endblock %}
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>【编程题】网易2019笔试：瞌睡 | Pyrrhax</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Pyrrhax</a></h1>
+        <h2 class="subtitle"></h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/ARIA_logo.png" alt="logo">
+      </div>
+      
+    </div>
+    
+<nav id="nav" class="nav">
+  <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+  <ul id="menu" role="menubar" aria-hidden="false">
+    
+    <li role="menuitem"><a href="/">首页</a></li>
+    
+    <li role="menuitem"><a href="/archives/">归档</a></li>
+    
+    <li role="menuitem"><a href="/categories/">分类</a></li>
+    
+    <li role="menuitem"><a href="/tags/">标签</a></li>
+    
+    <li role="menuitem"><a href="/about/">关于</a></li>
+    
+  </ul>
+</nav>
 
-{% block title %}{{ page.title }} | {{ config.title }}{% if config.subtitle %} - {{ config.subtitle }}{% endif %}{% endblock %}
 
-{% block content %}
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
 <div id="post" class="post">
-  {% set post = page %}
-  <article class="post-article card{% if theme.animate %} animate{% endif %}" itemscope itemtype="http://schema.org/Article">
+  
+  <article class="post-article card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="{{ config.url }}{{ url_for(page.path) }}">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/11/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%9E%8C%E7%9D%A1/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-       <meta itemprop="name" content="{{ config.author }}">
-       <meta itemprop="description" content="{{ config.description }}">
-       <meta itemprop="image" content="{{ url_for(theme.avatar) }}">
+       <meta itemprop="name" content="Pyrrhax">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
       </span>
       <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-       <meta itemprop="name" content="{{ config.title }}">
+       <meta itemprop="name" content="Pyrrhax">
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+      <h1 class="post-title" itemprop="name headline">【编程题】网易2019笔试：瞌睡</h1>
       <div class="post-meta">
-        {% if page.date %}
+        
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="{{ moment(post.date).format() }}">{{ date(post.date, config.date_format) }} {{ time(post.date, config.time_format) }}</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-09-11T00:00:00+08:00">2018-09-11 00:00:00</time></span>
         </span>
-        {% endif %}
-        {% if page.categories and page.categories.toArray().length %}
-        {% if page.date %}
+        
+        
+        
         <span class="post-meta-divider divider">|</span>
-        {% endif %}
+        
         <span class="post-categories">
-          {# About `-`: https://mozilla.github.io/nunjucks/cn/templating.html#part-861ece9d8e5ce60c #}
-          {% for cat in page.categories.toArray() -%}
-          {% if loop.first %}<i class="far fa-folder-open"></i>{% else %}<i class="fas fa-angle-right"></i>{% endif %}<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="{{ url_for(cat.path) }}" itemprop="url" rel="index"><span itemprop="name">{{ cat.name }}</span></a></span>
-          {%- endfor %}
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">编程题</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/%E7%AC%94%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">笔试</span></a></span>
         </span>
-        {% endif %}
-        {% if page.comment !== false and theme.comment.enable %}
-        {% if theme.comment.disqus_shortname %}
-        {% if page.categories or page.date %}
-        <span class="post-meta-divider divider">|</span>
-        {% endif %}
-        <span class="post-comment-count">
-          <i class="far fa-comments"></i><span><a href="{{ url_for(page.path) }}#disqus_thread" itemprop="discussionUrl"><span class="post-comment-count disqus-comment-count" data-disqus-identifier="{{ page.path }}" itemprop="commentCount"></span></a></span>
-        </span>
-        {% endif %}
-        {% endif %}
+        
+        
+        
+        
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      {{ page.content }}
+      <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>小易觉得高数课太无聊了，决定睡觉。不过他对课上的一些内容挺感兴趣，所以希望你在老师讲到有趣的部分的时候叫醒他一下。你知道了小易对一堂课每分钟知识点的感兴趣程度，并以分数量化，以及他在这堂课上每分钟是否会睡着，你可以叫醒他一次，这会使得他在接下来的k分钟内保持清醒。你需要选择一种方案最大化小易这堂课听到的知识点分值。</p>
+<a id="more"></a>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><p>第一行 n, k (1 &lt;= n, k &lt;= 105) ，表示这堂课持续多少分钟，以及叫醒小易一次使他能够保持清醒的时间。<br>第二行 n 个数，a1, a2, … , an(1 &lt;= ai &lt;= 104) 表示小易对每分钟知识点的感兴趣评分。<br>第三行 n 个数，t1, t2, … , tn 表示每分钟小易是否清醒, 1表示清醒。</p>
+<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h3><p>小易这堂课听到的知识点的最大兴趣值。</p>
+<p>示例<br>输入</p>
+<p>6 3<br>1 3 5 2 5 4<br>1 1 0 1 0 0<br>1<br>2<br>3<br>输出</p>
+<p>16</p>
+<h3 id="最初解题思路"><a href="#最初解题思路" class="headerlink" title="最初解题思路"></a>最初解题思路</h3><ol>
+<li>把兴趣值和是否醒着储存到一个二维数组。</li>
+<li>复制这个二维数组，按顺序修改数组，模拟每次被叫醒的状态，统计总兴趣值。</li>
+<li>找出总兴趣值中的最大值，输出。</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        int n &#x3D; sc.nextInt();</span><br><span class="line">        int k &#x3D; sc.nextInt();</span><br><span class="line">        int[][] scoremap &#x3D; new int[n][2];</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i++)&#123;</span><br><span class="line">            scoremap[i][1]&#x3D;sc.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i++)&#123;</span><br><span class="line">            scoremap[i][0]&#x3D;sc.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line">		&#x2F;&#x2F;用于储存每种叫醒情况的总兴趣值</span><br><span class="line">        int[] scores&#x3D;new int[n];</span><br><span class="line">        for(int i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">	        &#x2F;&#x2F;克隆原数组</span><br><span class="line">            int scoremapClone[][] &#x3D; new int[scoremap.length][];</span><br><span class="line">            for(int j&#x3D;0;j&lt;scoremap.length;j++)&#123;</span><br><span class="line">                scoremapClone[j]&#x3D;scoremap[j].clone();</span><br><span class="line">            &#125;</span><br><span class="line">            &#x2F;&#x2F;模拟叫醒</span><br><span class="line">            for(int j&#x3D;0;j&lt;k;j++)&#123;</span><br><span class="line">                if(i+j&lt;n)&#123;</span><br><span class="line">                    scoremapClone[i+j][0]&#x3D;1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            &#x2F;&#x2F;计算总兴趣值，并储存</span><br><span class="line">            for(int j&#x3D;0;j&lt;n;j++)&#123;</span><br><span class="line">                if(scoremapClone[j][0]&#x3D;&#x3D;1)&#123;</span><br><span class="line">                    scores[i]+&#x3D;scoremapClone[j][1];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;找出最大值</span><br><span class="line">        int max &#x3D; Arrays.stream(scores).max().getAsInt();</span><br><span class="line">        System.out.println(max);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2018/09/11/【编程题】网易2019笔试：瞌睡/真叫人头大.jpg" alt="" style="width:100px;height:100px" align="right">
+### 结果
+AC 0.5 ，运行超时。
+反思：克隆数组花费了大量时间，其实可以不模拟每次修改后的状态，只做实时运算。于是对代码做出改进。
+其实每次的运算结果也不用都保存起来，最后再取最大值。只要保存一个当前最大值就可以了。
+
+<h3 id="改进版思路"><a href="#改进版思路" class="headerlink" title="改进版思路"></a>改进版思路</h3><p>把兴趣值和是否醒着储存到一个二维数组。<br>实时计算每次叫醒可以获得的兴趣值，如果大于max（初始化为0）则储存到max。<br>加上固定兴趣值，输出结果。</p>
+<h3 id="改进版代码"><a href="#改进版代码" class="headerlink" title="改进版代码"></a>改进版代码</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        int n&#x3D; sc.nextInt();</span><br><span class="line">        int k&#x3D; sc.nextInt();</span><br><span class="line">        int[][] scoremap &#x3D; new int[n][2];</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i++)&#123;</span><br><span class="line">            scoremap[i][1]&#x3D;sc.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i++)&#123;</span><br><span class="line">            scoremap[i][0]&#x3D;sc.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;最大兴趣值</span><br><span class="line">        int max &#x3D; 0;</span><br><span class="line">        for(int i&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">            &#x2F;&#x2F;储存当前叫醒可获得的兴趣值</span><br><span class="line">            int cur &#x3D; 0;</span><br><span class="line">            &#x2F;&#x2F;计算叫醒可以获得的兴趣值</span><br><span class="line">            for(int j&#x3D;0;j&lt;k;j++) &#123;</span><br><span class="line">                if (i + j &lt; n&amp;&amp; scoremap[i + j][0] &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                    cur +&#x3D; scoremap[i + j][1];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            &#x2F;&#x2F;如果大于max则储存到max</span><br><span class="line">            if(cur&gt;max)&#123;</span><br><span class="line">                max &#x3D; cur;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;加上固定兴趣值成为总兴趣值</span><br><span class="line">        for(int j&#x3D;0;j&lt;n;j++)&#123;</span><br><span class="line">            if(scoremap[j][0]&#x3D;&#x3D;1)&#123;</span><br><span class="line">                max+&#x3D;scoremap[j][1];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(max);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>AC 0.9 ，运行超时！！！<br><img src="/2018/09/11/【编程题】网易2019笔试：瞌睡/嗯.jpg" alt="" style="width:110px;height:100px"><br>WTF!!!容老夫再想想。<br><img src="/2018/09/11/【编程题】网易2019笔试：瞌睡/盲目分析.jpg" alt="" style="width:100px;height:100px"><br>想到的优化方式：</p>
+<ol>
+<li>计算固定兴趣值这部分，其实可以在输入的同时计算，这样就少一个次数为N的循环。<br>（结果改了这个还是AC 0.9,于是又做出了下面的改进）</li>
+<li>当宽度为n的滑动窗口超出k的范围时，所得到的兴趣值会逐渐减少。所以可以取消循环中（i&gt;n-k+1）这部分。</li>
+</ol>
+<h3 id="最终版思路"><a href="#最终版思路" class="headerlink" title="最终版思路"></a>最终版思路</h3><p>其实和上面是一样的，不过从代码逻辑上和思路逻辑上分别减少了一些多余的操作。</p>
+<h3 id="最终版代码"><a href="#最终版代码" class="headerlink" title="最终版代码"></a>最终版代码</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc &#x3D; new Scanner(System.in);</span><br><span class="line">        int n &#x3D; sc.nextInt();</span><br><span class="line">        int k &#x3D; sc.nextInt();</span><br><span class="line">        int[][] scoremap &#x3D; new int[n][2];</span><br><span class="line">        &#x2F;&#x2F;最大兴趣值</span><br><span class="line">        int stable &#x3D; 0;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i++)&#123;</span><br><span class="line">            scoremap[i][1]&#x3D;sc.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;在输入的同时储存固定兴趣值到max</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i++)&#123;</span><br><span class="line">            scoremap[i][0]&#x3D;sc.nextInt();</span><br><span class="line">            if(scoremap[i][0]&#x3D;&#x3D;1)&#123;</span><br><span class="line">                stable+&#x3D;scoremap[i][1];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;最大兴趣值</span><br><span class="line">        int max &#x3D; 0;</span><br><span class="line">        for(int i&#x3D;0;i&lt;n-k+1;i++)&#123;</span><br><span class="line">            &#x2F;&#x2F;储存当前叫醒可获得的兴趣值</span><br><span class="line">            int cur &#x3D; 0;</span><br><span class="line">            &#x2F;&#x2F;计算叫醒可以获得的兴趣值</span><br><span class="line">            for(int j&#x3D;0;j&lt;k;j++) &#123;</span><br><span class="line">                if (i + j &lt; n &amp;&amp; scoremap[i + j][0] &#x3D;&#x3D; 0) &#123;</span><br><span class="line">                    cur +&#x3D; scoremap[i + j][1];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            &#x2F;&#x2F;如果大于max则储存到max</span><br><span class="line">            if(cur&gt;max)&#123;</span><br><span class="line">                max &#x3D; cur;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(max+stable);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h3><p>AC 1.0。 NICE，此题完结。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>想想自己写的那个最初版代码真是<br><img src="/2018/09/11/【编程题】网易2019笔试：瞌睡/写的什么垃圾.jpg" alt="" style="width:110px;height:100px"></p>
+<ul>
+<li>遇到题目不要总想着暴力破解。即使计算机性能强大，但实际上，当遇到某些输入量较大并且时间复杂度- 较高的程序，运行时间会明显增加。</li>
+<li>一定尽量避免重复或者无效代码，可以实时运算的部分就不要占用储存空间。</li>
+<li>对程序尽可能的优化，任意一点优化都可能对结果产生影响。</li>
+<li>看到题目先在纸上画图分析一遍，对整理思路非常有帮助！</li>
+<li>Java8中引入了Stream的概念，对于基本数值型，目前有三种对应的包装类型 Stream：IntStream、LongStream、DoubleStream。用Arrays.stream()方法可以获得一个Stream,本题第一个程序中使用了Stream.max()方法。关于Stream的更多使用可以看<a href="http://www.runoob.com/java/java8-streams.html" target="_blank" rel="noopener">这里</a>。给自己挖个坑= =</li>
+</ul>
+
     </main>
     <footer class="post-footer">
-      {% if page.tags and page.tags.toArray().length %}
+      
       <div class="post-tags">
-        {% if theme.tags_color %}
-        {% set colors = theme.tags_color %}
-        {% else %}
-        {% set colors = ["#fc6423", "#a3bb54", "#47aaff"] %}
-        {% endif %}
-        {% for tag in page.tags.toArray() %}
-        <a class="post-tag button" href="{{ url_for(tag.path) }}" style="background: {{ colors[loop.index0 % colors.length] }};" rel="tag"><i class="fas fa-tags"></i>{{ tag.name }}</a>
-        {% endfor %}
+        
+        
+        
+        
+        <a class="post-tag button" href="/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/" style="background: #fc6423;" rel="tag"><i class="fas fa-tags"></i>编程题</a>
+        
       </div>
-      {% endif %}
+      
     </footer>
   </article>
-  {% if theme.reward.enable %}
-  {% include "reward.njk" %}
-  {% endif %}
-  {% if page.prev or page.next %}
+  
+  
   <div class="post-nav">
     <div class="post-nav-next post-nav-item">
-      {% if page.next %}
-      <a href="{{ url_for(page.next.path) }}" rel="next" title="{{ page.next.title }}"><i class="fas fa-angle-left"></i><span class="nav-title">{{ page.next.title }}</span></a>
-      {% endif %}
+      
+      <a href="/2018/09/09/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%89%9B%E7%89%9B%E6%89%BE%E5%B7%A5%E4%BD%9C/" rel="next" title="【编程题】网易2019笔试：牛牛找工作"><i class="fas fa-angle-left"></i><span class="nav-title">【编程题】网易2019笔试：牛牛找工作</span></a>
+      
     </div>
     <div class="post-nav-prev post-nav-item">
-      {% if page.prev %}
-      <a href="{{ url_for(page.prev.path) }}" rel="prev" title="{{ page.prev.title }}"><span class="nav-title">{{ page.prev.title }}</span><i class="fas fa-angle-right"></i></a>
-      {% endif %}
+      
+      <a href="/2018/09/23/%E5%85%B3%E4%BA%8EJava%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E7%82%B9%E6%83%B3%E6%B3%95/" rel="prev" title="关于Java多线程两种实现方式的一点想法"><span class="nav-title">关于Java多线程两种实现方式的一点想法</span><i class="fas fa-angle-right"></i></a>
+      
     </div>
   </div>
-  {% endif %}
-  {% if theme.comment.enable %}
-  {% include "comment.njk" %}
-  {% endif %}
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "Pyrrhax",
+      "repo": "Pyrrhax.github.io",
+      "client_id": "ab41dde59a0f57819b1e",
+      "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "【编程题】网易2019笔试：瞌睡",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
 </div>
-{% endblock %}
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="Pyrrhax">
+  
+  <h1 class="author-name">Pyrrhax</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    <div class="archives-count">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">8</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="categories-count">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">8</a></div>
+    </div>
+    
+    
+    
+    <span class="site-count-divider divider">|</span>
+    
+    <div class="tags-count">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">10</a></div>
+    </div>
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+
+
+
+
+<hr>
+<div class="post-toc sidebar-item" id="toc-div">
+  <div><i class="fas fa-list-ol"></i>文章目录</div>
+  <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#输入描述"><span class="toc-text">输入描述</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#输出描述"><span class="toc-text">输出描述</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#最初解题思路"><span class="toc-text">最初解题思路</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#改进版思路"><span class="toc-text">改进版思路</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#改进版代码"><span class="toc-text">改进版代码</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#结果"><span class="toc-text">结果</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#最终版思路"><span class="toc-text">最终版思路</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#最终版代码"><span class="toc-text">最终版代码</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#结果-1"><span class="toc-text">结果</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
+</div>
+
+
+
+    
+    
+    
+<hr>
+<div class="social-link sidebar-item">
+  <div><i class="far fa-address-card"></i>社交链接</p></div>
+  <ul>
+    
+    <li><i class="fas fa-envelope"></i><a href="mailto:Pyrrhax.hf@gmail.com" target="_blank">E-Mail</a></li>
+    
+    <li><i class="fab fa-github"></i><a href="https://github.com/Pyrrhax" target="_blank">GitHub</a></li>
+    
+    <li><i class="fab fa-weibo"></i><a href="https://weibo.com/u/5394845678" target="_blank">Weibo</a></li>
+    
+  </ul>
+</div>
+
+
+    
+    
+    
+<hr>
+<div class="blogroll sidebar-item">
+  <div><i class="fas fa-link"></i>友情链接</div>
+  <ul>
+    
+    <li><a href="https://sh.alynx.xyz/" target="_blank">Alynx</a></li>
+    
+  </ul>
+</div>
+
+
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2020</span><span class="creative-commons"><i class="fab fa-creative-commons"></i><a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">BY-NC-SA 4.0</a></span>
+        </div>
+        
+        
+<div class="busuanzi">
+  <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+</div>
+
+
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
