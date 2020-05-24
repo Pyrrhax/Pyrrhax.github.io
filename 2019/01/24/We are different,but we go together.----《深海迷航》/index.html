@@ -1,244 +1,95 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+{% extends "_layout.njk" %}
 
-  
-  <title>We are different,but we go together.----《深海迷航》 | Pyrrhax</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="What is a wave without the ocean,a begining without the end.They are different,but they go together.Now you go among the stars,and I fall among the sands.We are different,but we go together.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="We are different,but we go together.----《深海迷航》">
-<meta property="og:url" content="http://yoursite.com/2019/01/24/We%20are%20different,but%20we%20go%20together.----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/index.html">
-<meta property="og:site_name" content="Pyrrhax">
-<meta property="og:description" content="What is a wave without the ocean,a begining without the end.They are different,but they go together.Now you go among the stars,and I fall among the sands.We are different,but we go together.">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2019/01/24/We%20are%20different,but%20we%20go%20together.----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/leviathan.png">
-<meta property="article:published_time" content="2019-01-23T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-24T09:32:59.730Z">
-<meta property="article:author" content="Pyrrhax">
-<meta property="article:tag" content="科幻">
-<meta property="article:tag" content="生存">
-<meta property="article:tag" content="沙盒">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2019/01/24/We%20are%20different,but%20we%20go%20together.----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/leviathan.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Pyrrhax" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for("css/page.css") }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for("css/post.css") }}">
+{% endblock %}
 
-<meta name="generator" content="Hexo 4.2.1"></head>
+{% block title %}{{ page.title }} | {{ config.title }}{% if config.subtitle %} - {{ config.subtitle }}{% endif %}{% endblock %}
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Pyrrhax</a>
-      </h1>
-      
+{% block content %}
+<div id="post" class="post">
+  {% set post = page %}
+  <article class="post-article card{% if theme.animate %} animate{% endif %}" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="{{ config.url }}{{ url_for(page.path) }}">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="{{ config.author }}">
+       <meta itemprop="description" content="{{ config.description }}">
+       <meta itemprop="image" content="{{ url_for(theme.avatar) }}">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="{{ config.title }}">
+      </span>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+      <div class="post-meta">
+        {% if page.date %}
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="{{ moment(post.date).format() }}">{{ date(post.date, config.date_format) }} {{ time(post.date, config.time_format) }}</time></span>
+        </span>
+        {% endif %}
+        {% if page.categories and page.categories.toArray().length %}
+        {% if page.date %}
+        <span class="post-meta-divider divider">|</span>
+        {% endif %}
+        <span class="post-categories">
+          {# About `-`: https://mozilla.github.io/nunjucks/cn/templating.html#part-861ece9d8e5ce60c #}
+          {% for cat in page.categories.toArray() -%}
+          {% if loop.first %}<i class="far fa-folder-open"></i>{% else %}<i class="fas fa-angle-right"></i>{% endif %}<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="{{ url_for(cat.path) }}" itemprop="url" rel="index"><span itemprop="name">{{ cat.name }}</span></a></span>
+          {%- endfor %}
+        </span>
+        {% endif %}
+        {% if page.comment !== false and theme.comment.enable %}
+        {% if theme.comment.disqus_shortname %}
+        {% if page.categories or page.date %}
+        <span class="post-meta-divider divider">|</span>
+        {% endif %}
+        <span class="post-comment-count">
+          <i class="far fa-comments"></i><span><a href="{{ url_for(page.path) }}#disqus_thread" itemprop="discussionUrl"><span class="post-comment-count disqus-comment-count" data-disqus-identifier="{{ page.path }}" itemprop="commentCount"></span></a></span>
+        </span>
+        {% endif %}
+        {% endif %}
       </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-We are different,but we go together.----《深海迷航》" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/24/We%20are%20different,but%20we%20go%20together.----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/" class="article-date">
-  <time datetime="2019-01-23T16:00:00.000Z" itemprop="datePublished">2019-01-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      We are different,but we go together.----《深海迷航》
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="leviathan.png" alt=""><br><strong>What is a wave without the ocean,a begining without the end.</strong><br><strong>They are different,but they go together.</strong><br><strong>Now you go among the stars,and I fall among the sands.</strong><br><strong>We are different,but we go together.</strong></p>
-<a id="more"></a>
-<p>第一次感到对大海的恐惧，是在洛圣都开着快艇来到地图边界。天空布满灰色的乌云，环顾四周也看不到一片陆地，尽是波涛汹涌的海水。快艇随着大海蓝黑泛白的涟漪上下起伏。船慢慢沉入水中。只好游泳，水中永远是深蓝不见底，越往深处光线越暗。没有多久就被鲨鱼攻击，然后死掉了。压抑，恐惧，无助。我不知道是幽闭恐惧还是深海恐惧，这种感觉在之后的一段时间，一直让我记忆犹新。<br>后来偶然听闻有某游戏专治“深海恐惧”，我不由得又想到了这种体验。忍不住下载然后尝试。（当时是2016年，游戏还在开发阶段，虽然相比于现在有一些不足，但也都无关紧要。）<br>故事的开始主角已经进入了星际飞船“极光号”的救生舱，随着极光号的坠落，十几个逃生舱也散落在4546B这个绝大部分都是海洋的星球上。为了等待救援，不得不开始探索周边环境。看得出来这是科技非常发达的时代，主角借助PDA，配合光谱扫描仪，一点一点了解周边生态环境。也就是在这个过程中，发现了这个星球上更多的秘密。<br>身上有绿色斑点的各种生物，外星进水排水设施，嘉德斯号船员的遗址，极光号受到的未能分析出结果的损伤形式。逐渐让主角对这个星球的故事产生好奇。<br>不得不让人称赞的是这个游戏的音乐和音效。让人印象深刻的是暗礁鱼低沉悠长的叫声，让人听到就觉得孤独。深潜时捕食者的咆哮也给游戏增添了一丝紧张感。在浅水区，绿藻区，树蘑菇林，失落之河……每个区域都有独特的风景。精心设计的地图，相比于随机生成更加有美感。场景切换时的音乐，也和环境氛围完美融合。代入感极佳。<br>开始玩了大概有20多个小时，因为感到深深的孤独，就没有勇气继续玩下去了。（在后来的版本，开发商为了减轻玩家的这种痛苦，增加了一个可爱的抱抱鱼作为宠物qwq）<br>直到两年后，我又重新拾起了这个游戏。在这之间，它已经由完美世界发行，并收入WeGame平台之中，在游戏发售后IGN 也给出了9.1 Amazing的高分,也被游民星空评价为开放世界生存游戏的典范。<br>在游戏中最让我感兴趣的部分是扫描各种未知的生物。它们以各种奇妙的方式来运动，进食，共生，等等，完成自己的生命周期。<br>包括显示出重度基因修正和多处机械移植迹象的声明形式裂空者，有机体和高科技的完美结合造就了这种强力且危险的生物。<br>随着剧情的一步步推进，主角在这个星球上收到海皇心电感应发来的讯息，让这个孤独的世界不那么孤独。玩到这里的时候，已经满脑子都是“我要见到海皇”这种想法了。<br>当主角终于找到离开的方法时，这个巨大却温柔生物却不得不走向生命的终结。<br><strong>We are different,but we go together.</strong><br>事情总是这样，不过，可以相遇就已经足够了，不是吗。<br>面对巨大生物时的震撼，各种奇妙的生命形式，面对未知的恐惧和强烈的好奇，和伴随着整个游戏进程的深深孤独感，都是令人着迷的神奇体验。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/24/We%20are%20different,but%20we%20go%20together.----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/" data-id="ckakvpvb4000144vt1s0cc6ir" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B2%99%E7%9B%92/" rel="tag">沙盒</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%9F%E5%AD%98/" rel="tag">生存</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A7%91%E5%B9%BB/" rel="tag">科幻</a></li></ul>
-
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      {{ page.content }}
+    </main>
+    <footer class="post-footer">
+      {% if page.tags and page.tags.toArray().length %}
+      <div class="post-tags">
+        {% if theme.tags_color %}
+        {% set colors = theme.tags_color %}
+        {% else %}
+        {% set colors = ["#fc6423", "#a3bb54", "#47aaff"] %}
+        {% endif %}
+        {% for tag in page.tags.toArray() %}
+        <a class="post-tag button" href="{{ url_for(tag.path) }}" style="background: {{ colors[loop.index0 % colors.length] }};" rel="tag"><i class="fas fa-tags"></i>{{ tag.name }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
     </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2018/09/23/%E5%85%B3%E4%BA%8EJava%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E7%82%B9%E6%83%B3%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">关于Java多线程两种实现方式的一点想法</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/">Java</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/%E7%AC%94%E8%AF%95/">笔试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/">网络运维</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/Hexo/">Hexo</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BF%BB%E8%AF%91/">翻译</a></li></ul>
+  </article>
+  {% if theme.reward.enable %}
+  {% include "reward.njk" %}
+  {% endif %}
+  {% if page.prev or page.next %}
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      {% if page.next %}
+      <a href="{{ url_for(page.next.path) }}" rel="next" title="{{ page.next.title }}"><i class="fas fa-angle-left"></i><span class="nav-title">{{ page.next.title }}</span></a>
+      {% endif %}
+    </div>
+    <div class="post-nav-prev post-nav-item">
+      {% if page.prev %}
+      <a href="{{ url_for(page.prev.path) }}" rel="prev" title="{{ page.prev.title }}"><span class="nav-title">{{ page.prev.title }}</span><i class="fas fa-angle-right"></i></a>
+      {% endif %}
     </div>
   </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0/" rel="tag">函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%AD%E5%BB%BA/" rel="tag">搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B2%99%E7%9B%92/" rel="tag">沙盒</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E5%AD%98/" rel="tag">生存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%91%E5%B9%BB/" rel="tag">科幻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/" rel="tag">编程题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 10px;">函数</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">搭建</a> <a href="/tags/%E6%B2%99%E7%9B%92/" style="font-size: 10px;">沙盒</a> <a href="/tags/%E7%94%9F%E5%AD%98/" style="font-size: 10px;">生存</a> <a href="/tags/%E7%A7%91%E5%B9%BB/" style="font-size: 10px;">科幻</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/" style="font-size: 20px;">编程题</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/01/24/We%20are%20different,but%20we%20go%20together.----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/">We are different,but we go together.----《深海迷航》</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/23/%E5%85%B3%E4%BA%8EJava%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E7%82%B9%E6%83%B3%E6%B3%95/">关于Java多线程两种实现方式的一点想法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/11/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%9E%8C%E7%9D%A1/">【编程题】网易2019笔试：瞌睡</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/09/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%89%9B%E7%89%9B%E6%89%BE%E5%B7%A5%E4%BD%9C/">【编程题】网易2019笔试：牛牛找工作</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/08/%E6%88%91%E7%BF%BB%E8%AF%91%E7%9A%84%E6%96%87%E7%AB%A0%E5%9C%A8%E8%BF%99%E9%87%8C/">我翻译的文章在这里</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 Pyrrhax<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+  {% endif %}
+  {% if theme.comment.enable %}
+  {% include "comment.njk" %}
+  {% endif %}
+</div>
+{% endblock %}

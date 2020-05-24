@@ -1,305 +1,95 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+{% extends "_layout.njk" %}
 
-  
-  <title>关于Java多线程两种实现方式的一点想法 | Pyrrhax</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在看某本书的时候里面讲到继承Thread类和实现Runnable接口的区别。有这么一条是说“继承Thread类不能资源共享，而实现Runnable接口可以。”于是产生了以下问题。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="关于Java多线程两种实现方式的一点想法">
-<meta property="og:url" content="http://yoursite.com/2018/09/23/%E5%85%B3%E4%BA%8EJava%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E7%82%B9%E6%83%B3%E6%B3%95/index.html">
-<meta property="og:site_name" content="Pyrrhax">
-<meta property="og:description" content="在看某本书的时候里面讲到继承Thread类和实现Runnable接口的区别。有这么一条是说“继承Thread类不能资源共享，而实现Runnable接口可以。”于是产生了以下问题。">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2018-09-22T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-05-24T09:34:23.394Z">
-<meta property="article:author" content="Pyrrhax">
-<meta property="article:tag" content="多线程">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Pyrrhax" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ url_for("css/page.css") }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for("css/post.css") }}">
+{% endblock %}
 
-<meta name="generator" content="Hexo 4.2.1"></head>
+{% block title %}{{ page.title }} | {{ config.title }}{% if config.subtitle %} - {{ config.subtitle }}{% endif %}{% endblock %}
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Pyrrhax</a>
-      </h1>
-      
+{% block content %}
+<div id="post" class="post">
+  {% set post = page %}
+  <article class="post-article card{% if theme.animate %} animate{% endif %}" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="{{ config.url }}{{ url_for(page.path) }}">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="{{ config.author }}">
+       <meta itemprop="description" content="{{ config.description }}">
+       <meta itemprop="image" content="{{ url_for(theme.avatar) }}">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="{{ config.title }}">
+      </span>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+      <div class="post-meta">
+        {% if page.date %}
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="{{ moment(post.date).format() }}">{{ date(post.date, config.date_format) }} {{ time(post.date, config.time_format) }}</time></span>
+        </span>
+        {% endif %}
+        {% if page.categories and page.categories.toArray().length %}
+        {% if page.date %}
+        <span class="post-meta-divider divider">|</span>
+        {% endif %}
+        <span class="post-categories">
+          {# About `-`: https://mozilla.github.io/nunjucks/cn/templating.html#part-861ece9d8e5ce60c #}
+          {% for cat in page.categories.toArray() -%}
+          {% if loop.first %}<i class="far fa-folder-open"></i>{% else %}<i class="fas fa-angle-right"></i>{% endif %}<span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="{{ url_for(cat.path) }}" itemprop="url" rel="index"><span itemprop="name">{{ cat.name }}</span></a></span>
+          {%- endfor %}
+        </span>
+        {% endif %}
+        {% if page.comment !== false and theme.comment.enable %}
+        {% if theme.comment.disqus_shortname %}
+        {% if page.categories or page.date %}
+        <span class="post-meta-divider divider">|</span>
+        {% endif %}
+        <span class="post-comment-count">
+          <i class="far fa-comments"></i><span><a href="{{ url_for(page.path) }}#disqus_thread" itemprop="discussionUrl"><span class="post-comment-count disqus-comment-count" data-disqus-identifier="{{ page.path }}" itemprop="commentCount"></span></a></span>
+        </span>
+        {% endif %}
+        {% endif %}
       </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-关于Java多线程两种实现方式的一点想法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/23/%E5%85%B3%E4%BA%8EJava%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E7%82%B9%E6%83%B3%E6%B3%95/" class="article-date">
-  <time datetime="2018-09-22T16:00:00.000Z" itemprop="datePublished">2018-09-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>►<a class="article-category-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/">Java</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      关于Java多线程两种实现方式的一点想法
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在看某本书的时候里面讲到继承Thread类和实现Runnable接口的区别。有这么一条是说“继承Thread类不能资源共享，而实现Runnable接口可以。”于是产生了以下问题。</p>
-<a id="more"></a>
-<p>书上的代码如下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">*实现Runnable接口可以资源共享</span><br><span class="line">*&#x2F;</span><br><span class="line">public class ShareResourceTest2 implements Runnable&#123;</span><br><span class="line">    private int ticket &#x3D;20;</span><br><span class="line">    public void run()&#123;</span><br><span class="line">        for(int i&#x3D;0;i&lt;100;i++)&#123;</span><br><span class="line">            if(ticket&gt;0)&#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+&quot;卖票:ticke&#x3D;&quot;+ticket--);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ShareResourceTest2 srt1 &#x3D; new ShareResourceTest2();</span><br><span class="line">        Thread t1 &#x3D; new Thread(srt1);</span><br><span class="line">        Thread t2 &#x3D; new Thread(srt1);</span><br><span class="line">        Thread t3 &#x3D; new Thread(srt1);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t3.start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;部分输出结果 资源共享</span><br><span class="line">&#x2F;&#x2F;Thread-0卖票:ticke&#x3D;20</span><br><span class="line">&#x2F;&#x2F;Thread-2卖票:ticke&#x3D;19</span><br><span class="line">&#x2F;&#x2F;Thread-1卖票:ticke&#x3D;18</span><br><span class="line">&#x2F;&#x2F;Thread-2卖票:ticke&#x3D;16</span><br><span class="line">&#x2F;&#x2F;Thread-0卖票:ticke&#x3D;17</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* 继承Thread类不能实现资源共享</span><br><span class="line">*&#x2F;</span><br><span class="line">public class ShareResourceTest1 extends Thread&#123;</span><br><span class="line">    private int ticket &#x3D;20;</span><br><span class="line">    public void run()&#123;</span><br><span class="line">        for(int i&#x3D;0;i&lt;100;i++)&#123;</span><br><span class="line">            if(ticket&gt;0)&#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+&quot;卖票:ticke&#x3D;&quot;+ticket--);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ShareResourceTest1 srt1 &#x3D; new ShareResourceTest1();</span><br><span class="line">        ShareResourceTest1 srt1 &#x3D; new ShareResourceTest1();</span><br><span class="line">        ShareResourceTest1 srt1 &#x3D; new ShareResourceTest1();</span><br><span class="line">        srt1.start();</span><br><span class="line">        srt2.start();</span><br><span class="line">        srt3.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;部分输出结果 资源没有共享</span><br><span class="line">&#x2F;&#x2F;Thread-0卖票:ticke&#x3D;20</span><br><span class="line">&#x2F;&#x2F;Thread-0卖票:ticke&#x3D;19</span><br><span class="line">&#x2F;&#x2F;Thread-0卖票:ticke&#x3D;18</span><br><span class="line">&#x2F;&#x2F;Thread-1卖票:ticke&#x3D;20</span><br><span class="line">&#x2F;&#x2F;Thread-0卖票:ticke&#x3D;17</span><br><span class="line">&#x2F;&#x2F;Thread-1卖票:ticke&#x3D;19</span><br><span class="line">&#x2F;&#x2F;...</span><br><span class="line">&#x2F;&#x2F;&#x2F;Thread-2卖票:ticke&#x3D;20</span><br><span class="line">&#x2F;&#x2F;Thread-1卖票:ticke&#x3D;1</span><br><span class="line">&#x2F;&#x2F;Thread-2卖票:ticke&#x3D;19</span><br><span class="line">&#x2F;&#x2F;Thread-2卖票:ticke&#x3D;18</span><br></pre></td></tr></table></figure>
-<p>我一看不对啊，两个main方法都不一样。第一个是创建了一个Runnable然后再用这个Runnable去创建三个新的Thread。第二个直接创建了三个Thread。我陷入了沉思- -，我觉得第二个程序不能资源共享可能是这个main方法的原因，而不是因为继承了Thread类。于是我写了以下代码作为测试。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">*继承Thread类，但可以资源共享。</span><br><span class="line">*&#x2F;</span><br><span class="line">public class ShareResourceTest1 extends Thread&#123;</span><br><span class="line">    private int ticket &#x3D;20;</span><br><span class="line">    public void run()&#123;</span><br><span class="line">        for(int i&#x3D;0;i&lt;100;i++)&#123;</span><br><span class="line">            if(ticket&gt;0)&#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+&quot;卖票:ticke&#x3D;&quot;+ticket--);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        ShareResourceTest1 srt1 &#x3D; new ShareResourceTest1();</span><br><span class="line">        Thread t1 &#x3D; new Thread(srt1);</span><br><span class="line">        Thread t2 &#x3D; new Thread(srt1);</span><br><span class="line">        Thread t3 &#x3D; new Thread(srt1);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t3.start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;部分输出结果 资源共享</span><br><span class="line">&#x2F;&#x2F;Thread-2卖票:ticke&#x3D;20</span><br><span class="line">&#x2F;&#x2F;Thread-1卖票:ticke&#x3D;19</span><br><span class="line">&#x2F;&#x2F;Thread-1卖票:ticke&#x3D;18</span><br><span class="line">&#x2F;&#x2F;Thread-3卖票:ticke&#x3D;17</span><br><span class="line">&#x2F;&#x2F;Thread-2卖票:ticke&#x3D;16</span><br></pre></td></tr></table></figure>
-<p>我用这个继承了Thread的类创建了一个对象，然后用它再去创建三个线程，实现了资源共享。证明我的想法没有错，不能资源共享并不是因为它是继承了Thread类。而是因为创建这三个线程的方式。那到底是为什么会造成这种现象呢。<br>两种方式的区别也只有：</p>
-<ul>
-<li>一个是用Thread的无参构造方法构造了三个Thread。</li>
-<li>一个是用Thread的有参构造方法构造了三个Thread。</li>
-</ul>
-<p>于是按ctrl+左键去看看Thread类，发现了这些东西</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public</span><br><span class="line">class Thread implements Runnable &#123;</span><br><span class="line">&#x2F;&#x2F;...</span><br><span class="line">    &#x2F;* For autonumbering anonymous threads. *&#x2F;</span><br><span class="line">    private static int threadInitNumber;</span><br><span class="line">    &#x2F;* What will be run. *&#x2F;</span><br><span class="line">    private Runnable target;</span><br><span class="line">&#x2F;&#x2F;...</span><br><span class="line">&#x2F;**</span><br><span class="line">     * If this thread was constructed using a separate</span><br><span class="line">     * &lt;code&gt;Runnable&lt;&#x2F;code&gt; run object, then that</span><br><span class="line">     * &lt;code&gt;Runnable&lt;&#x2F;code&gt; object&#39;s &lt;code&gt;run&lt;&#x2F;code&gt; method is called;</span><br><span class="line">     * otherwise, this method does nothing and returns.</span><br><span class="line">     * &lt;p&gt;</span><br><span class="line">     * Subclasses of &lt;code&gt;Thread&lt;&#x2F;code&gt; should override this method.</span><br><span class="line">     *</span><br><span class="line">     * @see     #start()</span><br><span class="line">     * @see     #stop()</span><br><span class="line">     * @see     #Thread(ThreadGroup, Runnable, String)</span><br><span class="line">     *&#x2F;</span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        if (target !&#x3D; null) &#123;</span><br><span class="line">            target.run();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>于是找到了造成以上三个程序结果的原因：</p>
-<ul>
-<li>注释中的What will be run 是一个 名为target的实现了Runnable接口的对象 。用有参(有target)构造函数构造一个Thread，该线程的run()方法即执行target的run()方法。如果用有参构造函数创建三个线程，并且传入的是同一个实现了Runnable接口的对象，那么这三个线程中的target指向同一个对象。所以这三个线程的对同一个对象进行操作，从而实现资源共享的效果。</li>
-<li>第二个程序用无参构造函数创建线程，则这个target为空，执行Thread本身的run()方法，而这个Thread继承了一个Thread，并重写过run()方法。执行的就是重写过的run()方法。我们创建三个这样的对象，是分别执行每个对象中的run()方法。所以并不能资源共享。</li>
-<li>而第三个程序虽然使用继承的方法重写了Thread的run()方法，但是并没有将这个Thread直接用new实例化来使用。而是用它作为一个Runnable target，重新创建了三个target相同的Thread对象。相当于用继承Thread重写run()方法的方式，来间接地实现Runnable接口= =，然后再创建线程。</li>
-</ul>
-<p>为了再次验证这个想法，我们去找Thread的构造函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">*找到了一大堆构造函数，只贴这两个了- -</span><br><span class="line">*&#x2F;</span><br><span class="line">public</span><br><span class="line">class Thread implements Runnable &#123;</span><br><span class="line">&#x2F;&#x2F;...</span><br><span class="line">public Thread() &#123;</span><br><span class="line">        init(null, null, &quot;Thread-&quot; + nextThreadNum(), 0);</span><br><span class="line">    &#125;</span><br><span class="line">public Thread(Runnable target) &#123;</span><br><span class="line">        init(null, target, &quot;Thread-&quot; + nextThreadNum(), 0);</span><br><span class="line">    &#125;</span><br><span class="line">&#x2F;&#x2F;...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>发现构造方法其实在用尽可能多的信息去填充init()这个方法的参数，如果没有就填null。<br>（顺便发现线程名称是“Thread-”再加一个数字，这个数字是threadInitNumber++。刚好解释了为什么我们的第三个程序的线程名是从1开始而不是从0开始。因为0被我们创建的第一个Thread占用了）<br>那我们看看init方法的实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">private void init(ThreadGroup g, Runnable target, String name,</span><br><span class="line">                      long stackSize) &#123;</span><br><span class="line">        init(g, target, name, stackSize, null, true);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>emmm,它用同样的方式调用了一个参数更全的init方法。于是我们找到了Thread线程构造方法的核心部分。发现构造函数的target正是赋值给了run()方法执行的target。证明了之前的想法。<br>所以说<b>资源共享的本质是，多个线程调用同一个对象的run()方法。</b>那么我们的问题已经有了答案。<br>但来都来了，顺便瞧一下构造一个Thread最多都需要哪些参数吧。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">     * Initializes a Thread.</span><br><span class="line">     *</span><br><span class="line">     * @param g the Thread group</span><br><span class="line">     * @param target the object whose run() method gets called</span><br><span class="line">     * @param name the name of the new Thread</span><br><span class="line">     * @param stackSize the desired stack size for the new thread, or</span><br><span class="line">     *        zero to indicate that this parameter is to be ignored.</span><br><span class="line">     * @param acc the AccessControlContext to inherit, or</span><br><span class="line">     *            AccessController.getContext() if null</span><br><span class="line">     * @param inheritThreadLocals if &#123;@code true&#125;, inherit initial values for</span><br><span class="line">     *            inheritable thread-locals from the constructing thread</span><br><span class="line">     *&#x2F;</span><br><span class="line">    private void init(ThreadGroup g, Runnable target, String name,</span><br><span class="line">                      long stackSize, AccessControlContext acc,</span><br><span class="line">                      boolean inheritThreadLocals) &#123;</span><br><span class="line">       &#x2F;&#x2F;...</span><br><span class="line">       &#x2F;&#x2F;当然要包含这句</span><br><span class="line">        this.target &#x3D; target;</span><br><span class="line">       &#x2F;&#x2F;...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th align="left">含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ThreadGroup g</td>
-<td align="left">设置这个线程的线程组</td>
-</tr>
-<tr>
-<td>Runnable target</td>
-<td align="left">这个线程要执行操作的对象，run()所在的对象。</td>
-</tr>
-<tr>
-<td>String name</td>
-<td align="left">设置线程名</td>
-</tr>
-<tr>
-<td>long stackSize</td>
-<td align="left">设定线程栈的大小，就是这个线程在JVM里栈的大小。</td>
-</tr>
-<tr>
-<td>AccessControlContext acc</td>
-<td align="left">权限控制上下文，不是很懂–<a href="https://www.ibm.com/developerworks/cn/java/j-lo-javasecurity/" target="_blank" rel="noopener">Java安全模型</a></td>
-</tr>
-<tr>
-<td>boolean inheritThreadLocals</td>
-<td align="left">可继承的ThreadLocal</td>
-</tr>
-</tbody></table>
-<p>又看了看Thread的start方法，发现Thread的start方法调用了一个名为start0的本地方法。<br>而该Thread的run()法执行target的run()方法。所以要执行这个线程.run()也就是执行了target.run()。不过并没有新建真正的线程，只是执行了这个方法而已。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/23/%E5%85%B3%E4%BA%8EJava%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E7%82%B9%E6%83%B3%E6%B3%95/" data-id="ckakvpvbm001h44vtdbeu8arg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li></ul>
-
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      {{ page.content }}
+    </main>
+    <footer class="post-footer">
+      {% if page.tags and page.tags.toArray().length %}
+      <div class="post-tags">
+        {% if theme.tags_color %}
+        {% set colors = theme.tags_color %}
+        {% else %}
+        {% set colors = ["#fc6423", "#a3bb54", "#47aaff"] %}
+        {% endif %}
+        {% for tag in page.tags.toArray() %}
+        <a class="post-tag button" href="{{ url_for(tag.path) }}" style="background: {{ colors[loop.index0 % colors.length] }};" rel="tag"><i class="fas fa-tags"></i>{{ tag.name }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
     </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/01/24/We%20are%20different,but%20we%20go%20together.----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          We are different,but we go together.----《深海迷航》
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/09/11/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%9E%8C%E7%9D%A1/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">【编程题】网易2019笔试：瞌睡</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/">Java</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/">编程题</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/%E7%AC%94%E8%AF%95/">笔试</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/">网络运维</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/Hexo/">Hexo</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BF%BB%E8%AF%91/">翻译</a></li></ul>
+  </article>
+  {% if theme.reward.enable %}
+  {% include "reward.njk" %}
+  {% endif %}
+  {% if page.prev or page.next %}
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      {% if page.next %}
+      <a href="{{ url_for(page.next.path) }}" rel="next" title="{{ page.next.title }}"><i class="fas fa-angle-left"></i><span class="nav-title">{{ page.next.title }}</span></a>
+      {% endif %}
+    </div>
+    <div class="post-nav-prev post-nav-item">
+      {% if page.prev %}
+      <a href="{{ url_for(page.prev.path) }}" rel="prev" title="{{ page.prev.title }}"><span class="nav-title">{{ page.prev.title }}</span><i class="fas fa-angle-right"></i></a>
+      {% endif %}
     </div>
   </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%87%BD%E6%95%B0/" rel="tag">函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%AD%E5%BB%BA/" rel="tag">搭建</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B2%99%E7%9B%92/" rel="tag">沙盒</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E5%AD%98/" rel="tag">生存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%91%E5%B9%BB/" rel="tag">科幻</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/" rel="tag">编程题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/%E5%87%BD%E6%95%B0/" style="font-size: 10px;">函数</a> <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" style="font-size: 10px;">多线程</a> <a href="/tags/%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">搭建</a> <a href="/tags/%E6%B2%99%E7%9B%92/" style="font-size: 10px;">沙盒</a> <a href="/tags/%E7%94%9F%E5%AD%98/" style="font-size: 10px;">生存</a> <a href="/tags/%E7%A7%91%E5%B9%BB/" style="font-size: 10px;">科幻</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/" style="font-size: 20px;">编程题</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 10px;">翻译</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/01/24/We%20are%20different,but%20we%20go%20together.----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/">We are different,but we go together.----《深海迷航》</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/23/%E5%85%B3%E4%BA%8EJava%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E7%82%B9%E6%83%B3%E6%B3%95/">关于Java多线程两种实现方式的一点想法</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/11/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%9E%8C%E7%9D%A1/">【编程题】网易2019笔试：瞌睡</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/09/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%89%9B%E7%89%9B%E6%89%BE%E5%B7%A5%E4%BD%9C/">【编程题】网易2019笔试：牛牛找工作</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/08/%E6%88%91%E7%BF%BB%E8%AF%91%E7%9A%84%E6%96%87%E7%AB%A0%E5%9C%A8%E8%BF%99%E9%87%8C/">我翻译的文章在这里</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 Pyrrhax<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+  {% endif %}
+  {% if theme.comment.enable %}
+  {% include "comment.njk" %}
+  {% endif %}
+</div>
+{% endblock %}
