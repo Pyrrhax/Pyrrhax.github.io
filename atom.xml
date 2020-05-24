@@ -204,9 +204,9 @@
       <category term="Hexo" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/Hexo/"/>
     
     
-      <category term="搭建" scheme="http://yoursite.com/tags/%E6%90%AD%E5%BB%BA/"/>
-    
       <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+      <category term="搭建" scheme="http://yoursite.com/tags/%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
