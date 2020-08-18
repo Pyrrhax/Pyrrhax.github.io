@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-24T11:18:43.107Z</updated>
+  <updated>2020-08-18T11:03:53.948Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>点击上方的关于查看我的更多信息</title>
+    <link href="http://yoursite.com/2020/08/18/%E7%82%B9%E5%87%BB%E4%B8%8A%E6%96%B9%E7%9A%84%E5%85%B3%E4%BA%8E%E6%9F%A5%E7%9C%8B%E6%88%91%E7%9A%84%E6%9B%B4%E5%A4%9A%E4%BF%A1%E6%81%AF/"/>
+    <id>http://yoursite.com/2020/08/18/%E7%82%B9%E5%87%BB%E4%B8%8A%E6%96%B9%E7%9A%84%E5%85%B3%E4%BA%8E%E6%9F%A5%E7%9C%8B%E6%88%91%E7%9A%84%E6%9B%B4%E5%A4%9A%E4%BF%A1%E6%81%AF/</id>
+    <published>2020-08-18T11:01:16.000Z</published>
+    <updated>2020-08-18T11:03:53.948Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;有些时间没有写博客了(惭愧)，点[这里]了解我吧(&lt;a href=&quot;https://pyrrhax.com/about/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://pyrrhax.com/about/&lt;/a&gt;)
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>We are different,but we go together ----《深海迷航》</title>
