@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>点击上方的关于查看我的更多信息 | Pyrrhax</title>
+    <title>Kali定制 | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -203,7 +203,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/18/%E7%82%B9%E5%87%BB%E4%B8%8A%E6%96%B9%E7%9A%84%E5%85%B3%E4%BA%8E%E6%9F%A5%E7%9C%8B%E6%88%91%E7%9A%84%E6%9B%B4%E5%A4%9A%E4%BF%A1%E6%81%AF/">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/21/Kali%E5%AE%9A%E5%88%B6/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="Pyrrhax">
        <meta itemprop="description" content="">
@@ -214,13 +214,21 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">点击上方的关于查看我的更多信息</h1>
+      <h1 class="post-title" itemprop="name headline">Kali定制</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-18T19:01:16+08:00">2020-08-18 19:01:16</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-21T22:52:53+08:00">2020-08-21 22:52:53</time></span>
         </span>
         
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
         
         
         
@@ -228,10 +236,66 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <p>有些时间没有写博客了(惭愧)，点<a href="https://pyrrhax.com/about/" target="_blank" rel="noopener">这里</a> 了解我吧</p>
+      <p>#网络配置</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plain">dhclient etho 						&#x2F;&#x2F;动态分配路由<br>ifconfig eth0 192.168.1.10&#x2F;24 		&#x2F;&#x2F;指定路由<br>route add default gw 192.168.1.1 	&#x2F;&#x2F;指定网关<br>route add -net 172.16.1.0&#x2F;24 gw 192.168.1.100 eth0&#x2F;&#x2F;指定网段的网关和出口网卡<br>netstat -nr 						&#x2F;&#x2F;查看<br>vi &#x2F;etc&#x2F;resolv.conf 				&#x2F;&#x2F;修改DNS<br></code></pre></td></tr></table></figure>
+<p>以上修改重启后会失效，如果想要长期有效，需要编辑网卡配置文件/etc/network/interfaces<br>#更新升级<br>先修改为国内源地址</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">apt-get update<br>apt-get upgrade<br></code></pre></td></tr></table></figure>
+<p>#安装适合自己的工具软件</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">- apt-get install smplayer ibus ibus-pinyin flashplugin-nonfree gdebi amule amule qbittorrent geany stardict meld meld ttf-wqy-microhei kchmviewer freemind netspeed mtr filezilla filezilla-common chromium monodevelop mono-gmcs -y<br></code></pre></td></tr></table></figure>
+<p>#firefox浏览器插件</p>
+<ul>
+<li>flashgot、autoproxy、TamperData、cookie、importer、CookiesManager、User Agent、Switcher、HackBar、Live http header、FireBug、Download YouTube Videos as MP4、Flagfox、hashr、XSS Me、SQL Inject Me</li>
+</ul>
+<p>#显卡驱动(密码破解)</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plain">apt-get dist-upgrade<br>apt-get install -y linux-headers-$&#123;uname -r&#125;<br>apt-get install nvidia-kernel-dkms<br><br>sed &#39;s&#x2F;quiet&#x2F;quiet nouveau.modeset&#x3D;0&#x2F;g&#39; -i &#x2F;etc&#x2F;default&#x2F;grub<br>update-grub<br>reboot<br></code></pre></td></tr></table></figure>
+<ul>
+<li>验证：<ul>
+<li>glxinfo|grep -i “direct rendering”<ul>
+<li>direct rendering:Yes</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>#并发线程限制</p>
+<ul>
+<li>ulimit用于限制当前shell内进程的资源使用</li>
+<li>查看默认值<ul>
+<li>ulimit -a</li>
+</ul>
+</li>
+<li>全局配置文件：/etc/security/limits</li>
+<li>用途<ul>
+<li>限制堆栈大小：ulimit -s 100</li>
+<li>限制shell内存使用：ulimit -m 5000 -v 5000</li>
+</ul>
+</li>
+<li>没有直接对socket数量的限制参数<ul>
+<li>Linux系统中一切都是文件，运行中的文件叫做进程</li>
+<li>ulimite -n 800000</li>
+</ul>
+</li>
+</ul>
+<p>#笔记本模式</p>
+<ul>
+<li>自行搜索</li>
+</ul>
+<p>#服务开关</p>
+<ul>
+<li>Kali默认未启动所有网络服务</li>
+</ul>
+<p>/etc/init.d/下有各种服务的启动脚本<br>例：启动ssh</p>
+<figure class="hljs highlight plain"><figcaption><span>start```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ./ssh">如果想下次重启后还启动ssh<br>&#96;&#96;&#96;update-rc.d ssh default<br></code></pre></td></tr></table></figure>
+<p>default 会在 2 3 4 5运行级别启动，0 1 6关闭<br><code>update-rc.d A defaults 80 20</code><br>A服务启动的优先级是80 关闭的优先级是20，优先级数字小的先执行。</p>
 
     </main>
     <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Kali/" rel="tag"><i class="fas fa-tags"></i>Kali</a>
+        
+      </div>
       
     </footer>
   </article>
@@ -240,12 +304,10 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2019/01/24/We%20are%20different,but%20we%20go%20together%20----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/" rel="next" title="We are different,but we go together ----《深海迷航》"><i class="fas fa-angle-left"></i><span class="nav-title">We are different,but we go together ----《深海迷航》</span></a>
+      <a href="/2020/08/19/Kali%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%88%9D%E6%8E%A2/" rel="next" title="渗透测试及Kali初探"><i class="fas fa-angle-left"></i><span class="nav-title">渗透测试及Kali初探</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
-      
-      <a href="/2020/08/19/Kali%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%88%9D%E6%8E%A2/" rel="prev" title="渗透测试及Kali初探"><span class="nav-title">渗透测试及Kali初探</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -272,7 +334,7 @@
       "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "点击上方的关于查看我的更多信息",
+      "issue_title": "Kali定制",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });

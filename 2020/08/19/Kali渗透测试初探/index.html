@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>点击上方的关于查看我的更多信息 | Pyrrhax</title>
+    <title>渗透测试及Kali初探 | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -203,7 +203,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/18/%E7%82%B9%E5%87%BB%E4%B8%8A%E6%96%B9%E7%9A%84%E5%85%B3%E4%BA%8E%E6%9F%A5%E7%9C%8B%E6%88%91%E7%9A%84%E6%9B%B4%E5%A4%9A%E4%BF%A1%E6%81%AF/">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/19/Kali%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%88%9D%E6%8E%A2/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="Pyrrhax">
        <meta itemprop="description" content="">
@@ -214,13 +214,21 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">点击上方的关于查看我的更多信息</h1>
+      <h1 class="post-title" itemprop="name headline">渗透测试及Kali初探</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-18T19:01:16+08:00">2020-08-18 19:01:16</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-19T12:22:38+08:00">2020-08-19 12:22:38</time></span>
         </span>
         
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
         
         
         
@@ -228,10 +236,90 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <p>有些时间没有写博客了(惭愧)，点<a href="https://pyrrhax.com/about/" target="_blank" rel="noopener">这里</a> 了解我吧</p>
+      <p>#渗透测试标准<a href="http://www.pentest-standard.org" target="_blank" rel="noopener">PETS</a></p>
+<ul>
+<li>前期交互阶段（与客户沟通，确定测试范围，测试方式，时间等。）</li>
+<li>情报收集阶段</li>
+<li>威胁建模阶段（分析，确定最可行的攻击通道。）</li>
+<li>漏洞分析阶段</li>
+<li>渗透攻击阶段</li>
+<li>后渗透测试阶段（尽可能展现威胁影响程度）</li>
+<li>渗透测试报告</li>
+</ul>
+<hr>
+<p>#Kali</p>
+<ul>
+<li>Kali命名参考印度神话</li>
+<li>基于Debian,前身是2013年3月发布的BackTrack</li>
+<li>用于渗透测试和安全审计</li>
+<li>包含600+安全工具</li>
+<li>FHS标准目录结构</li>
+<li><ul>
+<li>BackTrack将所有相关工具放在/pentest目录下，下分更细目录如web,database，有些工具很难界定放在哪个目录。</li>
+</ul>
+</li>
+<li>定制内核（关于无线驱动）</li>
+<li>支持ARM和手机平台（Nethunter）</li>
+<li>开源免费（Offensi Security）</li>
+</ul>
+<p>#Kali Linux策略</p>
+<ul>
+<li>Root用户策略（默认root）</li>
+<li>网络服务策略（默认全部关闭，新装软件默认启动脚本不启动，需要用update.rc.d命令）</li>
+<li>更新升级策略（随Debian,Offensive Security维护工具。）</li>
+</ul>
+<p>#Kali VirtualBox 环境搭建</p>
+<ol>
+<li>首先下载kali官方的VirtualBox镜像。</li>
+<li>默认用户名密码是kali/kali,切换root用<code>sudo su</code></li>
+<li><code>apt-get update</code></li>
+<li><code>apt-get install linux-headers-$(uname -r)</code></li>
+<li>安装VirtualBox增强，点击Devices–&gt;Insert GuestAdditons CD image,在桌面会出现一个光盘图标的文件。<br>运行其中对应的.run文件。</li>
+</ol>
+<p>#Kali 持久加密USB安装</p>
+<ol>
+<li>VirtualBox共享Windows文件夹，将kali镜像放入其中</li>
+<li>插入U盘</li>
+<li>使用dmesg命令查看U盘名称（例：”sdb”）</li>
+<li>使用GParted将sdb分区删除</li>
+<li>使用dd命令将镜像按块写入U盘(使用watch命令查看进度，每5秒发送一次SIGUSR1信号)</li>
+<li>使用parted从上一分区结束位置创建分区</li>
+<li>使用LUKS加密分区<code>cryptsetup --verbose --verify-passphrase luksFormat /dev/sdb</code></li>
+<li>打开加密分区<code>cryptsetup luksOpen /dev/sdb3 usb</code></li>
+<li>mkfs.ext4 /dev/mapper/usb将分区格式化成ext4</li>
+<li>e2label /dev/mapper/usb persistence将分区卷标指定为persistence（必须是persistence——持久化的意思</li>
+<li>完成后，在mnt目录下创建一个文件夹，将分区挂载到该文件夹处，并填入配置文件。完成后卸掉挂载，并关闭加密区。</li>
+</ol>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plain">mkdir -p &#x2F;mnt&#x2F;kali<br>mount &#x2F;dev&#x2F;mapper&#x2F;kali &#x2F;mnt&#x2F;kali<br>echo &quot;&#x2F; union&quot; &gt; &#x2F;mnt&#x2F;kali&#x2F;persistence.conf<br>umount &#x2F;dev&#x2F;mapper&#x2F;kali<br>cryptsetup luksClose &#x2F;dev&#x2F;mapper&#x2F;kali<br></code></pre></td></tr></table></figure>
+
+<h1 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h1><ul>
+<li>nmap            网络发现</li>
+<li>burpsuit         http请求中间人</li>
+<li>zap            http请求中间人</li>
+<li>sqlmap        SQL注入</li>
+<li>aircrack-ng    无线破解</li>
+<li>metasploit    渗透测试框架</li>
+<li>maltego        信息收集</li>
+<li>john            密码破解</li>
+<li>hydra            密码破解</li>
+<li>wireshark        抓包</li>
+</ul>
+<p>实时流量显示 NetSpeed</p>
+<p>#学习</p>
+<ul>
+<li>实践是最好的老师，加油。</li>
+</ul>
 
     </main>
     <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/Kali/" rel="tag"><i class="fas fa-tags"></i>Kali</a>
+        
+        <a class="post-tag button" href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag"><i class="fas fa-tags"></i>渗透测试</a>
+        
+      </div>
       
     </footer>
   </article>
@@ -240,12 +328,12 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2019/01/24/We%20are%20different,but%20we%20go%20together%20----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/" rel="next" title="We are different,but we go together ----《深海迷航》"><i class="fas fa-angle-left"></i><span class="nav-title">We are different,but we go together ----《深海迷航》</span></a>
+      <a href="/2020/08/18/%E7%82%B9%E5%87%BB%E4%B8%8A%E6%96%B9%E7%9A%84%E5%85%B3%E4%BA%8E%E6%9F%A5%E7%9C%8B%E6%88%91%E7%9A%84%E6%9B%B4%E5%A4%9A%E4%BF%A1%E6%81%AF/" rel="next" title="点击上方的关于查看我的更多信息"><i class="fas fa-angle-left"></i><span class="nav-title">点击上方的关于查看我的更多信息</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
       
-      <a href="/2020/08/19/Kali%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%88%9D%E6%8E%A2/" rel="prev" title="渗透测试及Kali初探"><span class="nav-title">渗透测试及Kali初探</span><i class="fas fa-angle-right"></i></a>
+      <a href="/2020/08/21/Kali%E5%AE%9A%E5%88%B6/" rel="prev" title="Kali定制"><span class="nav-title">Kali定制</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -272,7 +360,7 @@
       "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "点击上方的关于查看我的更多信息",
+      "issue_title": "渗透测试及Kali初探",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -363,6 +451,12 @@
     
     
     
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#常用工具"><span class="toc-text">常用工具</span></a></li></ol></div>
+    </div>
     
     
     
