@@ -236,18 +236,17 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <p>#网络配置</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plain">dhclient etho 						&#x2F;&#x2F;动态分配路由<br>ifconfig eth0 192.168.1.10&#x2F;24 		&#x2F;&#x2F;指定路由<br>route add default gw 192.168.1.1 	&#x2F;&#x2F;指定网关<br>route add -net 172.16.1.0&#x2F;24 gw 192.168.1.100 eth0&#x2F;&#x2F;指定网段的网关和出口网卡<br>netstat -nr 						&#x2F;&#x2F;查看<br>vi &#x2F;etc&#x2F;resolv.conf 				&#x2F;&#x2F;修改DNS<br></code></pre></td></tr></table></figure>
-<p>以上修改重启后会失效，如果想要长期有效，需要编辑网卡配置文件/etc/network/interfaces<br>#更新升级<br>先修改为国内源地址</p>
+      <p>新安装Kali后需要做的一些操作</p>
+<a id="more"></a>
+<h1 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h1><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plain">dhclient etho 						&#x2F;&#x2F;动态分配路由<br>ifconfig eth0 192.168.1.10&#x2F;24 		&#x2F;&#x2F;指定路由<br>route add default gw 192.168.1.1 	&#x2F;&#x2F;指定网关<br>route add -net 172.16.1.0&#x2F;24 gw 192.168.1.100 eth0&#x2F;&#x2F;指定网段的网关和出口网卡<br>netstat -nr 						&#x2F;&#x2F;查看<br>vi &#x2F;etc&#x2F;resolv.conf 				&#x2F;&#x2F;修改DNS<br></code></pre></td></tr></table></figure>
+<p>以上修改重启后会失效，如果想要长期有效，需要编辑网卡配置文件/etc/network/interfaces</p>
+<h1 id="更新升级"><a href="#更新升级" class="headerlink" title="更新升级"></a>更新升级</h1><p>先修改为国内源地址</p>
 <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">apt-get update<br>apt-get upgrade<br></code></pre></td></tr></table></figure>
-<p>#安装适合自己的工具软件</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">- apt-get install smplayer ibus ibus-pinyin flashplugin-nonfree gdebi amule amule qbittorrent geany stardict meld meld ttf-wqy-microhei kchmviewer freemind netspeed mtr filezilla filezilla-common chromium monodevelop mono-gmcs -y<br></code></pre></td></tr></table></figure>
-<p>#firefox浏览器插件</p>
-<ul>
+<h1 id="安装适合自己的工具软件"><a href="#安装适合自己的工具软件" class="headerlink" title="安装适合自己的工具软件"></a>安装适合自己的工具软件</h1><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">- apt-get install smplayer ibus ibus-pinyin flashplugin-nonfree gdebi amule amule qbittorrent geany stardict meld meld ttf-wqy-microhei kchmviewer freemind netspeed mtr filezilla filezilla-common chromium monodevelop mono-gmcs -y<br></code></pre></td></tr></table></figure>
+<h1 id="firefox浏览器插件"><a href="#firefox浏览器插件" class="headerlink" title="firefox浏览器插件"></a>firefox浏览器插件</h1><ul>
 <li>flashgot、autoproxy、TamperData、cookie、importer、CookiesManager、User Agent、Switcher、HackBar、Live http header、FireBug、Download YouTube Videos as MP4、Flagfox、hashr、XSS Me、SQL Inject Me</li>
 </ul>
-<p>#显卡驱动(密码破解)</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plain">apt-get dist-upgrade<br>apt-get install -y linux-headers-$&#123;uname -r&#125;<br>apt-get install nvidia-kernel-dkms<br><br>sed &#39;s&#x2F;quiet&#x2F;quiet nouveau.modeset&#x3D;0&#x2F;g&#39; -i &#x2F;etc&#x2F;default&#x2F;grub<br>update-grub<br>reboot<br></code></pre></td></tr></table></figure>
+<h1 id="显卡驱动-密码破解"><a href="#显卡驱动-密码破解" class="headerlink" title="显卡驱动(密码破解)"></a>显卡驱动(密码破解)</h1><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plain">apt-get dist-upgrade<br>apt-get install -y linux-headers-$&#123;uname -r&#125;<br>apt-get install nvidia-kernel-dkms<br><br>sed &#39;s&#x2F;quiet&#x2F;quiet nouveau.modeset&#x3D;0&#x2F;g&#39; -i &#x2F;etc&#x2F;default&#x2F;grub<br>update-grub<br>reboot<br></code></pre></td></tr></table></figure>
 <ul>
 <li>验证：<ul>
 <li>glxinfo|grep -i “direct rendering”<ul>
@@ -257,8 +256,7 @@
 </ul>
 </li>
 </ul>
-<p>#并发线程限制</p>
-<ul>
+<h1 id="并发线程限制"><a href="#并发线程限制" class="headerlink" title="并发线程限制"></a>并发线程限制</h1><ul>
 <li>ulimit用于限制当前shell内进程的资源使用</li>
 <li>查看默认值<ul>
 <li>ulimit -a</li>
@@ -276,12 +274,10 @@
 </ul>
 </li>
 </ul>
-<p>#笔记本模式</p>
-<ul>
+<h1 id="笔记本模式"><a href="#笔记本模式" class="headerlink" title="笔记本模式"></a>笔记本模式</h1><ul>
 <li>自行搜索</li>
 </ul>
-<p>#服务开关</p>
-<ul>
+<h1 id="服务开关"><a href="#服务开关" class="headerlink" title="服务开关"></a>服务开关</h1><ul>
 <li>Kali默认未启动所有网络服务</li>
 </ul>
 <p>/etc/init.d/下有各种服务的启动脚本<br>例：启动ssh</p>
@@ -425,6 +421,12 @@
     
     
     
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#网络配置"><span class="toc-text">网络配置</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#更新升级"><span class="toc-text">更新升级</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#安装适合自己的工具软件"><span class="toc-text">安装适合自己的工具软件</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#firefox浏览器插件"><span class="toc-text">firefox浏览器插件</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#显卡驱动-密码破解"><span class="toc-text">显卡驱动(密码破解)</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#并发线程限制"><span class="toc-text">并发线程限制</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#笔记本模式"><span class="toc-text">笔记本模式</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#服务开关"><span class="toc-text">服务开关</span></a></li></ol></div>
+    </div>
     
     
     

@@ -240,58 +240,7 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       
-      <p>#网络配置</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plain">dhclient etho 						&#x2F;&#x2F;动态分配路由<br>ifconfig eth0 192.168.1.10&#x2F;24 		&#x2F;&#x2F;指定路由<br>route add default gw 192.168.1.1 	&#x2F;&#x2F;指定网关<br>route add -net 172.16.1.0&#x2F;24 gw 192.168.1.100 eth0&#x2F;&#x2F;指定网段的网关和出口网卡<br>netstat -nr 						&#x2F;&#x2F;查看<br>vi &#x2F;etc&#x2F;resolv.conf 				&#x2F;&#x2F;修改DNS<br></code></pre></td></tr></table></figure>
-<p>以上修改重启后会失效，如果想要长期有效，需要编辑网卡配置文件/etc/network/interfaces<br>#更新升级<br>先修改为国内源地址</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">apt-get update<br>apt-get upgrade<br></code></pre></td></tr></table></figure>
-<p>#安装适合自己的工具软件</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">- apt-get install smplayer ibus ibus-pinyin flashplugin-nonfree gdebi amule amule qbittorrent geany stardict meld meld ttf-wqy-microhei kchmviewer freemind netspeed mtr filezilla filezilla-common chromium monodevelop mono-gmcs -y<br></code></pre></td></tr></table></figure>
-<p>#firefox浏览器插件</p>
-<ul>
-<li>flashgot、autoproxy、TamperData、cookie、importer、CookiesManager、User Agent、Switcher、HackBar、Live http header、FireBug、Download YouTube Videos as MP4、Flagfox、hashr、XSS Me、SQL Inject Me</li>
-</ul>
-<p>#显卡驱动(密码破解)</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plain">apt-get dist-upgrade<br>apt-get install -y linux-headers-$&#123;uname -r&#125;<br>apt-get install nvidia-kernel-dkms<br><br>sed &#39;s&#x2F;quiet&#x2F;quiet nouveau.modeset&#x3D;0&#x2F;g&#39; -i &#x2F;etc&#x2F;default&#x2F;grub<br>update-grub<br>reboot<br></code></pre></td></tr></table></figure>
-<ul>
-<li>验证：<ul>
-<li>glxinfo|grep -i “direct rendering”<ul>
-<li>direct rendering:Yes</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>#并发线程限制</p>
-<ul>
-<li>ulimit用于限制当前shell内进程的资源使用</li>
-<li>查看默认值<ul>
-<li>ulimit -a</li>
-</ul>
-</li>
-<li>全局配置文件：/etc/security/limits</li>
-<li>用途<ul>
-<li>限制堆栈大小：ulimit -s 100</li>
-<li>限制shell内存使用：ulimit -m 5000 -v 5000</li>
-</ul>
-</li>
-<li>没有直接对socket数量的限制参数<ul>
-<li>Linux系统中一切都是文件，运行中的文件叫做进程</li>
-<li>ulimite -n 800000</li>
-</ul>
-</li>
-</ul>
-<p>#笔记本模式</p>
-<ul>
-<li>自行搜索</li>
-</ul>
-<p>#服务开关</p>
-<ul>
-<li>Kali默认未启动所有网络服务</li>
-</ul>
-<p>/etc/init.d/下有各种服务的启动脚本<br>例：启动ssh</p>
-<figure class="hljs highlight plain"><figcaption><span>start```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ./ssh">如果想下次重启后还启动ssh<br>&#96;&#96;&#96;update-rc.d ssh default<br></code></pre></td></tr></table></figure>
-<p>default 会在 2 3 4 5运行级别启动，0 1 6关闭<br><code>update-rc.d A defaults 80 20</code><br>A服务启动的优先级是80 关闭的优先级是20，优先级数字小的先执行。</p>
-
+      <p>新安装Kali后需要做的一些操作</p>
       
     </main>
     <footer class="post-footer">
@@ -343,80 +292,14 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       
-      <p>#渗透测试标准<a href="http://www.pentest-standard.org" target="_blank" rel="noopener">PETS</a></p>
-<ul>
+      <h1 id="渗透测试标准PETS"><a href="#渗透测试标准PETS" class="headerlink" title="渗透测试标准PETS"></a>渗透测试标准<a href="http://www.pentest-standard.org" target="_blank" rel="noopener">PETS</a></h1><ul>
 <li>前期交互阶段（与客户沟通，确定测试范围，测试方式，时间等。）</li>
 <li>情报收集阶段</li>
 <li>威胁建模阶段（分析，确定最可行的攻击通道。）</li>
 <li>漏洞分析阶段</li>
 <li>渗透攻击阶段</li>
 <li>后渗透测试阶段（尽可能展现威胁影响程度）</li>
-<li>渗透测试报告</li>
-</ul>
-<hr>
-<p>#Kali</p>
-<ul>
-<li>Kali命名参考印度神话</li>
-<li>基于Debian,前身是2013年3月发布的BackTrack</li>
-<li>用于渗透测试和安全审计</li>
-<li>包含600+安全工具</li>
-<li>FHS标准目录结构</li>
-<li><ul>
-<li>BackTrack将所有相关工具放在/pentest目录下，下分更细目录如web,database，有些工具很难界定放在哪个目录。</li>
-</ul>
-</li>
-<li>定制内核（关于无线驱动）</li>
-<li>支持ARM和手机平台（Nethunter）</li>
-<li>开源免费（Offensi Security）</li>
-</ul>
-<p>#Kali Linux策略</p>
-<ul>
-<li>Root用户策略（默认root）</li>
-<li>网络服务策略（默认全部关闭，新装软件默认启动脚本不启动，需要用update.rc.d命令）</li>
-<li>更新升级策略（随Debian,Offensive Security维护工具。）</li>
-</ul>
-<p>#Kali VirtualBox 环境搭建</p>
-<ol>
-<li>首先下载kali官方的VirtualBox镜像。</li>
-<li>默认用户名密码是kali/kali,切换root用<code>sudo su</code></li>
-<li><code>apt-get update</code></li>
-<li><code>apt-get install linux-headers-$(uname -r)</code></li>
-<li>安装VirtualBox增强，点击Devices–&gt;Insert GuestAdditons CD image,在桌面会出现一个光盘图标的文件。<br>运行其中对应的.run文件。</li>
-</ol>
-<p>#Kali 持久加密USB安装</p>
-<ol>
-<li>VirtualBox共享Windows文件夹，将kali镜像放入其中</li>
-<li>插入U盘</li>
-<li>使用dmesg命令查看U盘名称（例：”sdb”）</li>
-<li>使用GParted将sdb分区删除</li>
-<li>使用dd命令将镜像按块写入U盘(使用watch命令查看进度，每5秒发送一次SIGUSR1信号)</li>
-<li>使用parted从上一分区结束位置创建分区</li>
-<li>使用LUKS加密分区<code>cryptsetup --verbose --verify-passphrase luksFormat /dev/sdb</code></li>
-<li>打开加密分区<code>cryptsetup luksOpen /dev/sdb3 usb</code></li>
-<li>mkfs.ext4 /dev/mapper/usb将分区格式化成ext4</li>
-<li>e2label /dev/mapper/usb persistence将分区卷标指定为persistence（必须是persistence——持久化的意思</li>
-<li>完成后，在mnt目录下创建一个文件夹，将分区挂载到该文件夹处，并填入配置文件。完成后卸掉挂载，并关闭加密区。</li>
-</ol>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plain">mkdir -p &#x2F;mnt&#x2F;kali<br>mount &#x2F;dev&#x2F;mapper&#x2F;kali &#x2F;mnt&#x2F;kali<br>echo &quot;&#x2F; union&quot; &gt; &#x2F;mnt&#x2F;kali&#x2F;persistence.conf<br>umount &#x2F;dev&#x2F;mapper&#x2F;kali<br>cryptsetup luksClose &#x2F;dev&#x2F;mapper&#x2F;kali<br></code></pre></td></tr></table></figure>
-
-<h1 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h1><ul>
-<li>nmap            网络发现</li>
-<li>burpsuit         http请求中间人</li>
-<li>zap            http请求中间人</li>
-<li>sqlmap        SQL注入</li>
-<li>aircrack-ng    无线破解</li>
-<li>metasploit    渗透测试框架</li>
-<li>maltego        信息收集</li>
-<li>john            密码破解</li>
-<li>hydra            密码破解</li>
-<li>wireshark        抓包</li>
-</ul>
-<p>实时流量显示 NetSpeed</p>
-<p>#学习</p>
-<ul>
-<li>实践是最好的老师，加油。</li>
-</ul>
-
+<li>渗透测试报告</li></ul>
       
     </main>
     <footer class="post-footer">
