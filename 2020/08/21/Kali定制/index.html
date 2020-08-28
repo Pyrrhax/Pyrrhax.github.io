@@ -282,14 +282,18 @@
 </ul>
 <p>/etc/init.d/下有各种服务的启动脚本<br>例：启动ssh</p>
 <figure class="hljs highlight plain"><figcaption><span>start```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ./ssh">如果想下次重启后还启动ssh<br>&#96;&#96;&#96;update-rc.d ssh default<br></code></pre></td></tr></table></figure>
-<p>default 会在 2 3 4 5运行级别启动，0 1 6关闭<br><code>update-rc.d A defaults 80 20</code><br>A服务启动的优先级是80 关闭的优先级是20，优先级数字小的先执行。</p>
+<p>default 会在 2 3 4 5运行级别启动，0 1 6关闭</p>
+<figure class="hljs highlight plain"><figcaption><span>A defaults 80 20```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs update-rc.d">A服务启动的优先级是80 关闭的优先级是20，优先级数字小的先执行。<br><br># GFW长城防火墙<br>-翻墙<br>  - http代理（明文传输）<br>  - socks代理<br>  - ssh隧道<br>  - <br><br>- Goagent<br>- Tor<br>  - tor project<br>  - wiki地址：<br>    - zqktlwi4fecvo6ri.onion&#x2F;<br>    - zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion&#x2F;<br><br>- 代理的意义所在<br>  - 加密信息<br>  - 隐藏来源<br>  - 突破网络封锁<br><br>- 注意事项<br>  - 不要触及敏感地带<br>  - 不要从事非法行为<br><br>  例：<br>  给apt-get设置代理<br>  &#x2F;etc&#x2F;apt&#x2F;apt.conf<br></code></pre></td></tr></table></figure>
+<p>  Acquire::ftp::Proxy “<a href="ftp://127.0.0.1:8087/&quot;">ftp://127.0.0.1:8087/&quot;</a><br>  Acquire::http::Proxy “<a href="http://127.0.0.1:8087/&quot;" target="_blank" rel="noopener">http://127.0.0.1:8087/&quot;</a><br>  Acquire::https::Proxy “<a href="https://127.0.0.1:8087/&quot;" target="_blank" rel="noopener">https://127.0.0.1:8087/&quot;</a><br>  Acquire::socks::Proxy “<a href="https://127.0.0.1:8087/&quot;" target="_blank" rel="noopener">https://127.0.0.1:8087/&quot;</a><br>  <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>&#x2F;etc&#x2F;bash.bashrc<br></code></pre></td></tr></table></figure><br>  export ftp_proxy=”<a href="ftp://user:password@proxyIP:port&quot;">ftp://user:password@proxyIP:port&quot;</a><br>         http_proxy<br>         https_proxy<br>         socks_proxy</p>
+<p>  ```</p>
+<h3 id="代理链"><a href="#代理链" class="headerlink" title="代理链"></a>代理链</h3><p>/etc/proxychains.conf</p>
 
     </main>
     <footer class="post-footer">
       
       <div class="post-tags">
         
-        <a class="post-tag button" href="/tags/Kali/" rel="tag"><i class="fas fa-tags"></i>Kali</a>
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔</a>
         
       </div>
       
@@ -304,6 +308,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2020/08/26/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="prev" title="渗透测试实验环境搭建"><span class="nav-title">渗透测试实验环境搭建</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -387,7 +393,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">11</a></div>
+      <div><a href="/archives/">13</a></div>
     </div>
     
     
@@ -425,7 +431,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#网络配置"><span class="toc-text">网络配置</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#更新升级"><span class="toc-text">更新升级</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#安装适合自己的工具软件"><span class="toc-text">安装适合自己的工具软件</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#firefox浏览器插件"><span class="toc-text">firefox浏览器插件</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#显卡驱动-密码破解"><span class="toc-text">显卡驱动(密码破解)</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#并发线程限制"><span class="toc-text">并发线程限制</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#笔记本模式"><span class="toc-text">笔记本模式</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#服务开关"><span class="toc-text">服务开关</span></a></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#网络配置"><span class="toc-text">网络配置</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#更新升级"><span class="toc-text">更新升级</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#安装适合自己的工具软件"><span class="toc-text">安装适合自己的工具软件</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#firefox浏览器插件"><span class="toc-text">firefox浏览器插件</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#显卡驱动-密码破解"><span class="toc-text">显卡驱动(密码破解)</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#并发线程限制"><span class="toc-text">并发线程限制</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#笔记本模式"><span class="toc-text">笔记本模式</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#服务开关"><span class="toc-text">服务开关</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#代理链"><span class="toc-text">代理链</span></a></li></ol></li></ol></li></ol></div>
     </div>
     
     
