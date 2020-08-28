@@ -238,15 +238,17 @@
     <main class="post-main" itemprop="articleBody">
       <p>做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。</p>
 <a id="more"></a>
+
 <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>为了找到自己满意的工作，牛牛收集了每种工作的难度和报酬。牛牛选工作的标准是在难度不超过自身能力值的情况下，牛牛选择报酬最高的工作。在牛牛选定了自己的工作后，牛牛的小伙伴们来找牛牛帮忙选工作，牛牛依然使用自己的标准来帮助小伙伴们。牛牛的小伙伴太多了，于是他只好把这个任务交给了你。<br>输入描述:<br>每个输入包含一个测试用例。<br>每个测试用例的第一行包含两个正整数，分别表示工作的数量N(N&lt;=100000)和小伙伴的数量M(M&lt;=100000)。<br>接下来的N行每行包含两个正整数，分别表示该项工作的难度Di(Di&lt;=1000000000)和报酬Pi(Pi&lt;=1000000000)。<br>接下来的一行包含M个正整数，分别表示M个小伙伴的能力值Ai(Ai&lt;=1000000000)。<br>保证不存在两项工作的报酬相同。</p>
 <p>输出描述:<br>对于每个小伙伴，在单独的一行输出一个正整数表示他能得到的最高报酬。一个工作可以被多个人选择。<br>示例1<br>输入<br>3 3<br>1 100<br>10 1000<br>1000000000 1001<br>9 10 1000000000<br>输出<br>100<br>1000<br>1001</p>
 <h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
 <li>首先将工作难度和对应薪资储存在二维数组，按能力要求增序排序。</li>
 <li>排序后需要更新每个难度下的薪资为 可获得的最大值(因为可能存在能力要求高的工作薪资反而低的情况)。</li>
 <li>用二分查找确定能胜任的最大工作难度及其最大报酬。<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs plain">import java.util.Arrays;<br>import java.util.Scanner;<br>public class Main &#123;<br>    public static void main(String[] args)&#123;<br>        Scanner scanner &#x3D; new Scanner(System.in);<br>        int N&#x3D;scanner.nextInt();<br>        int M&#x3D;scanner.nextInt();<br>        int[][] jobmap&#x3D; new int[N][2];<br>        for(int i&#x3D;0;i&lt;N;i++)&#123;<br>            jobmap[i][0]&#x3D;scanner.nextInt();<br>            jobmap[i][1]&#x3D;scanner.nextInt();<br>        &#125;<br>        &#x2F;&#x2F;将 薪资-能力 二维数组按能力要求增序排序<br>        Arrays.sort(jobmap,(int[] o1, int[] o2) -&gt;  o1[0]-o2[0]);<br>        &#x2F;&#x2F;排序后需要更新每个ability下的薪资为 可获得的最大值(如果低能力要职位的求薪资高于高能力要求职位的薪资，则更新高能力要求职位的薪资为高薪资)<br>        for (int i &#x3D; 0; i &lt; jobmap.length - 1; i++) &#123;<br>            if (jobmap[i][1] &gt; jobmap[i + 1][1]) &#123;<br>                jobmap[i + 1][1] &#x3D; jobmap[i][1];<br>            &#125;<br>        &#125;<br>        int[] people &#x3D; new int[M];<br>        for(int i&#x3D;0;i&lt;M;i++)&#123;<br>            people[i]&#x3D;scanner.nextInt();<br>        &#125;<br>        &#x2F;&#x2F; 二分查找确定能胜任的最大工作难度及其最大报酬<br>        for (int i &#x3D; 0; i &lt; people.length; i++) &#123;<br>            int index &#x3D; Arrays.binarySearch(jobmap, new int[] &#123;people[i], 0&#125;, (int[] jd1, int[] jd2) -&gt;jd1[0] - jd2[0]);<br>            index &#x3D; index &lt; 0 ? -(index + 1) - 1: index;<br>            System.out.println(index &gt;&#x3D; 0 ? jobmap[index][1] : 0);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3></li>
+
+</li>
 </ol>
-<ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
 <li>在初次编写代码的时候没有考虑到不一定报酬和工作难度都成正比。考虑不周全，需要注意。</li>
 <li>在初次编写代码的时候，每个人都对所有工作进行遍历查找一次，时间复杂度为O(n²)。在数据量较大时性能不高，导致超时。改为二分查找后时间复杂度为O(log2(n))。</li>
 <li>在使用Arrays.sort(T[] a, Comparator&lt;? super T&gt; c)方法时,使用了lambda表达式替代了匿名内部类。注意返回参数一减参数二的值是增序。</li>
@@ -362,7 +364,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">13</a></div>
+      <div><a href="/archives/">14</a></div>
     </div>
     
     
