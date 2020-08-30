@@ -204,6 +204,167 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/30/%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-DNS%E4%B8%8ESHODAN/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="Pyrrhax">
+        <meta itemprop="description" content="">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2020/08/30/%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-DNS%E4%B8%8ESHODAN/" itemprop="url">被动信息收集-DNS与SHODAN</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-30T12:06:37+08:00">2020-08-30 12:06:37</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h1 id="信息收集内容"><a href="#信息收集内容" class="headerlink" title="信息收集内容"></a>信息收集内容</h1><ul>
+<li>IP地址段</li>
+<li>域名信息</li>
+<li>邮件地址</li>
+<li>文档图片数据</li>
+<li>公司地址</li>
+<li>公司组织架构</li>
+<li>联系电话/传真号码</li>
+<li>人员姓名/职务</li>
+<li>目标系统使用的技术架构</li>
+<li>公开的商业信息</li>
+</ul>
+<h1 id="信息用途"><a href="#信息用途" class="headerlink" title="信息用途"></a>信息用途</h1><ul>
+<li>用信息描述目标</li>
+<li>发现</li>
+<li>社会工程学攻击</li>
+<li>物理缺口</li>
+</ul>
+<h1 id="信息收集——DNS"><a href="#信息收集——DNS" class="headerlink" title="信息收集——DNS"></a>信息收集——DNS</h1><ul>
+<li><p>域名解析成IP地址</p>
+<ul>
+<li>域名与FQDN的区别</li>
+<li>域名记录：A、C name、NS、MX、ptr</li>
+</ul>
+</li>
+<li><p>nslookup</p>
+<ul>
+<li>set q=a、ns、mx、any</li>
+<li>server</li>
+<li>nslookup -q=any 163.com </li>
+</ul>
+</li>
+</ul>
+<p>/etc/resolv.conf</p>
+<ul>
+<li>dig<ul>
+<li>dig +noall +answer mail.163.com|awk ‘{print $5}’</li>
+<li>反向查询<code>dig -x xx.x.x.xx</code> </li>
+<li>bind版本信息<code>dig +noall +answer txt chaos VERSION.BIND @ns3.dnsv4.com</code></li>
+<li>DNS追踪：<code>dig +trace example.com</code>直接向根域名服务器发起查询</li>
+</ul>
+</li>
+<li>dig +trace查询过程抓包<ul>
+<li>向本地DNS服务器查询root的NS记录，得到13个DNS根服务器名称 X.root-server.net </li>
+<li>向本地DNS服务器查询 X.root-server.net对应的A记录</li>
+<li>随机选择一个 X.root-server.net 查询sina.com的A记录，得到13个COM顶级域名服务器名称</li>
+<li>向本地DNS服务器查询X.gtld-server.net对应的A记录</li>
+<li>随机选择一个X.gtld-server.net 查询sina.com的A记录，得到7个sina.com的权威域名服务器名称</li>
+<li>向本地DNS服务器查询七个权威域名服务器的A记录</li>
+<li>向权威域名服务器查询sina.com的A记录，得到sina.com对应的IP</li>
+</ul>
+</li>
+</ul>
+<h1 id="DNS区域传输"><a href="#DNS区域传输" class="headerlink" title="DNS区域传输"></a>DNS区域传输</h1><ul>
+<li>type: AXFR</li>
+<li>dig @ns1.example.com example.com axfr</li>
+<li>host -T -l sina.com</li>
+</ul>
+<h1 id="DNS字典爆破"><a href="#DNS字典爆破" class="headerlink" title="DNS字典爆破"></a>DNS字典爆破</h1><ul>
+<li>fierce -dnsserver 8.8.8.8  -dns sina.com.cn -wordlist a.txt</li>
+<li>dnsdict6 -d4 -t 16 -x sina.com</li>
+<li>dnsenum -f dnsbig.txt -dnsserver 8.8.8.8 sina.com -o sina.xml</li>
+<li>dnsmap sina.com -w dns.txt</li>
+<li>dnsrecon -d sina.com –lifetime 10 -t brt -D dnsbig.txt</li>
+<li>dnsrecon -t std -d sina.com</li>
+<li>将多个字典集成1个大字典，熟练使用一两个dns爆破命令。</li>
+</ul>
+<h1 id="DNS注册信息"><a href="#DNS注册信息" class="headerlink" title="DNS注册信息"></a>DNS注册信息</h1><ul>
+<li>Whois</li>
+<li>whois -h whois.apnic.net 192.0.43.10</li>
+</ul>
+<h1 id="信息搜集——搜索引擎"><a href="#信息搜集——搜索引擎" class="headerlink" title="信息搜集——搜索引擎"></a>信息搜集——搜索引擎</h1><ul>
+<li><p>公司新闻动态</p>
+</li>
+<li><p>重要雇员信息</p>
+</li>
+<li><p>机密文档/网络拓扑</p>
+</li>
+<li><p>用户名密码</p>
+</li>
+<li><p>目标系统软硬件技术架构</p>
+</li>
+<li><p>Google Hacking、Baidu Hacking、Bing Hacking</p>
+</li>
+</ul>
+<h1 id="SHODAN"><a href="#SHODAN" class="headerlink" title="SHODAN"></a>SHODAN</h1><ul>
+<li><p>搜索互联网的设备</p>
+</li>
+<li><p>Banner:http、ftp、ssh、telnet</p>
+</li>
+<li><p><a href="https://www.shodan.io" target="_blank" rel="noopener">https://www.shodan.io</a></p>
+</li>
+<li><p>常见filter</p>
+</li>
+<li><p>net(192.168.20.1)</p>
+</li>
+<li><p>city</p>
+</li>
+<li><p>country(CN、US)</p>
+</li>
+<li><p>port(80、21、22、23)</p>
+</li>
+<li><p>os</p>
+</li>
+<li><p>Hostname(主机域名)</p>
+</li>
+<li><p>server</p>
+</li>
+</ul>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/28/%E6%8A%93%E5%8C%85%E5%97%85%E6%8E%A2%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90%E5%9F%BA%E6%9C%AC%E5%B7%A5%E5%85%B7-WIRESHARK/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="Pyrrhax">
@@ -301,6 +462,7 @@
     <main class="post-main" itemprop="articleBody">
       
       <a id="more"></a>
+
 <h1 id="NC——TELNET-BANNER"><a href="#NC——TELNET-BANNER" class="headerlink" title="NC——TELNET / BANNER"></a>NC——TELNET / BANNER</h1><ul>
 <li>nc -nv 1.1.1.1 110</li>
 </ul>
@@ -745,58 +907,6 @@
     </footer>
   </article>
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/09/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%89%9B%E7%89%9B%E6%89%BE%E5%B7%A5%E4%BD%9C/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="Pyrrhax">
-        <meta itemprop="description" content="">
-        <meta itemprop="image" content="/images/avatar.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Pyrrhax">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/09/09/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%89%9B%E7%89%9B%E6%89%BE%E5%B7%A5%E4%BD%9C/" itemprop="url">【编程题】网易2019笔试：牛牛找工作</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-09-09T00:00:00+08:00">2018-09-09 00:00:00</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">编程题</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/%E7%AC%94%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">笔试</span></a></span>
-        </span>
-        
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <p>做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。</p>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/" rel="tag"><i class="fas fa-tags"></i>编程题</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
   
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right" aria-label="下一页"></i></a>
@@ -843,7 +953,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">14</a></div>
+      <div><a href="/archives/">15</a></div>
     </div>
     
     
