@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>GoogleHacking、Recon-ng</title>
+      <link href="/2020/08/31/GoogleHacking%E3%80%81Recon-ng/"/>
+      <url>/2020/08/31/GoogleHacking%E3%80%81Recon-ng/</url>
+      
+        <content type="html"><![CDATA[<h1 id="搜索引擎使用技巧"><a href="#搜索引擎使用技巧" class="headerlink" title="搜索引擎使用技巧"></a>搜索引擎使用技巧</h1><ul><li><p>+-</p></li><li><p>“ “</p></li><li><p>intitle:</p></li><li><p>intext:</p></li><li><p>site:</p></li><li><p>inurl:</p></li><li><p>filetype:</p><a id="more"></a></li></ul><h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>inurl:”level/15/exec/show”</p><p>intitle:”netbotz appliance” “ok”</p><p>inurl:/admin/login.php</p><p>inurl:qq.txt</p><p>filetype:xls “username|password”</p><p>inurl:ftp filetype:xls </p><p>inurl:ftp “password” filetype:xls site:baidu.com</p><h1 id="其它搜索引擎"><a href="#其它搜索引擎" class="headerlink" title="其它搜索引擎"></a>其它搜索引擎</h1><p>duckduckgo</p><p>yandex</p><h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><ul><li>theHarvester（OSINT gathering）</li><li>metagoofil（search and download specific filetypes）</li><li>Tmux 是一个终端复用器（terminal multiplexer）</li><li>meltago（图形界面）</li></ul><h1 id="其他途径"><a href="#其他途径" class="headerlink" title="其他途径"></a>其他途径</h1><ul><li>社交网络</li><li>工商注册</li><li>新闻组/论坛</li><li>招聘网站</li><li><a href="http://www.archive.org/web/web/php" target="_blank" rel="noopener">http://www.archive.org/web/web/php</a></li></ul><h1 id="个人专属密码字典"><a href="#个人专属密码字典" class="headerlink" title="个人专属密码字典"></a>个人专属密码字典</h1><ul><li><p>按个人信息生成其专属的密码字典</p></li><li><p>CUPP——Common User Password Profile</p><ul><li>git clone <a href="https://github.com/Mebus/cupp.git" target="_blank" rel="noopener">https://github.com/Mebus/cupp.git</a></li><li>python cup.py -i</li></ul></li></ul><h1 id="METADATA"><a href="#METADATA" class="headerlink" title="METADATA"></a>METADATA</h1><ul><li><p>Exif图片信息:</p><ul><li>exiftool x.jpg</li></ul></li><li><p>Foca(Windows)</p></li></ul><h1 id="RECON-NG"><a href="#RECON-NG" class="headerlink" title="RECON-NG"></a>RECON-NG</h1><ul><li>全特性Web侦察框架</li><li>基于Python开发</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>被动信息收集-DNS与SHODAN</title>
       <link href="/2020/08/30/%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-DNS%E4%B8%8ESHODAN/"/>
       <url>/2020/08/30/%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-DNS%E4%B8%8ESHODAN/</url>
@@ -388,9 +415,9 @@
       
         <tags>
             
-            <tag> 搭建 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 搭建 </tag>
             
         </tags>
       
@@ -399,6 +426,17 @@
     
   
   
+    
+    
+    <entry>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="Pyrrhax"><a href="#Pyrrhax" class="headerlink" title="Pyrrhax"></a>Pyrrhax</h2><p><strong>Be What You Wanna Be!!!</strong></p><p><strong>GitHub:<a href="https://github.com/Pyrrhax" target="_blank" rel="noopener">@Pyrrhax</a></strong><br><strong>Email:<a href>pyrrhax.hf@gmail.com</a></strong><br><strong>我的书单：<a href="https://book.douban.com/people/184374019/">https://book.douban.com/people/184374019/</a></strong><br><strong>我的知乎：<a href="https://www.zhihu.com/people/pyrrhax" target="_blank" rel="noopener">https://www.zhihu.com/people/pyrrhax</a></strong><br><strong>我的CSDN:<a href="https://blog.csdn.net/weixin_42714910" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42714910</a></strong></p><h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>0.Pyrrha是动漫《RWBY》里面的Pyrrha.</p><p>1.<em>核心游戏玩家</em>。如果要说几个我喜欢的游戏的话，《半条命》系列，《古墓丽影9》，《深海迷航》，剧情类有《去月球》《奇异人生》系列，另外很期待万向跑步机普及后玩《半条命Alyx》的感觉。FPS游戏历程CF-&gt;逆站-&gt;AVA-&gt;WarFace-&gt;CS:GO-&gt;PUBG-&gt;叛乱-&gt;红色管弦乐-&gt;叛乱2。PUBG 1200+小时，最高日韩服Rank1.5%，不过很久没玩了。之前因为看了某动画，突然想玩MMORPG网游，了解了几天觉得想玩《勇者斗恶龙X》。不过竟然都X了，于是就了解了下《勇者斗恶龙》全系列。没错，于是我就买了NDSi来玩《勇者斗恶龙4》了。唔，果真日式RPG需要刷刷刷。不过在当时那个年代大家一定乐此不疲。在玩的还有《异域镇魂曲》，文本量巨大- -就当记单词了</p><p>2.<em>图吧垃圾佬</em>。沉迷捡垃圾和折腾软硬件。在知乎有个人说：“要把精力专注在业务上，而不是这种杂七杂八的问题。”可能说的就是我吧。。。笔记本改水冷，DIY充电宝，捡垃圾组装电脑和折腾和操作系统，用树莓派或安卓设备做移动渗透测试设备等等。你敢信家里十二年前的台式机现在还可以打英雄联盟。。。</p><p>3.<em>科幻爱好者</em>。《三体》《攻壳机动队》都十分喜欢，《攻壳机动队》简直是脑机接口发展的成熟阶段。要说崇拜的人大概是Musk吧。说到这些，想到一句话Any sufficiently advanced technology is indistinguishable from magic。</p><p>4.<em>比较宅</em>。每次出门后都要感叹，哇，现实世界的画质真的需要好复杂的计算，不过看起来竟没有更低一些的画质好看。</p><p>5.<em>语言学习</em>。希望成为一个fluent English Speaker.毕竟英语是我在CS之外，唯一坚持下来的算的上是爱好的东西。日语也学了一些，加油加油。</p><p>6.<em>读书</em>。会对自己感兴趣的方面阅读各种相关的书籍，也会读一些被人推荐的书。哲学读过一些入门书。心理学方面，认知神经学相关读的比较多。大概读几本科普或功能类书籍之后会读一本文学类作为切换。</p><p>7.<em>有一辆小摩托(GSX250R)</em>。穿上一身防水装备，机动性爆表，喜欢周末去城市周边跑山。文明驾驶，不是深夜炸街的鬼火少年哦。</p><p>8.怕什么真理无穷，进一寸有一寸的欢喜。</p>]]></content>
+      
+    </entry>
+    
     
     
     <entry>
@@ -418,17 +456,6 @@
       <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>about</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="Pyrrhax"><a href="#Pyrrhax" class="headerlink" title="Pyrrhax"></a>Pyrrhax</h2><p><strong>Be What You Wanna Be!!!</strong></p><p><strong>GitHub:<a href="https://github.com/Pyrrhax" target="_blank" rel="noopener">@Pyrrhax</a></strong><br><strong>Email:<a href>pyrrhax.hf@gmail.com</a></strong><br><strong>我的书单：<a href="https://book.douban.com/people/184374019/">https://book.douban.com/people/184374019/</a></strong><br><strong>我的知乎：<a href="https://www.zhihu.com/people/pyrrhax" target="_blank" rel="noopener">https://www.zhihu.com/people/pyrrhax</a></strong><br><strong>我的CSDN:<a href="https://blog.csdn.net/weixin_42714910" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42714910</a></strong></p><h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>0.Pyrrha是动漫《RWBY》里面的Pyrrha.</p><p>1.<em>核心游戏玩家</em>。如果要说几个我喜欢的游戏的话，《半条命》系列，《古墓丽影9》，《深海迷航》，剧情类有《去月球》《奇异人生》系列，另外很期待万向跑步机普及后玩《半条命Alyx》的感觉。FPS游戏历程CF-&gt;逆站-&gt;AVA-&gt;WarFace-&gt;CS:GO-&gt;PUBG-&gt;叛乱-&gt;红色管弦乐-&gt;叛乱2。PUBG 1200+小时，最高日韩服Rank1.5%，不过很久没玩了。之前因为看了某动画，突然想玩MMORPG网游，了解了几天觉得想玩《勇者斗恶龙X》。不过竟然都X了，于是就了解了下《勇者斗恶龙》全系列。没错，于是我就买了NDSi来玩《勇者斗恶龙4》了。唔，果真日式RPG需要刷刷刷。不过在当时那个年代大家一定乐此不疲。在玩的还有《异域镇魂曲》，文本量巨大- -就当记单词了</p><p>2.<em>图吧垃圾佬</em>。沉迷捡垃圾和折腾软硬件。在知乎有个人说：“要把精力专注在业务上，而不是这种杂七杂八的问题。”可能说的就是我吧。。。笔记本改水冷，DIY充电宝，捡垃圾组装电脑和折腾和操作系统，用树莓派或安卓设备做移动渗透测试设备等等。你敢信家里十二年前的台式机现在还可以打英雄联盟。。。</p><p>3.<em>科幻爱好者</em>。《三体》《攻壳机动队》都十分喜欢，《攻壳机动队》简直是脑机接口发展的成熟阶段。要说崇拜的人大概是Musk吧。说到这些，想到一句话Any sufficiently advanced technology is indistinguishable from magic。</p><p>4.<em>比较宅</em>。每次出门后都要感叹，哇，现实世界的画质真的需要好复杂的计算，不过看起来竟没有更低一些的画质好看。</p><p>5.<em>语言学习</em>。希望成为一个fluent English Speaker.毕竟英语是我在CS之外，唯一坚持下来的算的上是爱好的东西。日语也学了一些，加油加油。</p><p>6.<em>读书</em>。会对自己感兴趣的方面阅读各种相关的书籍，也会读一些被人推荐的书。哲学读过一些入门书。心理学方面，认知神经学相关读的比较多。大概读几本科普或功能类书籍之后会读一本文学类作为切换。</p><p>7.<em>有一辆小摩托(GSX250R)</em>。穿上一身防水装备，机动性爆表，喜欢周末去城市周边跑山。文明驾驶，不是深夜炸街的鬼火少年哦。</p><p>8.怕什么真理无穷，进一寸有一寸的欢喜。</p>]]></content>
       
     </entry>
     
