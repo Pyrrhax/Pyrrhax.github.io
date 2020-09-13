@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>被动信息收集-DNS与SHODAN | Pyrrhax</title>
+    <title>主动信息收集--主机发现 | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -203,7 +203,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/30/%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-DNS%E4%B8%8ESHODAN/">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/13/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="Pyrrhax">
        <meta itemprop="description" content="">
@@ -214,11 +214,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">被动信息收集-DNS与SHODAN</h1>
+      <h1 class="post-title" itemprop="name headline">主动信息收集--主机发现</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-30T12:06:37+08:00">2020-08-30 12:06:37</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-09-13T17:57:46+08:00">2020-09-13 17:57:46</time></span>
         </span>
         
         
@@ -236,117 +236,182 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h1 id="信息收集内容"><a href="#信息收集内容" class="headerlink" title="信息收集内容"></a>信息收集内容</h1><ul>
-<li>IP地址段</li>
-<li>域名信息</li>
-<li>邮件地址</li>
-<li>文档图片数据</li>
-<li>公司地址</li>
-<li>公司组织架构</li>
-<li>联系电话/传真号码</li>
-<li>人员姓名/职务</li>
-<li>目标系统使用的技术架构</li>
-<li>公开的商业信息</li>
+      <h1 id="主动信息收集"><a href="#主动信息收集" class="headerlink" title="主动信息收集"></a>主动信息收集</h1><ul>
+<li>直接与目标系统交互通信</li>
+<li>无法避免留下访问痕迹</li>
+<li>使用受控的第三方电脑进行探测<ul>
+<li>使用代理或已经被控制的主机</li>
+<li>做好被封杀的准备</li>
+<li>使用噪声迷惑目标，淹没真实的探测流量</li>
 </ul>
-<a id="more"></a>
-
-
-
-<h1 id="信息用途"><a href="#信息用途" class="headerlink" title="信息用途"></a>信息用途</h1><ul>
-<li>用信息描述目标</li>
-<li>发现</li>
-<li>社会工程学攻击</li>
-<li>物理缺口</li>
+</li>
+<li>扫描<ul>
+<li>发送不同的探测，根据返回结果判断目标状态</li>
 </ul>
-<h1 id="信息收集——DNS"><a href="#信息收集——DNS" class="headerlink" title="信息收集——DNS"></a>信息收集——DNS</h1><ul>
-<li><p>域名解析成IP地址</p>
+</li>
+</ul>
+<h1 id="发现"><a href="#发现" class="headerlink" title="发现"></a>发现</h1><ul>
+<li>识别活着的主机<ul>
+<li>潜在的被攻击目标</li>
+</ul>
+</li>
+<li>输出一个IP地址列表</li>
+<li>2、3、4层发现</li>
+</ul>
+<h2 id="二层发现"><a href="#二层发现" class="headerlink" title="二层发现"></a>二层发现</h2><ul>
+<li><p>优点：扫描速度快，可靠。</p>
+</li>
+<li><p>缺点：不可路由</p>
+</li>
+<li><p>Arp协议</p>
 <ul>
-<li>域名与FQDN的区别</li>
-<li>域名记录：A、C name、NS、MX、ptr</li>
+<li>抓包</li>
 </ul>
 </li>
-<li><p>nslookup</p>
+<li><p>arping</p>
+</li>
+<li><p>arping 1.1.1.1 -c 1</p>
 <ul>
-<li>set q=a、ns、mx、any</li>
-<li>server</li>
-<li>nslookup -q=any 163.com </li>
+<li>编写一个扫描本网段的脚本</li>
+<li>编写一个扫描指定ip列表的脚本</li>
 </ul>
 </li>
-</ul>
-<p>/etc/resolv.conf</p>
+<li><p>nmap -sn（nmap还发了一个反向域名解析请求）</p>
 <ul>
-<li>dig<ul>
-<li>dig +noall +answer mail.163.com|awk ‘{print $5}’</li>
-<li>反向查询<code>dig -x xx.x.x.xx</code> </li>
-<li>bind版本信息<code>dig +noall +answer txt chaos VERSION.BIND @ns3.dnsv4.com</code></li>
-<li>DNS追踪：<code>dig +trace example.com</code>直接向根域名服务器发起查询</li>
+<li>nmap -sn -iL</li>
 </ul>
 </li>
-<li>dig +trace查询过程抓包<ul>
-<li>向本地DNS服务器查询root的NS记录，得到13个DNS根服务器名称 X.root-server.net </li>
-<li>向本地DNS服务器查询 X.root-server.net对应的A记录</li>
-<li>随机选择一个 X.root-server.net 查询sina.com的A记录，得到13个COM顶级域名服务器名称</li>
-<li>向本地DNS服务器查询X.gtld-server.net对应的A记录</li>
-<li>随机选择一个X.gtld-server.net 查询sina.com的A记录，得到7个sina.com的权威域名服务器名称</li>
-<li>向本地DNS服务器查询七个权威域名服务器的A记录</li>
-<li>向权威域名服务器查询sina.com的A记录，得到sina.com对应的IP</li>
+<li><p>Netdiscover</p>
+<ul>
+<li>专用于二层发现</li>
+<li>可用于无线和交换网络</li>
+<li>主动和被动探测<ul>
+<li>主动：<ul>
+<li>netdiscover -i eth0 -r 1.1.1.0/24</li>
+<li>netdiscover -l iplist.txt</li>
+</ul>
+</li>
+<li>被动：<ul>
+<li>netdiscover -p</li>
 </ul>
 </li>
 </ul>
-<h1 id="DNS区域传输"><a href="#DNS区域传输" class="headerlink" title="DNS区域传输"></a>DNS区域传输</h1><ul>
-<li>type: AXFR</li>
-<li>dig @ns1.example.com example.com axfr</li>
-<li>host -T -l sina.com</li>
-</ul>
-<h1 id="DNS字典爆破"><a href="#DNS字典爆破" class="headerlink" title="DNS字典爆破"></a>DNS字典爆破</h1><ul>
-<li>fierce -dnsserver 8.8.8.8  -dns sina.com.cn -wordlist a.txt</li>
-<li>dnsdict6 -d4 -t 16 -x sina.com</li>
-<li>dnsenum -f dnsbig.txt -dnsserver 8.8.8.8 sina.com -o sina.xml</li>
-<li>dnsmap sina.com -w dns.txt</li>
-<li>dnsrecon -d sina.com –lifetime 10 -t brt -D dnsbig.txt</li>
-<li>dnsrecon -t std -d sina.com</li>
-<li>将多个字典集成1个大字典，熟练使用一两个dns爆破命令。</li>
-</ul>
-<h1 id="DNS注册信息"><a href="#DNS注册信息" class="headerlink" title="DNS注册信息"></a>DNS注册信息</h1><ul>
-<li>Whois</li>
-<li>whois -h whois.apnic.net 192.0.43.10</li>
-</ul>
-<h1 id="信息搜集——搜索引擎"><a href="#信息搜集——搜索引擎" class="headerlink" title="信息搜集——搜索引擎"></a>信息搜集——搜索引擎</h1><ul>
-<li><p>公司新闻动态</p>
-</li>
-<li><p>重要雇员信息</p>
-</li>
-<li><p>机密文档/网络拓扑</p>
-</li>
-<li><p>用户名密码</p>
-</li>
-<li><p>目标系统软硬件技术架构</p>
-</li>
-<li><p>Google Hacking、Baidu Hacking、Bing Hacking</p>
 </li>
 </ul>
-<h1 id="SHODAN"><a href="#SHODAN" class="headerlink" title="SHODAN"></a>SHODAN</h1><ul>
-<li><p>搜索互联网的设备</p>
 </li>
-<li><p>Banner:http、ftp、ssh、telnet</p>
+<li><p>Scapy</p>
+<ul>
+<li>Python库</li>
+<li>也可作为单独的工具使用</li>
+<li>抓包、分析、创建、修改、注入网络流量</li>
+</ul>
 </li>
-<li><p><a href="https://www.shodan.io" target="_blank" rel="noopener">https://www.shodan.io</a></p>
+<li><p>apt-get install python3-gnuplot</p>
 </li>
-<li><p>常见filter</p>
+<li><p>Scapy</p>
+<ul>
+<li>ARP().display()</li>
+<li>sr1()</li>
+<li>Python脚本</li>
+</ul>
 </li>
-<li><p>net(192.168.20.1)</p>
+<li><p>在不同的环境下可使用的工具不确定。</p>
 </li>
-<li><p>city</p>
+</ul>
+<h1 id="三层发现"><a href="#三层发现" class="headerlink" title="三层发现"></a>三层发现</h1><ul>
+<li><p>优点</p>
+<ul>
+<li>可路由</li>
+<li>速度比较快</li>
+</ul>
 </li>
-<li><p>country(CN、US)</p>
+<li><p>缺点</p>
+<ul>
+<li>速度比二层慢</li>
+<li>经常被边界防火墙过滤</li>
+</ul>
 </li>
-<li><p>port(80、21、22、23)</p>
+<li><p>IP、ICMP协议</p>
 </li>
-<li><p>os</p>
+<li><p>ping</p>
 </li>
-<li><p>Hostname(主机域名)</p>
+<li><p>traceroute(发的UDP,IP段的TTL=0后会返回ICMP)，每一跳是路由器的内侧网口</p>
 </li>
-<li><p>server</p>
+<li><p>ping -R返回的是外侧网口 <a href="https://blog.csdn.net/weixin_42714910/article/details/108351817" target="_blank" rel="noopener">点这里了解更多关于ping -R </a></p>
+<ul>
+<li>编写ping扫描网段脚本</li>
+</ul>
+</li>
+<li><p>Scapy</p>
+<ul>
+<li>分别用shell和python编写ping扫描网段脚本<ul>
+<li>读取文件扫描ip列表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>nmap -sn</p>
+<ul>
+<li>如果ip是本网段的就是二层扫描，否则是三层扫描。</li>
+<li>发送了2个ICMP请求，type是8和13.发送了两个TCP消息，一个443 SYN,一个80 ACK。</li>
+<li>对于每个消息如果目标没有响应就会再发一遍。两遍都没有响应就判定host is down.</li>
+</ul>
+</li>
+<li><p>fping</p>
+<ul>
+<li>fping支持地址段扫描</li>
+<li>fping -g 192.168.1.100 192.168.1.200 -c 1</li>
+</ul>
+</li>
+<li><p>Hping</p>
+<ul>
+<li>能够发送激活任意TCP/IP包</li>
+<li>功能强大但每次只能扫描一个目标</li>
+</ul>
+</li>
+</ul>
+<h1 id="四层发现"><a href="#四层发现" class="headerlink" title="四层发现"></a>四层发现</h1><ul>
+<li><p>优点</p>
+<ul>
+<li>可路由且结果可靠</li>
+<li>不太可能被防火墙过滤</li>
+<li>甚至可以返现所有端口都被过滤的主机</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>基于状态过滤的防火墙可能过滤扫描</li>
+<li>全端口扫描速度慢</li>
+</ul>
+</li>
+<li><p>TCP</p>
+<ul>
+<li>未经请求的ACK——RST</li>
+<li>SYN——SYN/ACK、RST</li>
+</ul>
+</li>
+<li><p>UDP</p>
+<ul>
+<li>ICMP端口不可达、一去不复返</li>
+</ul>
+</li>
+<li><p>ACK——TCP Port——RST</p>
+<ul>
+<li>Scapy</li>
+<li>Python脚本</li>
+</ul>
+</li>
+<li><p>nmap - x.x.x.x -PU53333 -sn  UDP扫描53333端口</p>
+</li>
+<li><p>nmap - x.x.x.x -PA53333 -sn  ACK扫描53333端口 (PS PA PU PY(SCTP))</p>
+</li>
+<li><p>hping3 –udp xxx -c 1</p>
+</li>
+</ul>
+<h1 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h1><ul>
+<li>|egrep -v “xxx”<ul>
+<li>除符合xxx的字段</li>
+</ul>
 </li>
 </ul>
 
@@ -366,12 +431,10 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2020/08/28/WireShark&TCPdump/" rel="next" title="WireShark&TCPdump"><i class="fas fa-angle-left"></i><span class="nav-title">WireShark&TCPdump</span></a>
+      <a href="/2020/08/31/GoogleHacking%E3%80%81Recon-ng/" rel="next" title="GoogleHacking、Recon-ng"><i class="fas fa-angle-left"></i><span class="nav-title">GoogleHacking、Recon-ng</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
-      
-      <a href="/2020/08/31/GoogleHacking%E3%80%81Recon-ng/" rel="prev" title="GoogleHacking、Recon-ng"><span class="nav-title">GoogleHacking、Recon-ng</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -398,7 +461,7 @@
       "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "被动信息收集-DNS与SHODAN",
+      "issue_title": "主动信息收集--主机发现",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -493,7 +556,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#信息收集内容"><span class="toc-text">信息收集内容</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#信息用途"><span class="toc-text">信息用途</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#信息收集——DNS"><span class="toc-text">信息收集——DNS</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#DNS区域传输"><span class="toc-text">DNS区域传输</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#DNS字典爆破"><span class="toc-text">DNS字典爆破</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#DNS注册信息"><span class="toc-text">DNS注册信息</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#信息搜集——搜索引擎"><span class="toc-text">信息搜集——搜索引擎</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#SHODAN"><span class="toc-text">SHODAN</span></a></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#主动信息收集"><span class="toc-text">主动信息收集</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#发现"><span class="toc-text">发现</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#二层发现"><span class="toc-text">二层发现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#三层发现"><span class="toc-text">三层发现</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#四层发现"><span class="toc-text">四层发现</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#其他命令"><span class="toc-text">其他命令</span></a></li></ol></div>
     </div>
     
     
