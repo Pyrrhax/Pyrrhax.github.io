@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-09-13T09:59:11.553Z</updated>
+  <updated>2020-09-13T10:00:37.570Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,17 +21,26 @@
     <link href="http://yoursite.com/2020/09/13/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0/"/>
     <id>http://yoursite.com/2020/09/13/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0/</id>
     <published>2020-09-13T09:57:46.000Z</published>
-    <updated>2020-09-13T09:59:11.553Z</updated>
+    <updated>2020-09-13T10:00:37.570Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;主动信息收集&quot;&gt;&lt;a href=&quot;#主动信息收集&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h1 id=&quot;主动信息收集&quot;&gt;&lt;a href=&quot;#主动信息收集&quot; class=&quot;headerlink&quot; title=&quot;主动信息收集&quot;&gt;&lt;/a&gt;主动信息收集&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;直接与目标系统交互通信&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;无法避免留下访问痕迹&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用受控的第三方电脑进行探测&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用代理或已经被控制的主机&lt;/li&gt;
+&lt;li&gt;做好被封杀的准备&lt;/li&gt;
+&lt;li&gt;使用噪声迷惑目标，淹没真实的探测流量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;扫描&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;发送不同的探测，根据返回结果判断目标状态&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
