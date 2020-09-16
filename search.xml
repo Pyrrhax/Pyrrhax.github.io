@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>主动信息收集-端口扫描</title>
+      <link href="/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F/"/>
+      <url>/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F/</url>
+      
+        <content type="html"><![CDATA[<h2 id="端口扫描"><a href="#端口扫描" class="headerlink" title="端口扫描"></a>端口扫描</h2><ul><li>端口对应网络服务及应用端程序</li><li>服务端程序的漏洞通过端口攻入</li><li>发现开放的端口</li><li>更具体的攻击面</li></ul><a id="more"></a><h3 id="UDP端口扫描"><a href="#UDP端口扫描" class="headerlink" title="UDP端口扫描"></a>UDP端口扫描</h3><ul><li><p>假设ICMP port-unreachable 响应代表端口关闭</p><ul><li>目标系统不响应ICMP port-unreachable时，可能产生误判</li></ul></li><li><p>Scapy UDP Scan脚本</p><ul><li>端口关闭：unreachable</li><li>端口开放：没有回包</li><li>了解每一种基于UDP的应用层包结构很有帮助</li><li>与三层相同的技术</li><li>误判</li></ul></li><li><p>nmap -sU x.x.x.x  常见1000端口</p></li><li><p>nmap -sU x.x.x.x -p xx 指定端口</p></li></ul><h3 id="TCP端口扫描"><a href="#TCP端口扫描" class="headerlink" title="TCP端口扫描"></a>TCP端口扫描</h3><ul><li>基于连接的协议</li><li>三次握手</li><li>隐蔽扫描（不建立握手）</li><li>僵尸扫描</li><li>全连接扫描</li><li>所有的TCP扫描方式都是基于三次握手的变化来判断目标端口状态</li></ul><h4 id="隐蔽扫描——SYN"><a href="#隐蔽扫描——SYN" class="headerlink" title="隐蔽扫描——SYN"></a>隐蔽扫描——SYN</h4><ul><li>不建立完整连接</li><li>应用日志不记录扫描行为——隐蔽</li></ul><h4 id="僵尸扫描"><a href="#僵尸扫描" class="headerlink" title="僵尸扫描"></a>僵尸扫描</h4><ul><li>极度隐蔽</li><li>实时条件苛刻</li><li>必须可伪造源IP地址</li><li>僵尸机条件：<ul><li>必须是闲置系统</li><li>系统使用递增的IPID（IP包头的id字段）<ul><li>0</li><li>随机</li></ul></li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>主动信息收集--主机发现</title>
       <link href="/2020/09/13/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0/"/>
       <url>/2020/09/13/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0/</url>
