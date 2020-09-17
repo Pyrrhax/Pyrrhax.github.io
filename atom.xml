@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-09-17T00:26:50.757Z</updated>
+  <updated>2020-09-17T00:28:22.466Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,17 +21,18 @@
     <link href="http://yoursite.com/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E8%AF%86%E5%88%AB/"/>
     <id>http://yoursite.com/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E8%AF%86%E5%88%AB/</id>
     <published>2020-09-16T10:37:57.000Z</published>
-    <updated>2020-09-17T00:26:50.757Z</updated>
+    <updated>2020-09-17T00:28:22.466Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;防火墙识别&quot;&gt;&lt;a href=&quot;#防火墙识别&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h2 id=&quot;防火墙识别&quot;&gt;&lt;a href=&quot;#防火墙识别&quot; class=&quot;headerlink&quot; title=&quot;防火墙识别&quot;&gt;&lt;/a&gt;防火墙识别&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;通过检查回包，可能识别端口是否经过防火墙过滤&lt;/li&gt;
+&lt;li&gt;设备多种多样，结果存在一定误差&lt;/li&gt;
+&lt;li&gt;Send respond type&lt;/li&gt;
+&lt;li&gt;scapy脚本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;nmap -sA 192.168.0.117 -p 22&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img src=&quot;/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E8%AF%86%E5%88%AB/table.png&quot; alt&gt;&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
