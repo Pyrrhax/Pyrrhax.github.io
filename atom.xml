@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-09-16T02:47:02.423Z</updated>
+  <updated>2020-09-17T00:26:50.757Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,72 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>主动信息收集-防火墙与负载均衡识别</title>
+    <link href="http://yoursite.com/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E8%AF%86%E5%88%AB/"/>
+    <id>http://yoursite.com/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E8%AF%86%E5%88%AB/</id>
+    <published>2020-09-16T10:37:57.000Z</published>
+    <updated>2020-09-17T00:26:50.757Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;防火墙识别&quot;&gt;&lt;a href=&quot;#防火墙识别&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>主动信息收集-OS识别、SNMP、SMB、SMTP扫描</title>
+    <link href="http://yoursite.com/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-OS%E8%AF%86%E5%88%AB%E3%80%81SNMP%E3%80%81SMB%E3%80%81SMTP%E6%89%AB%E6%8F%8F/"/>
+    <id>http://yoursite.com/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-OS%E8%AF%86%E5%88%AB%E3%80%81SNMP%E3%80%81SMB%E3%80%81SMTP%E6%89%AB%E6%8F%8F/</id>
+    <published>2020-09-16T10:31:57.000Z</published>
+    <updated>2020-09-16T10:33:06.303Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;操作系统识别&quot;&gt;&lt;a href=&quot;#操作系统识别&quot; class=&quot;headerlink&quot; title=&quot;操作系统识别&quot;&gt;&lt;/a&gt;操作系统识别&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;操作系统识别技术&lt;ul&gt;
+&lt;li&gt;种类繁多&lt;/li&gt;
+&lt;li&gt;好产品采用多种技术组合&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;主动识别&quot;&gt;&lt;a href=&quot;#主动识别&quot; class=&quot;headerlink&quot; title=&quot;主动识别&quot;&gt;&lt;/a&gt;主动识别&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;TTL起始值&lt;ul&gt;
+&lt;li&gt;Windows:128(65-128)&lt;/li&gt;
+&lt;li&gt;Linux/Unix:64(1-64)&lt;/li&gt;
+&lt;li&gt;某些Unix:255&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>主动信息收集-服务扫描</title>
@@ -518,31 +584,6 @@
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
       <category term="函数" scheme="http://yoursite.com/tags/%E5%87%BD%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用Hexo和GitHubPages搭建博客</title>
-    <link href="http://yoursite.com/2018/08/15/%E7%94%A8Hexo+GitHubPages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yoursite.com/2018/08/15/%E7%94%A8Hexo+GitHubPages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</id>
-    <published>2018-08-14T16:00:00.000Z</published>
-    <updated>2020-05-24T09:46:23.674Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;拥有自己的网站总是一件很酷的事，早就想自己写一个博客了。因为并没有深入学习前端，之前实验课模仿饿了么的商家入驻页面，一个页面写了几天才搞得差不多。虽然写前端也很吸引人，但果真我还是更喜欢写后台。最近在一个面试群里看到有人发自己的博客。用的是wordpress，听说这样很方便，于是就去搜了搜，于是就发现了HEXO。哇塞连后台都不用写了。虽然最近又有一大堆东西要复习。反正管它呢，搭了再说！&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="网络运维" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="Hexo" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
-    
-      <category term="搭建" scheme="http://yoursite.com/tags/%E6%90%AD%E5%BB%BA/"/>
     
   </entry>
   
