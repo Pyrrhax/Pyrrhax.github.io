@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-09-17T00:28:22.466Z</updated>
+  <updated>2020-09-19T04:17:16.985Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,103 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>缓冲区溢出</title>
+    <link href="http://yoursite.com/2020/09/19/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA/"/>
+    <id>http://yoursite.com/2020/09/19/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA/</id>
+    <published>2020-09-19T04:16:47.000Z</published>
+    <updated>2020-09-19T04:17:16.985Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;缓冲区溢出&quot;&gt;&lt;a href=&quot;#缓冲区溢出&quot; class=&quot;headerlink&quot; title=&quot;缓冲区溢出&quot;&gt;&lt;/a&gt;缓冲区溢出&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;当缓冲区边界限制不严格时，由于变量传入畸形数据或程序运行错误，导致缓冲区被“撑爆”，从而覆盖了相邻内存区域的数据&lt;/li&gt;
+&lt;li&gt;成功修改内存数据，可造成进程劫持，执行恶意代码，获取服务器控制权等后果&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SLMail缓冲区溢出实践</title>
+    <link href="http://yoursite.com/2020/09/18/SLMail%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E5%AE%9E%E8%B7%B5/"/>
+    <id>http://yoursite.com/2020/09/18/SLMail%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E5%AE%9E%E8%B7%B5/</id>
+    <published>2020-09-18T02:48:31.000Z</published>
+    <updated>2020-09-19T04:18:31.498Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Windows系统&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://slmail.software.informer.com/download/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;SLMail5.5.0&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.softpedia.com/get/Programming/Debuggers-Decompilers-Dissasemblers/Immunity-Debugger.shtml&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ImmunityDebugger1.85&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/corelan/mona/master/mona.py&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;mona.py&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;mona.py需要放在ImmunityDebugger的安装目录的DebuggerPyCommands文件夹&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>漏洞扫描</title>
+    <link href="http://yoursite.com/2020/09/17/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/"/>
+    <id>http://yoursite.com/2020/09/17/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/</id>
+    <published>2020-09-17T01:21:04.000Z</published>
+    <updated>2020-09-17T01:21:36.732Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;漏洞扫描&quot;&gt;&lt;a href=&quot;#漏洞扫描&quot; class=&quot;headerlink&quot; title=&quot;漏洞扫描&quot;&gt;&lt;/a&gt;漏洞扫描&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;发现漏洞&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基于端口服务扫描结果版本信息（速度慢）&lt;/li&gt;
+&lt;li&gt;搜索已公开的漏洞数据库（数量大）&lt;/li&gt;
+&lt;li&gt;使用弱点扫描器实现漏洞管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;服务弱点查找&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;exploit-db&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;rapid7&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;searchsploit tomcat&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;(/usr/share/exploitdb/exploits)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;shellstorm&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>主动信息收集-防火墙与负载均衡识别</title>
@@ -510,81 +607,6 @@
     
     
       <category term="编程题" scheme="http://yoursite.com/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我翻译的文章在这里</title>
-    <link href="http://yoursite.com/2018/09/08/%E6%88%91%E7%BF%BB%E8%AF%91%E7%9A%84%E6%96%87%E7%AB%A0%E5%9C%A8%E8%BF%99%E9%87%8C/"/>
-    <id>http://yoursite.com/2018/09/08/%E6%88%91%E7%BF%BB%E8%AF%91%E7%9A%84%E6%96%87%E7%AB%A0%E5%9C%A8%E8%BF%99%E9%87%8C/</id>
-    <published>2018-09-07T16:00:00.000Z</published>
-    <updated>2020-05-24T09:33:34.298Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;&lt;a href=&quot;https://cloud.tencent.com/developer/user/1206354/articles&quot; target=&quot;_blank&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="翻译" scheme="http://yoursite.com/categories/%E7%BF%BB%E8%AF%91/"/>
-    
-    
-      <category term="翻译" scheme="http://yoursite.com/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在Hexo文章中插入图片</title>
-    <link href="http://yoursite.com/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/"/>
-    <id>http://yoursite.com/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/</id>
-    <published>2018-08-29T16:00:00.000Z</published>
-    <updated>2020-08-19T10:10:51.914Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在写上一篇博客的时候，发现不知道该怎么往文章中插入图片，于是在网上搜。答案来来回回就那么两篇。于是就打开一个照着步骤做。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="网络运维" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="Hexo" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E8%BF%90%E7%BB%B4/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java中二维数组的复制（深拷贝与浅拷贝）</title>
-    <link href="http://yoursite.com/2018/08/30/Java%E4%B8%AD%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%8D%E5%88%B6%EF%BC%88%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D%EF%BC%89/"/>
-    <id>http://yoursite.com/2018/08/30/Java%E4%B8%AD%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%8D%E5%88%B6%EF%BC%88%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D%EF%BC%89/</id>
-    <published>2018-08-29T16:00:00.000Z</published>
-    <updated>2020-05-24T09:32:28.402Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;最近在做一道编程题的时候出现了一处bug。在这道题需要使用多种方法对同一个二维数组进行更改，找出使第二列数之和最大的更改方法。所以每次修改之前，我对原数组进行拷贝，修改的是数组的拷贝。可是程序写完之后，运行结果却出乎意料的是错误的。看了几遍程序流程，觉得逻辑上没有错误。于是打开debug模式一步步看数值变化。调试时发现在第二次循环中，数组本该为0的位置，值却被改成了1,而这是第一次进行修改的结果。此时顿悟，想起很久之前学过的深拷贝和浅拷贝，绝对是clone()的问题。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="编程语言" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-      <category term="Java" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/"/>
-    
-    
-      <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
-    
-      <category term="函数" scheme="http://yoursite.com/tags/%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   

