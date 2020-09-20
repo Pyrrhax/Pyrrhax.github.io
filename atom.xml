@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-09-19T04:17:16.985Z</updated>
+  <updated>2020-09-20T03:40:35.418Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,54 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>后渗透-文件传输</title>
+    <link href="http://yoursite.com/2020/09/20/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/"/>
+    <id>http://yoursite.com/2020/09/20/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/</id>
+    <published>2020-09-20T03:40:10.000Z</published>
+    <updated>2020-09-20T03:40:35.418Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;后渗透——文件传输&quot;&gt;&lt;a href=&quot;#后渗透——文件传输&quot; class=&quot;headerlink&quot; title=&quot;后渗透——文件传输&quot;&gt;&lt;/a&gt;后渗透——文件传输&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;上传工具&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;提权&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;擦除攻击痕迹&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装后门&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;长期控制&lt;/li&gt;
+&lt;li&gt;Dump密码&lt;/li&gt;
+&lt;li&gt;内网渗透&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;后漏洞利用阶段&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最大挑战——防病毒软件&lt;/li&gt;
+&lt;li&gt;使用合法的远程控制软件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>缓冲区溢出</title>
     <link href="http://yoursite.com/2020/09/19/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA/"/>
     <id>http://yoursite.com/2020/09/19/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA/</id>
     <published>2020-09-19T04:16:47.000Z</published>
-    <updated>2020-09-19T04:17:16.985Z</updated>
+    <updated>2020-09-19T10:13:08.124Z</updated>
     
     <summary type="html">
     
@@ -574,29 +617,6 @@
     <summary type="html">
     
       &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;小易觉得高数课太无聊了，决定睡觉。不过他对课上的一些内容挺感兴趣，所以希望你在老师讲到有趣的部分的时候叫醒他一下。你知道了小易对一堂课每分钟知识点的感兴趣程度，并以分数量化，以及他在这堂课上每分钟是否会睡着，你可以叫醒他一次，这会使得他在接下来的k分钟内保持清醒。你需要选择一种方案最大化小易这堂课听到的知识点分值。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="编程题" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
-    
-      <category term="笔试" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/%E7%AC%94%E8%AF%95/"/>
-    
-    
-      <category term="编程题" scheme="http://yoursite.com/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【编程题】网易2019笔试：牛牛找工作</title>
-    <link href="http://yoursite.com/2018/09/09/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%89%9B%E7%89%9B%E6%89%BE%E5%B7%A5%E4%BD%9C/"/>
-    <id>http://yoursite.com/2018/09/09/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%89%9B%E7%89%9B%E6%89%BE%E5%B7%A5%E4%BD%9C/</id>
-    <published>2018-09-08T16:00:00.000Z</published>
-    <updated>2020-08-28T10:42:08.657Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。&lt;/p&gt;
     
     </summary>
     
