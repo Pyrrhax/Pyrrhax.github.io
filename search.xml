@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>后渗透-提权</title>
+      <link href="/2020/09/21/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%8F%90%E6%9D%83/"/>
+      <url>/2020/09/21/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%8F%90%E6%9D%83/</url>
+      
+        <content type="html"><![CDATA[<h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h3 id="本地提权"><a href="#本地提权" class="headerlink" title="本地提权"></a>本地提权</h3><ul><li>已实现本地低权限账号登陆<ul><li>远程溢出</li><li>直接获得账号密码</li></ul></li><li>希望获得更高权限<ul><li>实现对目标进一步控制</li></ul></li></ul><a id="more"></a><ul><li>系统账号之间权限隔离<ul><li>操作系统安全的基础</li><li>用户空间</li><li>内核空间</li></ul></li><li>系统账号<ul><li>用户账号登陆时获取权限令牌</li><li>服务账号无需用户登陆已在后台启动的服务</li></ul></li><li>Windows<ul><li>user</li><li>Administrator</li><li>System</li></ul></li><li>Linux<ul><li>User</li><li>Root</li></ul></li></ul><h4 id="ADMIN提权为SYSTEM"><a href="#ADMIN提权为SYSTEM" class="headerlink" title="ADMIN提权为SYSTEM"></a>ADMIN提权为SYSTEM</h4><ul><li>Windows system账号<ul><li>系统设置管理功能</li><li>SysInternal Suite</li><li>XP:<code>at 17:07 /interactive cmd</code></li><li>Win7/8<code>sc Create syscmd binPath=&quot;cmd/K start type=own type=interact&quot;</code></li><li>进程注入提权：<ul><li>pinjector</li><li><code>pinjector.exe -p 656 cmd 5555</code>(656是PID,隐蔽性强)</li></ul></li></ul></li></ul><h3 id="抓包嗅探"><a href="#抓包嗅探" class="headerlink" title="抓包嗅探"></a>抓包嗅探</h3><ul><li><p>Windows</p><ul><li>Wireshark</li><li>OmniPeek</li><li>commview</li><li>Sniffpass(提取密码)</li></ul></li><li><p>Linux</p><ul><li>Tcpdump</li><li>Wireshark</li><li>Dsniff</li></ul></li></ul><h3 id="键盘记录"><a href="#键盘记录" class="headerlink" title="键盘记录"></a>键盘记录</h3><ul><li><p>klogger</p></li><li><p>木马窃取</p><ul><li>Darkcomet-RAT</li><li>…</li></ul></li></ul><h3 id="本地缓存密码"><a href="#本地缓存密码" class="headerlink" title="本地缓存密码"></a>本地缓存密码</h3><ul><li>浏览器缓存的密码<ul><li>IE浏览器</li><li>firefox</li></ul></li><li>网络密码</li><li>无线密码</li><li><a href="http://www.nirsoft.net" target="_blank" rel="noopener">http://www.nirsoft.net</a></li><li>Dump SAM<ul><li>Pwdump<ul><li>/usr/share/windows-binaries/fgdump/PwDump.exe</li><li>提取出windows密码的hash</li><li>然后用ophdump暴破</li></ul></li></ul></li></ul><h3 id="WCE-Windows-credential-editor"><a href="#WCE-Windows-credential-editor" class="headerlink" title="WCE(Windows credential editor)"></a>WCE(Windows credential editor)</h3><ul><li>/usr/share/windows-resources/wce/</li><li>需要管理员权限</li><li>wce-universal.exe -l / -lv</li><li>wce-universal.exe -w</li></ul><h3 id="mimikatz"><a href="#mimikatz" class="headerlink" title="mimikatz"></a>mimikatz</h3><ul><li><code>::</code>查看用法</li><li><code>sekurlsa::wdigest</code> 查看用户与密码相关信息</li><li><code>process::list</code>查看进程及ID</li><li><code>process::suspend /pid:123</code> suspend进程ID为123的进程</li><li><code>ts::multirdp</code>打补丁，允许多用户同时登陆windows，互不干扰</li><li><code>event::clear</code>清除日志</li><li><code>evenv::drop</code>之后登陆不会再产生日志</li></ul><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul><li>操作系统日志<ul><li>eventvwr</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>后渗透-文件传输</title>
       <link href="/2020/09/20/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/"/>
       <url>/2020/09/20/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/</url>

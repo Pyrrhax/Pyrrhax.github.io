@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>归档 | Pyrrhax</title>
+    <title>后渗透-提权 | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -199,106 +199,235 @@
         <div class="main-container">
           <div class="content">
             
-<div id="archive" class="archive page">
-  <h1 class="page-title">归档</h1>
-  <h2 class="page-counter">
-    
-    你已经写了 26 篇文章！
-    
-  </h2>
-  
-  
-  
-  
-  <h2 class="page-title">2018</h1>
+<div id="post" class="page">
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/09/11/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%9E%8C%E7%9D%A1/" itemprop="url">【编程题】网易2019笔试：瞌睡</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-09-11T00:00:00+08:00">09-11</time>
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/21/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%8F%90%E6%9D%83/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="Pyrrhax">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
       </span>
-      
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">后渗透-提权</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-09-21T10:41:03+08:00">2020-09-21 10:41:03</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
     </header>
+    <main class="post-main" itemprop="articleBody">
+      <h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h3 id="本地提权"><a href="#本地提权" class="headerlink" title="本地提权"></a>本地提权</h3><ul>
+<li>已实现本地低权限账号登陆<ul>
+<li>远程溢出</li>
+<li>直接获得账号密码</li>
+</ul>
+</li>
+<li>希望获得更高权限<ul>
+<li>实现对目标进一步控制</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li>系统账号之间权限隔离<ul>
+<li>操作系统安全的基础</li>
+<li>用户空间</li>
+<li>内核空间</li>
+</ul>
+</li>
+<li>系统账号<ul>
+<li>用户账号登陆时获取权限令牌</li>
+<li>服务账号无需用户登陆已在后台启动的服务</li>
+</ul>
+</li>
+<li>Windows<ul>
+<li>user</li>
+<li>Administrator</li>
+<li>System</li>
+</ul>
+</li>
+<li>Linux<ul>
+<li>User</li>
+<li>Root</li>
+</ul>
+</li>
+</ul>
+<h4 id="ADMIN提权为SYSTEM"><a href="#ADMIN提权为SYSTEM" class="headerlink" title="ADMIN提权为SYSTEM"></a>ADMIN提权为SYSTEM</h4><ul>
+<li>Windows system账号<ul>
+<li>系统设置管理功能</li>
+<li>SysInternal Suite</li>
+<li>XP:<code>at 17:07 /interactive cmd</code></li>
+<li>Win7/8<code>sc Create syscmd binPath=&quot;cmd/K start type=own type=interact&quot;</code></li>
+<li>进程注入提权：<ul>
+<li>pinjector</li>
+<li><code>pinjector.exe -p 656 cmd 5555</code>(656是PID,隐蔽性强)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="抓包嗅探"><a href="#抓包嗅探" class="headerlink" title="抓包嗅探"></a>抓包嗅探</h3><ul>
+<li><p>Windows</p>
+<ul>
+<li>Wireshark</li>
+<li>OmniPeek</li>
+<li>commview</li>
+<li>Sniffpass(提取密码)</li>
+</ul>
+</li>
+<li><p>Linux</p>
+<ul>
+<li>Tcpdump</li>
+<li>Wireshark</li>
+<li>Dsniff</li>
+</ul>
+</li>
+</ul>
+<h3 id="键盘记录"><a href="#键盘记录" class="headerlink" title="键盘记录"></a>键盘记录</h3><ul>
+<li><p>klogger</p>
+</li>
+<li><p>木马窃取</p>
+<ul>
+<li>Darkcomet-RAT</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<h3 id="本地缓存密码"><a href="#本地缓存密码" class="headerlink" title="本地缓存密码"></a>本地缓存密码</h3><ul>
+<li>浏览器缓存的密码<ul>
+<li>IE浏览器</li>
+<li>firefox</li>
+</ul>
+</li>
+<li>网络密码</li>
+<li>无线密码</li>
+<li><a href="http://www.nirsoft.net" target="_blank" rel="noopener">http://www.nirsoft.net</a></li>
+<li>Dump SAM<ul>
+<li>Pwdump<ul>
+<li>/usr/share/windows-binaries/fgdump/PwDump.exe</li>
+<li>提取出windows密码的hash</li>
+<li>然后用ophdump暴破</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="WCE-Windows-credential-editor"><a href="#WCE-Windows-credential-editor" class="headerlink" title="WCE(Windows credential editor)"></a>WCE(Windows credential editor)</h3><ul>
+<li>/usr/share/windows-resources/wce/</li>
+<li>需要管理员权限</li>
+<li>wce-universal.exe -l / -lv</li>
+<li>wce-universal.exe -w</li>
+</ul>
+<h3 id="mimikatz"><a href="#mimikatz" class="headerlink" title="mimikatz"></a>mimikatz</h3><ul>
+<li><code>::</code>查看用法</li>
+<li><code>sekurlsa::wdigest</code> 查看用户与密码相关信息</li>
+<li><code>process::list</code>查看进程及ID</li>
+<li><code>process::suspend /pid:123</code> suspend进程ID为123的进程</li>
+<li><code>ts::multirdp</code>打补丁，允许多用户同时登陆windows，互不干扰</li>
+<li><code>event::clear</code>清除日志</li>
+<li><code>evenv::drop</code>之后登陆不会再产生日志</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>操作系统日志<ul>
+<li>eventvwr</li>
+</ul>
+</li>
+</ul>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
+        
+      </div>
+      
+    </footer>
   </article>
   
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/09/09/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%89%9B%E7%89%9B%E6%89%BE%E5%B7%A5%E4%BD%9C/" itemprop="url">【编程题】网易2019笔试：牛牛找工作</a>
-      </h1>
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
       
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-09-09T00:00:00+08:00">09-09</time>
-      </span>
+      <a href="/2020/09/20/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" rel="next" title="后渗透-文件传输"><i class="fas fa-angle-left"></i><span class="nav-title">后渗透-文件传输</span></a>
       
-    </header>
-  </article>
-  
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/09/08/%E6%88%91%E7%BF%BB%E8%AF%91%E7%9A%84%E6%96%87%E7%AB%A0%E5%9C%A8%E8%BF%99%E9%87%8C/" itemprop="url">我翻译的文章在这里</a>
-      </h1>
+    </div>
+    <div class="page-nav-prev page-nav-item">
       
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-09-08T00:00:00+08:00">09-08</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/" itemprop="url">在Hexo文章中插入图片</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-08-30T00:00:00+08:00">08-30</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/08/30/Java%E4%B8%AD%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%8D%E5%88%B6%EF%BC%88%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D%EF%BC%89/" itemprop="url">Java中二维数组的复制（深拷贝与浅拷贝）</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-08-30T00:00:00+08:00">08-30</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/08/15/%E7%94%A8Hexo+GitHubPages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" itemprop="url">用Hexo和GitHubPages搭建博客</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-08-15T00:00:00+08:00">08-15</time>
-      </span>
-      
-    </header>
-  </article>
-  
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/2/"><i class="fas fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
+    </div>
   </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "Pyrrhax",
+      "repo": "Pyrrhax.github.io",
+      "client_id": "ab41dde59a0f57819b1e",
+      "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "后渗透-提权",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
   
 </div>
 
@@ -359,6 +488,17 @@
 
 
   <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#提权"><span class="toc-text">提权</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#本地提权"><span class="toc-text">本地提权</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#ADMIN提权为SYSTEM"><span class="toc-text">ADMIN提权为SYSTEM</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#抓包嗅探"><span class="toc-text">抓包嗅探</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#键盘记录"><span class="toc-text">键盘记录</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#本地缓存密码"><span class="toc-text">本地缓存密码</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#WCE-Windows-credential-editor"><span class="toc-text">WCE(Windows credential editor)</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#mimikatz"><span class="toc-text">mimikatz</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#其它"><span class="toc-text">其它</span></a></li></ol></div>
+    </div>
+    
     
     
     <hr>

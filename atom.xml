@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-09-20T03:40:35.418Z</updated>
+  <updated>2020-09-21T02:41:32.281Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>后渗透-提权</title>
+    <link href="http://yoursite.com/2020/09/21/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%8F%90%E6%9D%83/"/>
+    <id>http://yoursite.com/2020/09/21/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%8F%90%E6%9D%83/</id>
+    <published>2020-09-21T02:41:03.000Z</published>
+    <updated>2020-09-21T02:41:32.281Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;提权&quot;&gt;&lt;a href=&quot;#提权&quot; class=&quot;headerlink&quot; title=&quot;提权&quot;&gt;&lt;/a&gt;提权&lt;/h2&gt;&lt;h3 id=&quot;本地提权&quot;&gt;&lt;a href=&quot;#本地提权&quot; class=&quot;headerlink&quot; title=&quot;本地提权&quot;&gt;&lt;/a&gt;本地提权&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;已实现本地低权限账号登陆&lt;ul&gt;
+&lt;li&gt;远程溢出&lt;/li&gt;
+&lt;li&gt;直接获得账号密码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;希望获得更高权限&lt;ul&gt;
+&lt;li&gt;实现对目标进一步控制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>后渗透-文件传输</title>
@@ -604,29 +637,6 @@
     
     
       <category term="多线程" scheme="http://yoursite.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【编程题】网易2019笔试：瞌睡</title>
-    <link href="http://yoursite.com/2018/09/11/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%9E%8C%E7%9D%A1/"/>
-    <id>http://yoursite.com/2018/09/11/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%9E%8C%E7%9D%A1/</id>
-    <published>2018-09-10T16:00:00.000Z</published>
-    <updated>2020-08-28T10:42:53.654Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h3&gt;&lt;p&gt;小易觉得高数课太无聊了，决定睡觉。不过他对课上的一些内容挺感兴趣，所以希望你在老师讲到有趣的部分的时候叫醒他一下。你知道了小易对一堂课每分钟知识点的感兴趣程度，并以分数量化，以及他在这堂课上每分钟是否会睡着，你可以叫醒他一次，这会使得他在接下来的k分钟内保持清醒。你需要选择一种方案最大化小易这堂课听到的知识点分值。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="编程题" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
-    
-      <category term="笔试" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/%E7%AC%94%E8%AF%95/"/>
-    
-    
-      <category term="编程题" scheme="http://yoursite.com/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/"/>
     
   </entry>
   
