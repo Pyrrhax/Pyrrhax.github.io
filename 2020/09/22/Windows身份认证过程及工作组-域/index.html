@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>后渗透-提权 | Pyrrhax</title>
+    <title>Windows身份认证过程及工作组/域 | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -203,7 +203,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/21/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%8F%90%E6%9D%83/">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/22/Windows%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E5%8F%8A%E5%B7%A5%E4%BD%9C%E7%BB%84-%E5%9F%9F/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="Pyrrhax">
        <meta itemprop="description" content="">
@@ -214,11 +214,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">后渗透-提权</h1>
+      <h1 class="post-title" itemprop="name headline">Windows身份认证过程及工作组/域</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-09-21T10:41:03+08:00">2020-09-21 10:41:03</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-09-22T20:50:17+08:00">2020-09-22 20:50:17</time></span>
         </span>
         
         
@@ -236,124 +236,61 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h3 id="本地提权"><a href="#本地提权" class="headerlink" title="本地提权"></a>本地提权</h3><ul>
-<li>已实现本地低权限账号登陆<ul>
-<li>远程溢出</li>
-<li>直接获得账号密码</li>
-</ul>
-</li>
-<li>希望获得更高权限<ul>
-<li>实现对目标进一步控制</li>
-</ul>
-</li>
-</ul>
-<a id="more"></a>
-
+      <h2 id="Windows身份认证过程"><a href="#Windows身份认证过程" class="headerlink" title="Windows身份认证过程"></a>Windows身份认证过程</h2><ul>
+<li>开机加载操作系统内核，windows启动之后，进入ntlogon.exe，即输入用户名和密码的界面。</li>
+<li>当点击确定后，ntlogon.exe调用lsass.exe（Local Security Assistant）的LsaLogonUser API,该API 调用MSV_1_0身份验证程序包，MSV 身份验证包将用户记录存储在 SAM 数据库（C:\Windows\System32\config）中。<a id="more"></a>
 <ul>
-<li>系统账号之间权限隔离<ul>
-<li>操作系统安全的基础</li>
-<li>用户空间</li>
-<li>内核空间</li>
+<li>ntlogon.exe会计算密码的LM(LAN Managere) Hash和NT(Windows NT) Hash</li>
+<li>lsass.exe会将这两种hash与SAM数据库中的进行对比。</li>
+<li>登陆成功后，会指派一个权限令牌，在该用户的lsass.exe进程中。</li>
 </ul>
 </li>
-<li>系统账号<ul>
-<li>用户账号登陆时获取权限令牌</li>
-<li>服务账号无需用户登陆已在后台启动的服务</li>
+<li>远程登陆也是在本地计算好LMHash和NTHash，在网络中传输的是Hash而不是明文密码。</li>
+<li>不同的登陆方式，在服务器端处理的方式也不同,大概有十几中：<ul>
+<li>本地登陆：NTML security package</li>
+<li>域登陆：域控制器服务器kerbros协议来响应，kerbros security package</li>
+<li>远程登陆：remote desktopsecurity package</li>
+<li>在多个服务器端的安全包中，其中有1个包（wdigest）在内存中缓存了当前登陆用户的明文密码</li>
 </ul>
 </li>
-<li>Windows<ul>
-<li>user</li>
-<li>Administrator</li>
-<li>System</li>
+<li>推荐阅读<a href="https://support.microsoft.com/zh-cn/help/102716/ntlm-user-authentication-in-windows" target="_blank" rel="noopener">Windows 中的 NTLM 用户身份验证</a></li>
 </ul>
-</li>
-<li>Linux<ul>
-<li>User</li>
-<li>Root</li>
-</ul>
-</li>
-</ul>
-<h4 id="ADMIN提权为SYSTEM"><a href="#ADMIN提权为SYSTEM" class="headerlink" title="ADMIN提权为SYSTEM"></a>ADMIN提权为SYSTEM</h4><ul>
-<li>Windows system账号<ul>
-<li>系统设置管理功能</li>
-<li>SysInternal Suite</li>
-<li>XP:<code>at 17:07 /interactive cmd</code></li>
-<li>Win7/8<code>sc Create syscmd binPath=&quot;cmd/K start type=own type=interact&quot;</code></li>
-<li>进程注入提权：<ul>
-<li>pinjector</li>
-<li><code>pinjector.exe -p 656 cmd 5555</code>(656是PID,隐蔽性强)</li>
+<h2 id="工作组"><a href="#工作组" class="headerlink" title="工作组"></a>工作组</h2><ul>
+<li>工作组就类似于目录，谁想加入某个工作组只要把工作组名字改成那个工作组即可。</li>
+<li>访问网络中的计算机（文件共享）默认使用Guest账号，需要在被访问的计算机启用Guest用户并允许Guest用户远程登陆<ul>
+<li>启用Guest用户：此电脑–》管理–》本地用户和组–》用户–》Guest–》取消打勾“账户已禁用”。</li>
+<li>允许用户远程登陆：控制面板–》管理工具–》本地安全策略–》本地策略–》用户权限分配–》找到 “拒绝从网络访问这台计算机”–》删掉其中的Guest这行。</li>
 </ul>
 </li>
 </ul>
-</li>
+<h2 id="域"><a href="#域" class="headerlink" title="域"></a>域</h2><ul>
+<li>而域则有一个域控制器（安装ActiveDirectory域控制服务的主机）来注册和管理域中的设备。</li>
+<li>加入域的计算机在开机时或注销后可以选择登陆到域还是登陆到本机。</li>
+<li>登陆到域需要使用域的用户和密码，一般管理员会给每个人都分配一个用户名和密码。</li>
 </ul>
-<h3 id="抓包嗅探"><a href="#抓包嗅探" class="headerlink" title="抓包嗅探"></a>抓包嗅探</h3><ul>
-<li><p>Windows</p>
-<ul>
-<li>Wireshark</li>
-<li>OmniPeek</li>
-<li>commview</li>
-<li>Sniffpass(提取密码)</li>
+<h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><ul>
+<li>Win+R运行dcpromo将本机升级为域控制器</li>
+<li>Win=R运行dsa.msc管理域中的用户和设备</li>
 </ul>
-</li>
-<li><p>Linux</p>
-<ul>
-<li>Tcpdump</li>
-<li>Wireshark</li>
-<li>Dsniff</li>
+<h2 id="微软账户和本地用户"><a href="#微软账户和本地用户" class="headerlink" title="微软账户和本地用户"></a>微软账户和本地用户</h2><ul>
+<li>本地用户在数据在重装系统后丢失，微软账户可以同步OneDrive，邮件等等内容。</li>
 </ul>
-</li>
-</ul>
-<h3 id="键盘记录"><a href="#键盘记录" class="headerlink" title="键盘记录"></a>键盘记录</h3><ul>
-<li><p>klogger</p>
-</li>
-<li><p>木马窃取</p>
-<ul>
-<li>Darkcomet-RAT</li>
-<li>…</li>
+<h2 id="用户密码和PIN"><a href="#用户密码和PIN" class="headerlink" title="用户密码和PIN"></a>用户密码和PIN</h2><ul>
+<li>PIN是Windows系统新添加的一套本地密码策略，不仅提高安全性，而且也可以让很多和账户相关的操作变得更加方便。与微软账户和本地用户无关。<ul>
+<li>设置PIN:设置–》账户–》登陆选项–》Windows Hello PIN</li>
 </ul>
 </li>
 </ul>
-<h3 id="本地缓存密码"><a href="#本地缓存密码" class="headerlink" title="本地缓存密码"></a>本地缓存密码</h3><ul>
-<li>浏览器缓存的密码<ul>
-<li>IE浏览器</li>
-<li>firefox</li>
-</ul>
-</li>
-<li>网络密码</li>
-<li>无线密码</li>
-<li><a href="http://www.nirsoft.net" target="_blank" rel="noopener">http://www.nirsoft.net</a></li>
-<li>Dump SAM<ul>
-<li>Pwdump<ul>
-<li>/usr/share/windows-binaries/fgdump/PwDump.exe</li>
-<li>提取出windows密码的hash</li>
-<li>然后用ophdump暴破</li>
+<h2 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h2><ul>
+<li>远程连接网络中的win10设备，需要在被连接的设备上设置”允许远程连接“，第一次连接需要输入用户名和密码，之后则需要在控制面板–》凭据管理器 中修改。</li>
+<li>密码为空的账户默认无法远程登陆，需要在本地安全策略中修改。<ul>
+<li>控制面板–》管理工具–》本地安全策略–》安全选项–》”账户：使用空密码的本地账户只允许进行控制台登陆“修改为禁用。</li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<h3 id="WCE-Windows-credential-editor"><a href="#WCE-Windows-credential-editor" class="headerlink" title="WCE(Windows credential editor)"></a>WCE(Windows credential editor)</h3><ul>
-<li>/usr/share/windows-resources/wce/</li>
-<li>需要管理员权限</li>
-<li>wce-universal.exe -l / -lv</li>
-<li>wce-universal.exe -w</li>
-</ul>
-<h3 id="mimikatz"><a href="#mimikatz" class="headerlink" title="mimikatz"></a>mimikatz</h3><ul>
-<li><code>::</code>查看用法</li>
-<li><code>sekurlsa::wdigest</code> 查看用户与密码相关信息</li>
-<li><code>process::list</code>查看进程及ID</li>
-<li><code>process::suspend /pid:123</code> suspend进程ID为123的进程</li>
-<li><code>ts::multirdp</code>打补丁，允许多用户同时登陆windows，互不干扰</li>
-<li><code>event::clear</code>清除日志</li>
-<li><code>evenv::drop</code>之后登陆不会再产生日志</li>
-</ul>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
-<li>操作系统日志<ul>
-<li>eventvwr</li>
-</ul>
-</li>
-</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>微软相关认证MSCE,MCST等</p>
+<p>SAM    (Security Account Manager)安全帐户管理器 </p>
+<p>OWF    (One way function)单向函数</p>
 
     </main>
     <footer class="post-footer">
@@ -371,7 +308,7 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2020/09/20/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" rel="next" title="后渗透-文件传输"><i class="fas fa-angle-left"></i><span class="nav-title">后渗透-文件传输</span></a>
+      <a href="/2020/09/21/%E6%8F%90%E6%9D%83-%E6%9C%AC%E5%9C%B0%E6%8F%90%E6%9D%83%E5%8F%8A%E5%87%A0%E4%B8%AA%E5%B7%A5%E5%85%B7(PwDump%E3%80%81WCE%E3%80%81mimikatz)/" rel="next" title="提权-本地提权及几个工具(PwDump、WCE、mimikatz)"><i class="fas fa-angle-left"></i><span class="nav-title">提权-本地提权及几个工具(PwDump、WCE、mimikatz)</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
@@ -401,7 +338,7 @@
       "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "后渗透-提权",
+      "issue_title": "Windows身份认证过程及工作组/域",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -458,7 +395,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">26</a></div>
+      <div><a href="/archives/">27</a></div>
     </div>
     
     
@@ -496,7 +433,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#提权"><span class="toc-text">提权</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#本地提权"><span class="toc-text">本地提权</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#ADMIN提权为SYSTEM"><span class="toc-text">ADMIN提权为SYSTEM</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#抓包嗅探"><span class="toc-text">抓包嗅探</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#键盘记录"><span class="toc-text">键盘记录</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#本地缓存密码"><span class="toc-text">本地缓存密码</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#WCE-Windows-credential-editor"><span class="toc-text">WCE(Windows credential editor)</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#mimikatz"><span class="toc-text">mimikatz</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#其它"><span class="toc-text">其它</span></a></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Windows身份认证过程"><span class="toc-text">Windows身份认证过程</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#工作组"><span class="toc-text">工作组</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#域"><span class="toc-text">域</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#操作"><span class="toc-text">操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#微软账户和本地用户"><span class="toc-text">微软账户和本地用户</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#用户密码和PIN"><span class="toc-text">用户密码和PIN</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#远程连接"><span class="toc-text">远程连接</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#其它"><span class="toc-text">其它</span></a></li></ol></div>
     </div>
     
     
