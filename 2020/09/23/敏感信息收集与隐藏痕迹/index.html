@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Pyrrhax" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>敏感信息收集与隐藏痕迹 | Pyrrhax</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Pyrrhax</a></h1>
+        <h2 class="subtitle"></h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/23/%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B8%8E%E9%9A%90%E8%97%8F%E7%97%95%E8%BF%B9/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="Pyrrhax">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">敏感信息收集与隐藏痕迹</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-09-23T17:14:33+08:00">2020-09-23 17:14:33</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <a id="more"></a>
+
+<h3 id="基本信息收集"><a href="#基本信息收集" class="headerlink" title="基本信息收集"></a>基本信息收集</h3><ul>
+<li><p>Linux</p>
+<ul>
+<li><table>
+<thead>
+<tr>
+<th>查看信息</th>
+<th>操作</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DNS配置</td>
+<td>/etc/resolv.conf</td>
+<td>是否有机会DNS篡改，劫持</td>
+</tr>
+<tr>
+<td>用户账号</td>
+<td>/etc/passwd</td>
+<td></td>
+</tr>
+<tr>
+<td>用户密码</td>
+<td>/etc/shadow</td>
+<td></td>
+</tr>
+<tr>
+<td>当前用户</td>
+<td><code>whoami</code></td>
+<td></td>
+</tr>
+<tr>
+<td>所有登陆用户</td>
+<td><code>who -a</code></td>
+<td></td>
+</tr>
+<tr>
+<td>网卡信息</td>
+<td><code>ifconfig -a</code></td>
+<td></td>
+</tr>
+<tr>
+<td>防火墙设置</td>
+<td><code>iptables -L -n</code></td>
+<td></td>
+</tr>
+<tr>
+<td>路由表</td>
+<td><code>netstat -rn</code></td>
+<td></td>
+</tr>
+<tr>
+<td>操作系统信息</td>
+<td><code>uname -a</code></td>
+<td></td>
+</tr>
+<tr>
+<td>当前运行的进程</td>
+<td><code>ps aux</code></td>
+<td></td>
+</tr>
+<tr>
+<td>安装的软件包</td>
+<td><code>dpkg -l</code></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>查看,查看,查看</p>
+</li>
+<li><p>,ps aux</p>
+</li>
+<li><p>dpkg -l</p>
+</li>
+</ul>
+</li>
+<li><p>Windows</p>
+<ul>
+<li><table>
+<thead>
+<tr>
+<th>查看信息</th>
+<th>操作</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ip掩码网关等</td>
+<td>ipconfig /all</td>
+<td></td>
+</tr>
+<tr>
+<td>dns缓存</td>
+<td>ipconfig /displaydns</td>
+<td></td>
+</tr>
+<tr>
+<td>开放端口及可执行程序</td>
+<td>netstat -bano</td>
+<td></td>
+</tr>
+<tr>
+<td>路由表</td>
+<td>netstat -r</td>
+<td></td>
+</tr>
+<tr>
+<td>共享</td>
+<td>net view</td>
+<td></td>
+</tr>
+<tr>
+<td>共享</td>
+<td>net view /domain</td>
+<td></td>
+</tr>
+<tr>
+<td>域信息</td>
+<td>net user /domain</td>
+<td></td>
+</tr>
+<tr>
+<td>域信息</td>
+<td>net usr %username% /domain</td>
+<td></td>
+</tr>
+<tr>
+<td>密码策略</td>
+<td>net accounts</td>
+<td></td>
+</tr>
+<tr>
+<td>共享目录</td>
+<td>net share</td>
+<td></td>
+</tr>
+<tr>
+<td>操作：把用户加入管理员组</td>
+<td>net localgroup administrators username /add</td>
+<td></td>
+</tr>
+<tr>
+<td>域控制器主机</td>
+<td>net group “Domain Controllers” /domain</td>
+<td></td>
+</tr>
+<tr>
+<td>操作：开共享</td>
+<td>net share name$=C:/unlimited</td>
+<td></td>
+</tr>
+<tr>
+<td>操作：启动锁定账号</td>
+<td>net user username /active:yes /domain</td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="WMIC-Windows-Management-instrumentation"><a href="#WMIC-Windows-Management-instrumentation" class="headerlink" title="WMIC(Windows Management instrumentation)"></a>WMIC(Windows Management instrumentation)</h3><ul>
+<li>被powershell的Get-WmiObject取代</li>
+<li>Get-WmiObject又被Get-CimInstance取代</li>
+<li>了解下Get-CimInstance</li>
+<li>功能示例：<ul>
+<li>查看网络登陆记录</li>
+<li>查看当前进程，什么程序通过什么命令执行的进程</li>
+<li>结束一个进程</li>
+<li>查看操作系统安装的软件</li>
+<li>静默删除软件</li>
+<li>查看共享文件夹</li>
+<li>开启“允许远程桌面”</li>
+</ul>
+</li>
+</ul>
+<h3 id="敏感信息收集"><a href="#敏感信息收集" class="headerlink" title="敏感信息收集"></a>敏感信息收集</h3><ul>
+<li>商业信息</li>
+<li>系统信息</li>
+<li>Linux<ul>
+<li>/etc;/usr/local/etc</li>
+<li>/etc/passed;/etc/shadow</li>
+<li>.ssh;.gnupg 公私钥</li>
+<li>邮件和数据文件</li>
+<li>业务数据库,身份认证服务器数据库</li>
+<li>/tmp</li>
+</ul>
+</li>
+<li>Windows<ul>
+<li>SAM数据库；注册表文件</li>
+<li>%SYSTEMROOT%\repair\SAM</li>
+<li>%SYSTEMROOT%\System32\config\Regback\SAM</li>
+<li>业务数据库，身份认证数据库</li>
+<li>临时文件目录<ul>
+<li>UserProfile\AppData\Local\Microsoft\Windows\Temporary Internet Files\</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="隐藏痕迹"><a href="#隐藏痕迹" class="headerlink" title="隐藏痕迹"></a>隐藏痕迹</h3><ul>
+<li><p>Windows</p>
+<ul>
+<li>禁止在登录界面显示新建账号<ul>
+<li>reg add 添加注册表项</li>
+</ul>
+</li>
+<li>del %WINDIR%*.log /a/s/q/f</li>
+</ul>
+</li>
+<li><p>Linux</p>
+<ul>
+<li><p>history</p>
+<ul>
+<li>history -c</li>
+<li>rm .bash_history&amp;&amp;touch .bash_history&amp;&amp;chattr +i .bash_history</li>
+</ul>
+</li>
+<li><p>/var/log/</p>
+<ul>
+<li>auth.log或secure  (REH)</li>
+<li>btmp 或 wtmp 文件(命令：last或lastb)</li>
+<li>lastlog和faillog命令</li>
+</ul>
+</li>
+<li><p>其它日志和HIDS等</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>Ubuntu网络更新源已经不可用，可以先mount安装光盘<code></code>，此时/etc/apt/sources.list会自动添加光盘为更新源，此时再安装软件包，如果光盘中有就可以成功安装。</p>
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><p>scp</p>
+<p>lsattr</p>
+<p>chattr</p>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2020/09/23/%E6%8F%90%E6%9D%83-%E5%88%A9%E7%94%A8%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%BD%93%E6%8F%90%E6%9D%83/" rel="next" title="提权-利用配置不当提权"><i class="fas fa-angle-left"></i><span class="nav-title">提权-利用配置不当提权</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2020/09/23/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-IEEE-802-11%E6%A0%87%E5%87%86/" rel="prev" title="无线渗透"><span class="nav-title">无线渗透</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "Pyrrhax",
+      "repo": "Pyrrhax.github.io",
+      "client_id": "ab41dde59a0f57819b1e",
+      "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "敏感信息收集与隐藏痕迹",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="Pyrrhax">
+  
+  <h1 class="author-name">Pyrrhax</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">31</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">10</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">11</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#基本信息收集"><span class="toc-text">基本信息收集</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#WMIC-Windows-Management-instrumentation"><span class="toc-text">WMIC(Windows Management instrumentation)</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#敏感信息收集"><span class="toc-text">敏感信息收集</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#隐藏痕迹"><span class="toc-text">隐藏痕迹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#其它"><span class="toc-text">其它</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#命令"><span class="toc-text">命令</span></a></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:Pyrrhax.hf@gmail.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/Pyrrhax" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2020</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

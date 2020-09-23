@@ -282,6 +282,33 @@
 </ul>
 </li>
 </ul>
+<h2 id="CVE-2012-0056"><a href="#CVE-2012-0056" class="headerlink" title="CVE-2012-0056"></a>CVE-2012-0056</h2><ul>
+<li><p>CVE-2012-0056</p>
+<ul>
+<li>/proc/pid/mem</li>
+<li>kernels&gt;=2.6.39</li>
+<li><a href="http://blog.zx2c4.com/749" target="_blank" rel="noopener">http://blog.zx2c4.com/749</a></li>
+</ul>
+</li>
+<li><p>Ubuntu11.10</p>
+<ul>
+<li><a href="http://old-releases.ubuntu.com/releases/11.10/" target="_blank" rel="noopener">http://old-releases.ubuntu.com/releases/11.10/</a></li>
+</ul>
+</li>
+<li><p>gcc</p>
+<ul>
+<li><code>sudo apt-cdrom add</code>把光盘作为apt的更新源 </li>
+<li><code>sudo apt-get install gcc</code></li>
+<li><code>gcc 18411.c -o exp</code></li>
+</ul>
+</li>
+<li><p>首先searchesploit 18411.c 找到文件位置 <code>/usr/share/exploitdb/exploits/linux/local</code></p>
+</li>
+<li><p>scp /usr/share/exploitdb/exploits/linux/local/18411.c <a href="mailto:flower@192.168.0.110">flower@192.168.0.110</a>:/home/flower</p>
+</li>
+<li><p>gcc编译好后，直接执行./exp，发现命令提示符$变为#，提权成功。</p>
+</li>
+</ul>
 <h2 id="其它："><a href="#其它：" class="headerlink" title="其它："></a>其它：</h2><p>Ms08-067</p>
 <p>Ms09-001</p>
 <p>Ms10-017</p>
@@ -307,6 +334,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2020/09/23/%E6%8F%90%E6%9D%83-%E5%88%A9%E7%94%A8%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%BD%93%E6%8F%90%E6%9D%83/" rel="prev" title="提权-利用配置不当提权"><span class="nav-title">提权-利用配置不当提权</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -390,7 +419,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">28</a></div>
+      <div><a href="/archives/">31</a></div>
     </div>
     
     
@@ -428,7 +457,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#提权-利用漏洞提权"><span class="toc-text">提权-利用漏洞提权</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Ms11-080"><span class="toc-text">Ms11-080</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Ms14-068"><span class="toc-text">Ms14-068</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#其它："><span class="toc-text">其它：</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Kali修改默认python为python3"><span class="toc-text">Kali修改默认python为python3</span></a></li></ol></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#提权-利用漏洞提权"><span class="toc-text">提权-利用漏洞提权</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Ms11-080"><span class="toc-text">Ms11-080</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#Ms14-068"><span class="toc-text">Ms14-068</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#CVE-2012-0056"><span class="toc-text">CVE-2012-0056</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#其它："><span class="toc-text">其它：</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Kali修改默认python为python3"><span class="toc-text">Kali修改默认python为python3</span></a></li></ol></li></ol></div>
     </div>
     
     
