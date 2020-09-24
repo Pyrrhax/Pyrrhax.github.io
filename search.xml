@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>无线网运行模式和硬件设备基础知识</title>
+      <link href="/2020/09/24/%E6%97%A0%E7%BA%BF%E7%BD%91%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+      <url>/2020/09/24/%E6%97%A0%E7%BA%BF%E7%BD%91%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+      
+        <content type="html"><![CDATA[<h2 id="无线网运行模式和硬件设备基础知识"><a href="#无线网运行模式和硬件设备基础知识" class="headerlink" title="无线网运行模式和硬件设备基础知识"></a>无线网运行模式和硬件设备基础知识</h2><h3 id="无线网络运行模式"><a href="#无线网络运行模式" class="headerlink" title="无线网络运行模式"></a>无线网络运行模式</h3><p>也称为无线网络架构，默认情况下有两种：</p><ul><li><p>Infrastructure</p><ul><li>AP维护SSID</li><li>至少包含一个AP和一个Station，形成一个Basic Service Set(BSS)</li><li>AP连接到有线网络，称为Distribution System(DS)</li><li>连接到同一个DS的多个AP形成一个Extended Service Set(ESS)</li></ul></li></ul><a id="more"></a><ul><li><p>Ad-Hoc</p><ul><li>STA维护SSID</li><li>也称为Independent Basic Service Set(IBSS)</li><li>也称为peer to peer 模式</li><li>其中一个STA负责AP的工作<ul><li>通过beacon广播SSID</li><li>对其它STAs进行身份验证</li></ul></li></ul><p>Service Set Identifier(SSID)</p><ul><li>AP每秒钟约10次通过Beacon帧广播SSID</li><li>客户端连接到无线网络后也会宣告SSID</li></ul></li></ul><h4 id="Wireless-Distribution-System-WDS"><a href="#Wireless-Distribution-System-WDS" class="headerlink" title="Wireless Distribution System(WDS)"></a>Wireless Distribution System(WDS)</h4><ul><li>与有线DS类似，只是用过无线连接的多个AP组成的网络<ul><li>Bridging——只有AP间彼此通信</li><li>Repeating——允许所有AP和STA彼此通信</li></ul></li></ul><h4 id="MONITOR-MODE"><a href="#MONITOR-MODE" class="headerlink" title="MONITOR MODE"></a>MONITOR MODE</h4><ul><li>并不是一种真正的无线模式</li><li>允许无线网卡没有任何筛选地抓包（802.11包头）</li><li>类比有线网络的混杂模式</li><li>适合的网卡和驱动不但可以monitor,更可以Injection</li></ul><h3 id="无线网硬件设备及基本概念"><a href="#无线网硬件设备及基本概念" class="headerlink" title="无线网硬件设备及基本概念"></a>无线网硬件设备及基本概念</h3><h4 id="无线网卡"><a href="#无线网卡" class="headerlink" title="无线网卡"></a>无线网卡</h4><ul><li>需要可以Monitor,可以Injection</li></ul><h4 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h4><ul><li>分贝dB<ul><li>测量无线信号强度</li></ul></li><li>B：向Alexander Graham Bell 致敬<ul><li>今天大部分声学设备的发明者和理论奠基人</li></ul></li><li>dB：表示2个信号之间的差异比率，用于描述设备的信号强度<ul><li>是一个相对值</li></ul></li><li>dBm：功率值与1mW进行比较的dB值结果</li><li>每增加3dBm，功率增加约1倍</li><li>每增加10dBm，功率约增加10倍</li><li>全向天线<ul><li>dBi：全向天线辐射强度</li><li>波形：甜甜圈</li><li>增益过高的全向天线会变成定向天线</li></ul></li><li>定向天线<ul><li>dBd：定向天线辐射强度</li><li>双四边形，定向发送信号，比全向天线距离更远（方向正确情况下）</li><li>八木天线，引向反射天线</li><li>平面天线：用于办公室，美观</li><li>扇形天线：常用于移动电话网络3到4个联合使用实现全向信号覆盖</li><li>网状天线：射束带更加集中，功率更强</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>无线渗透</title>
       <link href="/2020/09/23/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-IEEE-802-11%E6%A0%87%E5%87%86/"/>
       <url>/2020/09/23/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-IEEE-802-11%E6%A0%87%E5%87%86/</url>

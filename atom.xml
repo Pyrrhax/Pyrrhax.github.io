@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-09-23T14:13:32.088Z</updated>
+  <updated>2020-09-24T02:49:49.794Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>无线网运行模式和硬件设备基础知识</title>
+    <link href="http://yoursite.com/2020/09/24/%E6%97%A0%E7%BA%BF%E7%BD%91%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    <id>http://yoursite.com/2020/09/24/%E6%97%A0%E7%BA%BF%E7%BD%91%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</id>
+    <published>2020-09-24T02:49:22.000Z</published>
+    <updated>2020-09-24T02:49:49.794Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;无线网运行模式和硬件设备基础知识&quot;&gt;&lt;a href=&quot;#无线网运行模式和硬件设备基础知识&quot; class=&quot;headerlink&quot; title=&quot;无线网运行模式和硬件设备基础知识&quot;&gt;&lt;/a&gt;无线网运行模式和硬件设备基础知识&lt;/h2&gt;&lt;h3 id=&quot;无线网络运行模式&quot;&gt;&lt;a href=&quot;#无线网络运行模式&quot; class=&quot;headerlink&quot; title=&quot;无线网络运行模式&quot;&gt;&lt;/a&gt;无线网络运行模式&lt;/h3&gt;&lt;p&gt;也称为无线网络架构，默认情况下有两种：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Infrastructure&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AP维护SSID&lt;/li&gt;
+&lt;li&gt;至少包含一个AP和一个Station，形成一个Basic Service Set(BSS)&lt;/li&gt;
+&lt;li&gt;AP连接到有线网络，称为Distribution System(DS)&lt;/li&gt;
+&lt;li&gt;连接到同一个DS的多个AP形成一个Extended Service Set(ESS)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>无线渗透</title>
@@ -622,36 +655,6 @@
       &lt;h1 id=&quot;NC——TELNET-BANNER&quot;&gt;&lt;a href=&quot;#NC——TELNET-BANNER&quot; class=&quot;headerlink&quot; title=&quot;NC——TELNET / BANNER&quot;&gt;&lt;/a&gt;NC——TELNET / BANNER&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;nc -nv 1.1.1.1 110&lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>渗透测试实验环境搭建</title>
-    <link href="http://yoursite.com/2020/08/26/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
-    <id>http://yoursite.com/2020/08/26/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</id>
-    <published>2020-08-26T15:10:08.000Z</published>
-    <updated>2020-08-31T01:59:47.465Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;Windows&lt;/li&gt;
-&lt;li&gt;Redhat、Ubuntu&lt;ul&gt;
-&lt;li&gt;安装LAMP&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Metasploitable&lt;/li&gt;
-&lt;li&gt;m0n0wall&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
