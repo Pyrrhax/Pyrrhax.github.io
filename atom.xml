@@ -87,19 +87,77 @@
     <link href="http://yoursite.com/2020/09/23/%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B8%8E%E9%9A%90%E8%97%8F%E7%97%95%E8%BF%B9/"/>
     <id>http://yoursite.com/2020/09/23/%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B8%8E%E9%9A%90%E8%97%8F%E7%97%95%E8%BF%B9/</id>
     <published>2020-09-23T09:14:33.000Z</published>
-    <updated>2020-09-23T09:16:20.266Z</updated>
+    <updated>2020-09-24T03:18:12.077Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-
-&lt;h3 id=&quot;基本信息收集&quot;&gt;&lt;a href=&quot;#基本信息收集&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h3 id=&quot;基本信息收集&quot;&gt;&lt;a href=&quot;#基本信息收集&quot; class=&quot;headerlink&quot; title=&quot;基本信息收集&quot;&gt;&lt;/a&gt;基本信息收集&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Linux&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;查看信息&lt;/th&gt;
+&lt;th&gt;操作&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;DNS配置&lt;/td&gt;
+&lt;td&gt;/etc/resolv.conf&lt;/td&gt;
+&lt;td&gt;是否有机会DNS篡改，劫持&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;用户账号&lt;/td&gt;
+&lt;td&gt;/etc/passwd&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;用户密码&lt;/td&gt;
+&lt;td&gt;/etc/shadow&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;当前用户&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;whoami&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;所有登陆用户&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;who -a&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;网卡信息&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ifconfig -a&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;防火墙设置&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;iptables -L -n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;路由表&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;netstat -rn&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;操作系统信息&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;uname -a&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;当前运行的进程&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ps aux&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;安装的软件包&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;dpkg -l&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
@@ -149,7 +207,7 @@
     <link href="http://yoursite.com/2020/09/22/%E6%8F%90%E6%9D%83-%E5%88%A9%E7%94%A8%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83/"/>
     <id>http://yoursite.com/2020/09/22/%E6%8F%90%E6%9D%83-%E5%88%A9%E7%94%A8%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83/</id>
     <published>2020-09-22T13:04:03.000Z</published>
-    <updated>2020-09-23T02:18:24.619Z</updated>
+    <updated>2020-09-24T03:17:02.685Z</updated>
     
     <summary type="html">
     
