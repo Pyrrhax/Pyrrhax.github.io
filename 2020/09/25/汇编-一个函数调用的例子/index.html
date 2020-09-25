@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>主动信息收集--主机发现 | Pyrrhax</title>
+    <title>汇编-一个函数调用的例子 | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -203,7 +203,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/13/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0/">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/25/%E6%B1%87%E7%BC%96-%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%9A%84%E4%BE%8B%E5%AD%90/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="Pyrrhax">
        <meta itemprop="description" content="">
@@ -214,11 +214,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">主动信息收集--主机发现</h1>
+      <h1 class="post-title" itemprop="name headline">汇编-一个函数调用的例子</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-09-13T17:57:46+08:00">2020-09-13 17:57:46</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-09-25T23:49:38+08:00">2020-09-25 23:49:38</time></span>
         </span>
         
         
@@ -227,7 +227,7 @@
         
         <span class="post-categories">
           
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/%E6%B1%87%E7%BC%96/" itemprop="url" rel="index"><span itemprop="name">汇编</span></a></span>
         </span>
         
         
@@ -236,197 +236,141 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h1 id="主动信息收集"><a href="#主动信息收集" class="headerlink" title="主动信息收集"></a>主动信息收集</h1><ul>
-<li><p>直接与目标系统交互通信</p>
-</li>
-<li><p>无法避免留下访问痕迹</p>
-</li>
-<li><p>使用受控的第三方电脑进行探测</p>
+      <h2 id="汇编-寄存器及主要指令"><a href="#汇编-寄存器及主要指令" class="headerlink" title="汇编-寄存器及主要指令"></a>汇编-寄存器及主要指令</h2><h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p>可以分为四类：</p>
 <ul>
-<li>使用代理或已经被控制的主机</li>
-<li>做好被封杀的准备</li>
-<li>使用噪声迷惑目标，淹没真实的探测流量</li>
+<li><p>数据寄存器</p>
+<ul>
+<li><p>EAX（Accumulator）</p>
+<ul>
+<li>可用于乘除，输入输出等操作，他们的使用频率很高。EAX还通常用于存储函数的返回值。</li>
 </ul>
 </li>
-<li><p>扫描</p>
+<li><p>EBX（Base Register） </p>
 <ul>
-<li>发送不同的探测，根据返回结果判断目标状态</li>
+<li>作为存储器指针来使用，用来访问存储器。</li>
+</ul>
+</li>
+<li><p>ECX (Count Register)</p>
+<ul>
+<li>在循环和字符串操作时，用来控制循环次数；在移多位时，要用CL来指明移位的位数。</li>
+</ul>
+</li>
+<li><p>EDX (Data Register)</p>
+<ul>
+<li>在进行乘除运算时，作为默认操作数参与运算，也可用于存放I/O的端口地址。</li>
+</ul>
+</li>
 </ul>
 <a id="more"></a>
+</li>
+<li><p>地址寄存器：</p>
+<ul>
+<li>变址（ESI，EDI）<ul>
+<li>分别作为“原地址指针”和“目的地址指针”</li>
+</ul>
+</li>
+<li>指针（ESP,EBP）<ul>
+<li>栈帧顶，栈帧底</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>段寄存器：ES CS SS DS FS GS</p>
+<ul>
+<li>内存单元的物理地址，由段寄存器的值和一个偏移量组合，组成一个大的内存地址。</li>
+<li>CS:代码段</li>
+<li>DS：数据段</li>
+<li>ES：附加段</li>
+<li>SS：堆栈段</li>
+<li>FS：附加段</li>
+<li>GS 附加段</li>
+<li>融合变址寄存器，在很多字符串操作指令中，DS:ESI指向源串，ES:EDI指向目标串。</li>
+</ul>
+</li>
+<li><p>指令寄存器  EIP（下一步执行的代码）; 标志寄存器 EFlags</p>
+</li>
+</ul>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><ul>
+<li>数据传送指令：<ul>
+<li>MOV  目的操作数，源操作数</li>
+<li>XCHG 寄存器A ，寄存器B 交换</li>
+<li>PUSH 寄存器，POP 寄存器 把寄存器的操作数压入堆栈或从堆栈取出到寄存器</li>
+<li>PUSHF,POPF （标志寄存器出入栈）</li>
+<li>PUSHA,POPA 这两个指令的作用是把通用寄存器压栈出栈。寄存器的入栈顺序依次是：EAX,ECX,EDX,EBX,ESP(初始值)，EBP,ESI,EDI.出栈相反。</li>
+<li>LEA,LDS,LES 取地址到寄存器</li>
+</ul>
+</li>
+<li>位运算指令：<ul>
+<li>ADN,OR,XOR,NOT,TEST</li>
+<li>SHR,SHL,SAR,,SAL  算数移动和逻辑移动</li>
+<li>ROR,ROL,RCR,RCL 循环位移</li>
+</ul>
+</li>
+<li>算数运算指令：<ul>
+<li>ADD ADC 加法</li>
+<li>SUB SBB 减</li>
+<li>INC EDC 自增 自减</li>
+<li>NEG 自反</li>
+<li>MUL IMUL 乘</li>
+<li>DIV IDIV 除</li>
+</ul>
+</li>
+<li>流程控制指令<ul>
+<li>CMP 比较op1与op2的值</li>
+<li>JMP 跳转指定地址</li>
+<li>LOOP 循环指令</li>
+<li>CALL RET 子程序点用，返回</li>
+<li>INT IRET中断调用及返回</li>
+<li>REP REPE REPNE 重复前缀指令</li>
+</ul>
+</li>
+<li>条件转移命令<ul>
+<li>JXX：当特定条件成立则跳往指定地址<ul>
+<li>Z为0</li>
+<li>G大于</li>
+<li>L小于</li>
+<li>E等于</li>
+<li>N相反</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>字符串操作指令集<ul>
+<li>MOVSB MOVSW MOVSD字符串传送指令(B字节，W字，D双字)</li>
+<li>CMPSB CMPSW CMPSD 字符串比较指令</li>
+<li>SCASB,SCASW字符串搜索指令</li>
+<li>LODSB,LODSW,STOSB,STOSW字符串载入或驻存指令</li>
+</ul>
+</li>
+</ul>
+<h2 id="一个程序调用的例子"><a href="#一个程序调用的例子" class="headerlink" title="一个程序调用的例子"></a>一个程序调用的例子</h2><h3 id="C语言程序"><a href="#C语言程序" class="headerlink" title="C语言程序"></a>C语言程序</h3><figure class="hljs highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x,<span class="hljs-keyword">int</span> y)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> z=<span class="hljs-number">0</span>;<br>    z=x+y;<br>    <span class="hljs-keyword">return</span> z;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> n=<span class="hljs-number">0</span>;<br>    n=add(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>,n);<br>&#125;<br></code></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<h1 id="发现"><a href="#发现" class="headerlink" title="发现"></a>发现</h1><ul>
-<li>识别活着的主机<ul>
-<li>潜在的被攻击目标</li>
-</ul>
-</li>
-<li>输出一个IP地址列表</li>
-<li>2、3、4层发现</li>
-</ul>
-<h2 id="二层发现"><a href="#二层发现" class="headerlink" title="二层发现"></a>二层发现</h2><ul>
-<li><p>优点：扫描速度快，可靠。</p>
-</li>
-<li><p>缺点：不可路由</p>
-</li>
-<li><p>Arp协议</p>
+
+
+<h3 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h3><p>一个例子：</p>
 <ul>
-<li>抓包</li>
+<li>main</li>
 </ul>
-</li>
-<li><p>arping</p>
-</li>
-<li><p>arping 1.1.1.1 -c 1</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs assembly">void main()<br>***********<br>		int n&#x3D;0;<br>0041140E mov dword ptr[n],0<br>		n&#x3D;add(1,3);<br>00411415 push 3					&#x2F;&#x2F;<br>00411417 push 1					&#x2F;&#x2F; 参数入栈后ESP抬高（值变小，往低地址拓展）<br>00411419 call add(411096h)		&#x2F;&#x2F;EIP入栈，ESP抬高，跳转到函数入口地址<br>0041141E add  esp,8				&#x2F;&#x2F;add完之后恢复栈帧<br>00411421 mov  dword ptr[n],eax  &#x2F;&#x2F;函数返回的解雇存储在eax中，此时把结果赋值给n<br>		printf(&quot;%d\n,n&quot;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
 <ul>
-<li>编写一个扫描本网段的脚本</li>
-<li>编写一个扫描指定ip列表的脚本</li>
+<li>add(int x,int y)</li>
 </ul>
-</li>
-<li><p>nmap -sn（nmap还发了一个反向域名解析请求）</p>
-<ul>
-<li>nmap -sn -iL</li>
-</ul>
-</li>
-<li><p>Netdiscover</p>
-<ul>
-<li>专用于二层发现</li>
-<li>可用于无线和交换网络</li>
-<li>主动和被动探测<ul>
-<li>主动：<ul>
-<li>netdiscover -i eth0 -r 1.1.1.0/24</li>
-<li>netdiscover -l iplist.txt</li>
-</ul>
-</li>
-<li>被动：<ul>
-<li>netdiscover -p</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Scapy</p>
-<ul>
-<li>Python库</li>
-<li>也可作为单独的工具使用</li>
-<li>抓包、分析、创建、修改、注入网络流量</li>
-</ul>
-</li>
-<li><p>apt-get install python3-gnuplot</p>
-</li>
-<li><p>Scapy</p>
-<ul>
-<li>ARP().display()</li>
-<li>sr1()</li>
-<li>Python脚本</li>
-</ul>
-</li>
-<li><p>在不同的环境下可使用的工具不确定。</p>
-</li>
-</ul>
-<h1 id="三层发现"><a href="#三层发现" class="headerlink" title="三层发现"></a>三层发现</h1><ul>
-<li><p>优点</p>
-<ul>
-<li>可路由</li>
-<li>速度比较快</li>
-</ul>
-</li>
-<li><p>缺点</p>
-<ul>
-<li>速度比二层慢</li>
-<li>经常被边界防火墙过滤</li>
-</ul>
-</li>
-<li><p>IP、ICMP协议</p>
-</li>
-<li><p>ping</p>
-</li>
-<li><p>traceroute(发的UDP,IP段的TTL=0后会返回ICMP)，每一跳是路由器的内侧网口</p>
-</li>
-<li><p>ping -R返回的是外侧网口 <a href="https://blog.csdn.net/weixin_42714910/article/details/108351817" target="_blank" rel="noopener">点这里了解更多关于ping -R </a></p>
-<ul>
-<li>编写ping扫描网段脚本</li>
-</ul>
-</li>
-<li><p>Scapy</p>
-<ul>
-<li>分别用shell和python编写ping扫描网段脚本<ul>
-<li>读取文件扫描ip列表</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>nmap -sn</p>
-<ul>
-<li>如果ip是本网段的就是二层扫描，否则是三层扫描。</li>
-<li>发送了2个ICMP请求，type是8和13.发送了两个TCP消息，一个443 SYN,一个80 ACK。</li>
-<li>对于每个消息如果目标没有响应就会再发一遍。两遍都没有响应就判定host is down.</li>
-</ul>
-</li>
-<li><p>fping</p>
-<ul>
-<li>fping支持地址段扫描</li>
-<li>fping -g 192.168.1.100 192.168.1.200 -c 1</li>
-</ul>
-</li>
-<li><p>Hping</p>
-<ul>
-<li>能够发送激活任意TCP/IP包</li>
-<li>功能强大但每次只能扫描一个目标</li>
-</ul>
-</li>
-</ul>
-<h1 id="四层发现"><a href="#四层发现" class="headerlink" title="四层发现"></a>四层发现</h1><ul>
-<li><p>优点</p>
-<ul>
-<li>可路由且结果可靠</li>
-<li>不太可能被防火墙过滤</li>
-<li>甚至可以返现所有端口都被过滤的主机</li>
-</ul>
-</li>
-<li><p>缺点</p>
-<ul>
-<li>基于状态过滤的防火墙可能过滤扫描</li>
-<li>全端口扫描速度慢</li>
-</ul>
-</li>
-<li><p>TCP</p>
-<ul>
-<li>未经请求的ACK——RST</li>
-<li>SYN——SYN/ACK、RST</li>
-</ul>
-</li>
-<li><p>UDP</p>
-<ul>
-<li>ICMP端口不可达、一去不复返</li>
-</ul>
-</li>
-<li><p>ACK——TCP Port——RST</p>
-<ul>
-<li>Scapy</li>
-<li>Python脚本</li>
-</ul>
-</li>
-<li><p>nmap - x.x.x.x -PU53333 -sn  UDP扫描53333端口</p>
-</li>
-<li><p>nmap - x.x.x.x -PA53333 -sn  ACK扫描53333端口 (PS PA PU PY(SCTP))</p>
-</li>
-<li><p>hping3 –udp xxx -c 1</p>
-</li>
-</ul>
-<h1 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h1><ul>
-<li>|egrep -v “xxx”<ul>
-<li>除符合xxx的字段</li>
-</ul>
-</li>
-</ul>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs plain">int add(int x,int y)<br>&#123;<br>********栈空间分配******<br>004113A0 push ebp			&#x2F;&#x2F;将主函数栈底EBP入栈，ESP抬高（将原来的栈底入栈，准备指向新的栈底）<br>004113A1 mov ebp,esp		&#x2F;&#x2F;将ebp和esp都指向栈顶，目前栈里是空的，esp&#x3D;ebp<br>004113A3 sub esp,0CCH		&#x2F;&#x2F;0CCH由编译器确定，esp向上抬高CCH，栈成型<br>********初始化*********<br>004113A9 push ebx			&#x2F;&#x2F;用于保存现场， ebx作为内存偏移指针使用,esp抬高<br>004113AA push esi			&#x2F;&#x2F;用于保存现场， esi是源地址寄存器,esp抬高<br>004113AB push edi			&#x2F;&#x2F;用于保存现场， edi是目的指针寄存器,esp抬高<br>004113AC lea edi,[ebp-0CCH]	&#x2F;&#x2F;将当前栈顶地址装入EDI<br>004113B2 mov ecx,33h		&#x2F;&#x2F;设置计数器数值<br>004113B7 mov eax,0CCCCCCCCh&#x2F;&#x2F;<br>004113BC rep stos dword ptr es:[edi]&#x2F;&#x2F;循环，将栈区的数据都初始化为CCH，每次将edi+1<br>********执行函数体******<br>		int z&#x3D;0<br>004113BE mov dword ptr[z],0	 &#x2F;&#x2F;将z初始化为0<br>004113C5 mov eax,dowrd ptr[x]&#x2F;&#x2F;将x赋值给eax<br>004113C8 add eax,dword ptr[y]&#x2F;&#x2F;将寄存器eax的值加y<br>004113CB mov dword ptr[z],eax&#x2F;&#x2F;将eax的值赋值给z<br>004113CE mov eax,dword ptr[z]&#x2F;&#x2F;将z的值放到eax <br>********恢复到主函数*******<br>004113D1 pop edi;			&#x2F;&#x2F;恢复寄存器值<br>004113D2 pop esi;			&#x2F;&#x2F;恢复寄存器值<br>004113D3 pop ebx;			&#x2F;&#x2F;恢复寄存器值<br>004113D4 mov esp,ebp;		&#x2F;&#x2F;栈顶指向之前的栈底，上面的栈帧不要了<br>004113D6 pop ebp;			&#x2F;&#x2F;恢复寄存器值<br>004113D7 ret	;			&#x2F;&#x2F;根据返回地址，恢复EIP值，相当于popEIP<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 
     </main>
     <footer class="post-footer">
       
       <div class="post-tags">
         
-        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
+        <a class="post-tag button" href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%8F%8A%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>漏洞利用及渗透测试基础学习笔记</a>
         
       </div>
       
@@ -437,12 +381,12 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2020/08/31/GoogleHacking%E3%80%81Recon-ng/" rel="next" title="GoogleHacking、Recon-ng"><i class="fas fa-angle-left"></i><span class="nav-title">GoogleHacking、Recon-ng</span></a>
+      <a href="/2020/09/24/%E6%97%A0%E7%BA%BF%E7%BD%91%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="next" title="无线网运行模式和硬件设备基础知识"><i class="fas fa-angle-left"></i><span class="nav-title">无线网运行模式和硬件设备基础知识</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
       
-      <a href="/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F/" rel="prev" title="主动信息收集-端口扫描"><span class="nav-title">主动信息收集-端口扫描</span><i class="fas fa-angle-right"></i></a>
+      <a href="/2020/09/25/PE%E6%96%87%E4%BB%B6%E4%B8%8E%E5%8A%A0%E5%A3%B3/" rel="prev" title="PE文件与加壳"><span class="nav-title">PE文件与加壳</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -469,7 +413,7 @@
       "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "主动信息收集--主机发现",
+      "issue_title": "汇编-一个函数调用的例子",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -564,7 +508,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#主动信息收集"><span class="toc-text">主动信息收集</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#发现"><span class="toc-text">发现</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#二层发现"><span class="toc-text">二层发现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#三层发现"><span class="toc-text">三层发现</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#四层发现"><span class="toc-text">四层发现</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#其他命令"><span class="toc-text">其他命令</span></a></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#汇编-寄存器及主要指令"><span class="toc-text">汇编-寄存器及主要指令</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#寄存器"><span class="toc-text">寄存器</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#指令"><span class="toc-text">指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#一个程序调用的例子"><span class="toc-text">一个程序调用的例子</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#C语言程序"><span class="toc-text">C语言程序</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#汇编"><span class="toc-text">汇编</span></a></li></ol></li></ol></div>
     </div>
     
     
