@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-09-25T15:53:19.751Z</updated>
+  <updated>2020-10-04T11:32:23.357Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,87 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WEP/WPA工作原理</title>
+    <link href="http://yoursite.com/2020/10/04/WEP-WPA%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/"/>
+    <id>http://yoursite.com/2020/10/04/WEP-WPA%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</id>
+    <published>2020-10-04T11:32:05.000Z</published>
+    <updated>2020-10-04T11:32:23.357Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;WEP加密&quot;&gt;&lt;a href=&quot;#WEP加密&quot; class=&quot;headerlink&quot; title=&quot;WEP加密&quot;&gt;&lt;/a&gt;WEP加密&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;使用Rivest Cipher4（RC4）算法加密流量内容，实现机密性&lt;/li&gt;
+&lt;li&gt;CRC32算法检查数据完整性&lt;/li&gt;
+&lt;li&gt;标准采用使用24位initialization vector（IV）&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>802.11协议栈帧结构</title>
+    <link href="http://yoursite.com/2020/10/04/802-11%E5%8D%8F%E8%AE%AE%E6%A0%88%E5%B8%A7%E7%BB%93%E6%9E%84/"/>
+    <id>http://yoursite.com/2020/10/04/802-11%E5%8D%8F%E8%AE%AE%E6%A0%88%E5%B8%A7%E7%BB%93%E6%9E%84/</id>
+    <published>2020-10-04T04:16:18.000Z</published>
+    <updated>2020-10-04T04:18:27.511Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;802-11协议栈帧结构&quot;&gt;&lt;a href=&quot;#802-11协议栈帧结构&quot; class=&quot;headerlink&quot; title=&quot;802.11协议栈帧结构&quot;&gt;&lt;/a&gt;802.11协议栈帧结构&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;首先选择合适的无线网卡&lt;/li&gt;
+&lt;li&gt;了解基本操作&lt;/li&gt;
+&lt;li&gt;学习协议栈帧结构&lt;/li&gt;
+&lt;li&gt;实际抓包查看&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚拟内存与程序调试</title>
+    <link href="http://yoursite.com/2020/09/27/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%B0%83%E8%AF%95/"/>
+    <id>http://yoursite.com/2020/09/27/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%B0%83%E8%AF%95/</id>
+    <published>2020-09-27T02:10:20.000Z</published>
+    <updated>2020-10-03T02:11:49.953Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;虚拟内存&quot;&gt;&lt;a href=&quot;#虚拟内存&quot; class=&quot;headerlink&quot; title=&quot;虚拟内存&quot;&gt;&lt;/a&gt;虚拟内存&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Windows的内存可以被分为两个层面：物理内存和虚拟内存。其中物理内存非常复杂，需要静茹Windows内核级别ring0才能看到。通常，在用户模式下，用调试器看到的内存地址都是虚拟内存。&lt;/li&gt;
+&lt;li&gt;程序进行虚地址（逻辑地址）到实地址（物理地址）转换的过程称为程序的再定位。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>PE文件与加壳</title>
@@ -48,7 +129,7 @@
     <link href="http://yoursite.com/2020/09/25/%E6%B1%87%E7%BC%96-%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%9A%84%E4%BE%8B%E5%AD%90/"/>
     <id>http://yoursite.com/2020/09/25/%E6%B1%87%E7%BC%96-%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%9A%84%E4%BE%8B%E5%AD%90/</id>
     <published>2020-09-25T15:49:38.000Z</published>
-    <updated>2020-09-25T15:52:01.630Z</updated>
+    <updated>2020-09-26T03:26:22.904Z</updated>
     
     <summary type="html">
     
@@ -124,11 +205,11 @@
   </entry>
   
   <entry>
-    <title>无线渗透</title>
+    <title>无线通信基础知识-IEEE802.11标准</title>
     <link href="http://yoursite.com/2020/09/23/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-IEEE-802-11%E6%A0%87%E5%87%86/"/>
     <id>http://yoursite.com/2020/09/23/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-IEEE-802-11%E6%A0%87%E5%87%86/</id>
     <published>2020-09-23T09:18:54.000Z</published>
-    <updated>2020-09-23T14:13:32.088Z</updated>
+    <updated>2020-10-03T02:20:31.336Z</updated>
     
     <summary type="html">
     
@@ -619,114 +700,6 @@
 &lt;li&gt;服务端程序的漏洞通过端口攻入&lt;/li&gt;
 &lt;li&gt;发现开放的端口&lt;/li&gt;
 &lt;li&gt;更具体的攻击面&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>主动信息收集--主机发现</title>
-    <link href="http://yoursite.com/2020/09/13/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0/"/>
-    <id>http://yoursite.com/2020/09/13/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E4%B8%BB%E6%9C%BA%E5%8F%91%E7%8E%B0/</id>
-    <published>2020-09-13T09:57:46.000Z</published>
-    <updated>2020-09-13T10:00:37.570Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;主动信息收集&quot;&gt;&lt;a href=&quot;#主动信息收集&quot; class=&quot;headerlink&quot; title=&quot;主动信息收集&quot;&gt;&lt;/a&gt;主动信息收集&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;直接与目标系统交互通信&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;无法避免留下访问痕迹&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;使用受控的第三方电脑进行探测&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;使用代理或已经被控制的主机&lt;/li&gt;
-&lt;li&gt;做好被封杀的准备&lt;/li&gt;
-&lt;li&gt;使用噪声迷惑目标，淹没真实的探测流量&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;扫描&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;发送不同的探测，根据返回结果判断目标状态&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GoogleHacking、Recon-ng</title>
-    <link href="http://yoursite.com/2020/08/31/GoogleHacking%E3%80%81Recon-ng/"/>
-    <id>http://yoursite.com/2020/08/31/GoogleHacking%E3%80%81Recon-ng/</id>
-    <published>2020-08-31T10:57:08.000Z</published>
-    <updated>2020-08-31T10:58:52.960Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;搜索引擎使用技巧&quot;&gt;&lt;a href=&quot;#搜索引擎使用技巧&quot; class=&quot;headerlink&quot; title=&quot;搜索引擎使用技巧&quot;&gt;&lt;/a&gt;搜索引擎使用技巧&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;+-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;“ “&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;intitle:&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;intext:&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;site:&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;inurl:&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;filetype:&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>被动信息收集-DNS与SHODAN</title>
-    <link href="http://yoursite.com/2020/08/30/%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-DNS%E4%B8%8ESHODAN/"/>
-    <id>http://yoursite.com/2020/08/30/%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-DNS%E4%B8%8ESHODAN/</id>
-    <published>2020-08-30T04:06:37.000Z</published>
-    <updated>2020-08-31T01:57:20.465Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;信息收集内容&quot;&gt;&lt;a href=&quot;#信息收集内容&quot; class=&quot;headerlink&quot; title=&quot;信息收集内容&quot;&gt;&lt;/a&gt;信息收集内容&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;IP地址段&lt;/li&gt;
-&lt;li&gt;域名信息&lt;/li&gt;
-&lt;li&gt;邮件地址&lt;/li&gt;
-&lt;li&gt;文档图片数据&lt;/li&gt;
-&lt;li&gt;公司地址&lt;/li&gt;
-&lt;li&gt;公司组织架构&lt;/li&gt;
-&lt;li&gt;联系电话/传真号码&lt;/li&gt;
-&lt;li&gt;人员姓名/职务&lt;/li&gt;
-&lt;li&gt;目标系统使用的技术架构&lt;/li&gt;
-&lt;li&gt;公开的商业信息&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
