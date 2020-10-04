@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-04T11:32:23.357Z</updated>
+  <updated>2020-10-04T11:37:50.491Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="http://yoursite.com/2020/10/04/WEP-WPA%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/"/>
     <id>http://yoursite.com/2020/10/04/WEP-WPA%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</id>
     <published>2020-10-04T11:32:05.000Z</published>
-    <updated>2020-10-04T11:32:23.357Z</updated>
+    <updated>2020-10-04T11:37:50.491Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;WEP加密&quot;&gt;&lt;a href=&quot;#WEP加密&quot; class=&quot;headerlink&quot; title=&quot;WEP加密&quot;&gt;&lt;/a&gt;WEP加密&lt;/h3&gt;&lt;ul&gt;
+      &lt;h2 id=&quot;WEP-WPA工作原理&quot;&gt;&lt;a href=&quot;#WEP-WPA工作原理&quot; class=&quot;headerlink&quot; title=&quot;WEP/WPA工作原理&quot;&gt;&lt;/a&gt;WEP/WPA工作原理&lt;/h2&gt;&lt;h3 id=&quot;WEP加密&quot;&gt;&lt;a href=&quot;#WEP加密&quot; class=&quot;headerlink&quot; title=&quot;WEP加密&quot;&gt;&lt;/a&gt;WEP加密&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;使用Rivest Cipher4（RC4）算法加密流量内容，实现机密性&lt;/li&gt;
 &lt;li&gt;CRC32算法检查数据完整性&lt;/li&gt;
 &lt;li&gt;标准采用使用24位initialization vector（IV）&lt;/li&gt;
