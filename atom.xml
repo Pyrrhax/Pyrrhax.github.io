@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-06T12:19:28.468Z</updated>
+  <updated>2020-10-08T04:34:35.556Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,48 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>无线渗透实操-Aircrack-ng-WPA/WPS</title>
+    <link href="http://yoursite.com/2020/10/08/%E6%97%A0%E7%BA%BF%E6%B8%97%E9%80%8F%E5%AE%9E%E6%93%8D-Aircrack-ng-WPA-WPS/"/>
+    <id>http://yoursite.com/2020/10/08/%E6%97%A0%E7%BA%BF%E6%B8%97%E9%80%8F%E5%AE%9E%E6%93%8D-Aircrack-ng-WPA-WPS/</id>
+    <published>2020-10-08T04:34:13.000Z</published>
+    <updated>2020-10-08T04:34:35.556Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;无线渗透实操——Aircrack-ng-WPA-WPS&quot;&gt;&lt;a href=&quot;#无线渗透实操——Aircrack-ng-WPA-WPS&quot; class=&quot;headerlink&quot; title=&quot;无线渗透实操——Aircrack-ng(WPA/WPS)&quot;&gt;&lt;/a&gt;无线渗透实操——Aircrack-ng(WPA/WPS)&lt;/h2&gt;&lt;h3 id=&quot;步骤&quot;&gt;&lt;a href=&quot;#步骤&quot; class=&quot;headerlink&quot; title=&quot;步骤&quot;&gt;&lt;/a&gt;步骤&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;启动monitor模式&lt;/li&gt;
+&lt;li&gt;开始抓包并保存&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;airodump-ng wlan0mon -c&amp;lt;channel&amp;gt; --bssid&amp;lt;bssid&amp;gt; -w&amp;lt;filename&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Deauthentication攻击获取四步握手信息&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;aireplay-ng -0 &amp;lt;count&amp;gt; -a &amp;lt;ap mac&amp;gt; -c &amp;lt;sta mac&amp;gt; wlan0mon&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;字典暴破&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;aircrack-ng -w /user/share/john/password.list wpa-01.cap&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>无线渗透实操--Aircrack-ng:WEP</title>
     <link href="http://yoursite.com/2020/10/06/%E6%97%A0%E7%BA%BF%E6%B8%97%E9%80%8F%E5%AE%9E%E6%93%8D-Aircrack-ng-WEP/"/>
     <id>http://yoursite.com/2020/10/06/%E6%97%A0%E7%BA%BF%E6%B8%97%E9%80%8F%E5%AE%9E%E6%93%8D-Aircrack-ng-WEP/</id>
     <published>2020-10-06T12:16:28.000Z</published>
-    <updated>2020-10-06T12:19:28.468Z</updated>
+    <updated>2020-10-07T05:38:07.795Z</updated>
     
     <summary type="html">
     
@@ -666,41 +703,6 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>主动信息收集-服务扫描</title>
-    <link href="http://yoursite.com/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9C%8D%E5%8A%A1%E6%89%AB%E6%8F%8F/"/>
-    <id>http://yoursite.com/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E6%9C%8D%E5%8A%A1%E6%89%AB%E6%8F%8F/</id>
-    <published>2020-09-16T02:46:22.000Z</published>
-    <updated>2020-09-16T02:47:02.423Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;服务扫描&quot;&gt;&lt;a href=&quot;#服务扫描&quot; class=&quot;headerlink&quot; title=&quot;服务扫描&quot;&gt;&lt;/a&gt;服务扫描&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;识别开放端口上运行的应用&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;识别目标操作系统&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;提高攻击效率&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;banner捕获&lt;/li&gt;
-&lt;li&gt;服务识别&lt;/li&gt;
-&lt;li&gt;操作系统识别&lt;/li&gt;
-&lt;li&gt;SNMP分析&lt;/li&gt;
-&lt;li&gt;防火墙识别&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
