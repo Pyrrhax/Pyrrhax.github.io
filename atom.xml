@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-08T04:34:35.556Z</updated>
+  <updated>2020-10-11T01:36:09.396Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Web扫描工具-Nikto、Vega、Skipfish</title>
+    <link href="http://yoursite.com/2020/10/11/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Nikto%E3%80%81Vega%E3%80%81Skipfish/"/>
+    <id>http://yoursite.com/2020/10/11/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Nikto%E3%80%81Vega%E3%80%81Skipfish/</id>
+    <published>2020-10-11T01:35:31.000Z</published>
+    <updated>2020-10-11T01:36:09.396Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;WEB攻击面&quot;&gt;&lt;a href=&quot;#WEB攻击面&quot; class=&quot;headerlink&quot; title=&quot;WEB攻击面&quot;&gt;&lt;/a&gt;WEB攻击面&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Network&lt;/li&gt;
+&lt;li&gt;OS&lt;/li&gt;
+&lt;li&gt;Web Server&lt;/li&gt;
+&lt;li&gt;App Server&lt;/li&gt;
+&lt;li&gt;Web Application&lt;/li&gt;
+&lt;li&gt;Database&lt;/li&gt;
+&lt;li&gt;Browser&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>无线渗透实操-Aircrack-ng-WPA/WPS</title>
@@ -665,43 +696,6 @@
 &lt;li&gt;scapy脚本&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;nmap -sA 192.168.0.117 -p 22&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;img src=&quot;/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-%E9%98%B2%E7%81%AB%E5%A2%99%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E8%AF%86%E5%88%AB/table.png&quot; alt&gt;&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>主动信息收集-OS识别、SNMP、SMB、SMTP扫描</title>
-    <link href="http://yoursite.com/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-OS%E8%AF%86%E5%88%AB%E3%80%81SNMP%E3%80%81SMB%E3%80%81SMTP%E6%89%AB%E6%8F%8F/"/>
-    <id>http://yoursite.com/2020/09/16/%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86-OS%E8%AF%86%E5%88%AB%E3%80%81SNMP%E3%80%81SMB%E3%80%81SMTP%E6%89%AB%E6%8F%8F/</id>
-    <published>2020-09-16T10:31:57.000Z</published>
-    <updated>2020-09-16T10:33:06.303Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;操作系统识别&quot;&gt;&lt;a href=&quot;#操作系统识别&quot; class=&quot;headerlink&quot; title=&quot;操作系统识别&quot;&gt;&lt;/a&gt;操作系统识别&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;操作系统识别技术&lt;ul&gt;
-&lt;li&gt;种类繁多&lt;/li&gt;
-&lt;li&gt;好产品采用多种技术组合&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;主动识别&quot;&gt;&lt;a href=&quot;#主动识别&quot; class=&quot;headerlink&quot; title=&quot;主动识别&quot;&gt;&lt;/a&gt;主动识别&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;TTL起始值&lt;ul&gt;
-&lt;li&gt;Windows:128(65-128)&lt;/li&gt;
-&lt;li&gt;Linux/Unix:64(1-64)&lt;/li&gt;
-&lt;li&gt;某些Unix:255&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>

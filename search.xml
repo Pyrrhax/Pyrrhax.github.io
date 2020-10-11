@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Web扫描工具-Nikto、Vega、Skipfish</title>
+      <link href="/2020/10/11/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Nikto%E3%80%81Vega%E3%80%81Skipfish/"/>
+      <url>/2020/10/11/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Nikto%E3%80%81Vega%E3%80%81Skipfish/</url>
+      
+        <content type="html"><![CDATA[<h3 id="WEB攻击面"><a href="#WEB攻击面" class="headerlink" title="WEB攻击面"></a>WEB攻击面</h3><ul><li>Network</li><li>OS</li><li>Web Server</li><li>App Server</li><li>Web Application</li><li>Database</li><li>Browser</li></ul><a id="more"></a><h3 id="协议基础"><a href="#协议基础" class="headerlink" title="协议基础"></a>协议基础</h3><ul><li>明文<ul><li>无内建的机密安全机制</li><li>嗅探或代理截断可查看全部明文信息</li><li>https只能提高传输层安全</li></ul></li><li>无状态<ul><li>每一次客户端和服务端的通信都是独立的过程</li><li>WEB应用需要跟踪客户端会话（多步通信）</li><li>不使用cookie的应用，客户端每次请求都要重新身份验证</li><li>Session用于在用户身份验证后跟踪用户行为轨迹<ul><li>提高用户体验，但增加了攻击向量</li></ul></li></ul></li><li>Cycle<ul><li>请求/响应</li></ul></li><li>重要的header<ul><li>响应头：<ul><li>Set-Cookie：服务器发给客户端的SessionID(被窃取的风险)</li><li>Content-Length：响应body部分的字节长度(爆破时通过该字段判断页面变化)</li><li>Location：重定向用户到另一个页面，可识别身份认证后允许访问的页面</li></ul></li><li>请求头：<ul><li>Cookie：客户端发回给服务器证明用户状态的信息（头-值，成对出现）</li><li>Referrer：发起新请求之前用户位于那个页面，服务器基于此头的安全限制很容易被修改绕过</li></ul></li></ul></li><li>状态码：<ul><li>100s、200s、300s、400s、500s</li></ul></li></ul><h3 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h3><ul><li>Metasploitable<ul><li>Dvwa</li></ul></li></ul><h3 id="侦察"><a href="#侦察" class="headerlink" title="侦察"></a>侦察</h3><ul><li>Httrack<ul><li>将web上所有可访问的页面都copy下来</li><li>减少与目标系统交互</li></ul></li></ul><h3 id="扫描工具"><a href="#扫描工具" class="headerlink" title="扫描工具"></a>扫描工具</h3><h4 id="Nikto"><a href="#Nikto" class="headerlink" title="Nikto"></a>Nikto</h4><ul><li>perl语言开发的开源web安全扫描器</li><li>web服务器使用的软件版本</li><li>搜索存在安全隐患的文件</li><li>服务器配置漏洞</li><li>WEB Application层面的安全隐患</li><li>避免404误判<ul><li>很多服务器不遵守RFC标准，对于不存在的对象返回200</li><li>依据响应文件内容判断，不同拓展名的404文件响应内容不同</li><li>去除时间信息后的内容取MD5值</li><li>-no404</li></ul></li><li><a href="https://cirt.net/Nikto2" target="_blank" rel="noopener">https://cirt.net/Nikto2</a></li><li>操作：<ul><li><code>nikto -list-plugins</code></li><li><code>nikto -host http://1.1.1.1</code></li><li><code>nikto -host 192.168.1.1 -ssl -port 443,8443,995</code></li><li><code>nikto -host host.txt</code></li><li><code>nmap -p80 102.168.1.0/24 -oG -|nikto -host -</code></li><li><code>nikto -host 192.168.1.1 -useproxy http://localhost:8087</code></li><li><code>-vhost</code></li><li>interative:<ul><li>v -verbose mode on/off</li><li>d -debug mode on/off</li><li>e -error reporting on/off</li><li>p -progress reporting on/off</li><li>P -pause</li><li>r -redirect display on/off</li><li>c -coocie display on/off</li><li>a -auth display on/off</li><li>q -quit</li><li>N -next host</li></ul></li><li>配置文件：etc/nikto.conf<ul><li>修改UserAgent</li><li>STATIC-COOKIE=”cookie1=value”;”cookie2=value”</li></ul></li><li>-evasion:使用LibWhisker种对IDS的躲避技术，可以使用一下几种类型<ul><li><ol><li>随机URL编码（非UTF-8）</li><li>子选择路径（/./）</li><li>过早结束的URL</li><li>优先考虑长随机字符串</li><li>参数欺骗</li><li>使用TAB作为命令的分隔符</li><li>使用变化的URL</li><li>使用Windows路径分隔符“\”</li></ol></li></ul></li></ul></li></ul><h4 id="Vega"><a href="#Vega" class="headerlink" title="Vega"></a>Vega</h4><ul><li><p>Java编写的开源Web扫描器</p></li><li><p>扫描模式</p></li><li><p>代理模式</p></li><li><p>爬站、处理表单、注入测试</p></li><li><p>subgraph.com/vega</p></li><li><p>先手动爬，然后跑扫描。</p></li></ul><h4 id="Skipfish"><a href="#Skipfish" class="headerlink" title="Skipfish"></a>Skipfish</h4><ul><li>C语言编写</li><li>实验性的主动web安全评估工具</li><li>递归爬网</li><li>基于字典的探测</li><li>速度较快<ul><li>多路单线程，全异步网络I/O,消除内存管理和调度开销</li><li>启发式自动内容识别</li></ul></li><li>误报较低</li></ul><h5 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h5><ul><li><code>skipfish -o test http://1.1.1.1</code></li><li><code>skipfish -o test @url.txt</code></li><li><code>skipfish -o test -S complet.wl -W a.wl http://1.1.1.1</code><ul><li><code>dpkg -L skipfish | grep wl</code>得到skipfish自带的字典</li><li>通过-S指定使用的字典，-W保存爬的过程中发现的特殊字符，目录，到指定字典。</li></ul></li><li>-I （大写i）只检查匹配 ‘string’ 的url</li><li>-X 不检查匹配 ‘string’ 的url</li><li>-K 不对指定参数进行Fuzz测试</li><li>-D 跨站点爬另外一个域，如果有链接连接到这里，就会扫。</li><li>-l (小写L) 每秒最大请求书</li><li>-m 每IP最大并发连接数</li><li>–config 指定配置文件</li><li>身份认证<ul><li><code>skipfish -A user：pass -o test http://1.1.1.1</code></li><li><code>skipfish -C &quot;name=val&quot; -C &quot;name2=value2&quot; -o test http://1.1.1.1</code></li><li>-auth-form -auth-user -auth-pass -auth-verify-url等，查看help</li></ul></li><li>扫描结束太快<ul><li>触发了目标站点的连接数限制，降低-m -l数值</li></ul></li></ul><h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ul><li>代理：Hidemyass</li><li>书：《Web penetration test with kali Linux》</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>无线渗透实操-Aircrack-ng-WPA/WPS</title>
       <link href="/2020/10/08/%E6%97%A0%E7%BA%BF%E6%B8%97%E9%80%8F%E5%AE%9E%E6%93%8D-Aircrack-ng-WPA-WPS/"/>
       <url>/2020/10/08/%E6%97%A0%E7%BA%BF%E6%B8%97%E9%80%8F%E5%AE%9E%E6%93%8D-Aircrack-ng-WPA-WPS/</url>
