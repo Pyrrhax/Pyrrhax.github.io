@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>Web扫描工具-Arachni</title>
+      <link href="/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Arachni/"/>
+      <url>/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Arachni/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Web扫描器-Arachni"><a href="#Web扫描器-Arachni" class="headerlink" title="Web扫描器-Arachni"></a>Web扫描器-Arachni</h3><ul><li><p>官网</p><ul><li><a href="https://www.arachni-scanner.com/" target="_blank" rel="noopener">https://www.arachni-scanner.com/</a></li></ul></li><li><p>支持分布式扫描</p></li><li><p>支持调度，每隔多久扫描一次</p></li><li><p>安装后，输入用户名密码登录提示错误，google发现很多人有同样错误，暂时无解。</p></li></ul><a id="more"></a>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Web扫描工具-w3af</title>
+      <link href="/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-w3af/"/>
+      <url>/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-w3af/</url>
+      
+        <content type="html"><![CDATA[<h2 id="w3af"><a href="#w3af" class="headerlink" title="w3af"></a>w3af</h2><ul><li>Web Application Attack and Audit Framework,基于python语言开发</li><li>此框架的目标是帮助你发现和利用所有WEB应用程序漏洞</li><li>9大类近150个plugin<ul><li>audit</li><li>infrastructure</li><li>grep</li><li>evasion</li><li>mangle 正则替换</li><li>auth</li><li>bruteforce</li><li>output</li><li>crawl</li></ul></li></ul><a id="more"></a><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>cd ~<br>apt-get install -y python-pip<br>pip install –upgrade pip<br>git clone https/github.com/andresriancho/w3af.git<br>cd w3af<br>./w3af_console<br>. /tmp/w3af_dependency_install.sh</p><p>此时w3af_console可用，但是w3af_gui还有问题</p><p>安装python-webkit</p><ul><li><p>wget <a href="http://ftp.br.debian.org/debian/pool/main/p/pywebkitgtk/python-webkit_1.1.8-3_amd64.deb" target="_blank" rel="noopener">http://ftp.br.debian.org/debian/pool/main/p/pywebkitgtk/python-webkit_1.1.8-3_amd64.deb</a></p><ul><li><p>wget <a href="http://ftp.br.debian.org/debian/pool/main/w/webkitgtk/libjavascriptcoregtk-1.0-0_2.4.11-3_amd64.deb" target="_blank" rel="noopener">http://ftp.br.debian.org/debian/pool/main/w/webkitgtk/libjavascriptcoregtk-1.0-0_2.4.11-3_amd64.deb</a></p><ul><li>从<a href="http://ftp.de.debian.org/debian/pool/main/i/icu/下载libicu57" target="_blank" rel="noopener">http://ftp.de.debian.org/debian/pool/main/i/icu/下载libicu57</a></li></ul></li><li><p>wget <a href="http://ftp.br.debian.org/debian/pool/main/p/python-support/python-support_1.0.15_all.deb" target="_blank" rel="noopener">http://ftp.br.debian.org/debian/pool/main/p/python-support/python-support_1.0.15_all.deb</a></p><ul><li><p>补全python库环境</p><figure class="hljs highlight plain"><figcaption><span>install python-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apt"><br>&#96;&#96;&#96;apt --fix-broken install<br></code></pre></td></tr></table></figure></li></ul></li><li><p>wget <a href="http://ftp.br.debian.org/debian/pool/main/w/webkitgtk/libwebkitgtk-1.0-0_2.4.11-3_amd64.deb" target="_blank" rel="noopener">http://ftp.br.debian.org/debian/pool/main/w/webkitgtk/libwebkitgtk-1.0-0_2.4.11-3_amd64.deb</a></p><ul><li><code>apt-get install libegl1-mesa</code></li><li><code>apt-get install libegl1-x11</code></li></ul></li><li><p>最后安装webkit还有问题，libpango1.0-0 python-gek2 not installed 用下面的方法解决</p><ul><li><code>sudo apt-get install --reinstall python</code></li><li><code>apt --fix-broken install</code></li></ul></li></ul></li><li><p>python-webkit安装好后执行./tmp/w3af_dependency_install.sh。报没有python-gtksourceview2</p><ul><li><a href="https://packages.debian.org/stretch/amd64/python-gtksourceview2/download这里下载" target="_blank" rel="noopener">https://packages.debian.org/stretch/amd64/python-gtksourceview2/download这里下载</a><ul><li>安装时依赖 libgtksourceview2.0-0</li></ul></li></ul></li><li><p>python-pip 等需要安装什么 直接搜 xxx deb，就有可以下载的地方</p></li></ul><h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><ul><li>help一下就知道了- -</li><li>可以把命令写程一个脚本 直接<code>w3af_consol -s xxx.w3af</code></li></ul><h4 id="w3af身份认证"><a href="#w3af身份认证" class="headerlink" title="w3af身份认证"></a>w3af身份认证</h4><ul><li>http basic<ul><li>Authorization：basic</li><li>路由器就是这种， 字段，base64编码，抓包就可以直接看到用户名密码。</li></ul></li><li>ntlm<ul><li>http头Authorization：ntlm</li><li>微软专有的身份认证：<ul><li>首次GET，服务器会返回401此时在浏览器弹出输入框</li><li>输入点击确认后，会再次发起GET附带messg1</li><li>服务器返回401附带messg2，其中包含1个随机数</li><li>浏览器再次发起GET请求，附带messg3,包含加密后的随机数密文</li><li>服务端返回登陆结果</li></ul></li><li>参考博客：<a href="https://www.cnblogs.com/huangyong9527/articles/1844553.html" target="_blank" rel="noopener">https://www.cnblogs.com/huangyong9527/articles/1844553.html</a></li></ul></li><li>form<ul><li>基于表单的身份认证</li><li>图形界面操作</li></ul></li><li>Cookie<ul><li>双因素身份认证/anti-CSRF tokens</li><li>注意格式</li></ul></li><li>利用HTTP头完成身份认证</li></ul><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>xxx略- -</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Web扫描工具-Nikto、Vega、Skipfish</title>
       <link href="/2020/10/11/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Nikto%E3%80%81Vega%E3%80%81Skipfish/"/>
       <url>/2020/10/11/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Nikto%E3%80%81Vega%E3%80%81Skipfish/</url>
