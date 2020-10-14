@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-12T14:22:14.089Z</updated>
+  <updated>2020-10-14T09:33:14.279Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,15 +17,77 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Web扫描工具-Arachni</title>
-    <link href="http://yoursite.com/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Arachni/"/>
-    <id>http://yoursite.com/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Arachni/</id>
-    <published>2020-10-12T14:22:00.000Z</published>
-    <updated>2020-10-12T14:22:14.089Z</updated>
+    <title>手动漏洞挖掘-1.默认安装</title>
+    <link href="http://yoursite.com/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/"/>
+    <id>http://yoursite.com/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/</id>
+    <published>2020-10-14T09:30:17.000Z</published>
+    <updated>2020-10-14T09:33:14.279Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Web扫描器-Arachni&quot;&gt;&lt;a href=&quot;#Web扫描器-Arachni&quot; class=&quot;headerlink&quot; title=&quot;Web扫描器-Arachni&quot;&gt;&lt;/a&gt;Web扫描器-Arachni&lt;/h3&gt;&lt;ul&gt;
+      
+      
+        
+        
+          &lt;h3 id=&quot;手动漏洞挖掘-1-默认安装&quot;&gt;&lt;a href=&quot;#手动漏洞挖掘-1-默认安装&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Web扫描工具-Burpsuite</title>
+    <link href="http://yoursite.com/2020/10/14/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Burpsuite/"/>
+    <id>http://yoursite.com/2020/10/14/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Burpsuite/</id>
+    <published>2020-10-14T03:15:59.000Z</published>
+    <updated>2020-10-14T03:16:29.244Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Burpsuite&quot;&gt;&lt;a href=&quot;#Burpsuite&quot; class=&quot;headerlink&quot; title=&quot;Burpsuite&quot;&gt;&lt;/a&gt;Burpsuite&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Web安全工具中的瑞士军刀&lt;/li&gt;
+&lt;li&gt;统一的集成工具发现全部现代安全漏洞&lt;/li&gt;
+&lt;li&gt;PortSwigger公司开发&lt;ul&gt;
+&lt;li&gt;Burp Free&lt;/li&gt;
+&lt;li&gt;Burp Professional&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.portswigger.net&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.portswigger.net&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;所有的工具共享一个能处理并显示HTTP消息的可拓展框架，模块之间无缝交换信息。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Web扫描工具-Arachni</title>
+    <link href="http://yoursite.com/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Arachni-OWASP_ZAP/"/>
+    <id>http://yoursite.com/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Arachni-OWASP_ZAP/</id>
+    <published>2020-10-12T14:22:00.000Z</published>
+    <updated>2020-10-13T07:32:21.597Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Arachni&quot;&gt;&lt;a href=&quot;#Arachni&quot; class=&quot;headerlink&quot; title=&quot;Arachni&quot;&gt;&lt;/a&gt;Arachni&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;官网&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.arachni-scanner.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.arachni-scanner.com/&lt;/a&gt;&lt;/li&gt;
@@ -643,61 +705,6 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>缓冲区溢出</title>
-    <link href="http://yoursite.com/2020/09/19/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA/"/>
-    <id>http://yoursite.com/2020/09/19/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA/</id>
-    <published>2020-09-19T04:16:47.000Z</published>
-    <updated>2020-09-19T10:13:08.124Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;缓冲区溢出&quot;&gt;&lt;a href=&quot;#缓冲区溢出&quot; class=&quot;headerlink&quot; title=&quot;缓冲区溢出&quot;&gt;&lt;/a&gt;缓冲区溢出&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;当缓冲区边界限制不严格时，由于变量传入畸形数据或程序运行错误，导致缓冲区被“撑爆”，从而覆盖了相邻内存区域的数据&lt;/li&gt;
-&lt;li&gt;成功修改内存数据，可造成进程劫持，执行恶意代码，获取服务器控制权等后果&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SLMail缓冲区溢出实践</title>
-    <link href="http://yoursite.com/2020/09/18/SLMail%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E5%AE%9E%E8%B7%B5/"/>
-    <id>http://yoursite.com/2020/09/18/SLMail%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E5%AE%9E%E8%B7%B5/</id>
-    <published>2020-09-18T02:48:31.000Z</published>
-    <updated>2020-09-19T04:18:31.498Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;Windows系统&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://slmail.software.informer.com/download/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;SLMail5.5.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.softpedia.com/get/Programming/Debuggers-Decompilers-Dissasemblers/Immunity-Debugger.shtml&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;ImmunityDebugger1.85&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://raw.githubusercontent.com/corelan/mona/master/mona.py&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;mona.py&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;mona.py需要放在ImmunityDebugger的安装目录的DebuggerPyCommands文件夹&lt;/p&gt;
     
     </summary>
     

