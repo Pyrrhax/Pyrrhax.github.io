@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-14T10:36:42.805Z</updated>
+  <updated>2020-10-15T11:08:42.068Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,49 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>手动漏洞挖掘-命令执行、目录遍历、文件包含、文件上传</title>
+    <link href="http://yoursite.com/2020/10/15/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E3%80%81%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86%E3%80%81%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E3%80%81%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    <id>http://yoursite.com/2020/10/15/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E3%80%81%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86%E3%80%81%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E3%80%81%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</id>
+    <published>2020-10-15T11:08:04.000Z</published>
+    <updated>2020-10-15T11:08:42.068Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;身份认证&quot;&gt;&lt;a href=&quot;#身份认证&quot; class=&quot;headerlink&quot; title=&quot;身份认证&quot;&gt;&lt;/a&gt;身份认证&lt;/h3&gt;&lt;h4 id=&quot;账号密码&quot;&gt;&lt;a href=&quot;#账号密码&quot; class=&quot;headerlink&quot; title=&quot;账号密码&quot;&gt;&lt;/a&gt;账号密码&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;常用弱口令/基于字典的密码爆破&lt;/li&gt;
+&lt;li&gt;锁定账号&lt;ul&gt;
+&lt;li&gt;先手动多试几次，如果没有锁定机制，就可以爆破。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;信息收集&lt;ul&gt;
+&lt;li&gt;手机号&lt;/li&gt;
+&lt;li&gt;密码错误提示信息&lt;ul&gt;
+&lt;li&gt;一些隐藏的信息比如错误码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;去分站搜集账号相关信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>手动漏洞挖掘-1.默认安装</title>
     <link href="http://yoursite.com/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/"/>
     <id>http://yoursite.com/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/</id>
     <published>2020-10-14T09:30:17.000Z</published>
-    <updated>2020-10-14T10:36:42.805Z</updated>
+    <updated>2020-10-14T10:37:55.875Z</updated>
     
     <summary type="html">
     
@@ -660,49 +698,6 @@
 &lt;/li&gt;
 &lt;li&gt;希望获得更高权限&lt;ul&gt;
 &lt;li&gt;实现对目标进一步控制&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>后渗透-文件传输</title>
-    <link href="http://yoursite.com/2020/09/20/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/"/>
-    <id>http://yoursite.com/2020/09/20/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/</id>
-    <published>2020-09-20T03:40:10.000Z</published>
-    <updated>2020-09-20T03:40:35.418Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;后渗透——文件传输&quot;&gt;&lt;a href=&quot;#后渗透——文件传输&quot; class=&quot;headerlink&quot; title=&quot;后渗透——文件传输&quot;&gt;&lt;/a&gt;后渗透——文件传输&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;上传工具&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;提权&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;擦除攻击痕迹&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;安装后门&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;长期控制&lt;/li&gt;
-&lt;li&gt;Dump密码&lt;/li&gt;
-&lt;li&gt;内网渗透&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;后漏洞利用阶段&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;最大挑战——防病毒软件&lt;/li&gt;
-&lt;li&gt;使用合法的远程控制软件&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
