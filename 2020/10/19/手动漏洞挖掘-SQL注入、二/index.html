@@ -236,7 +236,7 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h4 id="手动漏洞挖掘-SQL注入（二）"><a href="#手动漏洞挖掘-SQL注入（二）" class="headerlink" title="手动漏洞挖掘-SQL注入（二）"></a>手动漏洞挖掘-SQL注入（二）</h4><h4 id="无权读取information-schema库-拒绝union、order-by语句"><a href="#无权读取information-schema库-拒绝union、order-by语句" class="headerlink" title="无权读取information_schema库 / 拒绝union、order by语句"></a>无权读取information_schema库 / 拒绝union、order by语句</h4><ul>
+      <h3 id="手动漏洞挖掘-SQL注入（二）"><a href="#手动漏洞挖掘-SQL注入（二）" class="headerlink" title="手动漏洞挖掘-SQL注入（二）"></a>手动漏洞挖掘-SQL注入（二）</h3><h4 id="无权读取information-schema库-拒绝union、order-by语句"><a href="#无权读取information-schema库-拒绝union、order-by语句" class="headerlink" title="无权读取information_schema库 / 拒绝union、order by语句"></a>无权读取information_schema库 / 拒绝union、order by语句</h4><ul>
 <li>第一步、猜列名：<code>&#39; and asd is null --</code><ul>
 <li>可以通过返回信息得到 asd这个列是否存在，提前准备好字典。用burp Intruder</li>
 <li><code>find / -name *.column*.txt</code><ul>
@@ -266,9 +266,27 @@
 </li>
 <li>可以插入账号密码数据条目<code>&#39;; insert xxxxxx</code>,<code>&#39;;update users set user=&#39;aaa&#39; where user=&#39;bbb&#39;</code></li>
 </ul>
+<h4 id="SQL盲注"><a href="#SQL盲注" class="headerlink" title="SQL盲注"></a>SQL盲注</h4><ul>
+<li>不显示数据库内建的报错信息<ul>
+<li>内建的报错信息帮助开发人员发现和修复问题</li>
+<li>报错信息提供关于系统的大量有用信息</li>
+</ul>
+</li>
+<li>当程序员隐藏了数据库内建报错信息，替换为通用的错误提示，sql注入将无法依据报错信息判断注入语句的执行结果。</li>
+<li>思路：基于逻辑真假不同结果来判断<ul>
+<li>1‘ and 1=1 – </li>
+<li>1’ and 1=2 – </li>
+<li>1’ and ORD(MID((VERSION()),2,1,))&amp;32&gt;0<ul>
+<li>VESION的第二位的ASCII码的二进制第3位&gt;0</li>
+</ul>
+</li>
+<li>current_user()、database()</li>
+</ul>
+</li>
+</ul>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
 <li>pangolin windows上的sql注入集成工具</li>
-<li>HexorBase，</li>
+<li>HexorBase</li>
 </ul>
 
     </main>
@@ -291,6 +309,8 @@
       
     </div>
     <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2020/10/20/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Target/" rel="prev" title="SQLMap自动注入-Target"><span class="nav-title">SQLMap自动注入-Target</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -374,7 +394,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">47</a></div>
+      <div><a href="/archives/">49</a></div>
     </div>
     
     
@@ -412,7 +432,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#手动漏洞挖掘-SQL注入（二）"><span class="toc-text">手动漏洞挖掘-SQL注入（二）</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#无权读取information-schema库-拒绝union、order-by语句"><span class="toc-text">无权读取information_schema库 &#x2F; 拒绝union、order by语句</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#手动漏洞挖掘-SQL注入（二）"><span class="toc-text">手动漏洞挖掘-SQL注入（二）</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#无权读取information-schema库-拒绝union、order-by语句"><span class="toc-text">无权读取information_schema库 &#x2F; 拒绝union、order by语句</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#SQL盲注"><span class="toc-text">SQL盲注</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
     </div>
     
     

@@ -4,11 +4,65 @@
   
     
     <entry>
+      <title>SQLMap自动注入-Request、Optimization</title>
+      <link href="/2020/10/21/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Request%E3%80%81Optimization/"/>
+      <url>/2020/10/21/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Request%E3%80%81Optimization/</url>
+      
+        <content type="html"><![CDATA[<h3 id="SQLMap自动注入-Request"><a href="#SQLMap自动注入-Request" class="headerlink" title="SQLMap自动注入-Request"></a>SQLMap自动注入-Request</h3><h5 id="基本数据"><a href="#基本数据" class="headerlink" title="基本数据"></a>基本数据</h5><ul><li>数据段： –data<ul><li>get/post都使用</li><li>sqlmap -u “<a href="http://1.1.1.1/a.php”" target="_blank" rel="noopener">http://1.1.1.1/a.php”</a> –data=”user=1&amp;pass=2”-f</li></ul></li><li>变量分隔符：–param-del<ul><li><a href="http://1.1.1.1/a.php?q=foo;id=1" target="_blank" rel="noopener">http://1.1.1.1/a.php?q=foo;id=1</a>    //用；替换&amp;</li><li>sqlmap -u “<a href="http://1.1.1.1/a.php&quot;" target="_blank" rel="noopener">http://1.1.1.1/a.php&quot;</a> –data=”q=foo;id=1” –param-del=”;” -f</li></ul></li></ul><a id="more"></a><ul><li>cookie头：–cookie<ul><li>web应用需要基于cookie的身份认证</li><li>检查cookie中的注入点（sqlmap自动测试，当扫描level&gt;=2时才会检查，–level 2）</li><li>Set-Cookie(sqlmap会自动检测，使用新的cookie)/–drop-set-cookie（drop掉，还使用原来的cookie）</li><li>sqlmap -u “xxx” –cookie=”key1=1;key2=2”</li></ul></li><li>–user-agent<ul><li>sqlmap检查user-agent中的注入点需要level&gt;=3</li></ul></li><li>–random-agent<ul><li>/usr/share/sqlmap/txt/user-agents.txt,字典中随机抽取</li></ul></li><li>Host头：–host=“xxx”<ul><li>level=5</li></ul></li><li>referer头：–referrer<ul><li>level&gt;=3</li></ul></li><li>额外的header：–headers=”Host:xxxxx\nUser=Agent:xxxxxxxxxxx\nxxxx:xxx”<ul><li>注意用换行符分隔。注意大小写。</li></ul></li><li>–method=GET/POST</li></ul><h5 id="基于http协议的身份验证"><a href="#基于http协议的身份验证" class="headerlink" title="基于http协议的身份验证"></a>基于http协议的身份验证</h5><ul><li>Basic</li><li>Digest</li><li>NTLM</li><li>sqlmap -u “<a href="http://1.1.1.1/a.php?id=1&quot;" target="_blank" rel="noopener">http://1.1.1.1/a.php?id=1&quot;</a> –auth-type Basic –auth-cred “user:pass”</li><li>–auth-cert/–auth-file<ul><li>–auth-file=”ca.PEM”</li><li>含有私钥的PEM格式证书文件</li><li>PEM格式的证书链文件</li></ul></li></ul><h5 id="http-s-代理"><a href="#http-s-代理" class="headerlink" title="http(s)代理"></a>http(s)代理</h5><ul><li>–proxy=”<a href="http://127.0.0.1:8087&quot;">http://127.0.0.1:8087&quot;</a></li><li>–proxy-cerd=”user:pass”</li><li>–ignore-proxy<ul><li>忽略系统代理，通常用于扫描本地网络目标。</li></ul></li></ul><h5 id="请求控制"><a href="#请求控制" class="headerlink" title="请求控制"></a>请求控制</h5><ul><li><p>–delay</p><ul><li>每次http(s)请求之间延迟时间，浮点数，单位为秒，默认无延迟</li></ul></li><li><p>–timeout</p><ul><li>请求超时时间，浮点数，默认为30秒</li></ul></li><li><p>–retries</p><ul><li>http(s)连接超时重试次数，默认三次</li></ul></li><li><p>–randomize</p><ul><li><p>长度、类型与原始值保持一致前提下，指定每次请求随机取值的参数名</p></li><li><p>sqlmap -u <a href="http://1.1.1.1/a.php?id=100" target="_blank" rel="noopener">http://1.1.1.1/a.php?id=100</a> -randomize=”id”</p></li></ul></li><li><p>–scope</p><ul><li>过滤日志内容，通过正则表达式筛选扫描对象</li><li>sqlmap -l burp.log –scope=”(www)?.target.(com|net|org)”</li><li>sqlmap -l 2.log –scope</li></ul></li><li><p>–safe-url/–safe-freq</p><ul><li>检测和盲注截断会产生大量失败请求，服务器端可能因此销毁session</li><li>每发送–safe-freq次诸如请求后，发送一次正常请求</li></ul></li><li><p>–skip-urlencode</p><ul><li>默认get方法会对传输内容进行编码，但是有些web服务器不遵守rfc标准，使用原始字符。</li></ul></li><li><p>–eval</p><ul><li>sqlmap -u “<a href="http://1.1.1.1/a.php?id=1&amp;hash=c1515a15b1dd15xxx&quot;" target="_blank" rel="noopener">http://1.1.1.1/a.php?id=1&amp;hash=c1515a15b1dd15xxx&quot;</a> –eval=”import hashlib;hash=hashlib.md5(id).hexdigest()”</li></ul></li></ul><h3 id="SQLMap自动注入-Optimization"><a href="#SQLMap自动注入-Optimization" class="headerlink" title="SQLMap自动注入-Optimization"></a>SQLMap自动注入-Optimization</h3><ul><li>优化性能</li><li>–predict-output<ul><li>根据检测方法，对比返回值和统计表内容，不断缩小检测范围（数据库类型版本等），提高检测效率</li><li>通过 版本名、用户名、密码、Privileges、role、数据库名称、表名、列名等判断</li><li>与–threads参数不兼容</li><li>统计表：/usr/share/sqlmap/txt/common-outputs.txt</li></ul></li><li>–keep-alive<ul><li>使用http(s)长连接，性能好</li><li>与–proxy参数不兼容</li><li>避免重复建立网络连接的开销，但大量长连接会严重占用服务器资源</li></ul></li><li>–null-connection<ul><li>只获取相应页面的大小，而不是具体内容</li><li>通常用于盲注判断 真/假，降低网络带宽消耗。比如页面会回传图片</li><li>与–text-only参数不兼容（基于页面内容比较判断真/假）<ul><li>若是HTTP响应体中有许多诸如JavaScript之类的活动内容，可以使用参数“–text-only”让Sqlmap只专注于纯文本内容。</li></ul></li></ul></li><li>–threads<ul><li>最大并发线程</li><li>盲注时每个线程获取一个字符（7次请求，因为第一位是0，高位ascii码键盘上没有），获取完成后线程结束</li><li>默认值为1，建议不要超过10，否则可能影响站点可用性</li><li>与–predict-output参数不兼容</li></ul></li><li>-o 开启前三个性能参数（除–threads参数）</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SQLMap自动注入-Target</title>
+      <link href="/2020/10/20/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Target/"/>
+      <url>/2020/10/20/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Target/</url>
+      
+        <content type="html"><![CDATA[<h3 id="SQLMap自动注入"><a href="#SQLMap自动注入" class="headerlink" title="SQLMap自动注入"></a>SQLMap自动注入</h3><ul><li>开源sql注入漏洞检测、利用工具</li><li>检测动态页面中get/post参数、cookie、http头</li><li>数据榨取</li><li>文件系统访问</li><li>操作系统命令执行</li><li>引擎强大、特性丰富</li><li>Xss漏洞检测</li></ul><a id="more"></a><h4 id="五种检测技术"><a href="#五种检测技术" class="headerlink" title="五种检测技术"></a>五种检测技术</h4><ul><li>基于布尔的盲注检测</li><li>基于时间的盲注检测<ul><li>‘ and (select * from (select(sleep(20)))a)– </li></ul></li><li>基于错误的检测</li><li>基于UNION联合查询的检测<ul><li>适用于通过for循环直接输出联合查询结果，否则只显示第一项结果。</li></ul></li><li>基于堆叠查询的检测<ul><li>；堆叠多个查询语句</li><li>适用于非select的数据修改、删除操作</li></ul></li></ul><h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><ul><li>数据库直连 -d</li><li>与burpsuite、google结合使用，支持正则表达式限定测试目标。</li><li>Get、post、cookie、referer、User_Agent（随机或指定）<ul><li>Cookie过期后自动处理Set-Cookie头，更新cookie信息</li></ul></li><li>限速：最大并发，延迟并发</li><li>支持Basic、Digest、NTLM、CA身份认证</li><li>数据库版本、用户、权限、hash枚举和字典破解、暴力破解表、列名称</li><li>文件上传下载、UDF、启动并执行存储过程、操作系统命令执行、访问Windows注册表</li><li>与w3af、metasploit集成结合使用，基于数据库服务进程提权和上传执行后门。</li></ul><h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><h5 id="GET方法测试"><a href="#GET方法测试" class="headerlink" title="GET方法测试"></a>GET方法测试</h5><ul><li>-u ，要测试的链接</li><li>-f，获得数据库指纹信息</li><li>–users，获得数据库用户数据</li><li>–banner，获得banner信息</li><li>–dbs，目标数据库中有哪些库</li><li>–schema，元数据</li><li>-a ，所有的</li><li>-d，直连 <ul><li><code>sqlmap -d &quot;mysql://user:password@192.168.20.10:3306/dvwa -f --users&quot;</code></li></ul></li><li>-m，要测试链接列表文件</li><li>-g，扫描google搜索结果<ul><li><code>sqlmap.py -g &quot;inurl:\&quot;.php?id=1\&quot;&quot;</code></li></ul></li></ul><h5 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h5><ul><li>使用http请求文件（直接把burpsuite拦截到的请求粘贴到文本文件）<ul><li><code>sqlmap -r request.txt --dbs</code></li></ul></li><li>使用burpsuitelog文件（burpsuite的Option-&gt;misc-&gt;logging）<ul><li><code>sqlmap -l log.txt</code></li></ul></li></ul><h5 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h5><ul><li><code>sqlmap -u &quot;xxxxxxxxxxxxxx&quot; --force-ssl</code></li></ul><h5 id="扫描配置文件"><a href="#扫描配置文件" class="headerlink" title="扫描配置文件"></a>扫描配置文件</h5><ul><li><code>sqlmap -c sqlmap.conf</code></li><li>默认的config文件/etc/sqlmap/sqlmap.conf</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>手动漏洞挖掘-SQL注入、二</title>
       <link href="/2020/10/19/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%BA%8C/"/>
       <url>/2020/10/19/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%BA%8C/</url>
       
-        <content type="html"><![CDATA[<h4 id="手动漏洞挖掘-SQL注入（二）"><a href="#手动漏洞挖掘-SQL注入（二）" class="headerlink" title="手动漏洞挖掘-SQL注入（二）"></a>手动漏洞挖掘-SQL注入（二）</h4><h4 id="无权读取information-schema库-拒绝union、order-by语句"><a href="#无权读取information-schema库-拒绝union、order-by语句" class="headerlink" title="无权读取information_schema库 / 拒绝union、order by语句"></a>无权读取information_schema库 / 拒绝union、order by语句</h4><ul><li>第一步、猜列名：<code>&#39; and asd is null --</code><ul><li>可以通过返回信息得到 asd这个列是否存在，提前准备好字典。用burp Intruder</li><li><code>find / -name *.column*.txt</code><ul><li>去除以#开头的行<code>cat xxx.txt | grep -v ^# &gt; column.txt</code></li></ul></li></ul></li></ul><a id="more"></a><ul><li>通过列名猜当前表名：<code>&#39; and table.user is null --</code><ul><li><code>find / -name *.table.txt</code><ul><li>同样需要去除#开头的行</li></ul></li></ul></li><li>猜库名：<code>&#39; and db.table.user is null --</code></li><li>猜库中的其他表：<code>&#39; and (select count(*) from table)&gt;0 --</code></li><li>猜表对应关系：<code>&#39; and user.user is null --</code></li><li>猜字段内容：<code>or user=&#39;admin</code>,<code>or user like &#39;%a%&#39;</code></li><li>账号对应密码：<code>&#39; or user = &#39;admin&#39; and password = &#39;md5hash&#39;</code><ul><li>用md5sum命令把密码字典生成MD5字典，然后intruder</li></ul></li><li>可以插入账号密码数据条目<code>&#39;; insert xxxxxx</code>,<code>&#39;;update users set user=&#39;aaa&#39; where user=&#39;bbb&#39;</code></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>pangolin windows上的sql注入集成工具</li><li>HexorBase，</li></ul>]]></content>
+        <content type="html"><![CDATA[<h3 id="手动漏洞挖掘-SQL注入（二）"><a href="#手动漏洞挖掘-SQL注入（二）" class="headerlink" title="手动漏洞挖掘-SQL注入（二）"></a>手动漏洞挖掘-SQL注入（二）</h3><h4 id="无权读取information-schema库-拒绝union、order-by语句"><a href="#无权读取information-schema库-拒绝union、order-by语句" class="headerlink" title="无权读取information_schema库 / 拒绝union、order by语句"></a>无权读取information_schema库 / 拒绝union、order by语句</h4><ul><li>第一步、猜列名：<code>&#39; and asd is null --</code><ul><li>可以通过返回信息得到 asd这个列是否存在，提前准备好字典。用burp Intruder</li><li><code>find / -name *.column*.txt</code><ul><li>去除以#开头的行<code>cat xxx.txt | grep -v ^# &gt; column.txt</code></li></ul></li></ul></li></ul><a id="more"></a><ul><li>通过列名猜当前表名：<code>&#39; and table.user is null --</code><ul><li><code>find / -name *.table.txt</code><ul><li>同样需要去除#开头的行</li></ul></li></ul></li><li>猜库名：<code>&#39; and db.table.user is null --</code></li><li>猜库中的其他表：<code>&#39; and (select count(*) from table)&gt;0 --</code></li><li>猜表对应关系：<code>&#39; and user.user is null --</code></li><li>猜字段内容：<code>or user=&#39;admin</code>,<code>or user like &#39;%a%&#39;</code></li><li>账号对应密码：<code>&#39; or user = &#39;admin&#39; and password = &#39;md5hash&#39;</code><ul><li>用md5sum命令把密码字典生成MD5字典，然后intruder</li></ul></li><li>可以插入账号密码数据条目<code>&#39;; insert xxxxxx</code>,<code>&#39;;update users set user=&#39;aaa&#39; where user=&#39;bbb&#39;</code></li></ul><h4 id="SQL盲注"><a href="#SQL盲注" class="headerlink" title="SQL盲注"></a>SQL盲注</h4><ul><li>不显示数据库内建的报错信息<ul><li>内建的报错信息帮助开发人员发现和修复问题</li><li>报错信息提供关于系统的大量有用信息</li></ul></li><li>当程序员隐藏了数据库内建报错信息，替换为通用的错误提示，sql注入将无法依据报错信息判断注入语句的执行结果。</li><li>思路：基于逻辑真假不同结果来判断<ul><li>1‘ and 1=1 – </li><li>1’ and 1=2 – </li><li>1’ and ORD(MID((VERSION()),2,1,))&amp;32&gt;0<ul><li>VESION的第二位的ASCII码的二进制第3位&gt;0</li></ul></li><li>current_user()、database()</li></ul></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>pangolin windows上的sql注入集成工具</li><li>HexorBase</li></ul>]]></content>
       
       
       <categories>

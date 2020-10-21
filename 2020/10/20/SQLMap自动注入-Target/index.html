@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>WEP/WPA工作原理 | Pyrrhax</title>
+    <title>SQLMap自动注入-Target | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -203,7 +203,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/04/WEP-WPA%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/20/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Target/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="Pyrrhax">
        <meta itemprop="description" content="">
@@ -214,11 +214,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">WEP/WPA工作原理</h1>
+      <h1 class="post-title" itemprop="name headline">SQLMap自动注入-Target</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-10-04T19:32:05+08:00">2020-10-04 19:32:05</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-10-20T16:01:59+08:00">2020-10-20 16:01:59</time></span>
         </span>
         
         
@@ -236,152 +236,81 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h2 id="WEP-WPA工作原理"><a href="#WEP-WPA工作原理" class="headerlink" title="WEP/WPA工作原理"></a>WEP/WPA工作原理</h2><h3 id="WEP加密"><a href="#WEP加密" class="headerlink" title="WEP加密"></a>WEP加密</h3><ul>
-<li>使用Rivest Cipher4（RC4）算法加密流量内容，实现机密性</li>
-<li>CRC32算法检查数据完整性</li>
-<li>标准采用使用24位initialization vector（IV）</li>
+      <h3 id="SQLMap自动注入"><a href="#SQLMap自动注入" class="headerlink" title="SQLMap自动注入"></a>SQLMap自动注入</h3><ul>
+<li>开源sql注入漏洞检测、利用工具</li>
+<li>检测动态页面中get/post参数、cookie、http头</li>
+<li>数据榨取</li>
+<li>文件系统访问</li>
+<li>操作系统命令执行</li>
+<li>引擎强大、特性丰富</li>
+<li>Xss漏洞检测</li>
 </ul>
 <a id="more"></a>
 
-<h4 id="RC4算法"><a href="#RC4算法" class="headerlink" title="RC4算法"></a>RC4算法</h4><ul>
-<li>RSA实验室研发的对称加密流算法<ul>
-<li>实现简单</li>
-<li>速度快</li>
+<h4 id="五种检测技术"><a href="#五种检测技术" class="headerlink" title="五种检测技术"></a>五种检测技术</h4><ul>
+<li>基于布尔的盲注检测</li>
+<li>基于时间的盲注检测<ul>
+<li>‘ and (select * from (select(sleep(20)))a)– </li>
 </ul>
 </li>
-<li>加密：对明文流和密钥流进行XOR计算</li>
-<li>解密：对密文流和密钥流进行XOR计算</li>
-<li>RC4算法key由两个过程生成<ul>
-<li>合并IV和PSK，利用Key Scheduling Algorithm（KSA）算法生成起始状态表。</li>
-<li>Pseudo-Random Generation Algorithm（PRGA）算法生成最终密钥流。</li>
+<li>基于错误的检测</li>
+<li>基于UNION联合查询的检测<ul>
+<li>适用于通过for循环直接输出联合查询结果，否则只显示第一项结果。</li>
 </ul>
 </li>
-</ul>
-<h3 id="WPA安全系统"><a href="#WPA安全系统" class="headerlink" title="WPA安全系统"></a>WPA安全系统</h3><ul>
-<li>Wi-Fi Protected Access</li>
-<li>802.11i为提高无限安全，开发两个新的链路层加密协议<ul>
-<li>Temporal Key Integrity Protocol(TKIP)<ul>
-<li>WPA1(较之WEP可动态改变密钥)</li>
-</ul>
-</li>
-<li>Counter Mode with CBC-MAC(CCMP)<ul>
-<li>WPA2</li>
+<li>基于堆叠查询的检测<ul>
+<li>；堆叠多个查询语句</li>
+<li>适用于非select的数据修改、删除操作</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>WPA加密两种安全类型<ul>
-<li>WPA个人：使用预设共享密钥实现身份认证</li>
-<li>WPA企业：使用802.1x和Radius服务器实现AAA<ul>
-<li>从客户端到AP用EAP协议</li>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><ul>
+<li>数据库直连 -d</li>
+<li>与burpsuite、google结合使用，支持正则表达式限定测试目标。</li>
+<li>Get、post、cookie、referer、User_Agent（随机或指定）<ul>
+<li>Cookie过期后自动处理Set-Cookie头，更新cookie信息</li>
 </ul>
 </li>
+<li>限速：最大并发，延迟并发</li>
+<li>支持Basic、Digest、NTLM、CA身份认证</li>
+<li>数据库版本、用户、权限、hash枚举和字典破解、暴力破解表、列名称</li>
+<li>文件上传下载、UDF、启动并执行存储过程、操作系统命令执行、访问Windows注册表</li>
+<li>与w3af、metasploit集成结合使用，基于数据库服务进程提权和上传执行后门。</li>
+</ul>
+<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><h5 id="GET方法测试"><a href="#GET方法测试" class="headerlink" title="GET方法测试"></a>GET方法测试</h5><ul>
+<li>-u ，要测试的链接</li>
+<li>-f，获得数据库指纹信息</li>
+<li>–users，获得数据库用户数据</li>
+<li>–banner，获得banner信息</li>
+<li>–dbs，目标数据库中有哪些库</li>
+<li>–schema，元数据</li>
+<li>-a ，所有的</li>
+<li>-d，直连 <ul>
+<li><code>sqlmap -d &quot;mysql://user:password@192.168.20.10:3306/dvwa -f --users&quot;</code></li>
 </ul>
 </li>
-<li>WPA1<ul>
-<li>802.11i第三版草案</li>
-<li>与WEP比较<ul>
-<li>都采用逐包进行密钥加密</li>
-<li>128位的key和48位的初向量（IV）</li>
-<li>RC4流加密数据</li>
-<li>帧计数器避免重放攻击</li>
-<li>TKIP使用Michael算法进行完整性校验MIC<ul>
-<li>WEP CRC32</li>
-</ul>
-</li>
-<li>兼容早期版本硬件</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>WPA2<ul>
-<li>依据802.11i完全重新设计实现<ul>
-<li>也被称为Robust Security Network（RSN）</li>
-<li>CCMP替代TKIP</li>
-<li>AES加密算法取代了RC4</li>
-<li>不兼容早期版本硬件</li>
+<li>-m，要测试链接列表文件</li>
+<li>-g，扫描google搜索结果<ul>
+<li><code>sqlmap.py -g &quot;inurl:\&quot;.php?id=1\&quot;&quot;</code></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<h3 id="身份认证（WPA企业）"><a href="#身份认证（WPA企业）" class="headerlink" title="身份认证（WPA企业）"></a>身份认证（WPA企业）</h3><ul>
-<li>身份认证基于Extensible Authentication Protocol（EAP实现）<ul>
-<li>EAP-TLS，需要客户端和服务器证书</li>
-<li>EAP-TTLS</li>
-<li>PEAP混合身份验证，只需要服务器证书</li>
+<h5 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h5><ul>
+<li>使用http请求文件（直接把burpsuite拦截到的请求粘贴到文本文件）<ul>
+<li><code>sqlmap -r request.txt --dbs</code></li>
 </ul>
 </li>
-<li>客户端选择身份认证方式</li>
-<li>AP发送身份验证信息给RadiusServer</li>
-<li>Radius Server返回”Radius Accept“表示认证成功<ul>
-<li>其中包含MasterKey（MK）</li>
-</ul>
-</li>
-<li>AP通过EAP消息通知STA认证成功</li>
-</ul>
-<h3 id="密钥交换"><a href="#密钥交换" class="headerlink" title="密钥交换"></a>密钥交换</h3><ul>
-<li><p>无线网络设计用于一组无线通信设备</p>
-<ul>
-<li>关联到同一AP的设备共享无线信道</li>
-<li>单播、广播、组播<ul>
-<li>安全特性要求不同</li>
-<li>单播通信需要单独密钥加密通信双方流量<ul>
-<li>pairwise key：对偶密钥（PTK）（T是temporary，PTK由PMK得出）</li>
-</ul>
-</li>
-<li>组播通信需要信任域内所有成员共享的同一密钥<ul>
-<li>group key：组密钥（GTK）</li>
+<li>使用burpsuitelog文件（burpsuite的Option-&gt;misc-&gt;logging）<ul>
+<li><code>sqlmap -l log.txt</code></li>
 </ul>
 </li>
 </ul>
-</li>
+<h5 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h5><ul>
+<li><code>sqlmap -u &quot;xxxxxxxxxxxxxx&quot; --force-ssl</code></li>
 </ul>
-</li>
-</ul>
-<h4 id="PMK"><a href="#PMK" class="headerlink" title="PMK"></a>PMK</h4><ul>
-<li><p>安全上下文的顶级密钥</p>
-<ul>
-<li>MK进行TLS-PRF加密得出PMK<ul>
-<li>基于服务密钥</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>由上层身份验证方法服务器生成</p>
-</li>
-<li><p>从服务器通过radius传给AP</p>
-</li>
-<li><p>从AP通过EAP消息传递给所有STA</p>
-<ul>
-<li>基于PSK共享密钥（个人）</li>
-</ul>
-</li>
-<li><p>Essid+PSK+迭代次数4096——Hash计算生成PMK——再生成PTK</p>
-</li>
-<li><p>STA和AP分别计算得出PMK，并不在网络中传递交换</p>
-<ul>
-<li>256位既32字节</li>
-</ul>
-<h4 id="四步握手生成PTK"><a href="#四步握手生成PTK" class="headerlink" title="四步握手生成PTK"></a>四步握手生成PTK</h4></li>
-</ul>
-<ul>
-<li>AP发送Anonce给STA</li>
-<li>STA生成Snonce计算出PTK</li>
-<li>STA发送Snonce加PTK的MIC给AP</li>
-<li>AP拿到Snonce计算出PTk</li>
-<li>AP计算MIC与接收的MIC比对</li>
-<li>MIC一致说明确定STA知道PMK</li>
-<li>AP发GTK给STA</li>
-<li>STA回复ACk并使用密钥加密</li>
-</ul>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ul>
-<li>集中身份验证：<ul>
-<li>Radius</li>
-<li>LADP</li>
-<li>kerberos</li>
-</ul>
-</li>
+<h5 id="扫描配置文件"><a href="#扫描配置文件" class="headerlink" title="扫描配置文件"></a>扫描配置文件</h5><ul>
+<li><code>sqlmap -c sqlmap.conf</code></li>
+<li>默认的config文件/etc/sqlmap/sqlmap.conf</li>
 </ul>
 
     </main>
@@ -400,12 +329,12 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2020/10/04/802-11%E5%8D%8F%E8%AE%AE%E6%A0%88%E5%B8%A7%E7%BB%93%E6%9E%84/" rel="next" title="802.11协议栈帧结构"><i class="fas fa-angle-left"></i><span class="nav-title">802.11协议栈帧结构</span></a>
+      <a href="/2020/10/19/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%BA%8C/" rel="next" title="手动漏洞挖掘-SQL注入、二"><i class="fas fa-angle-left"></i><span class="nav-title">手动漏洞挖掘-SQL注入、二</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
       
-      <a href="/2020/10/06/%E6%97%A0%E7%BA%BF%E6%B8%97%E9%80%8F%E5%AE%9E%E6%93%8D-Aircrack-ng-WEP/" rel="prev" title="无线渗透实操--Aircrack-ng:WEP"><span class="nav-title">无线渗透实操--Aircrack-ng:WEP</span><i class="fas fa-angle-right"></i></a>
+      <a href="/2020/10/21/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Request%E3%80%81Optimization/" rel="prev" title="SQLMap自动注入-Request、Optimization"><span class="nav-title">SQLMap自动注入-Request、Optimization</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -432,7 +361,7 @@
       "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "WEP/WPA工作原理",
+      "issue_title": "SQLMap自动注入-Target",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -527,7 +456,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#WEP-WPA工作原理"><span class="toc-text">WEP&#x2F;WPA工作原理</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#WEP加密"><span class="toc-text">WEP加密</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#RC4算法"><span class="toc-text">RC4算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#WPA安全系统"><span class="toc-text">WPA安全系统</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#身份认证（WPA企业）"><span class="toc-text">身份认证（WPA企业）</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#密钥交换"><span class="toc-text">密钥交换</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#PMK"><span class="toc-text">PMK</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#四步握手生成PTK"><span class="toc-text">四步握手生成PTK</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#其它"><span class="toc-text">其它</span></a></li></ol></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#SQLMap自动注入"><span class="toc-text">SQLMap自动注入</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#五种检测技术"><span class="toc-text">五种检测技术</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#其它"><span class="toc-text">其它</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#操作"><span class="toc-text">操作</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#GET方法测试"><span class="toc-text">GET方法测试</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#POST方法"><span class="toc-text">POST方法</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#HTTPS"><span class="toc-text">HTTPS</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#扫描配置文件"><span class="toc-text">扫描配置文件</span></a></li></ol></li></ol></li></ol></div>
     </div>
     
     

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-19T09:32:24.398Z</updated>
+  <updated>2020-10-21T09:58:58.472Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,15 +17,80 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>SQLMap自动注入-Request、Optimization</title>
+    <link href="http://yoursite.com/2020/10/21/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Request%E3%80%81Optimization/"/>
+    <id>http://yoursite.com/2020/10/21/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Request%E3%80%81Optimization/</id>
+    <published>2020-10-21T09:58:32.000Z</published>
+    <updated>2020-10-21T09:58:58.472Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;SQLMap自动注入-Request&quot;&gt;&lt;a href=&quot;#SQLMap自动注入-Request&quot; class=&quot;headerlink&quot; title=&quot;SQLMap自动注入-Request&quot;&gt;&lt;/a&gt;SQLMap自动注入-Request&lt;/h3&gt;&lt;h5 id=&quot;基本数据&quot;&gt;&lt;a href=&quot;#基本数据&quot; class=&quot;headerlink&quot; title=&quot;基本数据&quot;&gt;&lt;/a&gt;基本数据&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;数据段： –data&lt;ul&gt;
+&lt;li&gt;get/post都使用&lt;/li&gt;
+&lt;li&gt;sqlmap -u “&lt;a href=&quot;http://1.1.1.1/a.php”&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://1.1.1.1/a.php”&lt;/a&gt; –data=”user=1&amp;amp;pass=2”-f&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;变量分隔符：–param-del&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://1.1.1.1/a.php?q=foo;id=1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://1.1.1.1/a.php?q=foo;id=1&lt;/a&gt;    //用；替换&amp;amp;&lt;/li&gt;
+&lt;li&gt;sqlmap -u “&lt;a href=&quot;http://1.1.1.1/a.php&amp;quot;&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://1.1.1.1/a.php&amp;quot;&lt;/a&gt; –data=”q=foo;id=1” –param-del=”;” -f&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SQLMap自动注入-Target</title>
+    <link href="http://yoursite.com/2020/10/20/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Target/"/>
+    <id>http://yoursite.com/2020/10/20/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Target/</id>
+    <published>2020-10-20T08:01:59.000Z</published>
+    <updated>2020-10-20T08:02:15.498Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;SQLMap自动注入&quot;&gt;&lt;a href=&quot;#SQLMap自动注入&quot; class=&quot;headerlink&quot; title=&quot;SQLMap自动注入&quot;&gt;&lt;/a&gt;SQLMap自动注入&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;开源sql注入漏洞检测、利用工具&lt;/li&gt;
+&lt;li&gt;检测动态页面中get/post参数、cookie、http头&lt;/li&gt;
+&lt;li&gt;数据榨取&lt;/li&gt;
+&lt;li&gt;文件系统访问&lt;/li&gt;
+&lt;li&gt;操作系统命令执行&lt;/li&gt;
+&lt;li&gt;引擎强大、特性丰富&lt;/li&gt;
+&lt;li&gt;Xss漏洞检测&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>手动漏洞挖掘-SQL注入、二</title>
     <link href="http://yoursite.com/2020/10/19/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%BA%8C/"/>
     <id>http://yoursite.com/2020/10/19/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%BA%8C/</id>
     <published>2020-10-19T09:32:05.000Z</published>
-    <updated>2020-10-19T09:32:24.398Z</updated>
+    <updated>2020-10-20T08:01:24.699Z</updated>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;手动漏洞挖掘-SQL注入（二）&quot;&gt;&lt;a href=&quot;#手动漏洞挖掘-SQL注入（二）&quot; class=&quot;headerlink&quot; title=&quot;手动漏洞挖掘-SQL注入（二）&quot;&gt;&lt;/a&gt;手动漏洞挖掘-SQL注入（二）&lt;/h4&gt;&lt;h4 id=&quot;无权读取information-schema库-拒绝union、order-by语句&quot;&gt;&lt;a href=&quot;#无权读取information-schema库-拒绝union、order-by语句&quot; class=&quot;headerlink&quot; title=&quot;无权读取information_schema库 / 拒绝union、order by语句&quot;&gt;&lt;/a&gt;无权读取information_schema库 / 拒绝union、order by语句&lt;/h4&gt;&lt;ul&gt;
+      &lt;h3 id=&quot;手动漏洞挖掘-SQL注入（二）&quot;&gt;&lt;a href=&quot;#手动漏洞挖掘-SQL注入（二）&quot; class=&quot;headerlink&quot; title=&quot;手动漏洞挖掘-SQL注入（二）&quot;&gt;&lt;/a&gt;手动漏洞挖掘-SQL注入（二）&lt;/h3&gt;&lt;h4 id=&quot;无权读取information-schema库-拒绝union、order-by语句&quot;&gt;&lt;a href=&quot;#无权读取information-schema库-拒绝union、order-by语句&quot; class=&quot;headerlink&quot; title=&quot;无权读取information_schema库 / 拒绝union、order by语句&quot;&gt;&lt;/a&gt;无权读取information_schema库 / 拒绝union、order by语句&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;第一步、猜列名：&lt;code&gt;&amp;#39; and asd is null --&lt;/code&gt;&lt;ul&gt;
 &lt;li&gt;可以通过返回信息得到 asd这个列是否存在，提前准备好字典。用burp Intruder&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;find / -name *.column*.txt&lt;/code&gt;&lt;ul&gt;
@@ -650,66 +715,6 @@
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;&lt;/table&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>提权-利用配置不当提权</title>
-    <link href="http://yoursite.com/2020/09/23/%E6%8F%90%E6%9D%83-%E5%88%A9%E7%94%A8%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%BD%93%E6%8F%90%E6%9D%83/"/>
-    <id>http://yoursite.com/2020/09/23/%E6%8F%90%E6%9D%83-%E5%88%A9%E7%94%A8%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%BD%93%E6%8F%90%E6%9D%83/</id>
-    <published>2020-09-23T09:14:13.000Z</published>
-    <updated>2020-09-23T09:15:27.404Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;提权-利用配置不当提权&quot;&gt;&lt;a href=&quot;#提权-利用配置不当提权&quot; class=&quot;headerlink&quot; title=&quot;提权-利用配置不当提权&quot;&gt;&lt;/a&gt;提权-利用配置不当提权&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;与漏洞提权相比 更常用的方法&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;企业环境&lt;/li&gt;
-&lt;li&gt;补丁更新全部已经安装&lt;/li&gt;
-&lt;li&gt;输入变量过滤之外更值得研发关注的安全隐患&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>提权-利用漏洞提权</title>
-    <link href="http://yoursite.com/2020/09/22/%E6%8F%90%E6%9D%83-%E5%88%A9%E7%94%A8%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83/"/>
-    <id>http://yoursite.com/2020/09/22/%E6%8F%90%E6%9D%83-%E5%88%A9%E7%94%A8%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83/</id>
-    <published>2020-09-22T13:04:03.000Z</published>
-    <updated>2020-09-24T03:17:02.685Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;提权-利用漏洞提权&quot;&gt;&lt;a href=&quot;#提权-利用漏洞提权&quot; class=&quot;headerlink&quot; title=&quot;提权-利用漏洞提权&quot;&gt;&lt;/a&gt;提权-利用漏洞提权&lt;/h2&gt;&lt;h2 id=&quot;Ms11-080&quot;&gt;&lt;a href=&quot;#Ms11-080&quot; class=&quot;headerlink&quot; title=&quot;Ms11-080&quot;&gt;&lt;/a&gt;Ms11-080&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Kb2592799&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://technet.microsoft.com/library/security/ms11-080&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://technet.microsoft.com/library/security/ms11-080&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;先把python编译成exe，再在目标机器执行&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
