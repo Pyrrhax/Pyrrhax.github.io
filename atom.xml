@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-21T09:58:58.472Z</updated>
+  <updated>2020-10-28T16:17:50.871Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,73 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>跨站请求伪造CSRF</title>
+    <link href="http://yoursite.com/2020/10/27/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0CSRF/"/>
+    <id>http://yoursite.com/2020/10/27/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0CSRF/</id>
+    <published>2020-10-27T15:40:04.000Z</published>
+    <updated>2020-10-28T16:17:50.871Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;CSRF（Cross-site-request-forgery）&quot;&gt;&lt;a href=&quot;#CSRF（Cross-site-request-forgery）&quot; class=&quot;headerlink&quot; title=&quot;CSRF（Cross-site request forgery）&quot;&gt;&lt;/a&gt;CSRF（Cross-site request forgery）&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;从信任的角度来区分&lt;ul&gt;
+&lt;li&gt;XSS：利用用户对站点的信任&lt;/li&gt;
+&lt;li&gt;CSRF：利用站点对已经身份认证的信任&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>跨站脚本攻击XSS</title>
+    <link href="http://yoursite.com/2020/10/26/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BBXSS/"/>
+    <id>http://yoursite.com/2020/10/26/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BBXSS/</id>
+    <published>2020-10-26T05:26:30.000Z</published>
+    <updated>2020-10-28T16:17:36.563Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;XSS&quot;&gt;&lt;a href=&quot;#XSS&quot; class=&quot;headerlink&quot; title=&quot;XSS&quot;&gt;&lt;/a&gt;XSS&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;攻击web客户端&lt;/li&gt;
+&lt;li&gt;客户端脚本语言&lt;ul&gt;
+&lt;li&gt;弹窗告警、广告&lt;/li&gt;
+&lt;li&gt;Javascript&lt;/li&gt;
+&lt;li&gt;在浏览器中执行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;XSS（cross-site scripting）&lt;ul&gt;
+&lt;li&gt;通过web站点漏洞，向客户端交付恶意脚本代码，实现对客户端的攻击目的&lt;/li&gt;
+&lt;li&gt;注入客户端脚本代码&lt;/li&gt;
+&lt;li&gt;盗取cookie&lt;/li&gt;
+&lt;li&gt;重定向&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>SQLMap自动注入-Request、Optimization</title>
@@ -593,128 +660,6 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>无线通信基础知识-IEEE802.11标准</title>
-    <link href="http://yoursite.com/2020/09/23/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-IEEE-802-11%E6%A0%87%E5%87%86/"/>
-    <id>http://yoursite.com/2020/09/23/%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-IEEE-802-11%E6%A0%87%E5%87%86/</id>
-    <published>2020-09-23T09:18:54.000Z</published>
-    <updated>2020-10-03T02:20:31.336Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;无线通信基础知识-IEEE-802-11标准&quot;&gt;&lt;a href=&quot;#无线通信基础知识-IEEE-802-11标准&quot; class=&quot;headerlink&quot; title=&quot;无线通信基础知识-IEEE 802.11标准&quot;&gt;&lt;/a&gt;无线通信基础知识-IEEE 802.11标准&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;无线技术特点&lt;ul&gt;
-&lt;li&gt;行业迅猛发展&lt;/li&gt;
-&lt;li&gt;互联网重要入口&lt;/li&gt;
-&lt;li&gt;边界模糊&lt;/li&gt;
-&lt;li&gt;安全实施缺失而且困难&lt;/li&gt;
-&lt;li&gt;对技术不了解导致配置不当&lt;/li&gt;
-&lt;li&gt;企业网络私自接入AP破坏网络边界&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>敏感信息收集与隐藏痕迹</title>
-    <link href="http://yoursite.com/2020/09/23/%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B8%8E%E9%9A%90%E8%97%8F%E7%97%95%E8%BF%B9/"/>
-    <id>http://yoursite.com/2020/09/23/%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B8%8E%E9%9A%90%E8%97%8F%E7%97%95%E8%BF%B9/</id>
-    <published>2020-09-23T09:14:33.000Z</published>
-    <updated>2020-09-24T03:18:12.077Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;基本信息收集&quot;&gt;&lt;a href=&quot;#基本信息收集&quot; class=&quot;headerlink&quot; title=&quot;基本信息收集&quot;&gt;&lt;/a&gt;基本信息收集&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Linux&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;查看信息&lt;/th&gt;
-&lt;th&gt;操作&lt;/th&gt;
-&lt;th&gt;备注&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;&lt;tr&gt;
-&lt;td&gt;DNS配置&lt;/td&gt;
-&lt;td&gt;/etc/resolv.conf&lt;/td&gt;
-&lt;td&gt;是否有机会DNS篡改，劫持&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;用户账号&lt;/td&gt;
-&lt;td&gt;/etc/passwd&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;用户密码&lt;/td&gt;
-&lt;td&gt;/etc/shadow&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;当前用户&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;whoami&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;所有登陆用户&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;who -a&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;网卡信息&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;ifconfig -a&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;防火墙设置&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;iptables -L -n&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;路由表&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;netstat -rn&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;操作系统信息&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;uname -a&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;当前运行的进程&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;ps aux&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;安装的软件包&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;dpkg -l&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
