@@ -204,6 +204,68 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/05/Web%E6%B8%97%E9%80%8F-SSL-TLS%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E3%80%81Ajax%E3%80%81WebService/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="Pyrrhax">
+        <meta itemprop="description" content="">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2020/11/05/Web%E6%B8%97%E9%80%8F-SSL-TLS%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E3%80%81Ajax%E3%80%81WebService/" itemprop="url">Web渗透-SSL/TLS拒绝服务、Ajax、WebService</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-11-05T12:06:05+08:00">2020-11-05 12:06:05</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h3 id="SSL-TLS拒绝服务攻击"><a href="#SSL-TLS拒绝服务攻击" class="headerlink" title="SSL/TLS拒绝服务攻击"></a>SSL/TLS拒绝服务攻击</h3><ul>
+<li>thc-ssl-dos<ul>
+<li>ssl协商加密对性能开销大，大量握手请求会导致拒绝服务</li>
+<li>利用SSL secure Renegotiation特性，在单一TCP连接中生成数千个SSL重连接请求，造成服务器资源过载</li>
+<li>与流量式拒绝服务攻击不同，thc-ssl-dos可以利用dsl线路打垮30G带宽的服务器</li>
+<li>服务器平均可以处理300次/秒SSL握手请求</li>
+<li>对SMTPS、POP3S、等服务同样有效</li>
+<li>thc-ssl-dos 199.223.209.205 2804 -accept</li>
+</ul>
+</li>
+</ul>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/27/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0CSRF/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="Pyrrhax">
@@ -764,68 +826,6 @@
     </footer>
   </article>
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/14/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Burpsuite/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="Pyrrhax">
-        <meta itemprop="description" content="">
-        <meta itemprop="image" content="/images/avatar.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Pyrrhax">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/10/14/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Burpsuite/" itemprop="url">Web扫描工具-Burpsuite</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-10-14T11:15:59+08:00">2020-10-14 11:15:59</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
-        </span>
-        
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h3 id="Burpsuite"><a href="#Burpsuite" class="headerlink" title="Burpsuite"></a>Burpsuite</h3><ul>
-<li>Web安全工具中的瑞士军刀</li>
-<li>统一的集成工具发现全部现代安全漏洞</li>
-<li>PortSwigger公司开发<ul>
-<li>Burp Free</li>
-<li>Burp Professional</li>
-<li><a href="http://www.portswigger.net" target="_blank" rel="noopener">http://www.portswigger.net</a></li>
-</ul>
-</li>
-<li>所有的工具共享一个能处理并显示HTTP消息的可拓展框架，模块之间无缝交换信息。</li>
-</ul>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
   
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right" aria-label="下一页"></i></a>
@@ -872,7 +872,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">52</a></div>
+      <div><a href="/archives/">53</a></div>
     </div>
     
     

@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>标签: 编程题 | Pyrrhax</title>
+    <title>Web渗透-SSL/TLS拒绝服务、Ajax、WebService | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -199,35 +199,187 @@
         <div class="main-container">
           <div class="content">
             
-<div id="tag" class="tag page">
-  <h1 class="page-title">编程题</h1>
+<div id="post" class="page">
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/09/11/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%9E%8C%E7%9D%A1/" itemprop="url">【编程题】网易2019笔试：瞌睡</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-09-11T00:00:00+08:00">09-11</time>
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/05/Web%E6%B8%97%E9%80%8F-SSL-TLS%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E3%80%81Ajax%E3%80%81WebService/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="Pyrrhax">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
       </span>
-      
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">Web渗透-SSL/TLS拒绝服务、Ajax、WebService</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-11-05T12:06:05+08:00">2020-11-05 12:06:05</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
     </header>
+    <main class="post-main" itemprop="articleBody">
+      <h3 id="SSL-TLS拒绝服务攻击"><a href="#SSL-TLS拒绝服务攻击" class="headerlink" title="SSL/TLS拒绝服务攻击"></a>SSL/TLS拒绝服务攻击</h3><ul>
+<li>thc-ssl-dos<ul>
+<li>ssl协商加密对性能开销大，大量握手请求会导致拒绝服务</li>
+<li>利用SSL secure Renegotiation特性，在单一TCP连接中生成数千个SSL重连接请求，造成服务器资源过载</li>
+<li>与流量式拒绝服务攻击不同，thc-ssl-dos可以利用dsl线路打垮30G带宽的服务器</li>
+<li>服务器平均可以处理300次/秒SSL握手请求</li>
+<li>对SMTPS、POP3S、等服务同样有效</li>
+<li>thc-ssl-dos 199.223.209.205 2804 -accept</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li>对策<ul>
+<li>禁用SSL-Renegotiation、使用SSL Accelerator</li>
+<li>通过修改thc-ssl-dos代码，可以绕过以上对策</li>
+</ul>
+</li>
+</ul>
+<h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><ul>
+<li>目前没用通用的ajax安全最佳实践，其攻击面不为大多数人所知</li>
+<li>Ajax的安全问题<ul>
+<li>多种技术混合，增加了攻击面，每个参数都可能形成独立的攻击过程。</li>
+<li>Ajax引擎是个全功能的脚本解释器，访问恶意站点可能后果严重，虽然浏览器有沙箱和SOP，但可被绕过</li>
+<li>服务器、客户端代码结合使用产生混乱，服务器访问控制不当，将信息泄露</li>
+<li>暴露应用程序逻辑</li>
+</ul>
+</li>
+<li>对渗透测试的挑战<ul>
+<li>异步请求数量多且隐蔽</li>
+<li>触发ajax请求的条件无规律</li>
+<li>手动和截断代理爬网可能产生大量遗漏</li>
+</ul>
+</li>
+<li>Ajax爬网工具zap</li>
+<li>客户端代码审计<ul>
+<li>源码</li>
+<li>firebug</li>
+</ul>
+</li>
+</ul>
+<h3 id="WebService"><a href="#WebService" class="headerlink" title="WebService"></a>WebService</h3><ul>
+<li><p>WebService安全考虑</p>
+<ul>
+<li><p>使用API key或session token实现和跟踪身份认证</p>
+</li>
+<li><p>身份认证由服务器完成，而非客户端</p>
+</li>
+<li><p>API key、用户名、Session token永远不要通过URL发送</p>
+</li>
+<li><p>RESTful默认不提供任何安全机制，需要使用SSL/TLS保护传输数据安全</p>
+</li>
+<li><p>SOAP提供强于HTTPS的WS-security机制</p>
+</li>
+<li><p>使用OAuth或HMAC身份验证，HMAC身份认证使用C/S共享的密钥加密API KEY</p>
+</li>
+<li><p>RESTful应只允许身份认证用户使用PUT、DELETE方法</p>
+</li>
+<li><p>使用随机token防止CSRF攻击</p>
+</li>
+<li><p>对用户提交参数过滤，建议部署基于严格白名单的方法</p>
+</li>
+<li><p>报错信息消毒</p>
+</li>
+<li><p>直接对象引用严格身份验证（电商公司以ID作为主索引）</p>
+</li>
+</ul>
+</li>
+</ul>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
+        
+      </div>
+      
+    </footer>
   </article>
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <header id="post-header" class="post-header">
-      <h1 class="post-title-simple" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/09/09/%E3%80%90%E7%BC%96%E7%A8%8B%E9%A2%98%E3%80%91%E7%BD%91%E6%98%932019%E7%AC%94%E8%AF%95%EF%BC%9A%E7%89%9B%E7%89%9B%E6%89%BE%E5%B7%A5%E4%BD%9C/" itemprop="url">【编程题】网易2019笔试：牛牛找工作</a>
-      </h1>
-      
-      <span class="post-date">
-        <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-09-09T00:00:00+08:00">09-09</time>
-      </span>
-      
-    </header>
-  </article>
   
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2020/10/27/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0CSRF/" rel="next" title="跨站请求伪造CSRF"><i class="fas fa-angle-left"></i><span class="nav-title">跨站请求伪造CSRF</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "Pyrrhax",
+      "repo": "Pyrrhax.github.io",
+      "client_id": "ab41dde59a0f57819b1e",
+      "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "Web渗透-SSL/TLS拒绝服务、Ajax、WebService",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
   
 </div>
 
@@ -288,6 +440,17 @@
 
 
   <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#SSL-TLS拒绝服务攻击"><span class="toc-text">SSL&#x2F;TLS拒绝服务攻击</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Ajax"><span class="toc-text">Ajax</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#WebService"><span class="toc-text">WebService</span></a></li></ol></div>
+    </div>
+    
     
     
     <hr>

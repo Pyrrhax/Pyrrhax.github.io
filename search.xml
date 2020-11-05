@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Web渗透-SSL/TLS拒绝服务、Ajax、WebService</title>
+      <link href="/2020/11/05/Web%E6%B8%97%E9%80%8F-SSL-TLS%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E3%80%81Ajax%E3%80%81WebService/"/>
+      <url>/2020/11/05/Web%E6%B8%97%E9%80%8F-SSL-TLS%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E3%80%81Ajax%E3%80%81WebService/</url>
+      
+        <content type="html"><![CDATA[<h3 id="SSL-TLS拒绝服务攻击"><a href="#SSL-TLS拒绝服务攻击" class="headerlink" title="SSL/TLS拒绝服务攻击"></a>SSL/TLS拒绝服务攻击</h3><ul><li>thc-ssl-dos<ul><li>ssl协商加密对性能开销大，大量握手请求会导致拒绝服务</li><li>利用SSL secure Renegotiation特性，在单一TCP连接中生成数千个SSL重连接请求，造成服务器资源过载</li><li>与流量式拒绝服务攻击不同，thc-ssl-dos可以利用dsl线路打垮30G带宽的服务器</li><li>服务器平均可以处理300次/秒SSL握手请求</li><li>对SMTPS、POP3S、等服务同样有效</li><li>thc-ssl-dos 199.223.209.205 2804 -accept</li></ul></li></ul><a id="more"></a><ul><li>对策<ul><li>禁用SSL-Renegotiation、使用SSL Accelerator</li><li>通过修改thc-ssl-dos代码，可以绕过以上对策</li></ul></li></ul><h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><ul><li>目前没用通用的ajax安全最佳实践，其攻击面不为大多数人所知</li><li>Ajax的安全问题<ul><li>多种技术混合，增加了攻击面，每个参数都可能形成独立的攻击过程。</li><li>Ajax引擎是个全功能的脚本解释器，访问恶意站点可能后果严重，虽然浏览器有沙箱和SOP，但可被绕过</li><li>服务器、客户端代码结合使用产生混乱，服务器访问控制不当，将信息泄露</li><li>暴露应用程序逻辑</li></ul></li><li>对渗透测试的挑战<ul><li>异步请求数量多且隐蔽</li><li>触发ajax请求的条件无规律</li><li>手动和截断代理爬网可能产生大量遗漏</li></ul></li><li>Ajax爬网工具zap</li><li>客户端代码审计<ul><li>源码</li><li>firebug</li></ul></li></ul><h3 id="WebService"><a href="#WebService" class="headerlink" title="WebService"></a>WebService</h3><ul><li><p>WebService安全考虑</p><ul><li><p>使用API key或session token实现和跟踪身份认证</p></li><li><p>身份认证由服务器完成，而非客户端</p></li><li><p>API key、用户名、Session token永远不要通过URL发送</p></li><li><p>RESTful默认不提供任何安全机制，需要使用SSL/TLS保护传输数据安全</p></li><li><p>SOAP提供强于HTTPS的WS-security机制</p></li><li><p>使用OAuth或HMAC身份验证，HMAC身份认证使用C/S共享的密钥加密API KEY</p></li><li><p>RESTful应只允许身份认证用户使用PUT、DELETE方法</p></li><li><p>使用随机token防止CSRF攻击</p></li><li><p>对用户提交参数过滤，建议部署基于严格白名单的方法</p></li><li><p>报错信息消毒</p></li><li><p>直接对象引用严格身份验证（电商公司以ID作为主索引）</p></li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>跨站请求伪造CSRF</title>
       <link href="/2020/10/27/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0CSRF/"/>
       <url>/2020/10/27/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0CSRF/</url>
