@@ -84,6 +84,40 @@
   </entry>
   
   <entry>
+    <title>SQLMap自动注入-General等其余参数</title>
+    <link href="http://yoursite.com/2020/10/22/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-General%E7%AD%89%E5%85%B6%E4%BD%99%E5%8F%82%E6%95%B0/"/>
+    <id>http://yoursite.com/2020/10/22/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-General%E7%AD%89%E5%85%B6%E4%BD%99%E5%8F%82%E6%95%B0/</id>
+    <published>2020-10-22T00:43:42.000Z</published>
+    <updated>2020-11-05T00:44:34.253Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;SQLMap自动注入-Injection&quot;&gt;&lt;a href=&quot;#SQLMap自动注入-Injection&quot; class=&quot;headerlink&quot; title=&quot;SQLMap自动注入-Injection&quot;&gt;&lt;/a&gt;SQLMap自动注入-Injection&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;-p&lt;ul&gt;
+&lt;li&gt;指定扫描的参数，使–level失效&lt;/li&gt;
+&lt;li&gt;-p “user-agent,referer”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;–skip&lt;ul&gt;
+&lt;li&gt;排除指定的扫描参数&lt;/li&gt;
+&lt;li&gt;–level=5 –skip=”id,user-agent”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SQLMap自动注入-Request、Optimization</title>
     <link href="http://yoursite.com/2020/10/21/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Request%E3%80%81Optimization/"/>
     <id>http://yoursite.com/2020/10/21/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Request%E3%80%81Optimization/</id>
@@ -637,39 +671,6 @@
     
     
       <category term="漏洞利用及渗透测试基础学习笔记" scheme="http://yoursite.com/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E5%8F%8A%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>无线网运行模式和硬件设备基础知识</title>
-    <link href="http://yoursite.com/2020/09/24/%E6%97%A0%E7%BA%BF%E7%BD%91%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    <id>http://yoursite.com/2020/09/24/%E6%97%A0%E7%BA%BF%E7%BD%91%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</id>
-    <published>2020-09-24T02:49:22.000Z</published>
-    <updated>2020-09-24T02:49:49.794Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;无线网运行模式和硬件设备基础知识&quot;&gt;&lt;a href=&quot;#无线网运行模式和硬件设备基础知识&quot; class=&quot;headerlink&quot; title=&quot;无线网运行模式和硬件设备基础知识&quot;&gt;&lt;/a&gt;无线网运行模式和硬件设备基础知识&lt;/h2&gt;&lt;h3 id=&quot;无线网络运行模式&quot;&gt;&lt;a href=&quot;#无线网络运行模式&quot; class=&quot;headerlink&quot; title=&quot;无线网络运行模式&quot;&gt;&lt;/a&gt;无线网络运行模式&lt;/h3&gt;&lt;p&gt;也称为无线网络架构，默认情况下有两种：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Infrastructure&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;AP维护SSID&lt;/li&gt;
-&lt;li&gt;至少包含一个AP和一个Station，形成一个Basic Service Set(BSS)&lt;/li&gt;
-&lt;li&gt;AP连接到有线网络，称为Distribution System(DS)&lt;/li&gt;
-&lt;li&gt;连接到同一个DS的多个AP形成一个Extended Service Set(ESS)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
