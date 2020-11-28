@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Pyrrhax" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>密码破解 | Pyrrhax</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Pyrrhax</a></h1>
+        <h2 class="subtitle"></h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/09/%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="Pyrrhax">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">密码破解</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-11-09T11:15:12+08:00">2020-11-09 11:15:12</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h3 id="在线密码破解"><a href="#在线密码破解" class="headerlink" title="在线密码破解"></a>在线密码破解</h3><ul>
+<li>hydra</li>
+<li>medusa</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="离线密码破解"><a href="#离线密码破解" class="headerlink" title="离线密码破解"></a>离线密码破解</h3><h4 id="身份认证"><a href="#身份认证" class="headerlink" title="身份认证"></a>身份认证</h4><ul>
+<li>禁止明文传输密码</li>
+<li>每次认证使用hash算法加密密码传输（hash算法加密容易，解密困难）</li>
+<li>服务器端用户数据库应加盐保存</li>
+</ul>
+<h4 id="破解思路"><a href="#破解思路" class="headerlink" title="破解思路"></a>破解思路</h4><ul>
+<li>嗅探获取密码hash</li>
+<li>利用漏洞登陆服务器，从数据库获取密码hash</li>
+<li>识别hash类型<ul>
+<li>长度、字符集</li>
+</ul>
+</li>
+<li>利用离线破解工具碰撞密码hash</li>
+</ul>
+<h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><ul>
+<li>离线不会触发密码锁定机制</li>
+<li>不会产生大量登陆失败日志引起管理员注意</li>
+</ul>
+<h4 id="HASH识别工具"><a href="#HASH识别工具" class="headerlink" title="HASH识别工具"></a>HASH识别工具</h4><ul>
+<li><p>hash-identifier</p>
+</li>
+<li><p>hashid</p>
+</li>
+<li><p>可能识别错误或无法识别</p>
+</li>
+</ul>
+<h4 id="Windows-Hash获取工具"><a href="#Windows-Hash获取工具" class="headerlink" title="Windows Hash获取工具"></a>Windows Hash获取工具</h4><ul>
+<li>利用漏洞：pwdump、fgdump、mimikatz、wce</li>
+<li>物理接触：samdump2<ul>
+<li>在物理机上插入U盘，启动kaliLive虚拟机</li>
+<li>挂载windows硬盘<ul>
+<li><code>mount /dev/sda1 /mnt</code></li>
+</ul>
+</li>
+<li>到sam数据库目录下<ul>
+<li><code>cd /mnt/Windows/System32/config</code></li>
+</ul>
+</li>
+<li>执行samdump2<ul>
+<li><code>samdump2 SYSTEM SAM -o sam.hash</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="离线密码破解–Hashcat"><a href="#离线密码破解–Hashcat" class="headerlink" title="离线密码破解–Hashcat"></a>离线密码破解–Hashcat</h4><ul>
+<li>开源多线程密码破解工具</li>
+<li>支持80多种算法的破解<ul>
+<li><code>hashcat -h</code></li>
+</ul>
+</li>
+<li>六种模式<ul>
+<li>-0 Straight：字典破解</li>
+<li>-1 Combination：将字典中密码进行组合</li>
+<li>-2 Toggle case：尝试字典中所有密码的大小写字母组合</li>
+<li>-3 Brute force：指定字符集（或全部字符集）所有组合</li>
+<li>-4 Permutation：字典中密码的全部字符置换组合（比如123：123 321 132 213 231）</li>
+<li>-5 Table-lookup：程序为字典中所有密码自动生成掩码</li>
+</ul>
+</li>
+<li>支持掩码方式的密码字典</li>
+</ul>
+<h4 id="oclhashcat"><a href="#oclhashcat" class="headerlink" title="oclhashcat"></a>oclhashcat</h4><ul>
+<li>号称世界上最快，基于GPU的密码破解软件</li>
+<li>免费开源、支持多平台、支持分布式、150+hash算法</li>
+<li>硬件支持<ul>
+<li>虚拟机中无法使用</li>
+<li>支持CUDA技术的Nvidia显卡</li>
+<li>支持OpenCl技术的AMD显卡</li>
+<li>安装相应的驱动</li>
+</ul>
+</li>
+<li>限制<ul>
+<li>最大密码长度55字符</li>
+<li>使用Unicode的最大密码长度27字符</li>
+</ul>
+</li>
+<li><code>oclHashcat64 -m 0 hash.txt -a ?a?a?a?a?a?a</code><ul>
+<li>-?l =abcdefghijklmnopqrstuvwxyz</li>
+<li>-?u =ABCDEFGHIJKLMNOPQRSTUVWXYZ</li>
+<li>-?d =0123456789</li>
+<li>-?s =!”#$%&amp;’()’;:,&gt;?&lt;\等</li>
+<li>-a =?l?u?d?s</li>
+<li>-b =0x00-0xff</li>
+</ul>
+</li>
+</ul>
+<h4 id="RainbowCrack"><a href="#RainbowCrack" class="headerlink" title="RainbowCrack"></a>RainbowCrack</h4><ul>
+<li>基于时间记忆权衡技术生成彩虹表<ul>
+<li>也可以直接去网站下载彩虹表</li>
+</ul>
+</li>
+<li>提前计算密码的Hash值，通过比对hash值破解密码</li>
+<li>计算hash的速度很慢，修改版支持CUDA、GPU</li>
+<li>KALI中包含的RainbowCrack工具<ul>
+<li>rtgen：预计算、生成彩虹表，耗时的阶段</li>
+<li>rtsort：对rtgen生成顿彩虹表进行排序</li>
+<li>rcrack：查找彩虹表破解密码</li>
+<li>以上命令必须顺序使用 </li>
+</ul>
+</li>
+<li>彩虹表<ul>
+<li>密码明文、hash值、hash算法、字符集、明文长度范围</li>
+</ul>
+</li>
+</ul>
+<h4 id="John"><a href="#John" class="headerlink" title="John"></a>John</h4><ul>
+<li>破解linux和windows密码</li>
+<li>johney图形化的john</li>
+</ul>
+<h4 id="Ophcrack"><a href="#Ophcrack" class="headerlink" title="Ophcrack"></a>Ophcrack</h4><ul>
+<li>基于彩虹表的LM、NTLM密码破解软件</li>
+</ul>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/2020/11/07/https%E6%94%BB%E5%87%BB-%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB/" rel="next" title="https攻击-中间人攻击"><i class="fas fa-angle-left"></i><span class="nav-title">https攻击-中间人攻击</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/2020/11/10/%E5%AF%86%E7%A0%81%E5%97%85%E6%8E%A2/" rel="prev" title="密码嗅探"><span class="nav-title">密码嗅探</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "Pyrrhax",
+      "repo": "Pyrrhax.github.io",
+      "client_id": "ab41dde59a0f57819b1e",
+      "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "密码破解",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="Pyrrhax">
+  
+  <h1 class="author-name">Pyrrhax</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">67</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">12</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">12</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#在线密码破解"><span class="toc-text">在线密码破解</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#离线密码破解"><span class="toc-text">离线密码破解</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#身份认证"><span class="toc-text">身份认证</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#破解思路"><span class="toc-text">破解思路</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#优势"><span class="toc-text">优势</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#HASH识别工具"><span class="toc-text">HASH识别工具</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Windows-Hash获取工具"><span class="toc-text">Windows Hash获取工具</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#离线密码破解–Hashcat"><span class="toc-text">离线密码破解–Hashcat</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#oclhashcat"><span class="toc-text">oclhashcat</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#RainbowCrack"><span class="toc-text">RainbowCrack</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#John"><span class="toc-text">John</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Ophcrack"><span class="toc-text">Ophcrack</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:Pyrrhax.hf@gmail.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/Pyrrhax" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2020</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
