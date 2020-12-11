@@ -83,19 +83,19 @@
     <link href="http://yoursite.com/2020/12/01/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/"/>
     <id>http://yoursite.com/2020/12/01/%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90/</id>
     <published>2020-12-01T08:29:01.000Z</published>
-    <updated>2020-12-11T08:51:47.805Z</updated>
+    <updated>2020-12-11T09:00:00.450Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-
-&lt;h3 id=&quot;静态代码分析&quot;&gt;&lt;a href=&quot;#静态代码分析&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h3 id=&quot;静态代码分析&quot;&gt;&lt;a href=&quot;#静态代码分析&quot; class=&quot;headerlink&quot; title=&quot;静态代码分析&quot;&gt;&lt;/a&gt;静态代码分析&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;软件源代码的主要安全检测技术&lt;/li&gt;
+&lt;li&gt;不需要构建代码运行环境，分析效率高，资源消耗低&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;词法分析&quot;&gt;&lt;a href=&quot;#词法分析&quot; class=&quot;headerlink&quot; title=&quot;词法分析&quot;&gt;&lt;/a&gt;词法分析&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;基于文本或标识符的匹配分析对比，以查找符合特定特征和词法规则的危险函数，API或简单语句组合。&lt;/li&gt;
+&lt;li&gt;工具：Checkmarx、ITS4&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;数据流分析&quot;&gt;&lt;a href=&quot;#数据流分析&quot; class=&quot;headerlink&quot; title=&quot;数据流分析&quot;&gt;&lt;/a&gt;数据流分析&lt;/h5&gt;
     
     </summary>
     
@@ -326,19 +326,26 @@
     <link href="http://yoursite.com/2020/11/23/%E5%85%8D%E6%9D%80-Backdoorfactory/"/>
     <id>http://yoursite.com/2020/11/23/%E5%85%8D%E6%9D%80-Backdoorfactory/</id>
     <published>2020-11-23T08:07:51.000Z</published>
-    <updated>2020-12-11T08:12:01.993Z</updated>
+    <updated>2020-12-11T08:59:40.572Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-
-&lt;h4 id=&quot;Backdoor-factory&quot;&gt;&lt;a href=&quot;#Backdoor-factory&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h4 id=&quot;Backdoor-factory&quot;&gt;&lt;a href=&quot;#Backdoor-factory&quot; class=&quot;headerlink&quot; title=&quot;Backdoor-factory&quot;&gt;&lt;/a&gt;Backdoor-factory&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Patch&lt;ul&gt;
+&lt;li&gt;通过替换exe、dll、注册表等方法修复系统漏洞或问题的方法&lt;/li&gt;
+&lt;li&gt;BDF：向二进制文件中增加或者删除代码内容&lt;ul&gt;
+&lt;li&gt;某些受保护的二进制程序无法patch&lt;/li&gt;
+&lt;li&gt;存在一定概率文件会被patch破坏掉&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;后门工厂&lt;ul&gt;
+&lt;li&gt;将shellcode代码patch进模板文件，躲避AV检查&lt;/li&gt;
+&lt;li&gt;支持msf payload、自定义payload&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
