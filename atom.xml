@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-12-11T08:56:57.905Z</updated>
+  <updated>2020-12-29T04:27:06.601Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,133 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机取证</title>
+    <link href="http://yoursite.com/2020/12/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81/"/>
+    <id>http://yoursite.com/2020/12/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81/</id>
+    <published>2020-12-29T04:26:07.000Z</published>
+    <updated>2020-12-29T04:27:06.601Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;取证科学&quot;&gt;&lt;a href=&quot;#取证科学&quot; class=&quot;headerlink&quot; title=&quot;取证科学&quot;&gt;&lt;/a&gt;取证科学&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Forensic&lt;ul&gt;
+&lt;li&gt;法医的、用于法庭的、辩论学、法医学&lt;/li&gt;
+&lt;li&gt;为了侦破案件还原事实真相，收集法庭证据的一系列科学方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CSI：物理取证&lt;ul&gt;
+&lt;li&gt;指纹、DNA、弹道、血迹&lt;/li&gt;
+&lt;li&gt;物理取证的理论基础是物质交换原则&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;关注：数字取证/计算机取证/电子取证&lt;ul&gt;
+&lt;li&gt;智能设备、计算机、手机平板、IoT、有线及无线通信、数据存数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>社会工程学</title>
+    <link href="http://yoursite.com/2020/12/29/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/"/>
+    <id>http://yoursite.com/2020/12/29/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/</id>
+    <published>2020-12-29T04:25:56.000Z</published>
+    <updated>2020-12-29T04:26:35.146Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;社会工程学&quot;&gt;&lt;a href=&quot;#社会工程学&quot; class=&quot;headerlink&quot; title=&quot;社会工程学&quot;&gt;&lt;/a&gt;社会工程学&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;SET 工具包大量依赖Metasploit&lt;/li&gt;
+&lt;li&gt;基于浏览器等客户端软件漏洞实现对客户端计算机的攻击&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>后渗透阶段-持久后门</title>
+    <link href="http://yoursite.com/2020/12/13/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E6%8C%81%E4%B9%85%E5%90%8E%E9%97%A8/"/>
+    <id>http://yoursite.com/2020/12/13/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E6%8C%81%E4%B9%85%E5%90%8E%E9%97%A8/</id>
+    <published>2020-12-13T12:20:36.000Z</published>
+    <updated>2020-12-29T04:25:06.099Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;持久后门&quot;&gt;&lt;a href=&quot;#持久后门&quot; class=&quot;headerlink&quot; title=&quot;持久后门&quot;&gt;&lt;/a&gt;持久后门&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;metepreter后门&lt;ul&gt;
+&lt;li&gt;run exploit/windows/local/persistence&lt;/li&gt;
+&lt;li&gt;run persistence -X&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h4 id=&quot;延伸用法&quot;&gt;&lt;a href=&quot;#延伸用法&quot; class=&quot;headerlink&quot; title=&quot;延伸用法&quot;&gt;&lt;/a&gt;延伸用法&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Mimikatz&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;PHP shell&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>后渗透阶段-跳板、POST模块</title>
+    <link href="http://yoursite.com/2020/12/12/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E8%B7%B3%E6%9D%BF%E3%80%81POST%E6%A8%A1%E5%9D%97/"/>
+    <id>http://yoursite.com/2020/12/12/%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5-%E8%B7%B3%E6%9D%BF%E3%80%81POST%E6%A8%A1%E5%9D%97/</id>
+    <published>2020-12-12T04:20:10.000Z</published>
+    <updated>2020-12-29T04:23:44.622Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;跳板&quot;&gt;&lt;a href=&quot;#跳板&quot; class=&quot;headerlink&quot; title=&quot;跳板&quot;&gt;&lt;/a&gt;跳板&lt;/h4&gt;&lt;h5 id=&quot;autoroute&quot;&gt;&lt;a href=&quot;#autoroute&quot; class=&quot;headerlink&quot; title=&quot;autoroute&quot;&gt;&lt;/a&gt;autoroute&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;利用已经控制的一台计算机作为入侵内网的跳板&lt;/li&gt;
+&lt;li&gt;在其它内网计算机看来访问全部来自跳板机&lt;/li&gt;
+&lt;li&gt;run autoroute -s 2.2.2.0/24 #不能访问外网的目标网段&lt;/li&gt;
+&lt;li&gt;run autoroute -p&lt;/li&gt;
+&lt;li&gt;use auxiliary/scanner/portscan/tcp&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>后渗透阶段-嗅探、痕迹消除</title>
@@ -547,155 +674,6 @@
 &lt;/li&gt;
 &lt;li&gt;最强大最危险的攻击，攻击方式众多&lt;/li&gt;
 &lt;li&gt;Bill gates 僵尸程序&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>流量操控技术-sslh、stunnle4</title>
-    <link href="http://yoursite.com/2020/11/14/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-sslh%E3%80%81stunnle4/"/>
-    <id>http://yoursite.com/2020/11/14/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-sslh%E3%80%81stunnle4/</id>
-    <published>2020-11-14T03:22:40.000Z</published>
-    <updated>2020-11-28T03:23:45.458Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;SSLH&quot;&gt;&lt;a href=&quot;#SSLH&quot; class=&quot;headerlink&quot; title=&quot;SSLH&quot;&gt;&lt;/a&gt;SSLH&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;端口分配器&lt;ul&gt;
-&lt;li&gt;根据客户第一个包检测协议类型&lt;/li&gt;
-&lt;li&gt;根据协议检测结果将流量转发给不同目标&lt;/li&gt;
-&lt;li&gt;支持HTTP，HTTPS，SSH，OpenVPN，tinc，XMPP和其它可基于正则表达式判断的任何协议类型&lt;/li&gt;
-&lt;li&gt;适用于防火墙允许443端口入站房屋内流量的环境&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;kali中配置文件在 /etc/default/sslh&lt;/li&gt;
-&lt;li&gt;使用一个端口映射多个服务&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>流量操控技术-ptunnle、proxytunnle</title>
-    <link href="http://yoursite.com/2020/11/13/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-ptunnle%E3%80%81proxytunnle/"/>
-    <id>http://yoursite.com/2020/11/13/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-ptunnle%E3%80%81proxytunnle/</id>
-    <published>2020-11-13T03:21:23.000Z</published>
-    <updated>2020-11-28T03:22:00.443Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;ptunnle&quot;&gt;&lt;a href=&quot;#ptunnle&quot; class=&quot;headerlink&quot; title=&quot;ptunnle&quot;&gt;&lt;/a&gt;ptunnle&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;ping tunnel ICMP隧道工具，通过ICMP echo（ping requests）和reply（ping reply）实现隧道。&lt;/li&gt;
-&lt;li&gt;适用于防火墙只允许ping出站流量的环境&lt;/li&gt;
-&lt;li&gt;支持多并发连接、性能优&lt;/li&gt;
-&lt;li&gt;支持身份验证&lt;/li&gt;
-&lt;li&gt;需要root权限&lt;/li&gt;
-&lt;li&gt;支持抓包&lt;ul&gt;
-&lt;li&gt;Win：winpcap&lt;/li&gt;
-&lt;li&gt;Linux：libpcap&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;工作过程&lt;ul&gt;
-&lt;li&gt;Proxy、Client、Destination&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>流量操控技术-DNS协议隧道</title>
-    <link href="http://yoursite.com/2020/11/12/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-DNS%E5%8D%8F%E8%AE%AE%E9%9A%A7%E9%81%93/"/>
-    <id>http://yoursite.com/2020/11/12/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-DNS%E5%8D%8F%E8%AE%AE%E9%9A%A7%E9%81%93/</id>
-    <published>2020-11-12T03:20:14.000Z</published>
-    <updated>2020-11-28T03:20:56.771Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;DNS协议隧道&quot;&gt;&lt;a href=&quot;#DNS协议隧道&quot; class=&quot;headerlink&quot; title=&quot;DNS协议隧道&quot;&gt;&lt;/a&gt;DNS协议隧道&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;防火墙禁止TCP出战访问流量&lt;ul&gt;
-&lt;li&gt;SSH隧道、端口转发全部失效&lt;/li&gt;
-&lt;li&gt;DNS的工作原理适合用于实现隧道&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;DNS工作原理&lt;ul&gt;
-&lt;li&gt;DNS隧道原理：注册受自己控制的DNS记录&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>流量操控技术-NCAT、SOCAT</title>
-    <link href="http://yoursite.com/2020/11/11/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-NCAT%E3%80%81SOCAT/"/>
-    <id>http://yoursite.com/2020/11/11/%E6%B5%81%E9%87%8F%E6%93%8D%E6%8E%A7%E6%8A%80%E6%9C%AF-NCAT%E3%80%81SOCAT/</id>
-    <published>2020-11-11T03:19:35.000Z</published>
-    <updated>2020-11-28T03:19:56.266Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;NCAT&quot;&gt;&lt;a href=&quot;#NCAT&quot; class=&quot;headerlink&quot; title=&quot;NCAT&quot;&gt;&lt;/a&gt;NCAT&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;NC的衍生版软件,Nmap的一部分。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;代理功能&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ncat -l 8080 --proxy-type http --proxy-auth user:pass&lt;/code&gt;&lt;ul&gt;
-&lt;li&gt;-l 默认端口31337&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Broker中介功能&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;服务器：ncat -l 333 – broker&lt;/li&gt;
-&lt;li&gt;客户端之间发送任何信息都会被hub到其它客户端&lt;/li&gt;
-&lt;li&gt;批量执行命令&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ncat 1.1.1.1 --sh-exec &amp;quot;echo `pwd`&amp;quot;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ncat --send-only 1.1.1.1 &amp;lt; inputfile&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
