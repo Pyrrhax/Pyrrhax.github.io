@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-12-29T04:27:06.601Z</updated>
+  <updated>2021-03-07T03:26:25.511Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>靶场学习笔记之upload-labs</title>
+    <link href="http://yoursite.com/2021/03/07/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bupload-labs/"/>
+    <id>http://yoursite.com/2021/03/07/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bupload-labs/</id>
+    <published>2021-03-07T03:24:03.000Z</published>
+    <updated>2021-03-07T03:26:25.511Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;UploadLabs&quot;&gt;&lt;a href=&quot;#UploadLabs&quot; class=&quot;headerlink&quot; title=&quot;UploadLabs&quot;&gt;&lt;/a&gt;UploadLabs&lt;/h3&gt;&lt;h4 id=&quot;Pass1&quot;&gt;&lt;a href=&quot;#Pass1&quot; class=&quot;headerlink&quot; title=&quot;Pass1&quot;&gt;&lt;/a&gt;Pass1&lt;/h4&gt;&lt;p&gt;这关使用文件后缀白名单的方式，在前端检测了文件类型。&lt;/p&gt;
+&lt;p&gt;直接用burp修改请求绕过就行。&lt;/p&gt;
+&lt;p&gt;其间WindowsDefender报毒file: C:\Windows\php7CC0.tmp,经过搜索发现这个是php上传文件的缓存。加入wd的排除项就可以了。&lt;/p&gt;
+&lt;h4 id=&quot;Pass2&quot;&gt;&lt;a href=&quot;#Pass2&quot; class=&quot;headerlink&quot; title=&quot;Pass2&quot;&gt;&lt;/a&gt;Pass2&lt;/h4&gt;&lt;p&gt;这关是在后端进行了检查，使用的Content-Type白名单，包括image/jpeg,image/png,image/gif &lt;/p&gt;
+&lt;p&gt;绕过方式同Less1&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="靶场学习笔记" scheme="http://yoursite.com/tags/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>手动漏洞挖掘-SQL注入、三</title>
+    <link href="http://yoursite.com/2021/02/05/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%B8%89/"/>
+    <id>http://yoursite.com/2021/02/05/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%B8%89/</id>
+    <published>2021-02-05T05:28:09.000Z</published>
+    <updated>2021-02-09T07:40:59.231Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+&lt;h3 id=&quot;SQL注入的报错方式&quot;&gt;&lt;a href=&quot;#SQL注入的报错方式&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="SQL注入" scheme="http://yoursite.com/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机取证</title>
@@ -56,10 +114,10 @@
   
   <entry>
     <title>社会工程学</title>
-    <link href="http://yoursite.com/2020/12/29/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/"/>
-    <id>http://yoursite.com/2020/12/29/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/</id>
-    <published>2020-12-29T04:25:56.000Z</published>
-    <updated>2020-12-29T04:26:35.146Z</updated>
+    <link href="http://yoursite.com/2020/12/15/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/"/>
+    <id>http://yoursite.com/2020/12/15/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/</id>
+    <published>2020-12-15T12:25:56.000Z</published>
+    <updated>2020-12-29T05:19:12.873Z</updated>
     
     <summary type="html">
     
@@ -420,7 +478,7 @@
     <link href="http://yoursite.com/2020/11/24/MSF-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/"/>
     <id>http://yoursite.com/2020/11/24/MSF-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</id>
     <published>2020-11-24T08:13:47.000Z</published>
-    <updated>2020-12-11T08:23:14.186Z</updated>
+    <updated>2021-01-25T01:38:34.333Z</updated>
     
     <summary type="html">
     
@@ -612,68 +670,6 @@
 &lt;li&gt;利用模糊测试方法发现缓冲区溢出漏洞&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>拒绝服务-放大攻击</title>
-    <link href="http://yoursite.com/2020/11/17/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1-%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB/"/>
-    <id>http://yoursite.com/2020/11/17/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1-%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB/</id>
-    <published>2020-11-17T03:24:39.000Z</published>
-    <updated>2020-11-28T03:25:37.398Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;DNS放大攻击&quot;&gt;&lt;a href=&quot;#DNS放大攻击&quot; class=&quot;headerlink&quot; title=&quot;DNS放大攻击&quot;&gt;&lt;/a&gt;DNS放大攻击&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;产生大流量的方法&lt;ul&gt;
-&lt;li&gt;单机的带宽优势&lt;/li&gt;
-&lt;li&gt;巨大单机数量形成的流量汇聚&lt;/li&gt;
-&lt;li&gt;利用协议特性实现放大效果的流量&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>拒绝服务</title>
-    <link href="http://yoursite.com/2020/11/16/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1/"/>
-    <id>http://yoursite.com/2020/11/16/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1/</id>
-    <published>2020-11-16T03:24:25.000Z</published>
-    <updated>2020-11-28T03:25:06.173Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;拒绝服务&quot;&gt;&lt;a href=&quot;#拒绝服务&quot; class=&quot;headerlink&quot; title=&quot;拒绝服务&quot;&gt;&lt;/a&gt;拒绝服务&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;DoS（Denial of Service）&lt;/li&gt;
-&lt;li&gt;DDoS（）&lt;ul&gt;
-&lt;li&gt;一对一的攻击完全拼各自的资源，效果差&lt;/li&gt;
-&lt;li&gt;多对一的攻击汇聚资源能力，重点在于量大，属于资源耗尽型&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;最强大最危险的攻击，攻击方式众多&lt;/li&gt;
-&lt;li&gt;Bill gates 僵尸程序&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>

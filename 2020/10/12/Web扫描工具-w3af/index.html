@@ -262,33 +262,40 @@
 <ul>
 <li><p>wget <a href="http://ftp.br.debian.org/debian/pool/main/w/webkitgtk/libjavascriptcoregtk-1.0-0_2.4.11-3_amd64.deb" target="_blank" rel="noopener">http://ftp.br.debian.org/debian/pool/main/w/webkitgtk/libjavascriptcoregtk-1.0-0_2.4.11-3_amd64.deb</a></p>
 <ul>
-<li>从<a href="http://ftp.de.debian.org/debian/pool/main/i/icu/下载libicu57" target="_blank" rel="noopener">http://ftp.de.debian.org/debian/pool/main/i/icu/下载libicu57</a></li>
+<li>从<a href="http://ftp.de.debian.org/debian/pool/main/i/icu/" target="_blank" rel="noopener">http://ftp.de.debian.org/debian/pool/main/i/icu/</a> 下载libicu57</li>
 </ul>
 </li>
 <li><p>wget <a href="http://ftp.br.debian.org/debian/pool/main/p/python-support/python-support_1.0.15_all.deb" target="_blank" rel="noopener">http://ftp.br.debian.org/debian/pool/main/p/python-support/python-support_1.0.15_all.deb</a></p>
 <ul>
-<li><p>补全python库环境</p>
-<figure class="hljs highlight plain"><figcaption><span>install python-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apt"><br>&#96;&#96;&#96;apt --fix-broken install<br></code></pre></td></tr></table></figure>
+<li>补全python库环境</li>
+</ul>
 </li>
 </ul>
 </li>
+<li><p><code>apt install python-dev build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev</code></p>
+<ul>
+<li>``````apt –fix-broken install```</li>
+</ul>
+<ul>
 <li><p>wget <a href="http://ftp.br.debian.org/debian/pool/main/w/webkitgtk/libwebkitgtk-1.0-0_2.4.11-3_amd64.deb" target="_blank" rel="noopener">http://ftp.br.debian.org/debian/pool/main/w/webkitgtk/libwebkitgtk-1.0-0_2.4.11-3_amd64.deb</a></p>
 <ul>
 <li><code>apt-get install libegl1-mesa</code></li>
-<li><code>apt-get install libegl1-x11</code></li>
 </ul>
+</li>
+<li><p><code>apt-get install libegl1-x11</code></p>
 </li>
 <li><p>最后安装webkit还有问题，libpango1.0-0 python-gek2 not installed 用下面的方法解决</p>
 <ul>
 <li><code>sudo apt-get install --reinstall python</code></li>
-<li><code>apt --fix-broken install</code></li>
 </ul>
+</li>
+<li><p><code>apt --fix-broken install</code></p>
 </li>
 </ul>
 </li>
 <li><p>python-webkit安装好后执行./tmp/w3af_dependency_install.sh。报没有python-gtksourceview2</p>
 <ul>
-<li><a href="https://packages.debian.org/stretch/amd64/python-gtksourceview2/download这里下载" target="_blank" rel="noopener">https://packages.debian.org/stretch/amd64/python-gtksourceview2/download这里下载</a><ul>
+<li><a href="https://packages.debian.org/stretch/amd64/python-gtksourceview2/download" target="_blank" rel="noopener">https://packages.debian.org/stretch/amd64/python-gtksourceview2/download</a> 这里下载<ul>
 <li>安装时依赖 libgtksourceview2.0-0</li>
 </ul>
 </li>
@@ -439,7 +446,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">82</a></div>
+      <div><a href="/archives/">84</a></div>
     </div>
     
     
@@ -453,7 +460,7 @@
     
     <div class="tags-count count-block">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">12</a></div>
+      <div><a href="/tags/">14</a></div>
     </div>
     
     
@@ -526,7 +533,7 @@
     <div class="footer-container">
       <div class="footer-left">
         <div class="copyright">
-          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2020</span>
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2021</span>
         </div>
         
         <div class="busuanzi">

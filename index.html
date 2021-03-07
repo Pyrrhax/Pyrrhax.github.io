@@ -204,6 +204,150 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/07/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bupload-labs/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="Pyrrhax">
+        <meta itemprop="description" content="">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2021/03/07/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bupload-labs/" itemprop="url">靶场学习笔记之upload-labs</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-03-07T11:24:03+08:00">2021-03-07 11:24:03</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h3 id="UploadLabs"><a href="#UploadLabs" class="headerlink" title="UploadLabs"></a>UploadLabs</h3><h4 id="Pass1"><a href="#Pass1" class="headerlink" title="Pass1"></a>Pass1</h4><p>这关使用文件后缀白名单的方式，在前端检测了文件类型。</p>
+<p>直接用burp修改请求绕过就行。</p>
+<p>其间WindowsDefender报毒file: C:\Windows\php7CC0.tmp,经过搜索发现这个是php上传文件的缓存。加入wd的排除项就可以了。</p>
+<h4 id="Pass2"><a href="#Pass2" class="headerlink" title="Pass2"></a>Pass2</h4><p>这关是在后端进行了检查，使用的Content-Type白名单，包括image/jpeg,image/png,image/gif </p>
+<p>绕过方式同Less1</p>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>靶场学习笔记</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/05/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%B8%89/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="Pyrrhax">
+        <meta itemprop="description" content="">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/2021/02/05/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%B8%89/" itemprop="url">手动漏洞挖掘-SQL注入、三</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-02-05T13:28:09+08:00">2021-02-05 13:28:09</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <a id="more"></a>
+
+<h3 id="SQL注入的报错方式"><a href="#SQL注入的报错方式" class="headerlink" title="SQL注入的报错方式"></a>SQL注入的报错方式</h3><ul>
+<li>如果数据库报错会回显到前端，可以通过触发报错来获取到需要的数据。</li>
+</ul>
+<h4 id="双查询注入"><a href="#双查询注入" class="headerlink" title="双查询注入"></a>双查询注入</h4><figure class="hljs highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">mysql&gt; select count(*),concat(floor(rand()*2),':',database()) as a from information_schema.tables group by a;<br>ERROR 1062 (23000): Duplicate entry '0:security' for key '&lt;group_key&gt;'<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>50%的触发概率</li>
+</ul>
+<h4 id="extractvalue"><a href="#extractvalue" class="headerlink" title="extractvalue()"></a>extractvalue()</h4><figure class="hljs highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">mysql&gt; select extractvalue('a',concat('~',database()));<br>ERROR 1105 (HY000): XPATH syntax error: '~security'<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>extractvalue()查询得到字符串的最大长度为32，如果长度超过32，用substring()函数截取。</li>
+</ul>
+<h4 id="updatexml"><a href="#updatexml" class="headerlink" title="updatexml()"></a>updatexml()</h4><ul>
+<li>与extractvalue类似 </li>
+</ul>
+<h4 id="outfile"><a href="#outfile" class="headerlink" title="outfile"></a>outfile</h4><ul>
+<li><p>如果不回显报错，也不回显数据，但知道页面的绝对路径，可以使用。</p>
+</li>
+<li><p>！注意</p>
+<ul>
+<li>需要数据库的用户具有选定目录的写入权限</li>
+<li>mysql配置文件my.ini中加入一行<code>secure-file-priv=&quot;&quot;</code><ul>
+<li>用来限制load data,select … into outfile, load_file()穿到哪个指定目录。</li>
+<li>当secure_file_priv的值为null ，表示限制mysqld 不允许导入|导出</li>
+<li>当secure_file_priv的值为/tmp/ ，表示限制mysqld 的导入|导出只能发生在/tmp/目录下</li>
+<li>当secure_file_priv的值没有具体值时，表示不对mysqld 的导入|导出做限制</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>select xxx into outfile ‘文件路径’，放在web服务器下，可以通过web访问。</p>
+</li>
+</ul>
+
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/SQL%E6%B3%A8%E5%85%A5/" rel="tag"><i class="fas fa-tags"></i>SQL注入</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="Pyrrhax">
@@ -271,7 +415,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/29/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/15/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="Pyrrhax">
         <meta itemprop="description" content="">
@@ -283,12 +427,12 @@
     </div>
     <header class="post-header">
       <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/12/29/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/" itemprop="url">社会工程学</a>
+        <a class="post-title-link post-title-link-external" href="/2020/12/15/%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6/" itemprop="url">社会工程学</a>
       </h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-12-29T12:25:56+08:00">2020-12-29 12:25:56</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-12-15T20:25:56+08:00">2020-12-15 20:25:56</time></span>
         </span>
         
         
@@ -686,135 +830,6 @@
     </footer>
   </article>
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/29/MSF-%E6%89%AB%E6%8F%8F%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%97%E9%80%8F/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="Pyrrhax">
-        <meta itemprop="description" content="">
-        <meta itemprop="image" content="/images/avatar.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Pyrrhax">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/11/29/MSF-%E6%89%AB%E6%8F%8F%E5%99%A8%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%97%E9%80%8F/" itemprop="url">MSF-扫描器和客户端渗透</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-11-29T16:19:23+08:00">2020-11-29 16:19:23</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
-        </span>
-        
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h4 id="扫描器扫描"><a href="#扫描器扫描" class="headerlink" title="扫描器扫描"></a>扫描器扫描</h4><h5 id="Openvas（GVM）"><a href="#Openvas（GVM）" class="headerlink" title="Openvas（GVM）"></a>Openvas（GVM）</h5><ul>
-<li><p>Load openvas</p>
-<ul>
-<li>命令行模式，需要配置，使用繁琐</li>
-</ul>
-</li>
-<li><p>直接在opevas扫描，向msf导入nbe格式扫描日志</p>
-<ul>
-<li>db_import openvas.nbe</li>
-</ul>
-</li>
-</ul>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/28/MSF-%E5%BC%B1%E7%82%B9%E6%89%AB%E6%8F%8F/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="Pyrrhax">
-        <meta itemprop="description" content="">
-        <meta itemprop="image" content="/images/avatar.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Pyrrhax">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2020/11/28/MSF-%E5%BC%B1%E7%82%B9%E6%89%AB%E6%8F%8F/" itemprop="url">MSF-弱点扫描</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-11-28T16:17:13+08:00">2020-11-28 16:17:13</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
-        </span>
-        
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h4 id="MSF-弱点扫描"><a href="#MSF-弱点扫描" class="headerlink" title="MSF-弱点扫描"></a>MSF-弱点扫描</h4><ul>
-<li>根据信息收集结果搜索漏洞利用模块</li>
-<li>结合外部漏洞扫描系统对大IP地址段进行批量扫描</li>
-</ul>
-<hr>
-<ul>
-<li><p>VNC密码破解</p>
-<ul>
-<li>5900端口</li>
-<li>use auxiliary/scanner/vnc/vnc_login</li>
-</ul>
-</li>
-<li><p>VNC无密码访问</p>
-<ul>
-<li><p>use auxiliary/scanner/vnc/vnc_none_auth</p></li></ul></li></ul>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
   
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-right" aria-label="下一页"></i></a>
@@ -861,7 +876,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">82</a></div>
+      <div><a href="/archives/">84</a></div>
     </div>
     
     
@@ -875,7 +890,7 @@
     
     <div class="tags-count count-block">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">12</a></div>
+      <div><a href="/tags/">14</a></div>
     </div>
     
     
@@ -937,7 +952,7 @@
     <div class="footer-container">
       <div class="footer-left">
         <div class="copyright">
-          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2020</span>
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2021</span>
         </div>
         
         <div class="busuanzi">
