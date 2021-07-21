@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>We are different,but we go together ----《深海迷航》 | Pyrrhax</title>
+    <title>提权-本地提权及几个工具(PwDump、WCE、mimikatz) | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -203,7 +203,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/24/We%20are%20different,but%20we%20go%20together%20----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/21/%E6%8F%90%E6%9D%83-%E6%9C%AC%E5%9C%B0%E6%8F%90%E6%9D%83%E5%8F%8A%E5%87%A0%E4%B8%AA%E5%B7%A5%E5%85%B7-PwDump%E3%80%81WCE%E3%80%81mimikatz/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="Pyrrhax">
        <meta itemprop="description" content="">
@@ -214,11 +214,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">We are different,but we go together ----《深海迷航》</h1>
+      <h1 class="post-title" itemprop="name headline">提权-本地提权及几个工具(PwDump、WCE、mimikatz)</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2019-01-24T00:00:00+08:00">2019-01-24 00:00:00</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-09-21T10:41:03+08:00">2020-09-21 10:41:03</time></span>
         </span>
         
         
@@ -227,7 +227,7 @@
         
         <span class="post-categories">
           
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%B8%B8%E6%88%8F/" itemprop="url" rel="index"><span itemprop="name">游戏</span></a></span>
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
         </span>
         
         
@@ -236,20 +236,153 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <p><img src="/2019/01/24/We%20are%20different,but%20we%20go%20together%20----%E3%80%8A%E6%B7%B1%E6%B5%B7%E8%BF%B7%E8%88%AA%E3%80%8B/leviathan.png" alt><br><strong>What is a wave without the ocean,a begining without the end.</strong><br><strong>They are different,but they go together.</strong><br><strong>Now you go among the stars,and I fall among the sands.</strong><br><strong>We are different,but we go together.</strong></p>
+      <h2 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h2><h3 id="本地提权"><a href="#本地提权" class="headerlink" title="本地提权"></a>本地提权</h3><ul>
+<li>已实现本地低权限账号登陆<ul>
+<li>远程溢出</li>
+<li>直接获得账号密码</li>
+</ul>
+</li>
+<li>希望获得更高权限<ul>
+<li>实现对目标进一步控制</li>
+</ul>
+</li>
+</ul>
 <a id="more"></a>
-<p>第一次感到对大海的恐惧，是在洛圣都开着快艇来到地图边界。天空布满灰色的乌云，环顾四周也看不到一片陆地，尽是波涛汹涌的海水。快艇随着大海蓝黑泛白的涟漪上下起伏。船慢慢沉入水中。只好游泳，水中永远是深蓝不见底，越往深处光线越暗。没有多久就被鲨鱼攻击，然后死掉了。压抑，恐惧，无助。我不知道是幽闭恐惧还是深海恐惧，这种感觉在之后的一段时间，一直让我记忆犹新。<br>后来偶然听闻有某游戏专治“深海恐惧”，我不由得又想到了这种体验。忍不住下载然后尝试。（当时是2016年，游戏还在开发阶段，虽然相比于现在有一些不足，但也都无关紧要。）<br>故事的开始主角已经进入了星际飞船“极光号”的救生舱，随着极光号的坠落，十几个逃生舱也散落在4546B这个绝大部分都是海洋的星球上。为了等待救援，不得不开始探索周边环境。看得出来这是科技非常发达的时代，主角借助PDA，配合光谱扫描仪，一点一点了解周边生态环境。也就是在这个过程中，发现了这个星球上更多的秘密。<br>身上有绿色斑点的各种生物，外星进水排水设施，嘉德斯号船员的遗址，极光号受到的未能分析出结果的损伤形式。逐渐让主角对这个星球的故事产生好奇。<br>不得不让人称赞的是这个游戏的音乐和音效。让人印象深刻的是暗礁鱼低沉悠长的叫声，让人听到就觉得孤独。深潜时捕食者的咆哮也给游戏增添了一丝紧张感。在浅水区，绿藻区，树蘑菇林，失落之河……每个区域都有独特的风景。精心设计的地图，相比于随机生成更加有美感。场景切换时的音乐，也和环境氛围完美融合。代入感极佳。<br>开始玩了大概有20多个小时，因为感到深深的孤独，就没有勇气继续玩下去了。（在后来的版本，开发商为了减轻玩家的这种痛苦，增加了一个可爱的抱抱鱼作为宠物qwq）<br>直到两年后，我又重新拾起了这个游戏。在这之间，它已经由完美世界发行，并收入WeGame平台之中，在游戏发售后IGN 也给出了9.1 Amazing的高分,也被游民星空评价为开放世界生存游戏的典范。<br>在游戏中最让我感兴趣的部分是扫描各种未知的生物。它们以各种奇妙的方式来运动，进食，共生，等等，完成自己的生命周期。<br>包括显示出重度基因修正和多处机械移植迹象的生命形式——裂空者，有机体和高科技的完美结合造就了这种强力且危险的生物。<br>随着剧情的一步步推进，主角在这个星球上收到海皇心电感应发来的讯息，让这个孤独的世界不那么孤独。玩到这里的时候，已经满脑子都是“我要见到海皇”这种想法了。<br>当主角终于找到离开的方法时，这个巨大却温柔生物却不得不走向生命的终结。<br><strong>We are different,but we go together.</strong><br>事情总是这样，不过，可以相遇就已经足够了，不是吗。<br>面对巨大生物时的震撼，各种奇妙的生命形式，面对未知的恐惧和强烈的好奇，和伴随着整个游戏进程的深深孤独感，都是令人着迷的神奇体验。</p>
+
+<ul>
+<li>系统账号之间权限隔离<ul>
+<li>操作系统安全的基础</li>
+<li>用户空间</li>
+<li>内核空间</li>
+</ul>
+</li>
+<li>系统账号<ul>
+<li>用户账号登陆时获取权限令牌</li>
+<li>服务账号无需用户登陆已在后台启动的服务</li>
+</ul>
+</li>
+<li>Windows<ul>
+<li>user</li>
+<li>Administrator</li>
+<li>System</li>
+</ul>
+</li>
+<li>Linux<ul>
+<li>User</li>
+<li>Root</li>
+</ul>
+</li>
+</ul>
+<h4 id="ADMIN提权为SYSTEM"><a href="#ADMIN提权为SYSTEM" class="headerlink" title="ADMIN提权为SYSTEM"></a>ADMIN提权为SYSTEM</h4><ul>
+<li>Windows system账号<ul>
+<li>系统设置管理功能</li>
+<li>SysInternal Suite</li>
+<li>XP:<code>at 17:07 /interactive cmd</code></li>
+<li>Win7/8<code>sc Create syscmd binPath=&quot;cmd/K start type=own type=interact&quot;</code></li>
+<li>进程注入提权（隐蔽性极强）：<ul>
+<li>pinjector</li>
+<li><code>pinjector.exe -p 656 cmd 5555</code>(656是PID,5555是开放的端口，可以使用nc等连接)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="抓包嗅探"><a href="#抓包嗅探" class="headerlink" title="抓包嗅探"></a>抓包嗅探</h3><ul>
+<li><p>Windows</p>
+<ul>
+<li>Wireshark</li>
+<li>OmniPeek</li>
+<li>commview</li>
+<li>Sniffpass(提取密码)</li>
+</ul>
+</li>
+<li><p>Linux</p>
+<ul>
+<li>Tcpdump</li>
+<li>Wireshark</li>
+<li>Dsniff</li>
+</ul>
+</li>
+</ul>
+<h3 id="键盘记录"><a href="#键盘记录" class="headerlink" title="键盘记录"></a>键盘记录</h3><ul>
+<li><p>klogger</p>
+</li>
+<li><p>木马窃取</p>
+<ul>
+<li>Darkcomet-RAT</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<h3 id="本地缓存密码"><a href="#本地缓存密码" class="headerlink" title="本地缓存密码"></a>本地缓存密码</h3><ul>
+<li>浏览器缓存的密码<ul>
+<li>IE浏览器</li>
+<li>firefox</li>
+</ul>
+</li>
+<li>网络密码</li>
+<li>无线密码</li>
+<li><a href="http://www.nirsoft.net" target="_blank" rel="noopener">http://www.nirsoft.net</a></li>
+<li>Dump SAM<ul>
+<li>Pwdump直接提取SAM数据库中的密码 (C:\Windows\System32\config\SAM）<ul>
+<li>/usr/share/windows-binaries/fgdump/PwDump.exe</li>
+<li><code>pwdump localhost</code>提取出windows密码的hash,保存为xp.pwdump</li>
+<li>将xp.pwdump导入到kali中的ophdump暴破</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="WCE-Windows-credential-editor"><a href="#WCE-Windows-credential-editor" class="headerlink" title="WCE(Windows credential editor)"></a>WCE(Windows credential editor)</h3><ul>
+<li><p>从内存中（wdigest）读取密码信息（参考<a href="https://pyrrhax.com/2020/09/22/Windows%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E5%8F%8A%E5%B7%A5%E4%BD%9C%E7%BB%84-%E5%9F%9F/" target="_blank" rel="noopener">Windows身份认证及工作组/域</a>），而不是从SAM数据库，可以避免一些操作系统的限制。</p>
+</li>
+<li><p>/usr/share/windows-resources/wce/</p>
+</li>
+<li><p>需要管理员权限</p>
+</li>
+<li><p>使用：</p>
+<ul>
+<li><p>wce-universal.exe -l / -lv 密文</p>
+</li>
+<li><p>wce-universal.exe -w 明文</p>
+</li>
+<li><p>-s参数还可以修改当前登陆用户的账户</p>
+</li>
+</ul>
+</li>
+<li><p>防止WCE攻击</p>
+<ul>
+<li>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\Security Packages<ul>
+<li>kerberos</li>
+<li>msv1_0</li>
+<li>schannel</li>
+<li>wdigest(本地登陆) 删掉这一项，注意不要留空行。</li>
+<li>tspkg(终端服务，远程桌面)</li>
+<li>pku2u</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="mimikatz"><a href="#mimikatz" class="headerlink" title="mimikatz"></a>mimikatz</h3><ul>
+<li><code>::</code>查看用法</li>
+<li><code>sekurlsa::wdigest</code> 查看用户与密码相关信息</li>
+<li><code>process::list</code>查看进程及ID</li>
+<li><code>process::suspend /pid:123</code> suspend进程ID为123的进程</li>
+<li><code>ts::multirdp</code>打补丁，允许多用户同时登陆windows，互不干扰</li>
+<li><code>event::clear</code>清除操作系统日志</li>
+<li><code>evenv::drop</code>之后登陆不会再产生日志</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>操作系统日志Win+R:eventvwr</li>
+</ul>
 
     </main>
     <footer class="post-footer">
       
       <div class="post-tags">
         
-        <a class="post-tag button" href="/tags/%E7%A7%91%E5%B9%BB/" rel="tag"><i class="fas fa-tags"></i>科幻</a>
-        
-        <a class="post-tag button" href="/tags/%E7%94%9F%E5%AD%98/" rel="tag"><i class="fas fa-tags"></i>生存</a>
-        
-        <a class="post-tag button" href="/tags/%E6%B2%99%E7%9B%92/" rel="tag"><i class="fas fa-tags"></i>沙盒</a>
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
         
       </div>
       
@@ -260,12 +393,12 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2018/09/23/%E5%85%B3%E4%BA%8EJava%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E7%82%B9%E6%83%B3%E6%B3%95/" rel="next" title="关于Java多线程两种实现方式的一点想法"><i class="fas fa-angle-left"></i><span class="nav-title">关于Java多线程两种实现方式的一点想法</span></a>
+      <a href="/2020/09/20/%E5%90%8E%E6%B8%97%E9%80%8F-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" rel="next" title="后渗透-文件传输"><i class="fas fa-angle-left"></i><span class="nav-title">后渗透-文件传输</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
       
-      <a href="/2020/08/18/%E7%82%B9%E5%87%BB%E4%B8%8A%E6%96%B9%E7%9A%84%E5%85%B3%E4%BA%8E%E6%9F%A5%E7%9C%8B%E6%88%91%E7%9A%84%E6%9B%B4%E5%A4%9A%E4%BF%A1%E6%81%AF/" rel="prev" title="点击上方的关于查看我的更多信息"><span class="nav-title">点击上方的关于查看我的更多信息</span><i class="fas fa-angle-right"></i></a>
+      <a href="/2020/09/22/Windows%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81%E8%BF%87%E7%A8%8B%E5%8F%8A%E5%B7%A5%E4%BD%9C%E7%BB%84-%E5%9F%9F/" rel="prev" title="Windows身份认证过程及工作组/域"><span class="nav-title">Windows身份认证过程及工作组/域</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -292,7 +425,7 @@
       "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "We are different,but we go together ----《深海迷航》",
+      "issue_title": "提权-本地提权及几个工具(PwDump、WCE、mimikatz)",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -349,7 +482,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">84</a></div>
+      <div><a href="/archives/">83</a></div>
     </div>
     
     
@@ -363,7 +496,7 @@
     
     <div class="tags-count count-block">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">14</a></div>
+      <div><a href="/tags/">13</a></div>
     </div>
     
     
@@ -383,6 +516,12 @@
     
     
     
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#提权"><span class="toc-text">提权</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#本地提权"><span class="toc-text">本地提权</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#ADMIN提权为SYSTEM"><span class="toc-text">ADMIN提权为SYSTEM</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#抓包嗅探"><span class="toc-text">抓包嗅探</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#键盘记录"><span class="toc-text">键盘记录</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#本地缓存密码"><span class="toc-text">本地缓存密码</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#WCE-Windows-credential-editor"><span class="toc-text">WCE(Windows credential editor)</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#mimikatz"><span class="toc-text">mimikatz</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#其它"><span class="toc-text">其它</span></a></li></ol></div>
+    </div>
     
     
     

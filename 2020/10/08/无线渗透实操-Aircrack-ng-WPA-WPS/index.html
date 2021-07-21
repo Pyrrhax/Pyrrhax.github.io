@@ -237,7 +237,14 @@
     </header>
     <main class="post-main" itemprop="articleBody">
       <h2 id="无线渗透实操——Aircrack-ng-WPA-WPS"><a href="#无线渗透实操——Aircrack-ng-WPA-WPS" class="headerlink" title="无线渗透实操——Aircrack-ng(WPA/WPS)"></a>无线渗透实操——Aircrack-ng(WPA/WPS)</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ul>
-<li>启动monitor模式</li>
+<li>启动monitor模式<ul>
+<li><code>airmon-ng start wlan0</code></li>
+</ul>
+</li>
+<li>查看附近无线信息<ul>
+<li><code>airodump-ng wlan0mon</code></li>
+</ul>
+</li>
 <li>开始抓包并保存<ul>
 <li><code>airodump-ng wlan0mon -c&lt;channel&gt; --bssid&lt;bssid&gt; -w&lt;filename&gt;</code></li>
 </ul>
@@ -480,7 +487,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">84</a></div>
+      <div><a href="/archives/">83</a></div>
     </div>
     
     
@@ -494,7 +501,7 @@
     
     <div class="tags-count count-block">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">14</a></div>
+      <div><a href="/tags/">13</a></div>
     </div>
     
     
