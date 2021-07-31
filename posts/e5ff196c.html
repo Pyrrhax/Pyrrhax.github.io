@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Pyrrhax" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>ShellCode编写 | Pyrrhax</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Pyrrhax</a></h1>
+        <h2 class="subtitle"></h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/e5ff196c.html">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="Pyrrhax">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">ShellCode编写</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-11-30T16:28:18+08:00">2020-11-30 16:28:18</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">软件安全</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h4 id="难点"><a href="#难点" class="headerlink" title="难点"></a>难点</h4><ol>
+<li>特殊字符需要转码。<ul>
+<li>比如strcpy等函数造成的缓冲区溢出，会认为NULL是字符串的终结，所以shellcode中不能有null，如果有则需要变通或编码。</li>
+</ul>
+</li>
+<li>函数API定位很困难。<ul>
+<li>比如在windows系统下，系统调用多数都是封装在高级API中来调用的，而且不同的ServicePack或版本的操作系统其API都可能有所改动，所以不可能直接调用，因此需要采用动态的方法获取API地址。</li>
+</ul>
+</li>
+</ol>
+<a id="more"></a>
+
+<h4 id="简单的编写shellcode的方法步骤"><a href="#简单的编写shellcode的方法步骤" class="headerlink" title="简单的编写shellcode的方法步骤"></a>简单的编写shellcode的方法步骤</h4><ol>
+<li>用C语言书写要执行的shellcode，利用调试功能，找到其对应的汇编代码</li>
+<li>对汇编语言进行再加工，对于push 0而言，可以通过xor ebx ebx 之后在push ebx 来实现。</li>
+<li>在汇编第一行代码打断点，利用调试定位具体内存中的地址，找到对应地址中的机器码。</li>
+<li>编写测试程序进行测试。</li>
+</ol>
+<h4 id="Windows中的防范措施"><a href="#Windows中的防范措施" class="headerlink" title="Windows中的防范措施"></a>Windows中的防范措施</h4><ul>
+<li><p>ASLR（address space layout randomization）</p>
+<ul>
+<li>目的：打乱系统中的固定地址</li>
+<li>包括：PE文件，映像地址，堆栈基址、堆地址、PEB和TEB（Thread Environment Block，线程环境块）地址。</li>
+<li>当程序启动，将执行文件加载到内存时，操作系统通过内核模块提供的ASLR功能，在原来映像基址的基础上加上一个随机数作为新的映像基址。随机数的取值范围限定为1至254，并保证每个数值随机出现。</li>
+</ul>
+</li>
+<li><p>GS Stack Protection</p>
+<ul>
+<li>在使用VC7.0、VS2005及后续版本编译时支持该选项。</li>
+<li>在函数被调用时，在缓冲区和函数返回地址间增加一个32位的随机数security_cooie，在函数返回时，调用检查函数security_cookie的值是否有变化。</li>
+<li>security_cookie在进程启动时随机产生，并且它的原始存储地址因Windows操作系统的ASLR机制也是随机存放的，攻击者无法对security_cookie进行篡改。</li>
+</ul>
+</li>
+<li><p>DEP</p>
+<ul>
+<li>数据执行保护DEP（data execute prevention）技术可以限制内存堆栈区的代码为不可执行状态，从而防范溢出后代码的执行。</li>
+<li>Windows操作系统中，默认情况下将包含执行代码和DLL文件的txt段，即代码段得到内存区域设置为可执行代码的内存区域，其它的内存区域不包含执行代码，不具有代码执行权限。</li>
+<li>WindowsXP及之前的操作系统没有对这些内存区域的代码执行进行限制。</li>
+<li>DEP分为软件DEP和硬件DEP。硬件DEP需要CPU支持，需要CPU在页表增加一个保护位NX（no execute），来控制页面是否可执行。现在的CPU一般都支持，现在的DEP一般都是硬件DEP。</li>
+</ul>
+</li>
+<li><p>SafeSEH</p>
+<ul>
+<li>SEH(structured exception handler)是Windows异常处理机制所采用的重要数据结构链表。程序设计者可以根据自身需要，定义程序发生各种异常时相应的处理函数，保存在SEH中。</li>
+<li>通过精心构造，攻击者通过缓冲区溢出覆盖SEH中异常处理函数句柄，将其替换为指向恶意代码的地址，并触发相应的异常，从而使程序流程转向执行恶意代码。</li>
+<li>SafeSEH是保护Seh函数不被非法利用的技术。微软在编译器中加入了SafeSEH选项，采用该选项编译的程序将PE文件中所有合法的SEH异常处理函数的地址解析出来制成一张SEH函数表，放在PE文件的数据块中，用于异常处理时进行匹配检查。</li>
+<li>函数表是加密的，读取时解密。</li>
+</ul>
+</li>
+<li><p>SEHOP(Structed Exception Handler Overwrite Protection)</p>
+<ul>
+<li>检测：<ul>
+<li>SEH结构都必须在栈上，最后一个SEH结构也必须在栈上</li>
+<li>所有的SEH结构必须是4字节对齐的</li>
+<li>SEH结构中异常处理函数的句柄handle（即处理函数地址）必须不在栈上</li>
+<li>最后一个SEH结构的handle必须是（ntdll!FinalExceptionHandler）函数等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="漏洞利用技术"><a href="#漏洞利用技术" class="headerlink" title="漏洞利用技术"></a>漏洞利用技术</h4><h5 id="esp跳板"><a href="#esp跳板" class="headerlink" title="esp跳板"></a>esp跳板</h5><ul>
+<li><p>问题：</p>
+<ul>
+<li>有些软件的漏洞存在于某些动态链接库中，进程运行时动态加载。此外，在使用类似ASLR技术的操作系统中，地址也会因为引入的随机数每次发生变化。</li>
+<li>此时，需要让覆盖返回地址后 新写入的返回地址能够自动定位到shellcode起始地址。</li>
+</ul>
+</li>
+<li><p>解决：</p>
+<ul>
+<li>利用esp寄存器的特性实现，使用jmp esp作为跳板。</li>
+<li>在函数调用结束后，被调用函数的栈帧被释放，esp寄存器中断栈顶指针指向返回地址在内存高地址方向的相邻位置。可见，通过esp寄存器，可以准确定位返回地址所在的位置。</li>
+<li>在内存中找到一个jmp esp（跳转到esp寄存器保存的地址），将这条指令的地址覆盖返回地址。</li>
+<li>在返回地址相邻的高地址写入shellcode代码。</li>
+<li>move eax,exp 和 jmp eax等指令序列也可以实现。</li>
+</ul>
+</li>
+</ul>
+<h5 id="heap-spray"><a href="#heap-spray" class="headerlink" title="heap spray"></a>heap spray</h5><ul>
+<li><p>有些漏洞，不支持或者不能实现精确定位shellcode。且堆分配地址随机性比较大。</p>
+</li>
+<li><p>对喷洒是在shellcode前面加上大量的滑板指令（slide code），组成一个非常长的注入代码段。然后向系统申请大量内存，并且反复用这个注入代码段来填充。这样就使得内存空间被大量的注入代码所占据。攻击者再结合漏洞利用技术，只要使程序跳转到堆中被填充了注入代码的任何一个地址，程序指令就会顺着滑板指令最终执行到shellcode代码。</p>
+</li>
+<li><p>滑板指令一般是NOP(no-operation)0x90</p>
+</li>
+<li><p>随着一些新的攻击技术出现，滑板指令除了利用NOP指令填充外，也逐渐开始使用更多的类NOP指令，譬如0x0C，0x0D(回车、换行)等。</p>
+</li>
+<li><p>对喷洒用于针对浏览器漏洞的攻击较多，尤其是网页木马应用较多，这些漏洞利用程序通常会将EIP指向堆区的0x0C0C0C0C地址，然后使用Javascript脚本申请大量堆内存，在内存空间中填充大量包含0x和shellcode的注入代码。漏洞利用程序从低地址向高地址一直申请超过200MB的堆内存空间，由于200M对应的内存地址为0x0C800000,高于EIP指向的0x0C0C0C0C,因而申请的堆空间超过200MB时将覆盖0x0C0C0C0C,只要注入代码中的0x90能覆盖0x0C0C0C0C，就可以成功。</p>
+</li>
+<li><p>占用内存大，容易被察觉。</p>
+</li>
+<li><p>一般配合堆栈溢出攻击，不能用于主动攻击，也不能保证成功。</p>
+</li>
+<li><p>对于windows系统比较好的系统防范方法是开启DEP功能，即使被绕过，被利用的概率也会大大降低。</p>
+</li>
+</ul>
+<h5 id="DEP绕过"><a href="#DEP绕过" class="headerlink" title="DEP绕过"></a>DEP绕过</h5><ul>
+<li><p>基本思想：</p>
+<ul>
+<li>ROP（return-oriented programing）攻击者从已有的库或可执行文件中提取指令片段，构建恶意代码。ROP允许我们绕过DEP和ALSR，但不能绕开GS缓冲区溢出的检测防护技术。</li>
+<li>借助已经存在的代码块（也叫配件），这些配件来自程序已经加载的模块。我们可以在已经加载的模块中找到一些以retn结尾的配件，把这些配件的地址布置在堆栈上，当控制EIP并返回的时候，程序就会跳去执行这些配件，而这些配件是在别的模块代码段，不受DEP影响。</li>
+<li>retn的操作是 pop eip，然后执行eip指向的指令。</li>
+</ul>
+</li>
+<li><ol>
+<li>ROP通过ROP链（retn）实现有序的汇编指令执行</li>
+<li>ROP链由一个个ROP小配件组成</li>
+<li>ROP小配件由目的执行指令+return组成</li>
+</ol>
+</li>
+<li><p>未启用ASLR的小配件有很多</p>
+</li>
+</ul>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/posts/2029f11.html" rel="next" title="MSF-扫描器和客户端渗透"><i class="fas fa-angle-left"></i><span class="nav-title">MSF-扫描器和客户端渗透</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/posts/64feca25.html" rel="prev" title="漏洞挖掘-静态代码分析"><span class="nav-title">漏洞挖掘-静态代码分析</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "Pyrrhax",
+      "repo": "Pyrrhax.github.io",
+      "client_id": "ab41dde59a0f57819b1e",
+      "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "ShellCode编写",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="Pyrrhax">
+  
+  <h1 class="author-name">Pyrrhax</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">86</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">15</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">14</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#难点"><span class="toc-text">难点</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#简单的编写shellcode的方法步骤"><span class="toc-text">简单的编写shellcode的方法步骤</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Windows中的防范措施"><span class="toc-text">Windows中的防范措施</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#漏洞利用技术"><span class="toc-text">漏洞利用技术</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#esp跳板"><span class="toc-text">esp跳板</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#heap-spray"><span class="toc-text">heap spray</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#DEP绕过"><span class="toc-text">DEP绕过</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:Pyrrhax.hf@gmail.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/Pyrrhax" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2021</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

@@ -255,7 +255,7 @@
 </blockquote>
 <p>从以上两段话我们可以看出：<br>clone( )方法创建调用它的对象的一个复制副本。只有那些实现Cloneable接口的类能被复制。<br>如果对数组T[]进行克隆，返回结果是T[]，T是引用或者基本类型。<br>我们克隆的数组是二维数组，即数组的数组。对于clone()方法来说，这里的T[]，T是一个对数组的引用。<br>也就是说：我们克隆出来的数组的第一维度，和原来那个数组的第一维度。同时指向了同一个第二位度的数组。<br>如下图：</p>
 <p>因此当改变数组b的时候，数组a也被改变。此时的引用关系图如下：</p>
-<p><img src="/2018/08/30/Java中二维数组的复制（深拷贝与浅拷贝）/clone1.png" alt=""></p>
+<p><img src="/posts/65304.html/clone1.png" alt=""></p>
 <p>所以，为了实现二维数组的克隆，我们需要分别对第二维度的每一个数组进行克隆。<br>实现如下：</p>
 <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">int b[][] &#x3D; new int[a.length][];<br>for(int i&#x3D;0;i&lt;a.length;i++)&#123;<br>	b[i]&#x3D;a[i].clone();<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>将之前代码的复制部分改为以上实现，输出结果如下：</p>
@@ -280,12 +280,12 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/posts/62285.html" rel="next" title="用Hexo和GitHubPages搭建博客"><i class="fas fa-angle-left"></i><span class="nav-title">用Hexo和GitHubPages搭建博客</span></a>
+      <a href="/posts/37794.html" rel="next" title="在Hexo文章中插入图片"><i class="fas fa-angle-left"></i><span class="nav-title">在Hexo文章中插入图片</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
       
-      <a href="/posts/37794.html" rel="prev" title="在Hexo文章中插入图片"><span class="nav-title">在Hexo文章中插入图片</span><i class="fas fa-angle-right"></i></a>
+      <a href="/posts/61121.html" rel="prev" title="我翻译的文章在这里"><span class="nav-title">我翻译的文章在这里</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>

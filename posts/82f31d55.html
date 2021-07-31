@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Pyrrhax" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>802.11协议栈帧结构 | Pyrrhax</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Pyrrhax</a></h1>
+        <h2 class="subtitle"></h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/82f31d55.html">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="Pyrrhax">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">802.11协议栈帧结构</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-10-04T12:16:18+08:00">2020-10-04 12:16:18</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h2 id="802-11协议栈帧结构"><a href="#802-11协议栈帧结构" class="headerlink" title="802.11协议栈帧结构"></a>802.11协议栈帧结构</h2><ul>
+<li>首先选择合适的无线网卡</li>
+<li>了解基本操作</li>
+<li>学习协议栈帧结构</li>
+<li>实际抓包查看</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><h4 id="查看配置"><a href="#查看配置" class="headerlink" title="查看配置"></a>查看配置</h4><ul>
+<li><p><code>iw list</code> 查看无线网卡的配置信息</p>
+</li>
+<li><p><code>iwlist wlan0 frequency</code>查看支持的频段</p>
+</li>
+</ul>
+<h4 id="扫描附近AP"><a href="#扫描附近AP" class="headerlink" title="扫描附近AP"></a>扫描附近AP</h4><ul>
+<li><p><code>iw dev wlan0 scan</code></p>
+</li>
+<li><p><code>iw dev wlan0 scan|egrep &quot;DS\ Parameter\ set|SSID&quot;</code></p>
+</li>
+<li><p><code>iwlist wlan0 scannign|grep&quot;ESSID|Channel&quot;</code></p>
+</li>
+</ul>
+<h4 id="添加删除侦听端口"><a href="#添加删除侦听端口" class="headerlink" title="添加删除侦听端口"></a>添加删除侦听端口</h4><ul>
+<li><p><code>iw dev wlan0 interface add wlan0mon type monitor</code></p>
+</li>
+<li><p><code>iw dev wlan0mon interface del</code></p>
+</li>
+</ul>
+<h3 id="RADIOTAP头"><a href="#RADIOTAP头" class="headerlink" title="RADIOTAP头"></a>RADIOTAP头</h3><ul>
+<li>802.11帧发射和接收的事实标准，802.11依赖Radiotap完成通信过程</li>
+<li>Linux系统在驱动和API中内建支持Radiotap</li>
+<li>802.11帧发射之前，网卡驱动在802.11头前添加Radiotap头，反之当网卡接收无线帧时，驱动通知MAC层，此帧头包含Radiotap头</li>
+<li>Radiotap为802.11帧传递额外信息，厂家可以自定义，因此头长度不固定</li>
+</ul>
+<h3 id="802-11帧结构"><a href="#802-11帧结构" class="headerlink" title="802.11帧结构"></a>802.11帧结构</h3><ul>
+<li>DU（Data Unit）数据单元，信息传输的最小数据集合</li>
+<li>SDU（Service Data Unit）/PDU（Protocol Data Unit）</li>
+</ul>
+<h3 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h3><h4 id="帧控制"><a href="#帧控制" class="headerlink" title="帧控制"></a>帧控制</h4><ul>
+<li>Protocol Version(2bit) :802.11协议版本，始终为0，1，2，3</li>
+<li>Type(2bit):规定帧的具体用途（3种类型）：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Mean</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>00</td>
+<td>管理帧</td>
+</tr>
+<tr>
+<td>01</td>
+<td>控制帧</td>
+</tr>
+<tr>
+<td>10</td>
+<td>数据帧</td>
+</tr>
+<tr>
+<td>11</td>
+<td>保留</td>
+</tr>
+</tbody></table>
+<ul>
+<li>SubType（4bit）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Subtype</th>
+<th>Mean</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0000</td>
+<td>Association request（连接请求）</td>
+<td>00</td>
+</tr>
+<tr>
+<td>0001</td>
+<td>Association response（连接应答）</td>
+<td>00</td>
+</tr>
+<tr>
+<td>0010</td>
+<td>Reassociation request（重新连接请求）</td>
+<td>00</td>
+</tr>
+<tr>
+<td>0011</td>
+<td>Reassociation response（重新连接应答）</td>
+<td>00</td>
+</tr>
+<tr>
+<td>0100</td>
+<td>Probe request（探查请求）</td>
+<td>00</td>
+</tr>
+<tr>
+<td>0101</td>
+<td>Probe response（探查应答）</td>
+<td>00</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>Beacon（导引信号）</td>
+<td>00</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>Announcement traffic indication message (ATIM)（数据代传指示通知信号）</td>
+<td>00</td>
+</tr>
+<tr>
+<td>1010</td>
+<td>Disassociation（解除连接）</td>
+<td>00</td>
+</tr>
+<tr>
+<td>1011</td>
+<td>Authentication（身份验证）</td>
+<td>00</td>
+</tr>
+<tr>
+<td>1100</td>
+<td>Deauthentication（解除认证）</td>
+<td>00</td>
+</tr>
+<tr>
+<td><strong>Subtype</strong></td>
+<td><strong>Mean</strong></td>
+<td><strong>Type</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>0000-0110 保留</td>
+<td></td>
+</tr>
+<tr>
+<td>0111</td>
+<td>Control Wrapper</td>
+<td></td>
+</tr>
+<tr>
+<td>1000</td>
+<td>Block Ack Request(BlockAckReq)</td>
+<td></td>
+</tr>
+<tr>
+<td>1001</td>
+<td>Block Ack (BlockAck)</td>
+<td></td>
+</tr>
+<tr>
+<td>1010</td>
+<td>PS-Poll</td>
+<td></td>
+</tr>
+<tr>
+<td>1011</td>
+<td>RTS（请求发送）</td>
+<td>01</td>
+</tr>
+<tr>
+<td>1100</td>
+<td>CTS（允许发送）</td>
+<td>01</td>
+</tr>
+<tr>
+<td>1101</td>
+<td>ACK（应答）</td>
+<td>01</td>
+</tr>
+<tr>
+<td>1110</td>
+<td>CF-End（免竞争期间结束）</td>
+<td>01</td>
+</tr>
+<tr>
+<td>1111</td>
+<td>CF-End（免竞争期间结束）+CF-Ack（免竞争期间回应）</td>
+<td>01</td>
+</tr>
+<tr>
+<td><strong>Subtype</strong></td>
+<td><strong>Mean</strong></td>
+<td><strong>Type</strong></td>
+</tr>
+<tr>
+<td>0000</td>
+<td>Data（数据）</td>
+<td>10</td>
+</tr>
+<tr>
+<td>0001</td>
+<td>Data+CF-Ack</td>
+<td>10</td>
+</tr>
+<tr>
+<td>0010</td>
+<td>Data+CF-Poll</td>
+<td>10</td>
+</tr>
+<tr>
+<td>0011</td>
+<td>Data+CF-Ack+CF-Poll</td>
+<td>10</td>
+</tr>
+<tr>
+<td>0100</td>
+<td>Null data (无数据：未发送数据)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>0101</td>
+<td>CF-Ack (未发送数据)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>0110</td>
+<td>CF-Poll (未发送数据)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>0111</td>
+<td>Data＋CF-Ack+CF-Poll</td>
+<td>10</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>QoS Data</td>
+<td>10</td>
+</tr>
+<tr>
+<td>1001</td>
+<td>QoS Data + CF-Ack</td>
+<td>10</td>
+</tr>
+<tr>
+<td>1010</td>
+<td>QoS Data + CF-Poll</td>
+<td>10</td>
+</tr>
+<tr>
+<td>1011</td>
+<td>QoS Data + CF-Ack + CF-Pol</td>
+<td>10</td>
+</tr>
+<tr>
+<td>1100</td>
+<td>QoS Null (未发送数据)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>1101</td>
+<td>QoS CF-Ack (未发送数据)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>1110</td>
+<td>QoS CF-Poll (未发送数据)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>1111</td>
+<td>QoS CF-Ack+CF-Poll （未发送数据)</td>
+<td>10</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>To DS/From DS(1/1 bit)</p>
+<ul>
+<li>0x00:出现在<a href="https://pyrrhax.com/2020/09/24/%E6%97%A0%E7%BA%BF%E7%BD%91%E8%BF%90%E8%A1%8C%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" target="_blank" rel="noopener">IBSS</a>环境中（可能是Management帧或者是Control帧类型）；或者是STSL（Station to Station Link）中两个STA之间通信，这种情况下不通过AP</li>
+<li>0x01:表示data从AP向STA传递</li>
+<li>0x02:表示data从STA向AP传递</li>
+<li>0x03:表示两个AP间通信，这是典型的WDS环境下AP间的通信；或者表示Mesh环境下MP间的通信，只有此时才会使用到Address4字段。</li>
+</ul>
+</li>
+<li><p>More frag(1bit):表示是否还有后续帧</p>
+<ul>
+<li>值为1时表示有后续分段，可能是data或者management帧类型。只有单播接收地址的帧会被分段，广播的直接发送。</li>
+</ul>
+</li>
+<li><p>retry（1bit）:重传</p>
+<ul>
+<li>值为1表示重传帧，可能是data或者management帧类型，接收端进程使用此值防止帧重复；</li>
+</ul>
+</li>
+<li><p>PowerMgmt(1bit):活动模式(0)/省电模式(1)</p>
+<ul>
+<li>STA处于省电模式时，向关联的AP发送该值为1的帧（AP从不使用此字段），省电模式下STA不接受数据，发送给它的Data帧由AP暂时缓存。</li>
+</ul>
+</li>
+<li><p>MoreData(1bit)</p>
+<ul>
+<li>当AP至少缓存了一个MSDU时，会向省电模式的STA发送该值为1的帧，表示有数据要传输给STA，接收到此帧的STA唤醒自己，并向AP发送PS-Poll帧，取回由AP为其缓存的数据。也被用于AP有更多的广播/多播帧需要发送的情况；</li>
+</ul>
+</li>
+<li><p>Protected Frame(bit)</p>
+<ul>
+<li>可能是data或者management帧类型，表示MSDU是否被加密，也被用于表示psk身份验证Frame#3帧；数据载荷为空时，该字段值为0；</li>
+</ul>
+</li>
+<li><p>Order(1bit)</p>
+<ul>
+<li>在非Qos帧的情况下，值为1表示数据必须严格按顺序处理，通常为0</li>
+</ul>
+</li>
+</ul>
+<h4 id="Duration-ID"><a href="#Duration-ID" class="headerlink" title="Duration/ID"></a>Duration/ID</h4><ul>
+<li>所有Control帧都使用该字段，其作用随Type/SubType变化有所不同</li>
+<li>帧类型为PS Poll(type:1,subtype:10)时，表示STA关联的AID(association identity,在sta连上ap时，由ap发送给sta);</li>
+<li>其它情况下，该字段作为一种载波侦听机制，表示接收下一帧之前需要保持的时间间隔，用于（Network Allocation Vector）计算，单位是微秒；</li>
+</ul>
+<h4 id="MAC-Layer-Address"><a href="#MAC-Layer-Address" class="headerlink" title="MAC Layer Address"></a>MAC Layer Address</h4><ul>
+<li>Basic service set ID（BSSID）;它是BSS的2层唯一标识，Infrastructure模式中BSSID就是AP的MAC地址，当AP支持多BSS时，随机生成每个BSSID。</li>
+</ul>
+<h4 id="Sequence-Control（16bit）"><a href="#Sequence-Control（16bit）" class="headerlink" title="Sequence Control（16bit）"></a>Sequence Control（16bit）</h4><ul>
+<li>这个字段包含两个子字段：Sequence Number和Fragment Number；</li>
+<li>Sequence Number是每个帧的编号，数值范围是0-4095，当帧被分段时，同帧不同分段的sequenceNumber相同。</li>
+<li>FragmentNumber是被分段的帧用于标识分段位置顺序的编号，数值范围是0-15，以1为步长递增。</li>
+</ul>
+<h4 id="Frame-Body-变长"><a href="#Frame-Body-变长" class="headerlink" title="Frame Body(变长)"></a>Frame Body(变长)</h4><ul>
+<li>数据字段，未加密的最大MSDU长度为2304字节（其中包含最大256字节的上层头信息，和可被传递的 数据2048字节）。不同的加密方法会增加一定的内容长度。<ul>
+<li>WEP：+8bytes-&gt;2312bytes</li>
+<li>TKIP(WPA1):+20bytes-&gt;2324bytes</li>
+<li>CCMP(WPA2):+16bytes-&gt;2320bytes</li>
+</ul>
+</li>
+</ul>
+<h4 id="FCS-32bit"><a href="#FCS-32bit" class="headerlink" title="FCS(32bit)"></a>FCS(32bit)</h4><ul>
+<li>发送端对全部MAC包头和FrameBody内容进行CRC计算，计算结果即为FCS（FrameCheckSequence）值，接收端进行同样的计算，结果一致时，则接收端向发送端返回ACK，否则丢弃帧（只对单播帧有效，FCS错误的广播/多播帧可能被接收）</li>
+<li>注：wireshark抓包时已经删除了FCS值</li>
+</ul>
+<h3 id="控制帧实例"><a href="#控制帧实例" class="headerlink" title="控制帧实例"></a>控制帧实例</h3><h4 id="ACK"><a href="#ACK" class="headerlink" title="ACK"></a>ACK</h4><ul>
+<li>接收端正确接收数据后向发送端返回ACK确认</li>
+<li>每个单播帧需要立即确认<ul>
+<li>组播和广播帧不需要确认、</li>
+</ul>
+</li>
+<li>尽快响应<ul>
+<li>由硬件完成，而非驱动层</li>
+</ul>
+</li>
+<li>Type/Subtype:1/13</li>
+</ul>
+<h4 id="PS-POLL"><a href="#PS-POLL" class="headerlink" title="PS-POLL"></a>PS-POLL</h4><ul>
+<li>AID——Association ID</li>
+<li>STA省电模式唤醒<ul>
+<li>数据发送至AP（AP缓存数据包）</li>
+<li>通过Beacon发送TIM（traffic indication map）<ul>
+<li>其中包含AID</li>
+</ul>
+</li>
+<li>STA对比AID后唤醒网卡</li>
+<li>STA发送PS-Poll帧，请求从AP缓存中取回数据<ul>
+<li>每个帧都需要ACK确认</li>
+<li>ACK确认后AP从缓存中删除数据帧</li>
+<li>传输过程中STA保持唤醒状态，传输结束后STA恢复省电状态</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Type/Subtype:1/10</li>
+</ul>
+<h4 id="RTS-CTS"><a href="#RTS-CTS" class="headerlink" title="RTS/CTS"></a>RTS/CTS</h4><ul>
+<li><p>RTS/CTS是CSMA/CA方法的一种补充手段</p>
+</li>
+<li><p>降低冲突产生的可能性</p>
+</li>
+<li><p>正式通信之前通过请求应答机制，确信通信介质的可用性</p>
+</li>
+<li><p>锁定传输介质，预约通信时间</p>
+</li>
+<li><p>只有在传输长帧时使用，传输短帧时不会使用</p>
+<ul>
+<li>驱动接口提供长帧阈值的自定义</li>
+</ul>
+</li>
+<li><p>A —-RTS—-&gt;B</p>
+<p>A&lt;—-CTS—-B</p>
+<p>A—-Data—-&gt;B</p>
+<p>A&lt;—-ACK—-B</p>
+<p>A—-Data—-&gt;B</p>
+<p>A&lt;—-ACK—-B</p>
+<p>……</p>
+</li>
+</ul>
+<h3 id="管理帧实例"><a href="#管理帧实例" class="headerlink" title="管理帧实例"></a>管理帧实例</h3><ul>
+<li>管理帧用于协商和控制STA与AP之间的关系</li>
+</ul>
+<h4 id="Beacon-Frame"><a href="#Beacon-Frame" class="headerlink" title="Beacon Frame"></a>Beacon Frame</h4><ul>
+<li>AP发送的广播帧，通告无线网络的存在（BSSID）</li>
+<li>发包频率<ul>
+<li>102.4ms（可变）</li>
+<li>单位时间1024microsecond（）</li>
+</ul>
+</li>
+<li>SSID网络名<ul>
+<li>隐藏AP不发SSID广播</li>
+</ul>
+</li>
+</ul>
+<h4 id="Probe-Request-Frames"><a href="#Probe-Request-Frames" class="headerlink" title="Probe Request Frames"></a>Probe Request Frames</h4><ul>
+<li>用于STA扫描现有AP<ul>
+<li>发现连接过的AP</li>
+<li>发现未连接的AP</li>
+</ul>
+</li>
+</ul>
+<h4 id="Probe-Response-Frames"><a href="#Probe-Response-Frames" class="headerlink" title="Probe Response Frames"></a>Probe Response Frames</h4><ul>
+<li>发现连接过的AP时，速率和ESSID相同的AP会响应。</li>
+</ul>
+<h4 id="Authentication-Frames"><a href="#Authentication-Frames" class="headerlink" title="Authentication Frames"></a>Authentication Frames</h4><ul>
+<li>Authentication Algorithm身份认证类型<ul>
+<li>0：开放系统身份验证</li>
+<li>1：共享密钥身份验证</li>
+</ul>
+</li>
+<li>身份认证有多个帧交换过程组成</li>
+<li>Authentication Seq<ul>
+<li>每次身份验证过程Seq唯一</li>
+<li>1-65535</li>
+</ul>
+</li>
+<li>Challenge text<ul>
+<li>只用共享密钥方式才有此字段</li>
+</ul>
+</li>
+<li>Status Code：成功/失败</li>
+</ul>
+<h4 id="Association-Reassociation-Freames"><a href="#Association-Reassociation-Freames" class="headerlink" title="Association/Reassociation Freames"></a>Association/Reassociation Freames</h4><ul>
+<li>身份验证后，STA执行关联操作，加入无线网络 </li>
+</ul>
+<h4 id="Disassociation-Deauthentication"><a href="#Disassociation-Deauthentication" class="headerlink" title="Disassociation/Deauthentication"></a>Disassociation/Deauthentication</h4><ul>
+<li>由AP发出，2字节</li>
+</ul>
+<h4 id="ATIM-Frames"><a href="#ATIM-Frames" class="headerlink" title="ATIM Frames"></a>ATIM Frames</h4><ul>
+<li>只在ad-hoc网络下使用<ul>
+<li>STA使用此帧通知接收者其有缓存的数据要发送</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据帧"><a href="#数据帧" class="headerlink" title="数据帧"></a>数据帧</h3><ul>
+<li>传输用户数据<ul>
+<li>DATA Frame</li>
+</ul>
+</li>
+<li>空数据帧<ul>
+<li>Null data frame</li>
+<li>只包含MAC头和FCS</li>
+<li>STA用空数据帧声明自己要进入省电模式</li>
+</ul>
+</li>
+</ul>
+<h3 id="连接到无线网络的过程"><a href="#连接到无线网络的过程" class="headerlink" title="连接到无线网络的过程"></a>连接到无线网络的过程</h3><ul>
+<li>Probe<ul>
+<li>STA向所有信道发出probe帧，发现AP</li>
+<li>AP应答Response</li>
+</ul>
+</li>
+<li>Authentication<ul>
+<li>STA向AP发出验证请求</li>
+<li>发生认证过程</li>
+<li>AP响应STA认证结果</li>
+</ul>
+</li>
+<li>Association<ul>
+<li>STA发出关联请求</li>
+<li>AP响应</li>
+<li>开始通信</li>
+</ul>
+</li>
+</ul>
+<h4 id="WEP-PSK认证过程"><a href="#WEP-PSK认证过程" class="headerlink" title="WEP PSK认证过程"></a>WEP PSK认证过程</h4><ul>
+<li>STA发认证请求</li>
+<li>AP返回随机Challenge消息</li>
+<li>STA使用PSK加密Cha并发回给AP</li>
+<li>AP使用PSK解密，获得Cha并与原始Cha对比，相同则验证成功，不同则失败。</li>
+<li>大部分无线驱动首先尝试open验证，如果失败则尝试PSK</li>
+<li>无论使用什么加密架构，关联过程完全相同<ul>
+<li>STA向AP发送关联请求</li>
+<li>AP向STA发送关联成功或者失败结果</li>
+</ul>
+</li>
+<li>隐藏AP<ul>
+<li>STA关联包中必须包含目标AP的ESSID</li>
+<li>嗅探到此关联包，说明有隐藏AP存在</li>
+</ul>
+</li>
+</ul>
+<h3 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h3><ul>
+<li>无线安全根源<ul>
+<li>802.11基于无线电波发射信息</li>
+<li>嗅探侦听是主要问题</li>
+<li>加密机制是必须的手段</li>
+</ul>
+</li>
+<li>Wired Equivalent Privacy(WEP)<ul>
+<li>802.11标准的一部分</li>
+<li>发布不久后被发现存在安全漏洞</li>
+</ul>
+</li>
+<li>WiFi Protected Access（WPA）取代WEP<ul>
+<li>WPA2（802.11i标准）</li>
+</ul>
+</li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li>协议栈：<a href="https://www.kernel.org/doc/htmldocs/80211/index.html" target="_blank" rel="noopener">https://www.kernel.org/doc/htmldocs/80211/index.html</a></li>
+<li>无线驱动：<a href="https://wireless.wiki.kernel.org/" target="_blank" rel="noopener">https://wireless.wiki.kernel.org/</a></li>
+<li>《802.11权威书》</li>
+</ul>
+
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/posts/b05e9c0a.html" rel="next" title="虚拟内存与程序调试"><i class="fas fa-angle-left"></i><span class="nav-title">虚拟内存与程序调试</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/posts/8ebcc27a.html" rel="prev" title="WEP/WPA工作原理"><span class="nav-title">WEP/WPA工作原理</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "Pyrrhax",
+      "repo": "Pyrrhax.github.io",
+      "client_id": "ab41dde59a0f57819b1e",
+      "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "802.11协议栈帧结构",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="Pyrrhax">
+  
+  <h1 class="author-name">Pyrrhax</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">86</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">15</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">14</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#802-11协议栈帧结构"><span class="toc-text">802.11协议栈帧结构</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#命令"><span class="toc-text">命令</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#查看配置"><span class="toc-text">查看配置</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#扫描附近AP"><span class="toc-text">扫描附近AP</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#添加删除侦听端口"><span class="toc-text">添加删除侦听端口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#RADIOTAP头"><span class="toc-text">RADIOTAP头</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#802-11帧结构"><span class="toc-text">802.11帧结构</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#字段"><span class="toc-text">字段</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#帧控制"><span class="toc-text">帧控制</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Duration-ID"><span class="toc-text">Duration&#x2F;ID</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#MAC-Layer-Address"><span class="toc-text">MAC Layer Address</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Sequence-Control（16bit）"><span class="toc-text">Sequence Control（16bit）</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Frame-Body-变长"><span class="toc-text">Frame Body(变长)</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#FCS-32bit"><span class="toc-text">FCS(32bit)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#控制帧实例"><span class="toc-text">控制帧实例</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#ACK"><span class="toc-text">ACK</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#PS-POLL"><span class="toc-text">PS-POLL</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#RTS-CTS"><span class="toc-text">RTS&#x2F;CTS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#管理帧实例"><span class="toc-text">管理帧实例</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Beacon-Frame"><span class="toc-text">Beacon Frame</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Probe-Request-Frames"><span class="toc-text">Probe Request Frames</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Probe-Response-Frames"><span class="toc-text">Probe Response Frames</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Authentication-Frames"><span class="toc-text">Authentication Frames</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Association-Reassociation-Freames"><span class="toc-text">Association&#x2F;Reassociation Freames</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Disassociation-Deauthentication"><span class="toc-text">Disassociation&#x2F;Deauthentication</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#ATIM-Frames"><span class="toc-text">ATIM Frames</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#数据帧"><span class="toc-text">数据帧</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#连接到无线网络的过程"><span class="toc-text">连接到无线网络的过程</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#WEP-PSK认证过程"><span class="toc-text">WEP PSK认证过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#加密"><span class="toc-text">加密</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:Pyrrhax.hf@gmail.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/Pyrrhax" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2021</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
