@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-07-31T02:31:01.519Z</updated>
+  <updated>2021-07-31T02:40:16.912Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,118 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>靶机-Kioptrix2014</title>
+    <link href="http://yoursite.com/2021/07/31/%E9%9D%B6%E6%9C%BA-Kioptrix2014/"/>
+    <id>http://yoursite.com/2021/07/31/%E9%9D%B6%E6%9C%BA-Kioptrix2014/</id>
+    <published>2021-07-31T02:40:16.000Z</published>
+    <updated>2021-07-31T02:40:16.912Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>靶机-KioptrixLevel1.3(#4)</title>
+    <link href="http://yoursite.com/2021/07/07/%E9%9D%B6%E6%9C%BA-KioptrixLevel1.3(#4)/"/>
+    <id>http://yoursite.com/2021/07/07/%E9%9D%B6%E6%9C%BA-KioptrixLevel1.3(#4)/</id>
+    <published>2021-07-07T02:40:02.000Z</published>
+    <updated>2021-07-31T02:44:16.624Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+
+
+&lt;p&gt;先用namp扫一下&lt;/p&gt;
+&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="靶机" scheme="http://yoursite.com/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E9%9D%B6%E6%9C%BA/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ssrf漏洞学习笔记</title>
+    <link href="http://yoursite.com/2021/05/31/ssrf%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2021/05/31/ssrf%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2021-05-31T02:39:20.000Z</published>
+    <updated>2021-07-31T02:42:31.298Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;常见触发点&quot;&gt;&lt;a href=&quot;#常见触发点&quot; class=&quot;headerlink&quot; title=&quot;常见触发点&quot;&gt;&lt;/a&gt;常见触发点&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;web&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;常见功能&lt;ul&gt;
+&lt;li&gt;图片加载&lt;ul&gt;
+&lt;li&gt;头像&lt;/li&gt;
+&lt;li&gt;以图搜图&lt;/li&gt;
+&lt;li&gt;图片变化&lt;/li&gt;
+&lt;li&gt;Markdown显示图片&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;下载服务&lt;ul&gt;
+&lt;li&gt;百度云离线下载&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;预览内容&lt;ul&gt;
+&lt;li&gt;分享网站&lt;/li&gt;
+&lt;li&gt;收藏&lt;/li&gt;
+&lt;li&gt;网址预览&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;代理服务&lt;/li&gt;
+&lt;li&gt;文件包含&lt;ul&gt;
+&lt;li&gt;远程文件包含&lt;ul&gt;
+&lt;li&gt;file_get_contents($file)&lt;/li&gt;
+&lt;li&gt;开启allow_url_open&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;多媒体加载&lt;/li&gt;
+&lt;li&gt;api demo&lt;/li&gt;
+&lt;li&gt;站长工具&lt;/li&gt;
+&lt;li&gt;在线编程&lt;/li&gt;
+&lt;li&gt;应用、中间件自带实例文件&lt;/li&gt;
+&lt;li&gt;RSS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>靶场学习笔记之UploadLabs</title>
@@ -529,119 +641,6 @@
 &lt;li&gt;一定程度上统一了渗透测试和漏洞研究的工作环境&lt;/li&gt;
 &lt;li&gt;新的攻击代码可以比较容易的加入框架&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>免杀-Backdoorfactory</title>
-    <link href="http://yoursite.com/2020/11/23/%E5%85%8D%E6%9D%80-Backdoorfactory/"/>
-    <id>http://yoursite.com/2020/11/23/%E5%85%8D%E6%9D%80-Backdoorfactory/</id>
-    <published>2020-11-23T08:07:51.000Z</published>
-    <updated>2020-12-11T08:59:40.572Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;Backdoor-factory&quot;&gt;&lt;a href=&quot;#Backdoor-factory&quot; class=&quot;headerlink&quot; title=&quot;Backdoor-factory&quot;&gt;&lt;/a&gt;Backdoor-factory&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Patch&lt;ul&gt;
-&lt;li&gt;通过替换exe、dll、注册表等方法修复系统漏洞或问题的方法&lt;/li&gt;
-&lt;li&gt;BDF：向二进制文件中增加或者删除代码内容&lt;ul&gt;
-&lt;li&gt;某些受保护的二进制程序无法patch&lt;/li&gt;
-&lt;li&gt;存在一定概率文件会被patch破坏掉&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;后门工厂&lt;ul&gt;
-&lt;li&gt;将shellcode代码patch进模板文件，躲避AV检查&lt;/li&gt;
-&lt;li&gt;支持msf payload、自定义payload&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>免杀-Veil、shellter</title>
-    <link href="http://yoursite.com/2020/11/22/%E5%85%8D%E6%9D%80-Veil%E3%80%81shellter/"/>
-    <id>http://yoursite.com/2020/11/22/%E5%85%8D%E6%9D%80-Veil%E3%80%81shellter/</id>
-    <published>2020-11-22T08:09:59.000Z</published>
-    <updated>2020-12-11T08:11:24.803Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Veil-evasion&quot;&gt;&lt;a href=&quot;#Veil-evasion&quot; class=&quot;headerlink&quot; title=&quot;Veil-evasion&quot;&gt;&lt;/a&gt;Veil-evasion&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;属于Veil-framework框架的一部分&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;由Python语言编写&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;用于自动生成免杀payload&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;集成msf payload，支持自定义payload&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;集成各种注入技术&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;集成各种第三方工具&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Hyperion、PEScrambler、BackDoor Factory&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>免杀</title>
-    <link href="http://yoursite.com/2020/11/20/%E5%85%8D%E6%9D%80/"/>
-    <id>http://yoursite.com/2020/11/20/%E5%85%8D%E6%9D%80/</id>
-    <published>2020-11-20T03:27:30.000Z</published>
-    <updated>2020-11-28T03:28:22.598Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;恶意软件&quot;&gt;&lt;a href=&quot;#恶意软件&quot; class=&quot;headerlink&quot; title=&quot;恶意软件&quot;&gt;&lt;/a&gt;恶意软件&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;病毒、木马、蠕虫、键盘记录、僵尸程序、流氓软件、勒索软件、广告程序&lt;/li&gt;
-&lt;li&gt;在用户非自愿的情况下执行安装&lt;/li&gt;
-&lt;li&gt;出于某种恶意目的：控制、窃取、勒索、偷窥、推送、攻击。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;主要防护手段&quot;&gt;&lt;a href=&quot;#主要防护手段&quot; class=&quot;headerlink&quot; title=&quot;主要防护手段&quot;&gt;&lt;/a&gt;主要防护手段&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;杀毒软件/防病毒软件/&lt;/li&gt;
-&lt;li&gt;客户端/服务器/邮件防病毒&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;检测原理&quot;&gt;&lt;a href=&quot;#检测原理&quot; class=&quot;headerlink&quot; title=&quot;检测原理&quot;&gt;&lt;/a&gt;检测原理&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;基于二进制文件中特征签名的黑名单检测&lt;/li&gt;
-&lt;li&gt;基于行为的分析方法（启发式）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;事后手段&quot;&gt;&lt;a href=&quot;#事后手段&quot; class=&quot;headerlink&quot; title=&quot;事后手段&quot;&gt;&lt;/a&gt;事后手段&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;永远落后于病毒发展&lt;/li&gt;
-&lt;/ul&gt;
     
     </summary>
     
