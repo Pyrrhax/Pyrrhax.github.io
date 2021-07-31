@@ -157,7 +157,7 @@
     </script>
     
     <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Web扫描工具-Arachni | Pyrrhax</title>
+    <title>靶场学习笔记之UploadLabs | Pyrrhax</title>
   <meta name="generator" content="Hexo 4.2.1"></head>
   <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
     
@@ -203,7 +203,7 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Arachni-OWASP-ZAP/">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/25/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BUploadLabs/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
        <meta itemprop="name" content="Pyrrhax">
        <meta itemprop="description" content="">
@@ -214,11 +214,11 @@
       </span>
     </div>
     <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">Web扫描工具-Arachni</h1>
+      <h1 class="post-title" itemprop="name headline">靶场学习笔记之UploadLabs</h1>
       <div class="post-meta">
         
         <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-10-12T22:22:00+08:00">2020-10-12 22:22:00</time></span>
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-02-25T10:26:16+08:00">2021-02-25 10:26:16</time></span>
         </span>
         
         
@@ -227,7 +227,7 @@
         
         <span class="post-categories">
           
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E4%B8%93%E9%A1%B9%E9%9D%B6%E5%9C%BA/" itemprop="url" rel="index"><span itemprop="name">专项靶场</span></a></span>
         </span>
         
         
@@ -236,63 +236,94 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <h3 id="Arachni"><a href="#Arachni" class="headerlink" title="Arachni"></a>Arachni</h3><ul>
-<li><p>官网</p>
-<ul>
-<li><a href="https://www.arachni-scanner.com/" target="_blank" rel="noopener">https://www.arachni-scanner.com/</a></li>
-</ul>
-</li>
-<li><p>支持分布式扫描</p>
-</li>
-<li><p>支持调度，每隔多久扫描一次</p>
-</li>
-<li><p>安装后，输入用户名密码登录提示错误，google发现很多人有同样错误，暂时无解。</p>
-</li>
-</ul>
+      <p>本篇对文件上传的学习做了记录。</p>
 <a id="more"></a>
 
-<h3 id="OWASP-ZAP"><a href="#OWASP-ZAP" class="headerlink" title="OWASP_ZAP"></a>OWASP_ZAP</h3><ul>
-<li>Zed attack proxy</li>
-<li>WEB Application继承渗透测试和漏洞挖掘工具</li>
-<li>开源免费快平台简单易用</li>
-<li>截断代理</li>
-<li>主动、被动扫描</li>
-<li>Fuzzy、暴力破解</li>
-<li>API<ul>
-<li><a href="http://zap/" target="_blank" rel="noopener">http://zap/</a></li>
+<h3 id="UploadLabs"><a href="#UploadLabs" class="headerlink" title="UploadLabs"></a>UploadLabs</h3><h4 id="Pass1"><a href="#Pass1" class="headerlink" title="Pass1"></a>Pass1</h4><p>这关使用文件后缀白名单的方式，在前端检测了文件类型。</p>
+<p>直接用burp修改请求绕过就行。</p>
+<p>其间WindowsDefender报毒file: C:\Windows\php7CC0.tmp,经过搜索发现这个是php上传文件的缓存。加入wd的排除项就可以了。</p>
+<h4 id="Pass2"><a href="#Pass2" class="headerlink" title="Pass2"></a>Pass2</h4><p>这关是在后端进行了检查，使用的Content-Type白名单，包括image/jpeg,image/png,image/gif</p>
+<p>绕过方式同Less1</p>
+<h4 id="Pass3"><a href="#Pass3" class="headerlink" title="Pass3"></a>Pass3</h4><p>在后端做了黑名单检查。提示不允许上传asp,jsp,php后缀的文件。</p>
+<p>经过搜索发现可以传phtml,phm,phs,ph5等。不过这些后缀需要在对应的web服务器中进行配置才能用php解析。在网上搜到的博客基本都是说</p>
+<blockquote>
+<p>需要在apache/conf/httpd.conf配置文件中有:</p>
+<p>AddType application/x-httpd-php .php .phtml .phps .php5 .pht</p>
+</blockquote>
+<p>但是经过测试发现并没有用。恶补了一下apache和php相关的知识，发现这种方式只在php是module运行模式下起作用（upload-labs官方说明了环境搭建时使用module方式连接，当时没有注意）。而我用的是phpstudy，默认使用的fastcgi模式，所以并不起作用。</p>
+<p>如果想在fcgi模式下用php解析特定后缀，需要修改fcgi解析后缀，但是不建议这么修改。建议使用伪静态的方式把来自不同后缀的请求定位到php文件。</p>
+<h4 id="Pass4"><a href="#Pass4" class="headerlink" title="Pass4"></a>Pass4</h4><p>黑名单了phtml,phm,等。但是可以使用.htaccess</p>
+<h4 id="Pass5"><a href="#Pass5" class="headerlink" title="Pass5"></a>Pass5</h4><p>上传.user.ini</p>
+<p>其中写auto_prepend_file=01.gif，其它所有php都会预加载01.gif</p>
+<p>然后再上传名为01.gif的一句话木马</p>
+<p>只要是以fastcgi运行的php都可以用这个方法</p>
+<h4 id="Pass6"><a href="#Pass6" class="headerlink" title="Pass6"></a>Pass6</h4><p>大小写绕过</p>
+<h4 id="Pass7"><a href="#Pass7" class="headerlink" title="Pass7"></a>Pass7</h4><p>加空格绕过</p>
+<h4 id="Pass8"><a href="#Pass8" class="headerlink" title="Pass8"></a>Pass8</h4><p>加.绕过</p>
+<p>windows会自动删除最后一个点</p>
+<h4 id="Pass9"><a href="#Pass9" class="headerlink" title="Pass9"></a>Pass9</h4><p>::$data绕过</p>
+<h4 id="Pass10"><a href="#Pass10" class="headerlink" title="Pass10"></a>Pass10</h4><p>. .绕过</p>
+<p>代码规则是：</p>
+<ol>
+<li>首位去空</li>
+<li>末尾删点</li>
+<li>取第一个点后的字符串</li>
+<li>转为小写</li>
+<li>删去::$DATA</li>
+<li>首尾去空</li>
+</ol>
+<p>php. .</p>
+<h4 id="Pass11"><a href="#Pass11" class="headerlink" title="Pass11"></a>Pass11</h4><p>把特定后缀替换为空，直接双写绕过</p>
+<h4 id="Pass12"><a href="#Pass12" class="headerlink" title="Pass12"></a>Pass12</h4><p>因为这关传输了文件的保存路径，在路径里面增加%00进行截断字符串。文件名就没意义了。</p>
+<h4 id="Pass13"><a href="#Pass13" class="headerlink" title="Pass13"></a>Pass13</h4><p>还是00截断，GET方式变为POST方式</p>
+<p>POST不会像GET对%00进行自动解码<br>需要用burp在二进制中进行修改</p>
+<p>将70 68 70后面的2b改为00</p>
+<h4 id="Pass14"><a href="#Pass14" class="headerlink" title="Pass14"></a>Pass14</h4><p>只读前两字节判断文件是否合法</p>
+<p>制作图片马：</p>
+<ul>
+<li>cmd<code>copy 1.jpg/b 1.php/a 2.jpg</code>,把1.jpg（二进制）和2.php（ASCII）先后写入2.jpg</li>
+<li>powershell<code>echo &lt;?php echo(exec($_GET[&#39;cmd&#39;]));?&gt;|out-file -append -encoding ascii 1.jpg</code>，直接追加ASCII格式的内容到1.jpg</li>
+<li>直接上传，文件包含执行。</li>
 </ul>
-</li>
-<li>功能<ul>
-<li><code>netstat -pantu</code>发现zap自动在8080端口打开 代理，通过该代理访问的网页会显示在zap中</li>
-<li>Mode–Safe、Protected、Standard、ATTACK</li>
-<li>升级add-ons</li>
-<li>ScanPolicy</li>
-<li>Anti CSRF Tokens</li>
-<li>https–CA<ul>
-<li>把ZAP的证书导入到浏览器成信任的证书</li>
-<li>在设置的Dynamic SSL Certificates里面</li>
-</ul>
-</li>
-<li>Scope/Context/filter</li>
-<li>Http Sessions</li>
-<li>扫描结果可以添加Note/Tag</li>
-<li>小绿点：截断。小灯泡：显示隐藏域。</li>
-</ul>
-</li>
-</ul>
-<h4 id="扫描工作流程"><a href="#扫描工作流程" class="headerlink" title="扫描工作流程"></a>扫描工作流程</h4><ul>
-<li>设置代理</li>
-<li>手动爬网</li>
-<li>自动爬网</li>
-<li>主动扫描</li>
-</ul>
+<h4 id="Pass15"><a href="#Pass15" class="headerlink" title="Pass15"></a>Pass15</h4><p>getimagesize获取文件信息，判断是否是jpeg png gif</p>
+<h4 id="Pass16"><a href="#Pass16" class="headerlink" title="Pass16"></a>Pass16</h4><p>exif_imagetype模块检测，同样是检测前两个字节</p>
+<h4 id="Pass17"><a href="#Pass17" class="headerlink" title="Pass17"></a>Pass17</h4><p>图片被二次渲染</p>
+<h5 id="gif"><a href="#gif" class="headerlink" title="gif"></a>gif</h5><p>将渲染后的图片下载，用winhex和原图片对比。直接修改二进制，将payload添加在原图片没有变的位置。</p>
+<h5 id="png"><a href="#png" class="headerlink" title="png"></a>png</h5><p><a href="https://xz.aliyun.com/t/2657" target="_blank" rel="noopener">参见这里</a></p>
+<h4 id="Pass18"><a href="#Pass18" class="headerlink" title="Pass18"></a>Pass18</h4><p>代码逻辑有问题，先把文件上传，再判断文件是否合法。不合法删除，合法重命名。</p>
+<p>直接用burp intruder，在文件被删前访问。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;?php fputs(fopen(&#39;shell.php&#39;,&#39;w&#39;),&#39;&lt;?php @eval($_POST[&#39;ant&#39;]); ?&gt;&#39;);?&gt;<br></code></pre></td></tr></table></figure>
+
+<p>burp上传抓包，然后用nullpayload</p>
+<p>写python脚本，一直访问，直到html.status_code==200</p>
+<h4 id="Pass19-条件竞争"><a href="#Pass19-条件竞争" class="headerlink" title="Pass19 条件竞争"></a>Pass19 条件竞争</h4><p>同样是代码逻辑问题，先把文件上传，再判断是否需要处理。</p>
+<p>用burp intruder上传图片马，写python在被(重命名+重新渲染+移动)之前用文件包含访问。</p>
+<p>这道题的文件上传路径是根目录下，upload1.png。看起来是路径中少了一个斜杠。</p>
+<p>应该是作者代码出现了错误，看了下代码，找到了问题= =。修复后在github提了个pull request。</p>
+<h4 id="Pass20"><a href="#Pass20" class="headerlink" title="Pass20"></a>Pass20</h4><p>在文件名后面加<code>/.</code>绕过</p>
+<p>点绕过 空格绕过</p>
+<p>apache解析漏洞 a.php.adsfg</p>
+<h4 id="Pass21"><a href="#Pass21" class="headerlink" title="Pass21"></a>Pass21</h4><p>看代码，发现步骤是这样的</p>
+<ol>
+<li>检查了Content-Type和POST 参数中的save_name。</li>
+<li>如果save_name不是数组，则用<code>.</code>explode成数组</li>
+<li>先检查end(save_name)是否是 jpg png gif</li>
+<li>然后save_name=reset(save_name).’.’.save_name(count(svae_name)-1)，也就是如果save_name是a.b.c.d,就重命名成a.d</li>
+</ol>
+<p>最关键的一点是，它判断了save_name是不是数组，如果正常上传肯定不是，所以会用<code>.</code>来分割成数组，然后再进行后面的判断。</p>
+<p>那我们直接用burp，传个save_name的数组</p>
+<p>save_name[0]=’a.php’</p>
+<p>save_name[2]=’jpg’</p>
+<p>这里是利用了php的特性，在这种情况下count(save_name)=2</p>
+<p>那么count(save_name)-1=1，但savename[1]为空，所以第四步拼接完成后结果是a.php</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>了解了文件上传思路，图片马和文件包含的结合利用方式，各种绕过方法。之后需要熟悉下各种解析漏洞。</p>
 
     </main>
     <footer class="post-footer">
       
       <div class="post-tags">
         
-        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
+        <a class="post-tag button" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="tag"><i class="fas fa-tags"></i>文件上传</a>
         
       </div>
       
@@ -303,12 +334,10 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2020/10/12/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-w3af/" rel="next" title="Web扫描工具-w3af"><i class="fas fa-angle-left"></i><span class="nav-title">Web扫描工具-w3af</span></a>
+      <a href="/2021/02/06/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%89%EF%BC%89Bypass%E6%8A%80%E5%B7%A7/" rel="next" title="SQL注入（三）Bypass技巧"><i class="fas fa-angle-left"></i><span class="nav-title">SQL注入（三）Bypass技巧</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
-      
-      <a href="/2020/10/14/Web%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7-Burpsuite/" rel="prev" title="Web扫描工具-Burpsuite"><span class="nav-title">Web扫描工具-Burpsuite</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -335,7 +364,7 @@
       "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
       "no_comment": "这个页面还没有评论，现在就去评论吧！",
       "go_to_comment": "去评论",
-      "issue_title": "Web扫描工具-Arachni",
+      "issue_title": "靶场学习笔记之UploadLabs",
       "btn_class": "button",
       "comments_target": "#comment-thread"
     });
@@ -399,14 +428,14 @@
     
     <div class="categories-count count-block">
       <div class="site-count-title">分类</div>
-      <div><a href="/categories/">12</a></div>
+      <div><a href="/categories/">13</a></div>
     </div>
     
     
     
     <div class="tags-count count-block">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">13</a></div>
+      <div><a href="/tags/">14</a></div>
     </div>
     
     
@@ -430,7 +459,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Arachni"><span class="toc-text">Arachni</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#OWASP-ZAP"><span class="toc-text">OWASP_ZAP</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#扫描工作流程"><span class="toc-text">扫描工作流程</span></a></li></ol></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#UploadLabs"><span class="toc-text">UploadLabs</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass1"><span class="toc-text">Pass1</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass2"><span class="toc-text">Pass2</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass3"><span class="toc-text">Pass3</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass4"><span class="toc-text">Pass4</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass5"><span class="toc-text">Pass5</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass6"><span class="toc-text">Pass6</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass7"><span class="toc-text">Pass7</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass8"><span class="toc-text">Pass8</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass9"><span class="toc-text">Pass9</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass10"><span class="toc-text">Pass10</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass11"><span class="toc-text">Pass11</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass12"><span class="toc-text">Pass12</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass13"><span class="toc-text">Pass13</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass14"><span class="toc-text">Pass14</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass15"><span class="toc-text">Pass15</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass16"><span class="toc-text">Pass16</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass17"><span class="toc-text">Pass17</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#gif"><span class="toc-text">gif</span></a></li><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#png"><span class="toc-text">png</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass18"><span class="toc-text">Pass18</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass19-条件竞争"><span class="toc-text">Pass19 条件竞争</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass20"><span class="toc-text">Pass20</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#Pass21"><span class="toc-text">Pass21</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></div>
     </div>
     
     

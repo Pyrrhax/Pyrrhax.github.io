@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-07-31T02:17:07.594Z</updated>
+  <updated>2021-07-31T02:31:01.519Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,19 +17,27 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>aaa</title>
-    <link href="http://yoursite.com/2021/07/31/aaa/"/>
-    <id>http://yoursite.com/2021/07/31/aaa/</id>
-    <published>2021-07-31T02:16:19.000Z</published>
-    <updated>2021-07-31T02:17:07.594Z</updated>
+    <title>靶场学习笔记之UploadLabs</title>
+    <link href="http://yoursite.com/2021/02/25/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BUploadLabs/"/>
+    <id>http://yoursite.com/2021/02/25/%E9%9D%B6%E5%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8BUploadLabs/</id>
+    <published>2021-02-25T02:26:16.000Z</published>
+    <updated>2021-07-31T02:31:01.519Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;测试&lt;/p&gt;
+      &lt;p&gt;本篇对文件上传的学习做了记录。&lt;/p&gt;
     
     </summary>
     
     
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="专项靶场" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E4%B8%93%E9%A1%B9%E9%9D%B6%E5%9C%BA/"/>
+    
+    
+      <category term="文件上传" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
   </entry>
   
