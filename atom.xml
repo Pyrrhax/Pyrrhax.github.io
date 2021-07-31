@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-05-13T05:42:10.136Z</updated>
+  <updated>2021-07-31T02:17:07.594Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>aaa</title>
+    <link href="http://yoursite.com/2021/07/31/aaa/"/>
+    <id>http://yoursite.com/2021/07/31/aaa/</id>
+    <published>2021-07-31T02:16:19.000Z</published>
+    <updated>2021-07-31T02:17:07.594Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;测试&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SQL注入（三）Bypass技巧</title>
+    <link href="http://yoursite.com/2021/02/06/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%89%EF%BC%89Bypass%E6%8A%80%E5%B7%A7/"/>
+    <id>http://yoursite.com/2021/02/06/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%89%EF%BC%89Bypass%E6%8A%80%E5%B7%A7/</id>
+    <published>2021-02-06T09:32:05.000Z</published>
+    <updated>2021-07-31T01:59:53.860Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;SQL注入-Bypass技巧&quot;&gt;&lt;a href=&quot;#SQL注入-Bypass技巧&quot; class=&quot;headerlink&quot; title=&quot;SQL注入 Bypass技巧&quot;&gt;&lt;/a&gt;SQL注入 Bypass技巧&lt;/h3&gt;&lt;p&gt;Bypass方式的汇总&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>SQL注入（二）SQL注入进阶-报错注入、盲注</title>
@@ -36,6 +76,29 @@
     
     
       <category term="SQL注入" scheme="http://yoursite.com/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SQL注入（一）SQL注入的利用思路</title>
+    <link href="http://yoursite.com/2021/02/04/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%80%EF%BC%89SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF/"/>
+    <id>http://yoursite.com/2021/02/04/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%80%EF%BC%89SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF/</id>
+    <published>2021-02-04T08:54:31.000Z</published>
+    <updated>2021-07-31T02:00:19.352Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;SQL注入（一）SQL注入的利用思路&quot;&gt;&lt;a href=&quot;#SQL注入（一）SQL注入的利用思路&quot; class=&quot;headerlink&quot; title=&quot;SQL注入（一）SQL注入的利用思路&quot;&gt;&lt;/a&gt;SQL注入（一）SQL注入的利用思路&lt;/h3&gt;&lt;p&gt;从检测到拖库的基本流程&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -570,101 +633,6 @@
 &lt;/ul&gt;
 &lt;h5 id=&quot;事后手段&quot;&gt;&lt;a href=&quot;#事后手段&quot; class=&quot;headerlink&quot; title=&quot;事后手段&quot;&gt;&lt;/a&gt;事后手段&lt;/h5&gt;&lt;ul&gt;
 &lt;li&gt;永远落后于病毒发展&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>拒绝服务攻击工具</title>
-    <link href="http://yoursite.com/2020/11/19/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB%E5%B7%A5%E5%85%B7/"/>
-    <id>http://yoursite.com/2020/11/19/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%94%BB%E5%87%BB%E5%B7%A5%E5%85%B7/</id>
-    <published>2020-11-19T03:26:13.000Z</published>
-    <updated>2020-11-28T03:27:15.216Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;RUDY（Are-You-Dead-Yet-）&quot;&gt;&lt;a href=&quot;#RUDY（Are-You-Dead-Yet-）&quot; class=&quot;headerlink&quot; title=&quot;RUDY（Are You Dead Yet?）&quot;&gt;&lt;/a&gt;RUDY（Are You Dead Yet?）&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;慢速应用层HTTP POST攻击，与slowhttptest原理相同&lt;/li&gt;
-&lt;li&gt;每次只传输一个字节的数据&lt;/li&gt;
-&lt;li&gt;攻击有表单WEB页面，攻击时需指定攻击的参数名称&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://sourceforge.net/projects/r-u-dead-yet/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://sourceforge.net/projects/r-u-dead-yet/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;美剧“黑客军团”中提到此攻击手段&lt;/li&gt;
-&lt;li&gt;必须是POST请求，页面中必须要有表单&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>拒绝服务-应用层DoS</title>
-    <link href="http://yoursite.com/2020/11/18/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1-%E5%BA%94%E7%94%A8%E5%B1%82DoS/"/>
-    <id>http://yoursite.com/2020/11/18/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1-%E5%BA%94%E7%94%A8%E5%B1%82DoS/</id>
-    <published>2020-11-18T03:25:59.000Z</published>
-    <updated>2020-11-28T03:26:36.113Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;应用层DoS&quot;&gt;&lt;a href=&quot;#应用层DoS&quot; class=&quot;headerlink&quot; title=&quot;应用层DoS&quot;&gt;&lt;/a&gt;应用层DoS&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;应用服务漏洞&lt;ul&gt;
-&lt;li&gt;服务代码存在漏洞，遇异常提交数据时程序崩溃&lt;/li&gt;
-&lt;li&gt;应用处理大量并发请求能力有限，被拒绝的是应用或O&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;缓冲区溢出漏洞&lt;ul&gt;
-&lt;li&gt;向目标函数随即提交数据，特定情况下数据覆盖临近寄存器或内存&lt;/li&gt;
-&lt;li&gt;影响：远程代码执行、DoS&lt;/li&gt;
-&lt;li&gt;利用模糊测试方法发现缓冲区溢出漏洞&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>拒绝服务-放大攻击</title>
-    <link href="http://yoursite.com/2020/11/17/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1-%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB/"/>
-    <id>http://yoursite.com/2020/11/17/%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1-%E6%94%BE%E5%A4%A7%E6%94%BB%E5%87%BB/</id>
-    <published>2020-11-17T03:24:39.000Z</published>
-    <updated>2020-11-28T03:25:37.398Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;DNS放大攻击&quot;&gt;&lt;a href=&quot;#DNS放大攻击&quot; class=&quot;headerlink&quot; title=&quot;DNS放大攻击&quot;&gt;&lt;/a&gt;DNS放大攻击&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;产生大流量的方法&lt;ul&gt;
-&lt;li&gt;单机的带宽优势&lt;/li&gt;
-&lt;li&gt;巨大单机数量形成的流量汇聚&lt;/li&gt;
-&lt;li&gt;利用协议特性实现放大效果的流量&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>

