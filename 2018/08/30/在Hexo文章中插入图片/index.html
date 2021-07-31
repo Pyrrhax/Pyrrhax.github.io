@@ -238,9 +238,12 @@
     <main class="post-main" itemprop="articleBody">
       <p>在写上一篇博客的时候，发现不知道该怎么往文章中插入图片，于是在网上搜。答案来来回回就那么两篇。于是就打开一个照着步骤做。</p>
 <a id="more"></a>
-<p>然后在操作的过程中，踩到了各种奇奇怪怪的坑。<br><img src="/.com//pic01.jpg" alt><br>汪的一声就哭了<br>虽然在自己的不懈努力下<br>最后终于显示成功了。<br>可是，你不就一个低画质表情包吗！为什么显示这么大！！<br><img src="/.com//pic02.jpg" alt><br>觉得可能是hexo主题的问题。既然这样，只能修改CSS。可是主题CSS一改，所有图片的样式都会受到影响。<br>在一番搜索过后，发现hexo可以直接使用img标签,在要添加图片的md文件所在的位置创建一个同名文件夹，把图片放在里面。然后把样式写在img标签里面。<br>すると：</p>
+<p>然后在操作的过程中，踩到了各种奇奇怪怪的坑。</p>
+<p>｛% asset_img pic01.jpg %｝</p>
+<p>汪的一声就哭了<br>虽然在自己的不懈努力下</p>
+<p>最后终于显示成功了。<br>可是，你不就一个低画质表情包吗！为什么显示这么大！！<br><img src="/2018/08/30/在Hexo文章中插入图片/pic02.jpg" alt=""><br>觉得可能是hexo主题的问题。既然这样，只能修改CSS。可是主题CSS一改，所有图片的样式都会受到影响。<br>在一番搜索过后，发现hexo可以直接使用img标签,在要添加图片的md文件所在的位置创建一个同名文件夹，把图片放在里面。然后把样式写在img标签里面。<br>すると：</p>
 <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;img src&#x3D;&quot;&#x2F;pic02.jpg&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:100px;height:100px&quot;&gt;<br></code></pre></td></tr></table></figure>
-<img src="/.com//pic02.jpg" alt style="width:100px;height:100px">
+<img src="/pic02.jpg" alt="" style="width:100px;height:100px">
 
 <p>完美解决问题。当然，我的第一种插入图片方法只需要下面这几步。</p>
 <ol>
@@ -254,12 +257,12 @@
 <li><p>hexo g -d 重新发布</p>
 </li>
 </ol>
-<img src="/.com//pic04.jpg" alt style="width:100px;height:100px;float:left;display:block">
+<img src="/pic04.jpg" alt="" style="width:100px;height:100px;float:left;display:block" >
 
 
 <p>如果出了意外，那就去Google吧。。</p>
 <p> 顺便，在我不断地重新发布并查看页面的时候。明明源码已经修改过来，可是网页上显示的页面还是不变。一定是缓存的问题。于是我清空浏览器缓存，果真OK了。</p>
-<p> 可是！每次调试都要清缓存真的好麻烦。。。<br><img src="/.com//pic03.jpg" alt style="width:100px;height:100px" align="right"><br> 好在我发现了ctrl+F5 这个清缓存刷新的神奇快捷键。。。<br> 如果有遇到需要经常清缓存刷新的，这样方便多了。。<br>nice，插入图片已经不是问题了。<br>顺便,👇用这种方法可以把图片显示在文字右边，就像这样👉</p>
+<p> 可是！每次调试都要清缓存真的好麻烦。。。<br><img src="/pic03.jpg" alt="" style="width:100px;height:100px" align="right"><br> 好在我发现了ctrl+F5 这个清缓存刷新的神奇快捷键。。。<br> 如果有遇到需要经常清缓存刷新的，这样方便多了。。<br>nice，插入图片已经不是问题了。<br>顺便,👇用这种方法可以把图片显示在文字右边，就像这样👉</p>
 <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;img src&#x3D;&quot;&#x2F;pic03.jpg&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:100px;height:100px&quot; align&#x3D;&quot;right&quot;&gt;<br></code></pre></td></tr></table></figure>
     </main>
     <footer class="post-footer">
@@ -277,12 +280,12 @@
   <nav class="page-nav">
     <div class="page-nav-next page-nav-item">
       
-      <a href="/2018/08/15/%E7%94%A8Hexo+GitHubPages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" rel="next" title="用Hexo和GitHubPages搭建博客"><i class="fas fa-angle-left"></i><span class="nav-title">用Hexo和GitHubPages搭建博客</span></a>
+      <a href="/2018/08/30/Java%E4%B8%AD%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%8D%E5%88%B6%EF%BC%88%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D%EF%BC%89/" rel="next" title="Java中二维数组的复制（深拷贝与浅拷贝）"><i class="fas fa-angle-left"></i><span class="nav-title">Java中二维数组的复制（深拷贝与浅拷贝）</span></a>
       
     </div>
     <div class="page-nav-prev page-nav-item">
       
-      <a href="/2018/08/30/Java%E4%B8%AD%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E7%9A%84%E5%A4%8D%E5%88%B6%EF%BC%88%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D%EF%BC%89/" rel="prev" title="Java中二维数组的复制（深拷贝与浅拷贝）"><span class="nav-title">Java中二维数组的复制（深拷贝与浅拷贝）</span><i class="fas fa-angle-right"></i></a>
+      <a href="/2018/09/08/%E6%88%91%E7%BF%BB%E8%AF%91%E7%9A%84%E6%96%87%E7%AB%A0%E5%9C%A8%E8%BF%99%E9%87%8C/" rel="prev" title="我翻译的文章在这里"><span class="nav-title">我翻译的文章在这里</span><i class="fas fa-angle-right"></i></a>
       
     </div>
   </nav>
@@ -366,7 +369,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">87</a></div>
+      <div><a href="/archives/">86</a></div>
     </div>
     
     
