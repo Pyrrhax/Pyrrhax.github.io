@@ -236,22 +236,21 @@
       </div>
     </header>
     <main class="post-main" itemprop="articleBody">
-      <a id="more"></a>
-
-
+      <p>Kioptrix系列的靶机，第四个。</p>
+<a id="more"></a>
 
 <p>先用namp扫一下</p>
-<p><img src="/posts/31832/1.png" alt="image-20210630092503786"></p>
+<p><img src="/posts/31832/%E9%9D%B6%E6%9C%BA-KioptrixLevel1.3(#4)%5C1.png" alt></p>
 <p>可以看到有ssh，http，samba。</p>
 <p>用searchSploit 分别搜索对应版本漏洞。</p>
-<p><img src="/posts/31832/2.png" alt="image-20210630093355462"></p>
+<p><img src="/posts/31832/2.png" alt></p>
 <p>Apache看到一条符合的。</p>
 <p>搜索了一下，发现是.htaccess配置文件中的内容不符合规则时，服务器响应头的Allow字段会泄露部分内存的信息。</p>
-<p><img src="/posts/31832/3.png" alt="image-20210630095052748"></p>
+<p><img src="/posts/31832/3.png" alt></p>
 <p>尝试了一下，并没有触发。</p>
 <p>Samba 3.X-4.X有很多漏洞，依次试一下。 <img src="/posts/31832/4.png" alt="image-20210630101730152"></p>
 <p>尝试了usermap_script，没有成功</p>
-<p><img src="/posts/31832/5.png" alt="image-20210630103344756"></p>
+<p><img src="/posts/31832/5.png" alt></p>
 <p>尝试第二个的时候发现了samaba的具体版本，searchsploit中并没有合适的exp</p>
 <p><img src="/posts/31832/6.png" alt="image-20210630144108546"></p>
 <p>看Web，直接进入后是登陆页面。抓包，sqlmap跑找到密码字段是注入点。</p>
