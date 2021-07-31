@@ -118,7 +118,7 @@
 &lt;li&gt;RSS&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
+&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
@@ -306,7 +306,7 @@
 &lt;h4 id=&quot;延伸用法&quot;&gt;&lt;a href=&quot;#延伸用法&quot; class=&quot;headerlink&quot; title=&quot;延伸用法&quot;&gt;&lt;/a&gt;延伸用法&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Mimikatz&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;PHP shell&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;PHP shell&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
@@ -397,7 +397,7 @@
 &lt;li&gt;永久后门&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;基于已有session扩大战果&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;基于已有session扩大战果&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
@@ -531,7 +531,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;VNC无密码访问&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;use auxiliary/scanner/vnc/vnc_none_auth&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;use auxiliary/scanner/vnc/vnc_none_auth&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
@@ -568,7 +568,7 @@
 &lt;li&gt;use auxiliary/scanner/discovery/arp_sweep&lt;/li&gt;
 &lt;li&gt;set INTERFACE RHOSTS SHOST SMAC THREADS &lt;/li&gt;
 &lt;li&gt;run&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
@@ -607,7 +607,7 @@
 &lt;li&gt;&lt;p&gt;Passive exploit&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;search ms07_017&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
@@ -640,7 +640,7 @@
 &lt;li&gt;集成了渗透测试标准（PETS）思想&lt;/li&gt;
 &lt;li&gt;一定程度上统一了渗透测试和漏洞研究的工作环境&lt;/li&gt;
 &lt;li&gt;新的攻击代码可以比较容易的加入框架&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
