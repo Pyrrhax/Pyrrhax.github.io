@@ -64,6 +64,34 @@
     </summary>
     
     
+    
+  </entry>
+  
+  <entry>
+    <title>靶机-KioptrixLevel1.3(#4)</title>
+    <link href="http://yoursite.com/2021/07/07/%E9%9D%B6%E6%9C%BA-KioptrixLevel1.3(#4)/"/>
+    <id>http://yoursite.com/2021/07/07/%E9%9D%B6%E6%9C%BA-KioptrixLevel1.3(#4)/</id>
+    <published>2021-07-07T02:40:02.000Z</published>
+    <updated>2021-07-31T03:37:26.822Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+
+
+
+&lt;p&gt;先用namp扫一下&lt;/p&gt;
+&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
       <category term="渗透测试" scheme="http://yoursite.com/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
     
       <category term="靶机" scheme="http://yoursite.com/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E9%9D%B6%E6%9C%BA/"/>
@@ -607,39 +635,6 @@
 &lt;li&gt;&lt;p&gt;Passive exploit&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;search ms07_017&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MSF-基本命令</title>
-    <link href="http://yoursite.com/2020/11/24/MSF-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/"/>
-    <id>http://yoursite.com/2020/11/24/MSF-%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</id>
-    <published>2020-11-24T08:13:47.000Z</published>
-    <updated>2021-01-25T01:38:34.333Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;Metasploit&quot;&gt;&lt;a href=&quot;#Metasploit&quot; class=&quot;headerlink&quot; title=&quot;Metasploit&quot;&gt;&lt;/a&gt;Metasploit&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;目前最流行、最强大、最具拓展性的渗透测试平台软件&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;基于Metasploit进行渗透测试和漏洞分析的流程和方法&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2003年由HD More发布第一版，2007年用ruby重写&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;集成了渗透测试标准（PETS）思想&lt;/li&gt;
-&lt;li&gt;一定程度上统一了渗透测试和漏洞研究的工作环境&lt;/li&gt;
-&lt;li&gt;新的攻击代码可以比较容易的加入框架&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
