@@ -239,7 +239,7 @@
       <p>在写上一篇博客的时候，发现不知道该怎么往文章中插入图片，于是在网上搜。答案来来回回就那么两篇。于是就打开一个照着步骤做。</p>
 <a id="more"></a>
 <p>然后在操作的过程中，踩到了各种奇奇怪怪的坑。</p>
-<p>｛% asset_img pic01.jpg %｝</p>
+<p><img src="/posts/37794/pic01.jpg" alt></p>
 <p>汪的一声就哭了<br>虽然在自己的不懈努力下</p>
 <p>最后终于显示成功了。<br>可是，你不就一个低画质表情包吗！为什么显示这么大！！<br><img src="/posts/37794/pic02.jpg" alt><br>觉得可能是hexo主题的问题。既然这样，只能修改CSS。可是主题CSS一改，所有图片的样式都会受到影响。<br>在一番搜索过后，发现hexo可以直接使用img标签,在要添加图片的md文件所在的位置创建一个同名文件夹，把图片放在里面。然后把样式写在img标签里面。<br>すると：</p>
 <figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;img src&#x3D;&quot;&#x2F;pic02.jpg&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;width:100px;height:100px&quot;&gt;<br></code></pre></td></tr></table></figure>
