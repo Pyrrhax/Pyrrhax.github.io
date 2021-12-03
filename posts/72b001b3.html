@@ -239,10 +239,13 @@
       <p>新安装Kali后需要做的一些操作</p>
 <a id="more"></a>
 
-<h1 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h1><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plain">dhclient etho 						&#x2F;&#x2F;动态分配路由<br>ifconfig eth0 192.168.1.10&#x2F;24 		&#x2F;&#x2F;指定路由<br>route add default gw 192.168.1.1 	&#x2F;&#x2F;指定网关<br>route add -net 172.16.1.0&#x2F;24 gw 192.168.1.100 eth0&#x2F;&#x2F;指定网段的网关和出口网卡<br>netstat -nr 						&#x2F;&#x2F;查看<br>vi &#x2F;etc&#x2F;resolv.conf 				&#x2F;&#x2F;修改DNS<br></code></pre></td></tr></table></figure>
-<p>以上修改重启后会失效，如果想要长期有效，需要编辑网卡配置文件/etc/network/interfaces</p>
-<h1 id="更新升级"><a href="#更新升级" class="headerlink" title="更新升级"></a>更新升级</h1><p>先修改为国内源地址</p>
-<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">apt-get update<br>apt-get upgrade<br></code></pre></td></tr></table></figure>
+<h1 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h1><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">vim &#x2F;etc&#x2F;apt&#x2F;sources.list<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>#中科大<br>deb <a href="http://mirrors.ustc.edu.cn/kali" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/kali</a> kali-rolling main non-free contrib<br>deb-src <a href="http://mirrors.ustc.edu.cn/kali" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/kali</a> kali-rolling main non-free contrib</p>
+<p>#阿里云<br>deb <a href="http://mirrors.aliyun.com/kali" target="_blank" rel="noopener">http://mirrors.aliyun.com/kali</a> kali-rolling main non-free contrib<br>deb-src <a href="http://mirrors.aliyun.com/kali" target="_blank" rel="noopener">http://mirrors.aliyun.com/kali</a> kali-rolling main non-free contrib</p>
+</blockquote>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">apt-get update<br>apt-get dist-upgrade<br></code></pre></td></tr></table></figure>
 
 <h1 id="安装适合自己的工具软件"><a href="#安装适合自己的工具软件" class="headerlink" title="安装适合自己的工具软件"></a>安装适合自己的工具软件</h1><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">- apt-get install smplayer ibus ibus-pinyin flashplugin-nonfree gdebi amule amule qbittorrent geany stardict meld meld ttf-wqy-microhei kchmviewer freemind netspeed mtr filezilla filezilla-common chromium monodevelop mono-gmcs -y<br></code></pre></td></tr></table></figure>
 
@@ -410,7 +413,7 @@
     
     <div class="tags-count count-block">
       <div class="site-count-title">标签</div>
-      <div><a href="/tags/">14</a></div>
+      <div><a href="/tags/">15</a></div>
     </div>
     
     
@@ -434,7 +437,7 @@
     <hr>
     <div class="post-toc sidebar-item" id="toc-div">
       <div><i class="fas fa-list-ol"></i>文章目录</div>
-      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#网络配置"><span class="toc-text">网络配置</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#更新升级"><span class="toc-text">更新升级</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#安装适合自己的工具软件"><span class="toc-text">安装适合自己的工具软件</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#firefox浏览器插件"><span class="toc-text">firefox浏览器插件</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#显卡驱动-密码破解"><span class="toc-text">显卡驱动(密码破解)</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#并发线程限制"><span class="toc-text">并发线程限制</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#笔记本模式"><span class="toc-text">笔记本模式</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#服务开关"><span class="toc-text">服务开关</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#代理链"><span class="toc-text">代理链</span></a></li></ol></li></ol></li></ol></div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#换源"><span class="toc-text">换源</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#安装适合自己的工具软件"><span class="toc-text">安装适合自己的工具软件</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#firefox浏览器插件"><span class="toc-text">firefox浏览器插件</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#显卡驱动-密码破解"><span class="toc-text">显卡驱动(密码破解)</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#并发线程限制"><span class="toc-text">并发线程限制</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#笔记本模式"><span class="toc-text">笔记本模式</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#服务开关"><span class="toc-text">服务开关</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#代理链"><span class="toc-text">代理链</span></a></li></ol></li></ol></li></ol></div>
     </div>
     
     
