@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2023-06-07T12:43:53.606Z</updated>
+  <updated>2023-06-07T12:52:19.309Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,23 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)</title>
-    <link href="http://yoursite.com/posts/1bf8f607.html"/>
-    <id>http://yoursite.com/posts/1bf8f607.html</id>
-    <published>2023-03-07T12:33:27.000Z</published>
-    <updated>2023-06-07T12:43:53.606Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;SpEL表达式注入漏洞分析-以CNVD-2016-04742为例&quot;&gt;&lt;a href=&quot;#SpEL表达式注入漏洞分析-以CNVD-2016-04742为例&quot; class=&quot;headerlink&quot; title=&quot;SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)&quot;&gt;&lt;/a&gt;SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;SpEL类似于JSP中的EL表达式，但是功能要更加丰富。并且SpEL不仅可以用于Web页面之中，也可以用于任何导入了SpEL包的项目之中。由于还没有了解过相关漏洞，借此机会学习了解一下SpEL表达式注入漏洞。&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
   
   <entry>
     <title>SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)</title>
@@ -554,6 +537,37 @@
       <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
       <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>漏洞挖掘-静态代码分析</title>
+    <link href="http://yoursite.com/posts/64feca25.html"/>
+    <id>http://yoursite.com/posts/64feca25.html</id>
+    <published>2020-12-01T08:29:01.000Z</published>
+    <updated>2021-07-31T03:55:02.701Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;静态代码分析&quot;&gt;&lt;a href=&quot;#静态代码分析&quot; class=&quot;headerlink&quot; title=&quot;静态代码分析&quot;&gt;&lt;/a&gt;静态代码分析&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;软件源代码的主要安全检测技术&lt;/li&gt;
+&lt;li&gt;不需要构建代码运行环境，分析效率高，资源消耗低&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;词法分析&quot;&gt;&lt;a href=&quot;#词法分析&quot; class=&quot;headerlink&quot; title=&quot;词法分析&quot;&gt;&lt;/a&gt;词法分析&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;基于文本或标识符的匹配分析对比，以查找符合特定特征和词法规则的危险函数，API或简单语句组合。&lt;/li&gt;
+&lt;li&gt;工具：Checkmarx、ITS4&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;数据流分析&quot;&gt;&lt;a href=&quot;#数据流分析&quot; class=&quot;headerlink&quot; title=&quot;数据流分析&quot;&gt;&lt;/a&gt;数据流分析&lt;/h5&gt;
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="软件安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8/"/>
     
     
       <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>

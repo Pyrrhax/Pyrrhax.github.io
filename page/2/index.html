@@ -204,58 +204,6 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/1d8a7fa0.html">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="Pyrrhax">
-        <meta itemprop="description" content="">
-        <meta itemprop="image" content="/images/avatar.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Pyrrhax">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/posts/1d8a7fa0.html" itemprop="url">靶场学习笔记之UploadLabs</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2021-02-25T10:26:16+08:00">2021-02-25 10:26:16</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/%E4%B8%93%E9%A1%B9%E9%9D%B6%E5%9C%BA/" itemprop="url" rel="index"><span itemprop="name">专项靶场</span></a></span>
-        </span>
-        
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <p>本篇对文件上传的学习做了记录。</p>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="tag"><i class="fas fa-tags"></i>文件上传</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/a696f999.html">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="Pyrrhax">
@@ -773,6 +721,66 @@
     </footer>
   </article>
   
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/64feca25.html">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="Pyrrhax">
+        <meta itemprop="description" content="">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/posts/64feca25.html" itemprop="url">漏洞挖掘-静态代码分析</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-12-01T16:29:01+08:00">2020-12-01 16:29:01</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">软件安全</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h3 id="静态代码分析"><a href="#静态代码分析" class="headerlink" title="静态代码分析"></a>静态代码分析</h3><ul>
+<li>软件源代码的主要安全检测技术</li>
+<li>不需要构建代码运行环境，分析效率高，资源消耗低</li>
+</ul>
+<h5 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h5><ul>
+<li>基于文本或标识符的匹配分析对比，以查找符合特定特征和词法规则的危险函数，API或简单语句组合。</li>
+<li>工具：Checkmarx、ITS4</li>
+</ul>
+<h5 id="数据流分析"><a href="#数据流分析" class="headerlink" title="数据流分析"></a>数据流分析</h5>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
   
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/"><i class="fas fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/"><i class="fas fa-angle-right" aria-label="下一页"></i></a>
@@ -819,7 +827,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">93</a></div>
+      <div><a href="/archives/">92</a></div>
     </div>
     
     
