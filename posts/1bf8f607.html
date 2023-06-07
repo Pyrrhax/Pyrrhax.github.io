@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Pyrrhax" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>SpEL表达式注入漏洞分析(以CNVD-2016-04742为例) | Pyrrhax</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Pyrrhax</a></h1>
+        <h2 class="subtitle"></h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/1bf8f607.html">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="Pyrrhax">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2022-07-07T20:33:27+08:00">2022-07-07 20:33:27</time></span>
+        </span>
+        
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h1 id="SpEL表达式注入漏洞分析-以CNVD-2016-04742为例"><a href="#SpEL表达式注入漏洞分析-以CNVD-2016-04742为例" class="headerlink" title="SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)"></a>SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>SpEL类似于JSP中的EL表达式，但是功能要更加丰富。并且SpEL不仅可以用于Web页面之中，也可以用于任何导入了SpEL包的项目之中。由于还没有了解过相关漏洞，借此机会学习了解一下SpEL表达式注入漏洞。</p>
+<a id="more"></a>
+
+<p>目录：</p>
+<p>[toc]</p>
+<h2 id="SpEL的应用场景-使用方法"><a href="#SpEL的应用场景-使用方法" class="headerlink" title="SpEL的应用场景/使用方法"></a>SpEL的应用场景/使用方法</h2><p><strong>在Spring项目中，可以使用SpEL给bean赋值</strong></p>
+<p>一个在bean配置文件中使用SpEL的例子如下（<a href="https://blog.csdn.net/codeliang20/article/details/106989521" target="_blank" rel="noopener">参考链接</a>）：</p>
+<pre><code>&lt;!--可以调用类中的静态变量--&gt;
+&lt;property name=&quot;perimeter&quot; value=&quot;#{T(java.lang.Math).PI*60}&quot;&gt;&lt;/property&gt;
+&lt;!--支持调用静态方法--&gt;
+&lt;property name=&quot;price&quot; value=&quot;#{T(java.lang.Math).round(100000.53452345234)}&quot;&gt;&lt;/property&gt;
+&lt;!--可以调用引用其它bean的变量，三元表达式。其中car2为另一个bean的id。--&gt;
+&lt;property name=&quot;level&quot; value=&quot;#{car2.price &gt;= 300000?&apos;金领&apos;:&apos;白领&apos;}&quot;&gt;&lt;/property&gt;
+&lt;!--支持正则表达式--&gt;
+&lt;property name=&quot;email&quot; value=&quot;#{car3.getBrand() matches &apos;\w{3,5}@\w{3,8}.(com|cn)&apos;}&quot;&gt;&lt;/property&gt;</code></pre><p>在bean中的注解中使用SpEL的例子如下（<a href="http://blog.topsec.com.cn/spel%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90/" target="_blank" rel="noopener">参考链接</a>）：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">@Value(&quot;#&#123;表达式&#125;&quot;)<br>public String arg;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>也可以在任何其它地方使用：</strong></p>
+<p>直接调用SpEL解析器使用SpEL的例子如下：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plain">public static void main(String[] args) &#123;<br>    &#x2F;&#x2F;实例化表达式解析对象<br>       ExpressionParser parser &#x3D; new SPELExpressionParser();<br>    &#x2F;&#x2F;调用该对象的parseExpression方法来执行表达式<br>       Expression expres &#x3D; parser.parseExpression(&quot;3*3&quot;);<br>    &#x2F;&#x2F;获取表达式的执行结果，想要返回的结果类型可以以这种Type.class的形式传入<br>       String message &#x3D; expres.getValue(String.class);<br>       System.out.println(message);<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+<p>一个复杂一些的例子</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs plain">User user &#x3D; new User();<br>&#x2F;&#x2F;实例化表达式解析对象<br>ExpressionParser parser &#x3D; new SPELExpressionParser();<br>&#x2F;&#x2F;实例化上下文，将user对象作为参数传入，这样就可以操作user对象的属性了<br>StandardEvaluationContext context &#x3D; new StandardEvaluationContext(user);<br>&#x2F;**<br>如果不想在实例化上下文的时候就传入对象的话就可以使用下面的代码进行等价替换<br><br>StandardEvaluationContext context &#x3D; new StandardEvaluationContext();<br>context.setRootObject(user);<br><br>之所以可以这么替换是因为StandardEvaluationContext在构造方法中还是通过调用了setRootObject方法<br>通过setRootObject方法传入的参数会被放入StandardEvaluationContext.rootObject属性中<br><br>&#x2F;&#x2F;向上下文中添加元素<br>context.setVariable(&quot;newUserName&quot;,&quot;Jone&quot;);<br>&#x2F;&#x2F;这里的userName就是user.userName属性，#newUserName就是上一步中添加的，newUserName为key，而value为Jone，所以这一步是将newUserName的值赋值给user.userName属性<br>parser.parseExpression(&quot;userName&#x3D;#newUserName&quot;).getValue(context);<br>System.out.println(user.getUserName());<br><br>&#x2F;&#x2F;这一步是通过SPEL表达式直接给user.userName属性赋值<br>parser.parseExpression(&quot;userName&#x3D;&#39;Tom&#39;&quot;).getValue(context);<br>System.out.println(user.getUserName());<br><br>&#x2F;&#x2F;通过setVariable传入上下文中的参数会被放入StandardEvaluationContext.variables属性中，该属性为HashMap类型，传入的字符串“user”，就是他的key值，value就是user这个对象<br>context.setVariable(&quot;user&quot;,user);<br><br>&#x2F;&#x2F;通过setVariable方法存放入上下文中的对象，就可以通过 #+key+属性的方式进行调用<br>String name &#x3D; (String)parser.parseExpression(&quot;#user.userName&quot;).getValue(context);<br>&#x2F;&#x2F;通过setVariable方法传入的对象和通过setRootObject方法传入的对象是不一样的，通过setRootObject传入的对象可以直接通过“属性名称”来进行调用，而通过setVariable方法传入的对象，只能通过“#+key+属性的方式进行调用”<br></code></pre></td></tr></table></figure>
+
+<p>调用成员方法的例子：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">User user &#x3D; new User();<br>ExpressionParser parser &#x3D; new SPELExpressionParser();<br>StandardEvaluationContext context &#x3D; new StandardEvaluationContext(user);<br>context.setVariable(&quot;user&quot;,user);<br>&#x2F;&#x2F;如下可以使用 #+Key+MethodName的形式进行调用<br>&#x2F;&#x2F;这种方法不仅可以调用动态方法，也可以调用静态方法<br>String result &#x3D; (String) parser.parseExpression(&quot;#user.sayHi(&#39;jack&#39;)&quot;).getValue(context);<br>System.out.println(result);<br></code></pre></td></tr></table></figure>
+
+<p>调用静态方法的例子1：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">ExpressionParser parser &#x3D; new SPELExpressionParser();<br>&#x2F;&#x2F;使用“T(Type)”来表示java.lang.Class类的实例，即如同java代码中直接写类名。此方法一般用来引用常量或静态方法<br>String result &#x3D; parser.parseExpression(&quot;T(com.SPEL.pojo.User).sayBye(&#39;Jack&#39;)&quot;).getValue(String.class);<br>System.out.println(result);<br></code></pre></td></tr></table></figure>
+
+<p>调用静态方法的例子2：</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs plain">ExpressionParser parser &#x3D; new SPELExpressionParser();<br>StandardEvaluationContext context &#x3D; new StandardEvaluationContext();<br>&#x2F;&#x2F;通过反射拿到User类的sayBye方法对象，<br>Method sayBye &#x3D; User.class.getMethod(&quot;sayBye&quot;, String.class);<br>&#x2F;&#x2F;将sayBye方法对象注册进上下文中<br>context.registerFunction(&quot;sayBye&quot;,sayBye);<br>&#x2F;&#x2F;然后就可以通过#+MehtondName的形式进行调用<br>String result &#x3D; (String) parser.parseExpression(&quot;#sayBye(&#39;jack&#39;)&quot;).getValue(context);<br>System.out.println(result);<br></code></pre></td></tr></table></figure>
+
+<h2 id="漏洞成因"><a href="#漏洞成因" class="headerlink" title="漏洞成因"></a>漏洞成因</h2><p>既然可以调用静态类的静态方法或其它类的成员方法，若该字符串可被用户控制，即可导致漏洞产生。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">public static void main(String[] args) &#123;<br>        ExpressionParser parser &#x3D; new SpelExpressionParser();<br>        parser.parseExpression(&quot;T(java.lang.Runtime).getRuntime().exec(&#39;calc&#39;)&quot;).getValue();<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">public static void main(String[] args) &#123;<br>        ExpressionParser parser &#x3D; new SpelExpressionParser();<br>        parser.parseExpression(&quot;new java.lang.ProcessBuilder(&quot;open&quot;, &quot;-a&quot;,&quot;Calculator&quot;).start()&quot;).getValue();<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>以上两种方式都能导致命令执行。</p>
+<h2 id="漏洞复现-调试分析"><a href="#漏洞复现-调试分析" class="headerlink" title="漏洞复现/调试分析"></a>漏洞复现/调试分析</h2><h3 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h3><p>以Spring boot 报错页面SpEL注入(CNVD-2016-04742)为例</p>
+<p>先写一个会将用户输入添加到异常信息的controller</p>
+<p><img src="/posts/1bf8f607/image-20221220100552582-1686141320274.png" alt="image-20221220100552582"></p>
+<p>然后运行，进行测试</p>
+<p><img src="/posts/1bf8f607/image-20221220100223880-1686141320276.png" alt="image-20221220100223880"></p>
+<p>发现用#号无效，如果直接spel=${T(java.lang.Runtime).getRuntime().exec(%27calc%27)}尝试执行命令，会报错500</p>
+<p>用参数传入spel=${5*9}，发现异常信息中出现了45。</p>
+<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>调试一下，直接在throw new Excptoin(spel)处打断点，看看这一切是如何发生的。</p>
+<p>首先是在Handler的doInvoke中抛出了异常，然后再次被throw</p>
+<p>在DispatcherServlet中的doDispatch方法中抛出了异常，其中doDispatch在Dispatcher的doService方法中被调用。捕获异常后，进入processDispatchResult()方法，并将dispatchException传了进去。</p>
+<p><img src="/posts/1bf8f607/image-20221220101743554-1686141320276.png" alt="image-20221220101743554"></p>
+<p>其中判断了是否是ModelAndView的Exceptoin，在这里不是，进入processHandlerException</p>
+<p><img src="/posts/1bf8f607/image-20221220102012442-1686141320276.png" alt="image-20221220102012442"></p>
+<p>然后会用DispatcherServlet中的handlerExceptionResolvers依次去解析exception</p>
+<p><img src="/posts/1bf8f607/image-20221220102859282-1686141320276.png" alt="image-20221220102859282"></p>
+<p>在handlerExceptionResolver中，又有多个revsolver,也是依次去解析</p>
+<p><img src="/posts/1bf8f607/image-20221220103309612-1686141320276.png" alt="image-20221220103309612"></p>
+<p>在其中处理了日志输出，响应中的Cache策略，是否是一些指定的Exception等，在这里我们是一个Exception(spel)，所以都没匹配到，在catch的代码中又被throw了出来</p>
+<p><img src="/posts/1bf8f607/image-20221220104055704-1686141320276.png" alt="image-20221220104055704"></p>
+<p>继续进入下一个catch看看</p>
+<p><img src="/posts/1bf8f607/image-20221220104252601-1686141320276.png" alt="image-20221220104252601"></p>
+<p>处理了所有拦截器的afterCompletion，搜了下，调用时间是在进行视图渲染之后。但是我想漏洞触发时间应该是在试图渲染时。</p>
+<p><img src="/posts/1bf8f607/image-20221220104418442-1686141320276.png" alt="image-20221220104418442"></p>
+<p>然后又throw了出来，进入finally,在finally中没有对exception进行处理了。所以我猜测可能应该是跳过了漏洞触发点。不过，这次调试了解了一点点Controller中的异常处理全流程。</p>
+<hr>
+<p>再重新调试下。</p>
+<p>这次调试，一直单步进行并对页面进行观察，观察是哪一步加载出来了页面。</p>
+<p>发现是在StandardHostValve中，这一步加载出了页面，但是这已经是tomcat中的代码了。</p>
+<p><img src="/posts/1bf8f607/image-20221220113610555-1686141320276.png" alt="image-20221220113610555"></p>
+<p>于是去搜索并阅读了相关内容，参考<a href="https://blog.csdn.net/qq_43437874/article/details/120291580" target="_blank" rel="noopener">SpringMVC异常处理流程源码分析</a>。原因是在Spring对异常没有处理的时候，允许冒泡到容器，交给tomcat处理。</p>
+<p>在其中，tomcat根据响应码500找到对应报错页面/error，将之前的请求和响应做了转发。转发之后，那就又走DispatcherSrevlet到对应的Controller。</p>
+<blockquote>
+<p>复习一下DispatcherServlet的流程:<br><img src="/posts/1bf8f607/image-20221220152730015-1686141320276.png" alt="复习一下DispatcherServlet的流程"></p>
+</blockquote>
+<p>于是在DispatcherServlet打断点，发现其mappedHadner是org.springframework.boot.autoconfigure.web.BasicErrorController</p>
+<p><img src="/posts/1bf8f607/image-20221220121919779-1686141320276.png" alt="image-20221220121919779"></p>
+<p>打开相关代码</p>
+<p><img src="/posts/1bf8f607/image-20221220122336915-1686141320276.png" alt="image-20221220122336915"></p>
+<p>找到了/error的Controller，继续在此打断点调试。</p>
+<p>发现在转发前，将错误信息添加到了request.attributes</p>
+<p><img src="/posts/1bf8f607/image-20221220123928649-1686141320276.png" alt="image-20221220123928649"></p>
+<p>然后将其读入model，去渲染页面。</p>
+<p><img src="/posts/1bf8f607/image-20221220124140362-1686141320276.png" alt="image-20221220124140362"></p>
+<p>拿到modelAndView之后的渲染流程，也就是上面流程图的8和9请求视图解析器，拿到view对象。</p>
+<p>先是在doService-&gt;doDispatch-&gt;processDispatchResult-&gt;调用render(mv,request,response)</p>
+<p><img src="/posts/1bf8f607/image-20221220153533465-1686141320276.png" alt="image-20221220153533465"></p>
+<p>通过resolveViewName获得了View,View的类型是ErrorMvcAutoConfiguration$SpelView，也就是ErrorMvcAutoConfiguration中的内部类SpelView。其中包含页面模板，内容如下</p>
+<p><img src="/posts/1bf8f607/image-20221220155012805-1686141320276.png" alt="image-20221220155012805"></p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;html&gt;&lt;body&gt;&lt;h1&gt;Whitelabel Error Page&lt;&#x2F;h1&gt;&lt;p&gt;This application has no explicit mapping for &#x2F;error, so you are seeing this as a fallback.&lt;&#x2F;p&gt;&lt;div id&#x3D;&#39;created&#39;&gt;$&#123;timestamp&#125;&lt;&#x2F;div&gt;&lt;div&gt;There was an unexpected error (type&#x3D;$&#123;error&#125;, status&#x3D;$&#123;status&#125;).&lt;&#x2F;div&gt;&lt;div&gt;$&#123;message&#125;&lt;&#x2F;div&gt;&lt;&#x2F;body&gt;&lt;&#x2F;html&gt;<br></code></pre></td></tr></table></figure>
+
+<p>可以看到其中有${timestamp}、${error}、${status}、${message}</p>
+<p>继续执行render()方法，得到了view后，就是用model向view中填充数据</p>
+<p><img src="/posts/1bf8f607/image-20221220155434604-1686141320276.png" alt="image-20221220155434604"></p>
+<p>进入view.render</p>
+<p>在其中通过this.helper.replacePlaceholders进行占位符替换</p>
+<p><img src="/posts/1bf8f607/image-20221220155928079-1686141320276.png" alt="image-20221220155928079"></p>
+<p>在其中，对占位符中的内容会递归调用自己，也就是直到解析到里面没有占位符。（所以之后其中的${message}先会被解析成我们传入参数${5*9}，然后再次递归解析成45。）</p>
+<p><img src="/posts/1bf8f607/image-20221220160515327-1686141320276.png" alt="image-20221220160515327"></p>
+<p>继续往下执行，通过占位符获得其对应的值。</p>
+<p><img src="/posts/1bf8f607/image-20221220161107733-1686141320276.png" alt="image-20221220161107733"></p>
+<p>其中调用的就是我们最开始学习到的ExpressionParser.parseExpression(name).getValue(context)，漏洞触发。</p>
+<p>继续向下执行，还会发现，递归不仅发生在解析之前，在解析出占位符后，又一次递归。</p>
+<p><img src="/posts/1bf8f607/image-20221220162055049-1686141320276.png" alt="image-20221220162055049"></p>
+<hr>
+<p>那为什么之前在web中传参spel=${T(java.lang.Runtime).getRuntime().exec(%27calc%27)}会报错500呢</p>
+<p>我们将参数改为spel=${T(java.lang.Runtime).getRuntime().exec(%27calc%27)}，重新调试</p>
+<p><img src="/posts/1bf8f607/image-20221220162550032-1686141320276.png" alt="image-20221220162550032"></p>
+<p>可以看到第一次解析${message}是解析出了${T(java.lang.Runtime).getRuntime().exec(‘calc’)}的，但是下面return的时候，有HtmlUtils.htmlEscape(String spel)。return后变成了</p>
+<p><img src="/posts/1bf8f607/image-20221220162813152-1686141320276.png" alt="image-20221220162813152"></p>
+<p>单引号没了，所以需要想办法绕过一下。</p>
+<p>把<code>&#39;calc&#39;</code>改成<code>new java.lang.String(new byte[]{39,99,97,108,99,39})</code></p>
+<p>完整POC</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs spel"><br>依然不行，直接先本地测试一下。发现报错了<br><br>![image-20221220164054830](SpEL表达式注入漏洞分析-以CNVD-2016-04742为例&#x2F;image-20221220164054830-1686141320277.png)<br><br>emmm,研究了一下，懵了。用byte[]构造String的时候不用带单引号。<br><br>重新尝试<br><br>&#96;&#96;&#96;spel&#x3D;$&#123;T(java.lang.Runtime).getRuntime().exec(new java.lang.String(new byte[]&#123;99,97,108,99&#125;))&#125;<br></code></pre></td></tr></table></figure>
+
+<p>成功弹出计算器</p>
+<p><img src="/posts/1bf8f607/image-20221220164449213-1686141320277.png" alt="image-20221220164449213"></p>
+<h2 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><p>更新后取消了递归，只对模板中的占位符进行解析，不对值进行解析。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>因为各种原因跟了很多次tomcat和Spring的代码，虽然是不同的部分。但是经过这么多次磕磕绊绊的调试，对自己有了些信心。基本上可以先自己纯跟代码，遇到问题再看别人的分析，感觉已经没有最开始那么难了。对于Spring和tomcat的理解也在随之加深。之后有感兴趣的漏洞也可以深入跟一下，逐步增加对漏洞和各种web组件的理解。</p>
+
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/posts/4bb3ee4d.html" rel="next" title="SpringBeansRCE的延申学习（CVE-2010-1622漏洞分析）"><i class="fas fa-angle-left"></i><span class="nav-title">SpringBeansRCE的延申学习（CVE-2010-1622漏洞分析）</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "Pyrrhax",
+      "repo": "Pyrrhax.github.io",
+      "client_id": "ab41dde59a0f57819b1e",
+      "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="Pyrrhax">
+  
+  <h1 class="author-name">Pyrrhax</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">93</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">14</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">16</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#SpEL表达式注入漏洞分析-以CNVD-2016-04742为例"><span class="toc-text">SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#SpEL的应用场景-使用方法"><span class="toc-text">SpEL的应用场景&#x2F;使用方法</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#漏洞成因"><span class="toc-text">漏洞成因</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#漏洞复现-调试分析"><span class="toc-text">漏洞复现&#x2F;调试分析</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#复现"><span class="toc-text">复现</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#调试"><span class="toc-text">调试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#漏洞修复"><span class="toc-text">漏洞修复</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:Pyrrhax.hf@gmail.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/Pyrrhax" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2023</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

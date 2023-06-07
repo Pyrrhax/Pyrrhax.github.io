@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2023-06-07T00:56:00.598Z</updated>
+  <updated>2023-06-07T12:37:56.332Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,66 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)</title>
+    <link href="http://yoursite.com/posts/1bf8f607.html"/>
+    <id>http://yoursite.com/posts/1bf8f607.html</id>
+    <published>2022-07-07T12:33:27.000Z</published>
+    <updated>2023-06-07T12:37:56.332Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;SpEL表达式注入漏洞分析-以CNVD-2016-04742为例&quot;&gt;&lt;a href=&quot;#SpEL表达式注入漏洞分析-以CNVD-2016-04742为例&quot; class=&quot;headerlink&quot; title=&quot;SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)&quot;&gt;&lt;/a&gt;SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;SpEL类似于JSP中的EL表达式，但是功能要更加丰富。并且SpEL不仅可以用于Web页面之中，也可以用于任何导入了SpEL包的项目之中。由于还没有了解过相关漏洞，借此机会学习了解一下SpEL表达式注入漏洞。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBeansRCE的延申学习（CVE-2010-1622漏洞分析）</title>
+    <link href="http://yoursite.com/posts/4bb3ee4d.html"/>
+    <id>http://yoursite.com/posts/4bb3ee4d.html</id>
+    <published>2022-06-07T12:33:08.000Z</published>
+    <updated>2023-06-07T12:37:40.247Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;SpringBeansRCE的延申学习-CVE-2010-1622漏洞分析&quot;&gt;&lt;a href=&quot;#SpringBeansRCE的延申学习-CVE-2010-1622漏洞分析&quot; class=&quot;headerlink&quot; title=&quot;SpringBeansRCE的延申学习(CVE-2010-1622漏洞分析)&quot;&gt;&lt;/a&gt;SpringBeansRCE的延申学习(CVE-2010-1622漏洞分析)&lt;/h1&gt;&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;由于spring的参数绑定通过内省机制递归获得对应参数的discriptor，最终通过其writeMethod也就是set方法对其赋值，那么我们可以看通过class类可以到达什么对象，通过对其中的属性进行修改，可以达到什么样的利用效果。由于springRCE的漏洞是对CVE-2010-1622的绕过，我们要先了解下CVE-2010-1622。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习</title>
+    <link href="http://yoursite.com/posts/67a306f6.html"/>
+    <id>http://yoursite.com/posts/67a306f6.html</id>
+    <published>2022-05-07T12:32:37.000Z</published>
+    <updated>2023-06-07T12:37:18.518Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习&quot;&gt;&lt;a href=&quot;#由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习&quot; class=&quot;headerlink&quot; title=&quot;由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习&quot;&gt;&lt;/a&gt;由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习&lt;/h1&gt;&lt;p&gt;[toc]&lt;/p&gt;
+&lt;h1 id=&quot;漏洞详情&quot;&gt;&lt;a href=&quot;#漏洞详情&quot; class=&quot;headerlink&quot; title=&quot;漏洞详情&quot;&gt;&lt;/a&gt;漏洞详情&lt;/h1&gt;&lt;h2 id=&quot;复现环境&quot;&gt;&lt;a href=&quot;#复现环境&quot; class=&quot;headerlink&quot; title=&quot;复现环境&quot;&gt;&lt;/a&gt;复现环境&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;jdk11&lt;/li&gt;
+&lt;li&gt;tomcat9&lt;/li&gt;
+&lt;li&gt;自己写好打包的war&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;漏洞分析&quot;&gt;&lt;a href=&quot;#漏洞分析&quot; class=&quot;headerlink&quot; title=&quot;漏洞分析&quot;&gt;&lt;/a&gt;漏洞分析&lt;/h2&gt;&lt;p&gt;从利用的角度来说，就是&lt;strong&gt;通过spring的参数绑定来修改日志配置，通过日志来写文件&lt;/strong&gt;。跟phpmyadmin拿shell挺像的。抛开利用不说，这里我们来看一下漏洞的成因。&lt;/p&gt;
+&lt;p&gt;首先用springboot写一个简单的web服务&lt;/p&gt;
+&lt;p&gt;看web的代码&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>靶机-FristiLeaks1.3</title>
@@ -481,103 +541,6 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;基于已有session扩大战果&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>漏洞挖掘-静态代码分析</title>
-    <link href="http://yoursite.com/posts/64feca25.html"/>
-    <id>http://yoursite.com/posts/64feca25.html</id>
-    <published>2020-12-01T08:29:01.000Z</published>
-    <updated>2021-07-31T03:55:02.701Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;静态代码分析&quot;&gt;&lt;a href=&quot;#静态代码分析&quot; class=&quot;headerlink&quot; title=&quot;静态代码分析&quot;&gt;&lt;/a&gt;静态代码分析&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;软件源代码的主要安全检测技术&lt;/li&gt;
-&lt;li&gt;不需要构建代码运行环境，分析效率高，资源消耗低&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;词法分析&quot;&gt;&lt;a href=&quot;#词法分析&quot; class=&quot;headerlink&quot; title=&quot;词法分析&quot;&gt;&lt;/a&gt;词法分析&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;基于文本或标识符的匹配分析对比，以查找符合特定特征和词法规则的危险函数，API或简单语句组合。&lt;/li&gt;
-&lt;li&gt;工具：Checkmarx、ITS4&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;数据流分析&quot;&gt;&lt;a href=&quot;#数据流分析&quot; class=&quot;headerlink&quot; title=&quot;数据流分析&quot;&gt;&lt;/a&gt;数据流分析&lt;/h5&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="软件安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ShellCode编写</title>
-    <link href="http://yoursite.com/posts/e5ff196c.html"/>
-    <id>http://yoursite.com/posts/e5ff196c.html</id>
-    <published>2020-11-30T08:28:18.000Z</published>
-    <updated>2021-07-31T03:55:02.471Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;难点&quot;&gt;&lt;a href=&quot;#难点&quot; class=&quot;headerlink&quot; title=&quot;难点&quot;&gt;&lt;/a&gt;难点&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;特殊字符需要转码。&lt;ul&gt;
-&lt;li&gt;比如strcpy等函数造成的缓冲区溢出，会认为NULL是字符串的终结，所以shellcode中不能有null，如果有则需要变通或编码。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;函数API定位很困难。&lt;ul&gt;
-&lt;li&gt;比如在windows系统下，系统调用多数都是封装在高级API中来调用的，而且不同的ServicePack或版本的操作系统其API都可能有所改动，所以不可能直接调用，因此需要采用动态的方法获取API地址。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="软件安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E8%BD%AF%E4%BB%B6%E5%AE%89%E5%85%A8/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MSF-扫描器和客户端渗透</title>
-    <link href="http://yoursite.com/posts/2029f11.html"/>
-    <id>http://yoursite.com/posts/2029f11.html</id>
-    <published>2020-11-29T08:19:23.000Z</published>
-    <updated>2021-07-31T03:55:02.384Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;扫描器扫描&quot;&gt;&lt;a href=&quot;#扫描器扫描&quot; class=&quot;headerlink&quot; title=&quot;扫描器扫描&quot;&gt;&lt;/a&gt;扫描器扫描&lt;/h4&gt;&lt;h5 id=&quot;Openvas（GVM）&quot;&gt;&lt;a href=&quot;#Openvas（GVM）&quot; class=&quot;headerlink&quot; title=&quot;Openvas（GVM）&quot;&gt;&lt;/a&gt;Openvas（GVM）&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Load openvas&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;命令行模式，需要配置，使用繁琐&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;直接在opevas扫描，向msf导入nbe格式扫描日志&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;db_import openvas.nbe&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
     
     </summary>
     

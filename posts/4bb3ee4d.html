@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Pyrrhax" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>SpringBeansRCE的延申学习（CVE-2010-1622漏洞分析） | Pyrrhax</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Pyrrhax</a></h1>
+        <h2 class="subtitle"></h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/4bb3ee4d.html">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="Pyrrhax">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">SpringBeansRCE的延申学习（CVE-2010-1622漏洞分析）</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2022-06-07T20:33:08+08:00">2022-06-07 20:33:08</time></span>
+        </span>
+        
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h1 id="SpringBeansRCE的延申学习-CVE-2010-1622漏洞分析"><a href="#SpringBeansRCE的延申学习-CVE-2010-1622漏洞分析" class="headerlink" title="SpringBeansRCE的延申学习(CVE-2010-1622漏洞分析)"></a>SpringBeansRCE的延申学习(CVE-2010-1622漏洞分析)</h1><p>[toc]</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于spring的参数绑定通过内省机制递归获得对应参数的discriptor，最终通过其writeMethod也就是set方法对其赋值，那么我们可以看通过class类可以到达什么对象，通过对其中的属性进行修改，可以达到什么样的利用效果。由于springRCE的漏洞是对CVE-2010-1622的绕过，我们要先了解下CVE-2010-1622。</p>
+<a id="more"></a>
+
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><p>在写上篇文章时和开始写这篇文章前通过多次调试，理解了在<strong>spring中属性注入的内省的流程</strong>，总结如下：</p>
+<p>在BeanWrapper第一次通过aaa.bbb.ccc进行属性注入时，先通过递归，创建好a,b,c对应的BeanWrapper，依次嵌套，储存在最外侧的BeanWrapper.nestedPropertyAccessors中。</p>
+<p>在每次递归中：比如先通过对aaa内省（在CachedIntrospectionResults中通过Introspector.getBeanInfo内省。然后将获得的propertyDescriptor都放在其propertyDescriptors中，readMethod放在其readMethods中。在这一步，中进行了判断，如果当前类的名称为”Class”且propertyDescriptor的name为classLoader，则跳过，即跳过了class.classLoader。（为了修复CVE-2010-1622))</p>
+<p>如果aaa的propertyAccessors缓存中bbb的propertyAccessor是null的话，就通过setDeafultValue–&gt;BeanUtils.instantiateClass(bbb.Class)创建一个实例，然后重复。这其中内省得到的结果都被缓存。</p>
+<p>在之后进行对aaa.bbb.ccc赋值时,直接从其中取到bbb对应的BeanWrapper即AbstractNestablePropertyAccessor。</p>
+<p>然后通过getLocalPropertyHandler(“ccc”)得到其PropertyHandler（PropertyHandler是对PropertyDiscriptor的封装）getLoaclPropertyHander会从CachedIntrospectionResults中去取。然后通过writeMethod.invoke去赋值。</p>
+<h2 id="CVE-2010-1622"><a href="#CVE-2010-1622" class="headerlink" title="CVE-2010-1622"></a>CVE-2010-1622</h2><h3 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h3><figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs plain">3.0.0 to 3.0.2<br>2.5.0 to 2.5.6.SEC01 (community releases)<br>2.5.0 to 2.5.7 (subscription customers)<br><br>tomcat &lt; 6.0.28<br>spring 使用了表单标签功能<br></code></pre></td></tr></table></figure>
+
+<h3 id="漏洞成因"><a href="#漏洞成因" class="headerlink" title="漏洞成因"></a>漏洞成因</h3><p>参数绑定的过程中，由于spring对内省的实现，对于Bean中的List,Map,Set，不需要具有其set方法，也可以对其进行赋值。刚好可以赋值到class.classLoader.URLs[]。</p>
+<ul>
+<li>在tomcat中class.classLoader为org.apache.catalina.loader.WebappClassLoader。</li>
+<li>而WebappClassLoader继承URLClassLoader，其中包含getURLs方法，返回一个数组。</li>
+</ul>
+<p>而Jasper’s TldLocationsCache 会从WebappClassLoader里面读取url参数并用来解析TLD文件（自定义标签使用）。所以是输入可以控制程序自定义一个恶意的JSP标签从而RCE。</p>
+<h3 id="JSP自定义标签"><a href="#JSP自定义标签" class="headerlink" title="JSP自定义标签"></a>JSP自定义标签</h3><p>在JSP中有apache官方实现的标签库JSTL。</p>
+<p>为了方便开发，我们也可以自定义标签。为了理解漏洞利用方式，所以实操一下自定义一个标签。</p>
+<p>首先创建一个JSP项目</p>
+<p>写一个Tag类，要继承SimpleTagSupport</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plain">package com.pyrrhax;<br><br>import javax.servlet.jsp.JspException;<br>import javax.servlet.jsp.JspWriter;<br>import javax.servlet.jsp.tagext.SimpleTagSupport;<br>import java.io.IOException;<br><br>public class HelloTag extends SimpleTagSupport &#123;<br>    public void doTag() throws JspException, IOException&#123;<br>        JspWriter out &#x3D; getJspContext().getOut();<br>        out.println(&quot;Hello Custom Tag&quot;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>然后在WEB-INF里面写一个.tld文件(tag library discriptor)，内容如下</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;ISO-8859-1&quot;?&gt;<br><br>&lt;taglib xmlns&#x3D;&quot;http:&#x2F;&#x2F;java.sun.com&#x2F;xml&#x2F;ns&#x2F;javaee&quot;<br>        xmlns:xsi&#x3D;&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema-instance&quot;<br>        xsi:schemaLocation&#x3D;&quot;http:&#x2F;&#x2F;java.sun.com&#x2F;xml&#x2F;ns&#x2F;javaee http:&#x2F;&#x2F;java.sun.com&#x2F;xml&#x2F;ns&#x2F;javaee&#x2F;web-jsptaglibrary_2_1.xsd&quot;<br>        version&#x3D;&quot;2.1&quot;&gt;<br><br>    &lt;tlib-version&gt;1.0&lt;&#x2F;tlib-version&gt;<br>    &lt;short-name&gt;myshortname&lt;&#x2F;short-name&gt;<br><br>    &lt;tag&gt;<br>        &lt;name&gt;Hello&lt;&#x2F;name&gt;<br>        &lt;tag-class&gt;com.pyrrhax.HelloTag&lt;&#x2F;tag-class&gt;<br>        &lt;body-content&gt;empty&lt;&#x2F;body-content&gt;<br>    &lt;&#x2F;tag&gt;<br><br>    &lt;!-- Invoke &#39;Generate&#39; action to add tags or functions --&gt;<br><br>&lt;&#x2F;taglib&gt;<br></code></pre></td></tr></table></figure>
+
+<p>其中可以<code>&lt;tag&gt;</code>标签中的<code>&lt;tag-class&gt;</code>指定一个类。也可以通过<code>&lt;tag-file&gt;</code>标签的<code>&lt;path&gt;</code>指定一个.tag文件。.tag文件中直接写jsp代码就可以。</p>
+<p>这里面就是定义了一个tab叫Hello，并指定其对应的class，在class中实现doTag()方法，只要在jsp页面中引用这个tag，就可以执行其中的doTag()。</p>
+<p>JSP页面中加上如下两行即可</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;%@ taglib prefix&#x3D;&quot;my&quot; uri&#x3D;&quot;WEB-INF&#x2F;MyTag.tld&quot;%&gt;<br>&lt;my:Hello&gt;&lt;&#x2F;my:Hello&gt;<br></code></pre></td></tr></table></figure>
+
+<p>效果如下，在页面中什么都没写的情况下，用tag输出了”Hello Custom Tag”。当然，把tag类中的代码改成弹出计算器也行。</p>
+<p><img src="/posts/4bb3ee4d/image-20221215104056117-1686141373782.png" alt="image-20221215104056117"></p>
+<p>该漏洞通过参数绑定漏洞热替换了<code>&lt;input&gt;``&lt;form&gt;</code>等标签的实现，导致包含这些标签的页面在解析jsp时被插入恶意代码。至于TldLocationsCache相关Spring对JSP解析的具体流程等，需要跟读Spring源码才可以详细理解，暂时没有兴趣。</p>
+<h3 id="修复方式"><a href="#修复方式" class="headerlink" title="修复方式"></a>修复方式</h3><h4 id="spring的修复方法："><a href="#spring的修复方法：" class="headerlink" title="spring的修复方法："></a>spring的修复方法：</h4><p>spring在CachedIntrospectionResults中获取beanInfo后对其进行了判断，将classloader添加进了黑名单。<img src="/posts/4bb3ee4d/picgo2022-04-21-13-14-04-1686141373783.png" alt="picgo2022-04-21-13-14-04"></p>
+<p><strong>注意</strong>：这里对漏洞利用的判断写的是或<code>||</code>,所以当java9中出现class.module后，class.module可以通过第二个判断成为真，而module.classLoader可以通过第一个判断成为真，所以恰好可以绕过这里的验证。</p>
+<h4 id="tomcat的修复方法："><a href="#tomcat的修复方法：" class="headerlink" title="tomcat的修复方法："></a>tomcat的修复方法：</h4><p>tomcat6.0.28版本后把getURLs方法返回的值改成了clone的，使得我们获得的拷贝版本无法修改classloader中的URLs[]。</p>
+<p><img src="/posts/4bb3ee4d/picgo2022-04-21-13-14-52-1686141373783.png" alt="picgo2022-04-21-13-14-52"></p>
+<h3 id="class-module是什么"><a href="#class-module是什么" class="headerlink" title="class.module是什么"></a>class.module是什么</h3><p>前面说在java9中出现了class.module从而绕过了对CVE-2010-1622的验证，因为之前没有接触过所以这里了解一下为什么java9中增加了class.module。</p>
+<p>推荐阅读：<a href="https://www.jianshu.com/p/7497b31e47c6" target="_blank" rel="noopener">Java9的模块（Module）系统</a></p>
+<p>那在Class类中增加的module应该就是获取模块相关信息的。btw:之前用IDEA，发现可以新建module还以为是IDEA的功能，这么看来是Java的新特性了。</p>
+<h3 id="利用链发现方式"><a href="#利用链发现方式" class="headerlink" title="利用链发现方式"></a>利用链发现方式</h3><p>参考文章：<a href="https://xz.aliyun.com/t/11281" target="_blank" rel="noopener">https://xz.aliyun.com/t/11281</a></p>
+<p>用来遍历属性的代码</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs plain">@RequestMapping(&quot;&#x2F;testclass&quot;)<br>    public void classTest()&#123;<br>        HashSet&lt;Object&gt; set &#x3D; new HashSet&lt;Object&gt;();<br>        String poc &#x3D; &quot;class.moduls.classLoader&quot;;<br>        User action &#x3D; new User();<br>        processClass(action.getClass().getClassLoader(),set,poc);<br>    &#125;<br><br>        public void processClass(Object instance, java.util.HashSet set, String poc)&#123;<br>        try &#123;<br>            Class&lt;?&gt; c &#x3D; instance.getClass();<br>            set.add(instance);<br>            Method[] allMethods &#x3D; c.getMethods();<br>            for (Method m : allMethods) &#123;<br>                if (!m.getName().startsWith(&quot;set&quot;)) &#123;<br>                    continue;<br>                &#125;<br>                if (!m.toGenericString().startsWith(&quot;public&quot;)) &#123;<br>                    continue;<br>                &#125;<br>                Class&lt;?&gt;[] pType  &#x3D; m.getParameterTypes();<br>                if(pType.length!&#x3D;1) continue;<br><br>                if(pType[0].getName().equals(&quot;java.lang.String&quot;)||<br>                        pType[0].getName().equals(&quot;boolean&quot;)||<br>                        pType[0].getName().equals(&quot;int&quot;))&#123;<br>                    String fieldName &#x3D; m.getName().substring(3,4).toLowerCase()+m.getName().substring(4);<br>                    System.out.println(poc+&quot;.&quot;+fieldName);<br>                    &#x2F;&#x2F;System.out.println(m.getName());<br>                &#125;<br>            &#125;<br>            for (Method m : allMethods) &#123;<br>                if (!m.getName().startsWith(&quot;get&quot;)) &#123;<br>                    continue;<br>                &#125;<br>                if (!m.toGenericString().startsWith(&quot;public&quot;)) &#123;<br>                    continue;<br>                &#125;<br>                Class&lt;?&gt;[] pType  &#x3D; m.getParameterTypes();<br>                if(pType.length!&#x3D;0) continue;<br>                if(m.getReturnType() &#x3D;&#x3D; Void.TYPE) continue;<br>                m.setAccessible(true);<br>                Object o &#x3D; m.invoke(instance);<br>                if(o!&#x3D;null)<br>                &#123;<br>                    if(set.contains(o)) continue;<br><br>                    processClass(o, set, poc+&quot;.&quot;+m.getName().substring(3,4).toLowerCase()+m.getName().substring(4));<br>                &#125;<br>            &#125;<br>        &#125; catch (IllegalAccessException | InvocationTargetException x) &#123;<br>            x.printStackTrace();<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>就是遍历ClassLoader中的具有set方法的属性，如果有get就get后递归获取具有set方法的属性。</p>
+<p>因为Spring-Beans RCE的利用方式还参考了Struts2 S2-020，看了S2-202的分析文章，也是通过去遍历可修改的属性来找利用方式。S2-020是对CVE-2014-0094的绕过，而CVE-2014-0094是Struts提供的ParametersInterceptor拦截器的漏洞，而该拦截器用于参数绑定。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>​    参数绑定漏洞的利用方式发现主要是依靠枚举可被修改的参数，看修改每个参数可以造成什么影响。参数绑定漏洞一般存在于开发框架之中，利用框架提供的功能对程序员预期之外的属性进行修改。要发现该漏洞及其绕过方式需要对开发框架的源码有清晰的理解（比如spring参数绑定对于list、set、map等之中的属性，就算没有set方法也可以对其进行修改）。并且对于可修改的参数，要对其参与的功能的全流程有一定了解（比如Spring中的jsp解析tag的机制，tomcat中的流水线机制和日志配置机制），当然后面这点可以在发现漏洞之后去，找出可以修改的属性再逐渐学习研究。</p>
+<p>​    要想发现相关漏洞还是得依靠对各种组件和框架的源码进行学习和审计。要想发现之前某个历史漏洞的绕过方式，需要对历史漏洞及当前修复方式有清晰的了解。并对最新的组件或语言特性有清晰的了解。</p>
+<p>​    细节上，了解了jsp自定义标签和java9的moudule。</p>
+
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/posts/67a306f6.html" rel="next" title="由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习"><i class="fas fa-angle-left"></i><span class="nav-title">由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/posts/1bf8f607.html" rel="prev" title="SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)"><span class="nav-title">SpEL表达式注入漏洞分析(以CNVD-2016-04742为例)</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "Pyrrhax",
+      "repo": "Pyrrhax.github.io",
+      "client_id": "ab41dde59a0f57819b1e",
+      "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "SpringBeansRCE的延申学习（CVE-2010-1622漏洞分析）",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="Pyrrhax">
+  
+  <h1 class="author-name">Pyrrhax</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">93</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">14</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">16</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#SpringBeansRCE的延申学习-CVE-2010-1622漏洞分析"><span class="toc-text">SpringBeansRCE的延申学习(CVE-2010-1622漏洞分析)</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#前置知识"><span class="toc-text">前置知识</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#CVE-2010-1622"><span class="toc-text">CVE-2010-1622</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#影响版本"><span class="toc-text">影响版本</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#漏洞成因"><span class="toc-text">漏洞成因</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#JSP自定义标签"><span class="toc-text">JSP自定义标签</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#修复方式"><span class="toc-text">修复方式</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#spring的修复方法："><span class="toc-text">spring的修复方法：</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#tomcat的修复方法："><span class="toc-text">tomcat的修复方法：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#class-module是什么"><span class="toc-text">class.module是什么</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#利用链发现方式"><span class="toc-text">利用链发现方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:Pyrrhax.hf@gmail.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/Pyrrhax" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2023</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

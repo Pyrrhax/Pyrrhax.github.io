@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#33363b">
+    <meta name="msapplication-TileColor" content="#33363b">
+    
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicons/android-chrome-192x192.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#33363b">
+    
+    
+    <link rel="manifest" href="/favicons/site.webmanifest">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Pyrrhax" type="application/atom+xml" />
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicons/favicon.ico">
+    
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    
+    <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
+    
+    
+<link rel="stylesheet" type="text/css" href="/css/page.css">
+<link rel="stylesheet" type="text/css" href="/css/post.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/clipboard.min.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length === 0) {
+        searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var cb = null;
+      var els = $(".post figure.highlight");
+      if (els.length) {
+        // Enabled Hexo highlight line number.
+        $(els).each(function (i, e) {
+          // $(e).before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling.firstChild.firstChild.firstChild.lastChild.firstChild.firstChild;
+          }
+        });
+      } else {
+        // Disabled Hexo highlight line number.
+        els = $(".post pre code");
+        $(els).each(function (i, e) {
+          // Add button before pre, not code.
+          // $(e).parent().before("<button class=\"copy button\">复制</button>");
+          $(e).before([
+            "<div class=\"code-titlebar\">",
+              "<div class=\"titlebar-left\">",
+                "<button class=\"copy\" aria-label=\"复制\"><i class=\"far fa-copy\"></i></button>",
+              "</div>",
+              "<div class=\"titlebar-center\">",
+                "code",
+              "</div>",
+              "<div class=\"titlebar-right\">",
+                "<button class=\"button-dot dot-minimize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-maximize\" aria-label=\"Decoration\"></button>",
+                "<button class=\"button-dot dot-close\" aria-label=\"Decoration\"></button>",
+              "</div>",
+            "</div>"
+          ].join(""));
+        });
+        cb = new ClipboardJS("button.copy", {
+          "target": function (trigger) {
+              // Get target element by DOM API.
+              return trigger.parentNode.parentNode.nextElementSibling;
+          }
+        });
+      }
+      cb.on("success", function (e) {
+        e.clearSelection();
+        var trigger = e.trigger;
+        // Change button text as a user tip.
+        trigger.innerHTML = "<i class=\"far fa-check-square\"></i>";
+        $(trigger).addClass("copied");
+        // Change button text back;
+        setTimeout(function () {
+          trigger.innerHTML = "<i class=\"far fa-copy\"></i>";
+          $(trigger).removeClass("copied");
+        }, 1500);
+      });
+    });
+    </script>
+    
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习 | Pyrrhax</title>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN"  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header" style="background: #33363b;">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Pyrrhax</a></h1>
+        <h2 class="subtitle"></h2>
+      </div>
+      
+      <div class="logo">
+        <img src="/images/logo.png" alt="logo">
+      </div>
+      
+    </div>
+    <nav id="nav" class="nav">
+      <a id="nav-toggle" class="nav-toggle" aria-hidden="true"><i class="fas fa-bars" aria-label="切换导航栏"></i></a>
+      <ul id="menu" role="menubar" aria-hidden="false">
+        
+        <li role="menuitem"><a href="/"><i class="fas fa-home"></i><span class="menu-text">首页</span></a></li>
+        
+        <li role="menuitem"><a href="/archives/"><i class="fas fa-archive"></i><span class="menu-text">归档</span></a></li>
+        
+        <li role="menuitem"><a href="/categories/"><i class="fas fa-th-list"></i><span class="menu-text">分类</span></a></li>
+        
+        <li role="menuitem"><a href="/tags/"><i class="fas fa-tags"></i><span class="menu-text">标签</span></a></li>
+        
+        <li role="menuitem"><a href="/about/"><i class="fas fa-user-edit"></i><span class="menu-text">关于</span></a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<div id="post" class="page">
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/67a306f6.html">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="Pyrrhax">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习</h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2022-05-07T20:32:37+08:00">2022-05-07 20:32:37</time></span>
+        </span>
+        
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      <h1 id="由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习"><a href="#由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习" class="headerlink" title="由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习"></a>由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习</h1><p>[toc]</p>
+<h1 id="漏洞详情"><a href="#漏洞详情" class="headerlink" title="漏洞详情"></a>漏洞详情</h1><h2 id="复现环境"><a href="#复现环境" class="headerlink" title="复现环境"></a>复现环境</h2><ul>
+<li>jdk11</li>
+<li>tomcat9</li>
+<li>自己写好打包的war</li>
+</ul>
+<h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><p>从利用的角度来说，就是<strong>通过spring的参数绑定来修改日志配置，通过日志来写文件</strong>。跟phpmyadmin拿shell挺像的。抛开利用不说，这里我们来看一下漏洞的成因。</p>
+<p>首先用springboot写一个简单的web服务</p>
+<p>看web的代码</p>
+<a id="more"></a>
+
+<h3 id="Bean"><a href="#Bean" class="headerlink" title="Bean"></a>Bean</h3><p>这里的Bean根据使用习惯也会被叫做POJO或VO或model或entity，在开发过程中用来储存和传递数据。比如一个类Human，它可能有属性name、age、gender、hobby之类的属性。这个类中只有这些属性，并且为private,只有通过setter和getter才可以访问。</p>
+<p><img src="/posts/67a306f6/image-20220330214443058-1686141405822.png" alt="image-20220330214443058"></p>
+<h3 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h3><p>Controller是SpringMVC框架中的概念，</p>
+<h5 id="MVC设计模式"><a href="#MVC设计模式" class="headerlink" title="MVC设计模式"></a>MVC设计模式</h5><p>JSP+Servlet+bean是最经典的MVC模式，在这样的一个web服务中</p>
+<p>M:    Model,也就是Bean。用于储存和传递数据。</p>
+<p>V:    View即视图，用户所见，可以理解为前端的部分，即JSP页面。</p>
+<p>C:    Controller，是处理业务逻辑的部分。即servlet。</p>
+<p>一个请求的流程如下：</p>
+<p>1.用户填写表单点击jsp页面中的按钮/超链接发起请求</p>
+<p>2.请求被servlet捕获，获取参数，对业务逻辑进行处理，将结果封装在bean中传递给JSP</p>
+<p>3.JSP页面拿到响应中的数据，解析数据并显示</p>
+<p><strong>SpringMVC框架</strong></p>
+<p>springMVC框架是MVC设计模式的经典实现</p>
+<p>在SpringMVC中，服务端在Controller类中处理请求，如下：</p>
+<p><img src="/posts/67a306f6/image-20220330220418605-1686141405823.png" alt="image-20220330220418605"></p>
+<p>当访问主机web服务端口/test/hello 时，会在服务端控制台输出”received request,name=请求参数中name的值，而在浏览器会在页面看到hello。</p>
+<p><img src="/posts/67a306f6/image-20220330215258797-1686141405823.png" alt="image-20220330215258797"></p>
+<p>在本机运行该项目后，我们直接访问项目路径</p>
+<p><img src="/posts/67a306f6/image-20220330220250189-1686141405823.png" alt="image-20220330220250189"></p>
+<p>可以看到，输出中name的值为null,因为我们的请求中没有name这个参数。</p>
+<p><img src="/posts/67a306f6/image-20220330220843878-1686141405823.png" alt="image-20220330220843878"></p>
+<p>我们这次在请求中带上name=tom，可以看到服务端的输出name=tom。</p>
+<p>这是因为<strong>spring框架中的参数绑定功能，会将请求中的参数赋值给方法形参对象中同名的属性。</strong></p>
+<p>参数绑定是通过java的反射来实现的。通过反射，可以在运行状态中，获取任意一个类的方法和属性，调用任意一个对象的方法和属性。</p>
+<p>那是如何通过反射来修改tomcat日志配置的呢，一般并不会有人用日志配置相关的类来接收参数。</p>
+<h3 id="漏洞存在的关键点："><a href="#漏洞存在的关键点：" class="headerlink" title="漏洞存在的关键点："></a>漏洞存在的关键点：</h3><p>一、请求处理方法形参中存在Class对象，并且可以通过A.B.C的方式实现属性注入</p>
+<p>从设计上来说，形参的对象中应该是只有自己写好的属性，为什么会有class呢？</p>
+<p>二、存在一个利用链，来从Class达到tomcat的配置文件</p>
+<p>class.module.classLoader.resources.context.parent.pipeline.first.pattern</p>
+<p>先研究下参数绑定，利用链作为接下来的学习内容。</p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>漏洞利用需要知道对方的web目录绝对路径，可以尝试通过其它方式获得。</p>
+<p>对web服务的任意路径发送请求，只要可以触发参数绑定即可。实操中可以找会给服务端传参数，并且可能触发参数绑定的路径。</p>
+<p>原本的参数带不带都可以，再加上以下这些</p>
+<p>class.module.classLoader.resources.context.parent.pipeline.first.prefix=webshell    设置日志前缀为webshell</p>
+<p>class.module.classLoader.resources.context.parent.pipeline.first.fileDateFormat=    设置日志文件名为空</p>
+<p>class.module.classLoader.resources.context.parent.pipeline.first.suffix=.jsp    设置日志后缀为.jsp</p>
+<p>class.module.classLoader.resources.context.parent.pipeline.first.pattern=%25%7b%58%58%58%7d%69    即%{XXX}i，设置日志只记录请求头XXX中的内容</p>
+<p>class.module.classLoader.resources.context.parent.pipeline.first.directory=%48%3a%5c%6d%79%4a%61%76%61%43%6f%64%65%5c%73%74%75%70%69%64%52%7    设置日志绝对路径 E:\apache-tomcat-9.0.60\webapps\ROOT</p>
+<p>之后，在请求头XXX中提交的内容将直接写入日志文件</p>
+<h1 id="SpringMVC参数绑定"><a href="#SpringMVC参数绑定" class="headerlink" title="SpringMVC参数绑定"></a>SpringMVC参数绑定</h1><p>作为漏洞关键成因之一，因为不太了解参数绑定，所以打算研研究下其细节。要了解参数绑定，首先要了解最基础的java的内省机制，所以从这里开始写起。</p>
+<h2 id="内省"><a href="#内省" class="headerlink" title="内省"></a>内省</h2><h3 id="内省与反射的区别"><a href="#内省与反射的区别" class="headerlink" title="内省与反射的区别"></a>内省与反射的区别</h3><blockquote>
+<p>在计算机科学中，内省是指计算机程序在运行时（Run time）检查对象（Object）类型的一种能力，通常也可以称作运行时类型检查。 不应该将内省和反射混淆。相对于内省，反射更进一步，是指计算机程序在运行时（Run time）可以访问、检测和修改它本身状态或行为的一种能力。</p>
+</blockquote>
+<p><strong>内省是通过反射实现的。内省仅针对Beans，而反射通用。</strong></p>
+<p>为了测试，我们先写几个类作为bean。</p>
+<p>User类，其中有姓名，年龄，宠物</p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> age;<br>    <span class="hljs-keyword">private</span> Pet pet;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getAge</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> age;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> age)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.age = age;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Pet <span class="hljs-title">getPet</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> pet;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setPet</span><span class="hljs-params">(Pet pet)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.pet = pet;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>宠物类如下</p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pet</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> String name;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">call</span><span class="hljs-params">()</span></span>&#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="java-beans内省"><a href="#java-beans内省" class="headerlink" title="java.beans内省"></a>java.beans内省</h3><p>接下来开始实操。</p>
+<ul>
+<li><p><strong>使用Introspector可以获得一个bean的beanInfo。</strong>查看Introspector的getBeanInfo源码，注释说存在缓存，如果之前获得过beanInfo，就会从缓存中去取。查看方法具体实现，发现是从ThreadGroupContext中的Map&lt;Class&lt;?&gt;, BeanInfo&gt; beanInfoCache中去取。这里ThreadGroupContext是java线程相关的类，至于为什么是这个类，目前还没细看,<a href="https://blog.csdn.net/qq_28540443/article/details/104578493" target="_blank" rel="noopener">挖个坑</a>。</p>
+</li>
+<li><p><strong>使用BeanInfo可以获得本Bean的BeanDescriptor、PropertyDescriptors和MethodDescriptors。</strong></p>
+</li>
+</ul>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IntrospectorTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IntrospectionException </span>&#123;<br>        <span class="hljs-comment">//getBeanInfo源码中注释了，getBeanInfo有Cache</span><br>        BeanInfo beanInfo=Introspector.getBeanInfo(User<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;<br>        PropertyDescriptor pd[] = beanInfo.getPropertyDescriptors();<br>        <span class="hljs-keyword">for</span>(PropertyDescriptor a:pd)&#123;<br>            System.out.println(a.getName());<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>输出如下</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">age<br>class<br>name<br>pet<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，通过内省获得的一个类的PropertyDiscriptors中，除了其类中的属性，还有一个class</p>
+<p>同理也可以通过MethodDescriptors获得所有的方法</p>
+<p>Descriptor也可以直接获得，参考其构造方法，PropertyDescriptor如下</p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">PropertyDescriptor nameDescriptor = <span class="hljs-keyword">new</span> PropertyDescriptor(<span class="hljs-string">"name"</span>,User<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;<br></code></pre></td></tr></table></figure>
+
+<h2 id="属性注入"><a href="#属性注入" class="headerlink" title="属性注入"></a>属性注入</h2><p>内省只是可以获得类相关的属性和方法等信息，仅此是不能进行属性注入的，那么属性注入是如何实现的呢？</p>
+<h3 id="内省与属性注入"><a href="#内省与属性注入" class="headerlink" title="内省与属性注入"></a>内省与属性注入</h3><figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IntrospectionException, InvocationTargetException, IllegalAccessException </span>&#123;<br>        User user = <span class="hljs-keyword">new</span> User();<br>        PropertyDescriptor propertyDescriptor = <span class="hljs-keyword">new</span> PropertyDescriptor(<span class="hljs-string">"age"</span>,User<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;<br><br>        Method writeMethod = propertyDescriptor.getWriteMethod();<br>        writeMethod.invoke(user,<span class="hljs-number">99</span>);<br><br>        System.out.println(user.getAge());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>如上代码，<strong>使用propertyDescriptor.getWriteMethod()即可获得类的setAge方法，直接用对象去invoke,即可实现注入属性。</strong></p>
+<h3 id="JDK中的属性注入（java-beans-propertyEditor）"><a href="#JDK中的属性注入（java-beans-propertyEditor）" class="headerlink" title="JDK中的属性注入（java.beans.propertyEditor）"></a>JDK中的属性注入（java.beans.propertyEditor）</h3><p>在JDK的java.beans包中可以使用PropertyEditor向JavaBean中注入属性。</p>
+<p>一个PropertyEditor需要实现PropertyEditorSupport接口，该接口的作用是把String对象，转换成其它类型，比如Integer,Date等等。可能是因为从HTTPrequest获得的参数，都是文本的形式。要注入到bean中，需要转换成相应的类型。</p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">import</span> java.beans.PropertyEditorSupport;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IntPropertyEditor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">PropertyEditorSupport</span> </span>&#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAsText</span><span class="hljs-params">(String text)</span> <span class="hljs-keyword">throws</span> IllegalArgumentException </span>&#123;<br><br>        setValue(Integer.parseInt(text));<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>使用propertyDescriptor.createPropertyEditor(User.class),即可创建User类的propertyEditor（也就是说，每个属性，即每个propertyDescriptor对应一个自己的propertyEditor），创建好后，还需要给它设置Listener,当propertyEditor.setAsText(“999”)执行后调用。在Listener中进行的就是最朴素的通过writeMethod进行的属性注入操作。一次完整的通过propertyEditor进行的属性注入代码如下。</p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PropertyEditorTest</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IntrospectionException, InvocationTargetException, IllegalAccessException </span>&#123;<br>        User user = <span class="hljs-keyword">new</span> User();<br>        PropertyDescriptor propertyDescriptor = <span class="hljs-keyword">new</span> PropertyDescriptor(<span class="hljs-string">"age"</span>,User<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;<br>        propertyDescriptor.setPropertyEditorClass(IntPropertyEditor<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;<br><br>        PropertyEditor propertyEditor = propertyDescriptor.createPropertyEditor(User<span class="hljs-class">.<span class="hljs-keyword">class</span>)</span>;<br>        propertyEditor.addPropertyChangeListener(evt -&gt;&#123;<br>            PropertyEditor source = (PropertyEditor) evt.getSource();<br>            Method writeMethod = propertyDescriptor.getWriteMethod();<br>            writeMethod.invoke(user,source.getValue());<br>        &#125; );<br><br>        propertyEditor.setAsText(<span class="hljs-string">"99"</span>);<br>        System.out.println(user.getAge());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>PropertyEditor可以理解为通过监听者模式实现的，对类型转换+属性注入的封装。</strong>propertyEditor.setAsText(“”)时，设置的是String,而在其Linstener方法中，向对象中写入的是source.getValue()，是类型转换后的对象。</p>
+<h3 id="spring中的属性注入（org-springframework-beans-BeanWrapper）"><a href="#spring中的属性注入（org-springframework-beans-BeanWrapper）" class="headerlink" title="spring中的属性注入（org.springframework.beans.BeanWrapper）"></a>spring中的属性注入（org.springframework.beans.BeanWrapper）</h3><p>在JDK的java.beans包中有属性注入相关类，而spring也有自己的属性注入相关类。</p>
+<p>在spring中属性注入有两种方式，一种是BeanWrapper,一种是DataBinder。</p>
+<p>这里使用spring的BeanWrapper进行属性注入，调试。</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs plain">public class BeanWrapperTest &#123;<br>    public static void main(String[] args) &#123;<br>        BeanWrapper beanWrapper &#x3D; new BeanWrapperImpl(User.class);<br>        beanWrapper.setPropertyValue(&quot;age&quot;,&quot;26&quot;);<br><br>        beanWrapper.setAutoGrowNestedPaths(true);<br>        beanWrapper.setPropertyValue(&quot;pet.name&quot;,&quot;mimi&quot;);<br><br>        User user &#x3D; (User)beanWrapper.getWrappedInstance();<br>        System.out.println(user.getAge());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>调用关系如下：</p>
+<p>首先main方法中写的</p>
+<p>BeanWrapper.setPropertyValue(“age”,26)</p>
+<p>实际调用的是：//此处为跟流程走时大概做的笔记，看不懂可以忽略，推荐自己去看</p>
+<ul>
+<li><p>AbstractNestablePropertyAccessor.setPropertyValue(“age”,26)    //Absnpa是BeanWrapper的父类</p>
+<ul>
+<li><p>nestedPa=getPropertyAccessorForPropertyPath(age)    //这一步对属性名参数中的.进行了处理</p>
+<ul>
+<li>比如这里参数为age，则直接return this.</li>
+<li>如果参数为pet.name,则会<ul>
+<li>this.getNestedPropertyAccessor(“pet”)获得pet的Absnpa</li>
+<li>调用pet对应的Absnpa类的getPropertyAccessForPropertyPath(“name”)，return</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>tokenHolder=this.getPropertyNameTokens(this.getFinalPath(nestedPa,propertyName))</p>
+<ul>
+<li>getPropertyNameTokens里面应该是对path是数组的情况作了处理，如果不是数组，token中的keys为null</li>
+<li>this.getFinalPath(nestedPa,propertyName)    //返回属性最后一个点后的属性<ul>
+<li>比如这里参数为(nestedPa ,”age”),则直接返回age</li>
+<li>如果参数为(nestedPa,”pet.name”),则返回name</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>nesstedPa.setPropertyValue(tokens,new PropertyValue(propertyName,value)</p>
+<ul>
+<li><p>如果数组的话 processKeyedProperty(tokens,pv)</p>
+</li>
+<li><p>如果不是数组processLocalProperty(tokens,pv)</p>
+<ul>
+<li><p><code>AbstractNestablePropertyAccessor.PropertyHandler ph = this.getLocalPropertyHandler(tokens.actualName);</code></p>
+</li>
+<li><p>对pv中的值进行转换alueToApply = convertForProperty(tokens.canonicalName, oldValue, originalValue,ph.toTypeDescriptor());</p>
+</li>
+<li><p>ph.SetValue()</p>
+<ul>
+<li>writemethod.invoke</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>所以其实BeanWrapper与PropertyEditor类似，实现了对类型转换和属性注入的封装，并且对A.B.C这种功能进行了实现，也实现了对数组（集合）类型的注入。</strong></p>
+<h4 id="propertyEditor与BeanWrapper的关系"><a href="#propertyEditor与BeanWrapper的关系" class="headerlink" title="propertyEditor与BeanWrapper的关系"></a>propertyEditor与BeanWrapper的关系</h4><p>查看代码convertForProperty()中的convertIfNecessary方法，发现BeanWrapper实现类型转换，有两种选择，JDK的PropertyEditor和spring的ConversionService。</p>
+<p>ConversionService及其相关一套<a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/validation.html#core-convert" target="_blank" rel="noopener">类型转换机制</a>是一套通用的类型转换SPI，相比PropertyEditor只提供String&lt;-&gt;Object的转换，ConversionService能够提供任意Object&lt;-&gt;Object的转换。</p>
+<p>直接调试，发现当propertyEditor和conversionService都为null时，使用propertyEditor。//猜测可能与java版本有关</p>
+<p>//TODO ConversionService相关内容</p>
+<p>查看细节:</p>
+<p>convertForProperty()方法中关键的三行</p>
+<figure class="hljs highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">&#x2F;&#x2F; 1. 用户自定义属性编辑器    <br>PropertyEditor editor &#x3D; this.propertyEditorRegistry.findCustomEditor(requiredType, propertyName);     <br><br>&#x2F;&#x2F; 2. Spring 默认属性编辑器    <br>if (editor &#x3D;&#x3D; null) &#123;editor &#x3D; findDefaultEditor(requiredType);&#125;<br><br>&#x2F;&#x2F; 3. 执行类型转换    <br>convertedValue &#x3D; doConvertValue(oldValue, convertedValue, requiredType, editor);<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="CachedIntrospectionResults"><a href="#CachedIntrospectionResults" class="headerlink" title="CachedIntrospectionResults"></a>CachedIntrospectionResults</h4><p>通过阅读漏洞分析文章，漏洞分析文章中是发现在</p>
+<p>processLocalProperty(tokens,pv)</p>
+<ul>
+<li><p>getLocalPropertyHandler</p>
+<ul>
+<li><p>getPropertryDescriptor</p>
+<ul>
+<li><p>getCachedIntrospectionResults().getPropertyDescriptor(propertyName);</p>
+<p>可以看到CachedIntrospectionResults中，除了age,name,pet三个自定义变量的Discriptor外，还有class的Discriptor。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>也就是说，如果我们写的属性名称是class.xxx.xxx，也可以获取到class的Discriptor,从而对class对象中的属性进行操作。</p>
+<p><img src="/posts/67a306f6/image-20220727141334743-1686141405823.png" alt="image-20220727141334743"></p>
+<p>那既然缓存中有class的Discriptor，那是为什么，什么时候缓存的呢。</p>
+<p>我们使用BeanWrapper对User类进行属性注入,注入class.name,进行调试看一下</p>
+<p><img src="/posts/67a306f6/image-20220727145712278-1686141405823.png" alt="image-20220727145712278"></p>
+<p>调试</p>
+<p><img src="/posts/67a306f6/image-20220727151512762-1686141405823.png" alt="image-20220727151512762"></p>
+<p>当缓存为空时，调用CachedIntrospectionResults.forClass(this.getWrappedClass())进行缓存</p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">static</span> CachedIntrospectionResults <span class="hljs-title">forClass</span><span class="hljs-params">(Class&lt;?&gt; beanClass)</span> <span class="hljs-keyword">throws</span> BeansException </span>&#123;<br>    CachedIntrospectionResults results = (CachedIntrospectionResults)strongClassCache.get(beanClass);<br>    <span class="hljs-keyword">if</span> (results != <span class="hljs-keyword">null</span>) &#123;<br>        <span class="hljs-keyword">return</span> results;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        results = (CachedIntrospectionResults)softClassCache.get(beanClass);<br>        <span class="hljs-keyword">if</span> (results != <span class="hljs-keyword">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> results;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            results = <span class="hljs-keyword">new</span> CachedIntrospectionResults(beanClass);<br>            ConcurrentMap classCacheToUse;<br>            <span class="hljs-keyword">if</span> (!ClassUtils.isCacheSafe(beanClass, CachedIntrospectionResults<span class="hljs-class">.<span class="hljs-keyword">class</span>.<span class="hljs-title">getClassLoader</span>()) &amp;&amp; !<span class="hljs-title">isClassLoaderAccepted</span>(<span class="hljs-title">beanClass</span>.<span class="hljs-title">getClassLoader</span>())) </span>&#123;<br>                <span class="hljs-keyword">if</span> (logger.isDebugEnabled()) &#123;<br>                    logger.debug(<span class="hljs-string">"Not strongly caching class ["</span> + beanClass.getName() + <span class="hljs-string">"] because it is not cache-safe"</span>);<br>                &#125;<br><br>                classCacheToUse = softClassCache;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                classCacheToUse = strongClassCache;<br>            &#125;<br><br>            CachedIntrospectionResults existing = (CachedIntrospectionResults)classCacheToUse.putIfAbsent(beanClass, results);<br>            <span class="hljs-keyword">return</span> existing != <span class="hljs-keyword">null</span> ? existing : results;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>看代码逻辑：</p>
+<p>先从strongClassCache.get(beanClass)中找,如果没有就去softClassCache中找。如果都没有。就new CachedIntrospectionResults(beanClass)。</p>
+<p>如果bean.class与cachedIntrospectionResults的类加载器是一致的，那么就被判断为safe,将其存进strongClassCache,否则存入softClassCache。（不懂为什么）</p>
+<p>去看CachedIntrospectionResults的构造函数</p>
+<figure class="hljs highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">CachedIntrospectionResults</span><span class="hljs-params">(Class&lt;?&gt; beanClass)</span> <span class="hljs-keyword">throws</span> BeansException </span>&#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">//获取beanInfo</span><br>        <span class="hljs-keyword">this</span>.beanInfo = getBeanInfo(beanClass);<br>        <br>        <span class="hljs-keyword">this</span>.propertyDescriptors = <span class="hljs-keyword">new</span> LinkedHashMap();<br>        Set&lt;String&gt; readMethodNames = <span class="hljs-keyword">new</span> HashSet();<br>        <span class="hljs-comment">//获取所有的PropertyDescriptor</span><br>        PropertyDescriptor[] pds = <span class="hljs-keyword">this</span>.beanInfo.getPropertyDescriptors();<br>        PropertyDescriptor[] var4 = pds;<br>        <span class="hljs-keyword">int</span> var5 = pds.length;<br><br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> var6 = <span class="hljs-number">0</span>; var6 &lt; var5; ++var6) &#123;<br>            PropertyDescriptor pd = var4[var6];<br>            <span class="hljs-keyword">if</span> (Class<span class="hljs-class">.<span class="hljs-keyword">class</span> !</span>= beanClass || !<span class="hljs-string">"classLoader"</span>.equals(pd.getName()) &amp;&amp; !<span class="hljs-string">"protectionDomain"</span>.equals(pd.getName())) &#123;<br>                <span class="hljs-comment">//put到propertyDescriptors中，将readMethod都放入readMethods</span><br>                pd = <span class="hljs-keyword">this</span>.buildGenericTypeAwarePropertyDescriptor(beanClass, pd);<br>                <span class="hljs-keyword">this</span>.propertyDescriptors.put(pd.getName(), pd);<br>                Method readMethod = pd.getReadMethod();<br>                <span class="hljs-keyword">if</span> (readMethod != <span class="hljs-keyword">null</span>) &#123;<br>                    readMethodNames.add(readMethod.getName());<br>                &#125;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-keyword">for</span>(Class currClass = beanClass; currClass != <span class="hljs-keyword">null</span> &amp;&amp; currClass != Object<span class="hljs-class">.<span class="hljs-keyword">class</span></span>; currClass = currClass.getSuperclass()) &#123;<br>            <span class="hljs-keyword">this</span>.introspectInterfaces(beanClass, currClass, readMethodNames);<br>        &#125;<br><br>        <span class="hljs-keyword">this</span>.introspectPlainAccessors(beanClass, readMethodNames);<br>        <span class="hljs-keyword">this</span>.typeDescriptorCache = <span class="hljs-keyword">new</span> ConcurrentReferenceHashMap();<br>    &#125; <span class="hljs-keyword">catch</span> (IntrospectionException var9) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> FatalBeanException(<span class="hljs-string">"Failed to obtain BeanInfo for class ["</span> + beanClass.getName() + <span class="hljs-string">"]"</span>, var9);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>也就是说CachedIntrospectionResults，仅是用最基础的方式获得了beanInfo,然后得到discriptors，取出其中的readMethod,然后自己进行了一些封装。在调试的过程中可以看到,class的Discriptor是仅有readMethod而没有writeMethod的。</p>
+<p>这次调试我们尝试对class.name进行操作，在进行赋值前会对相应的属性是否writeable进行判断，但因为class类没有setName()，最终抛出NotWritablePropertyException。</p>
+<p>只是在赋值前进行writable判断，那么只要利用链中的最后一项有对应的set方法即可。</p>
+<p><img src="/posts/67a306f6/image-20220727145639883-1686141405823.png" alt="image-20220727145639883"></p>
+<h4 id="再探内省"><a href="#再探内省" class="headerlink" title="再探内省"></a>再探内省</h4><p>为什么获取Discriptors的时候还能获取到class的Discriptor呢。经过测试，发现只要有get方法，就可以获取该属性的Discriptor。这是为什么呢，于是决定去看看内省的实现。</p>
+<p>进行调试</p>
+<p>调用了很多层</p>
+<p><img src="/posts/67a306f6/image-20220728144908610-1686141405823.png" alt="image-20220728144908610"></p>
+<p>最终发现是</p>
+<p><img src="/posts/67a306f6/image-20220728144955298-1686141405823.png" alt="image-20220728144955298"></p>
+<p>Class.forName(“java.lang.ObjectBeanInfo”,false,loader)</p>
+<p>调用了本地方法forName0</p>
+<p><img src="/posts/67a306f6/image-20220728145503760-1686141405823.png" alt="image-20220728145503760"></p>
+<p>本地方法BuiltinClassLoader.loadClass</p>
+<p><img src="/posts/67a306f6/image-20220728150928706-1686141405823.png" alt="image-20220728150928706"></p>
+<p>所以，内省其实也就是为了方便使用而对反射进行的封装，而反射由JVM实现，至于如何实现就无法研究了(java代码层面)。</p>
+<h3 id="其它属性注入工具"><a href="#其它属性注入工具" class="headerlink" title="其它属性注入工具"></a>其它属性注入工具</h3><ul>
+<li>Apache的commons-beanutils包<ul>
+<li>可以看一下<a href="https://www.cnblogs.com/ustc-anmin/p/10215669.html" target="_blank" rel="noopener">BeanUtils的使用</a>，<a href="http://www.blogjava.net/shiwenfeng/archive/2009/12/30/307731.html" target="_blank" rel="noopener">Beanutils基本用法</a></li>
+</ul>
+</li>
+<li>同样的工具集还有Spring的BeanUtils,BeanCopier、Dozer、Orika等等，可以参考<a href="https://jishuin.proginn.com/p/763bfbd5b4e0" target="_blank" rel="noopener">这篇文章</a></li>
+</ul>
+<h2 id="springMVC参数绑定调试"><a href="#springMVC参数绑定调试" class="headerlink" title="springMVC参数绑定调试"></a>springMVC参数绑定调试</h2><h3 id="如何跟流程调试"><a href="#如何跟流程调试" class="headerlink" title="如何跟流程调试"></a>如何跟流程调试</h3><p>我想重新走一遍从头到尾的springMVC参数绑定流程</p>
+<p>因为之前没有这样跟流程调试过，感觉有些无从下手，不知道在哪打断点。</p>
+<p>但实际操作了一下，其实在自己认为最可能经过的底层逻辑处随意打断点即可，程序运行到断点处停住，直接看方法调用栈，之后再在其它方法中打断点即可。实操如下</p>
+<p>既然是要看参数绑定，先翻找了一下spring的包，第一个断点直接打在org.springframework.web.bind.ServletRequestDataBinder.bind()处（因为看名字最像。。）</p>
+<p><img src="/posts/67a306f6/image-20220729082704043-1686141405824.png" alt="image-20220729082704043"></p>
+<p>打好断点后，看程序调用栈，直接从doGet处看，因为再往上就是Servelet，catalina.core等WebServer相关的代码了，我们只看业务逻辑部分。</p>
+<p><img src="/posts/67a306f6/image-20220729083002544-1686141405824.png" alt="image-20220729083002544"></p>
+<p>在doGet处打好断点</p>
+<p><img src="/posts/67a306f6/image-20220729083551231-1686141405824.png" alt="image-20220729083551231"></p>
+<h3 id="SpringMVC参数绑定-1"><a href="#SpringMVC参数绑定-1" class="headerlink" title="SpringMVC参数绑定"></a>SpringMVC参数绑定</h3><p>从doGet开始，走的是springMVC的流程，这部分流程网上讲的文章和视频都很多，贴一张SpringMVC流程图</p>
+<p><img src="/posts/67a306f6/1-1686141405824.webp" alt="1"></p>
+<p>之后，再次调试，然后跟流程即可,此时name参数在DispatcherServlet的HttpServletRequest中，看看他怎么被传递到User中的</p>
+<p><img src="/posts/67a306f6/image-20220729084743392-1686141405824.png" alt="image-20220729084743392"></p>
+<p>handler就是一个对Method进行了封装的类，其中的method就是Controller中对应的方法。</p>
+<p>参数绑定发生在handler之内，也就是上图中，第5步和第6步之间。</p>
+<p>InvocableHanderMethod.getMethodArgumentValues()</p>
+<p>这个方法的三个参数分别是，HTTP请求，ModleAndView容器，用来放参数的Object数组，这里的providedArgs为空的Object[].</p>
+<p>看下图，可以看到是先获取到参数的对象，再去doInvoke()。</p>
+<p><img src="/posts/67a306f6/image-20220729111440162-1686141405824.png" alt="image-20220729111440162"></p>
+<p>InvocableHandlerMethod也就是handler，本身具有Controller中对应方法的相关信息，包括参数信息，比如</p>
+<p><img src="/posts/67a306f6/image-20220729112555511-1686141405824.png" alt="image-20220729112555511"></p>
+<p>获取参数对象的具体工作，需要由handler内的解析器HandlerMethodArgumentResolver去解析</p>
+<p><img src="/posts/67a306f6/image-20220729113954142-1686141405824.png" alt="image-20220729113954142"></p>
+<p>在HandlerMethodArgumentResolver中有二十多种解析器，这里用的是ServletModelAttributeMethodProcessor，在每次获取解析器后，会把当前解析器存入缓存,在getResovler时，会优先从缓存中去取。</p>
+<p>在ModelAttributeMethodProcessor中，创建好了Object attribute</p>
+<p><img src="/posts/67a306f6/image-20220731121523582-1686141405824.png" alt="image-20220731121523582"></p>
+<p>创建的过程是用BeanUtils类，直接获取User类的构造器，</p>
+<p><img src="/posts/67a306f6/image-20220731121720234-1686141405824.png" alt="image-20220731121720234"></p>
+<p>然后BeanUtils.instantiateClass去实例化</p>
+<p>然后用这个attribute new了一个WebDataBiner, 然后用databinder进行绑定</p>
+<p><img src="/posts/67a306f6/image-20220802085643800-1686141405824.png" alt="image-20220802085643800"></p>
+<p>继续跟会发现，而dataBinder调用的是其propertyAccessor的setPropertyValues（）方法，与前面BeanWrapper用法一致。</p>
+<p><img src="/posts/67a306f6/image-20220802085720884-1686141405824.png" alt="image-20220802085720884"></p>
+<p>继续看，发现getPropertyAccessor返回的正是BeanWrapperImpl</p>
+<p><img src="/posts/67a306f6/image-20220802085916150-1686141405824.png" alt="image-20220802085916150"></p>
+<p>关于BeanWrapper的细节，可以看下<a href="https://www.cnblogs.com/binarylei/p/10264306.html" target="_blank" rel="noopener">这篇文章</a></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="调用关系"><a href="#调用关系" class="headerlink" title="调用关系"></a>调用关系</h4><p>所以springMVC的参数绑定使用的是Databinder，而Databinder的实现使用了BeanWrapper，BeanWrapper又是对类型转换和属性注入的封装，并且对A.B.C这种功能进行了实现，也实现了对数组（集合）类型的注入，或许还有其它功能。</p>
+<p>BeanWrapper中对类型转换进行了实现，实现有两种方式ConversionService和PropertyEditor,本文仅了解了一下其中的PropertyEditor。</p>
+<p>PropertyEditor通过内省获得对应的setMethod，直接invoke来实现属性注入。</p>
+<p>内省是对反射的封装，而反射调用的是native方法，由JVM直接实现。</p>
+<h4 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h4><p>跟着走了一遍流程，也发现了一些设计模式的经典案例。</p>
+<ul>
+<li>观察者模式    propertyEditor</li>
+<li>命令链模式    BeanWrapper中的 propertyEditor和conversionService</li>
+<li>适配器模式    mvc中的HandlerAdapter</li>
+</ul>
+<h3 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h3><p>既然是通过Databinder实现的参数绑定，而Databinder支持去设置绑定类的黑名单，那么修复方式就很明白了。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这么一遍走下来，熟悉了一下java.beans中的一些工具类和内省相关类实现及其使用方法。了解了springMVC参数绑定实现的流程，看到了一些设计模式的经典案例。对其理解由感性的认知转化为(大概)了解其细节（原来漏洞可以存在于如此基础的地方，漏洞发现者也得对这些机制比较熟悉）。接下来打算去研究下这条class开头的链，因为之前的某个struts漏洞也用到了这条链，不知道那是不是第一次发现，总之以此为出发点进行后续学习。</p>
+<h2 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h2><p><a href="https://www.cnblogs.com/binarylei/p/10198698.html" target="_blank" rel="noopener">spring源码分析系列</a></p>
+<p><a href="https://www.cnblogs.com/yejiurui/archive/2012/10/06/2712693.html" target="_blank" rel="noopener">javabean以及内省技术详解</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/466596026" target="_blank" rel="noopener">Spring数据类型转换机制全解</a></p>
+
+    </main>
+    <footer class="post-footer">
+      
+    </footer>
+  </article>
+  
+  
+  <nav class="page-nav">
+    <div class="page-nav-next page-nav-item">
+      
+      <a href="/posts/2bd7fc7b.html" rel="next" title="靶机-FristiLeaks1.3"><i class="fas fa-angle-left"></i><span class="nav-title">靶机-FristiLeaks1.3</span></a>
+      
+    </div>
+    <div class="page-nav-prev page-nav-item">
+      
+      <a href="/posts/4bb3ee4d.html" rel="prev" title="SpringBeansRCE的延申学习（CVE-2010-1622漏洞分析）"><span class="nav-title">SpringBeansRCE的延申学习（CVE-2010-1622漏洞分析）</span><i class="fas fa-angle-right"></i></a>
+      
+    </div>
+  </nav>
+  
+  
+  
+
+<div class="comments" id="comments">
+  
+  
+  <div class="commentjs" id="comment-thread"></div>
+  <link rel="stylesheet" href="/css/commentjs.css">
+  <script defer type="text/javascript" src="/js/marked.min.js"></script>
+  <script defer type="text/javascript" src="/js/timeago.min.js"></script>
+  <script defer type="text/javascript" src="/js/highlight.min.js"></script>
+  <script defer type="text/javascript" src="/js/commentjs.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    getComments({
+      "type": "github",
+      "user": "Pyrrhax",
+      "repo": "Pyrrhax.github.io",
+      "client_id": "ab41dde59a0f57819b1e",
+      "client_secret": "71b8ae2203a2a15d590a6866959b732267194412",
+      "no_comment": "这个页面还没有评论，现在就去评论吧！",
+      "go_to_comment": "去评论",
+      "issue_title": "由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习",
+      "btn_class": "button",
+      "comments_target": "#comment-thread"
+    });
+    marked.setOptions({
+      "highlight": function (code, lang) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
+    function mark() {
+      var markdowns = document.getElementsByClassName("markdown");
+      for (var i = 0; i < markdowns.length; ++i){
+        if (markdowns[i].innerHTML) {
+          markdowns[i].innerHTML = marked(markdowns[i].innerHTML);
+        }
+      }
+    }
+    window.addEventListener("DOMContentLoaded", mark, false);
+    window.addEventListener("load", mark, false);
+  });
+  </script>
+  
+  
+</div>
+
+
+
+  
+</div>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar" style="background: url(/images/background.png);">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i><input type="search" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="info sidebar-item" id="info">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="Pyrrhax">
+  
+  <h1 class="author-name">Pyrrhax</h1>
+  <h2 class="author-description"></h2>
+  <div class="site-count">
+    
+    
+    
+    
+    <div class="archives-count count-block">
+      <div class="site-count-title">归档</div>
+      <div><a href="/archives/">93</a></div>
+    </div>
+    
+    
+    
+    <div class="categories-count count-block">
+      <div class="site-count-title">分类</div>
+      <div><a href="/categories/">14</a></div>
+    </div>
+    
+    
+    
+    <div class="tags-count count-block">
+      <div class="site-count-title">标签</div>
+      <div><a href="/tags/">16</a></div>
+    </div>
+    
+    
+    
+    
+  </div>
+  
+  <div class="rss">
+    <a class="rss-link button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i>RSS</a>
+  </div>
+  
+</div>
+
+
+  <div class="sidebar-sticky">
+    
+    
+    
+    
+    
+    <hr>
+    <div class="post-toc sidebar-item" id="toc-div">
+      <div><i class="fas fa-list-ol"></i>文章目录</div>
+      <div class="post-toc-content"><ol class="list-group toc"><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习"><span class="toc-text">由spring-beans-RCE漏洞引起的对springMVC参数绑定的深入学习</span></a></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#漏洞详情"><span class="toc-text">漏洞详情</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#复现环境"><span class="toc-text">复现环境</span></a></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#漏洞分析"><span class="toc-text">漏洞分析</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Bean"><span class="toc-text">Bean</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#Controller"><span class="toc-text">Controller</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-5"><a class="list-group-item toc-link" href="#MVC设计模式"><span class="toc-text">MVC设计模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#漏洞存在的关键点："><span class="toc-text">漏洞存在的关键点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#漏洞利用"><span class="toc-text">漏洞利用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="list-group-item toc-link" href="#SpringMVC参数绑定"><span class="toc-text">SpringMVC参数绑定</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#内省"><span class="toc-text">内省</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#内省与反射的区别"><span class="toc-text">内省与反射的区别</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#java-beans内省"><span class="toc-text">java.beans内省</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#属性注入"><span class="toc-text">属性注入</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#内省与属性注入"><span class="toc-text">内省与属性注入</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#JDK中的属性注入（java-beans-propertyEditor）"><span class="toc-text">JDK中的属性注入（java.beans.propertyEditor）</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#spring中的属性注入（org-springframework-beans-BeanWrapper）"><span class="toc-text">spring中的属性注入（org.springframework.beans.BeanWrapper）</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#propertyEditor与BeanWrapper的关系"><span class="toc-text">propertyEditor与BeanWrapper的关系</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#CachedIntrospectionResults"><span class="toc-text">CachedIntrospectionResults</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#再探内省"><span class="toc-text">再探内省</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#其它属性注入工具"><span class="toc-text">其它属性注入工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#springMVC参数绑定调试"><span class="toc-text">springMVC参数绑定调试</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#如何跟流程调试"><span class="toc-text">如何跟流程调试</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#SpringMVC参数绑定-1"><span class="toc-text">SpringMVC参数绑定</span></a></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#总结"><span class="toc-text">总结</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#调用关系"><span class="toc-text">调用关系</span></a></li><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#设计模式"><span class="toc-text">设计模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="list-group-item toc-link" href="#漏洞修复"><span class="toc-text">漏洞修复</span></a><ol class="list-group toc-child"><li class="toc-item toc-level-4"><a class="list-group-item toc-link" href="#思路"><span class="toc-text">思路</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="list-group-item toc-link" href="#参考："><span class="toc-text">参考：</span></a></li></ol></li></ol></div>
+    </div>
+    
+    
+    
+    <hr>
+    <div class="social-link sidebar-item">
+      <div><i class="far fa-address-card"></i>社交链接</p></div>
+      <ul>
+        
+        <li><i class="fas fa-envelope"></i><a href="mailto:Pyrrhax.hf@gmail.com" target="_blank">E-Mail</a></li>
+        
+        <li><i class="fab fa-github"></i><a href="https://github.com/Pyrrhax" target="_blank">GitHub</a></li>
+        
+      </ul>
+    </div>
+    
+    
+    <hr>
+    <div class="blogroll sidebar-item">
+      <div><i class="fas fa-link"></i>友情链接</div>
+      <ul>
+        
+        <li><i class="fas fa-link"></i><a href="https://github.com/" target="_blank">GitHub</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+        
+        <li><i class="fas fa-link"></i><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer" style="background: #33363b;">
+  <div class="container">
+    <div class="back-to-top">
+      <button id="back-to-top"><i class="fas fa-angle-double-up" aria-label="回到顶部"></i></button>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2023</span>
+        </div>
+        
+        <div class="busuanzi">
+          <span id="busuanzi_container_site_pv"><i class="fas fa-eye" aria-label="站点点击量" aria-hidden="false"></i><span id="busuanzi_value_site_pv"></span></span><span id="busuanzi_container_site_uv"><i class="fas fa-user" aria-label="站点用户数" aria-hidden="false"></i><span id="busuanzi_value_site_uv"></span></span><span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i><span id="busuanzi_value_page_pv" aria-label="页面点击量" aria-hidden="false"></span></span>
+        </div>
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于<i class="fab fa-github-alt"></i><a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
