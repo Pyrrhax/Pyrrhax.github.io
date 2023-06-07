@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2022-02-23T06:10:34.406Z</updated>
+  <updated>2023-06-07T00:56:00.598Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>靶机-FristiLeaks1.3</title>
+    <link href="http://yoursite.com/posts/2bd7fc7b.html"/>
+    <id>http://yoursite.com/posts/2bd7fc7b.html</id>
+    <published>2022-02-23T08:24:07.000Z</published>
+    <updated>2023-06-07T00:56:00.598Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>CrossC2</title>
     <link href="http://yoursite.com/posts/89b968f1.html"/>
     <id>http://yoursite.com/posts/89b968f1.html</id>
     <published>2021-10-03T09:35:32.000Z</published>
-    <updated>2022-02-23T06:10:34.406Z</updated>
+    <updated>2022-02-23T06:47:32.875Z</updated>
     
     <summary type="html">
     
@@ -241,7 +264,7 @@
     <link href="http://yoursite.com/posts/d35cebb1.html"/>
     <id>http://yoursite.com/posts/d35cebb1.html</id>
     <published>2021-02-05T05:28:09.000Z</published>
-    <updated>2022-02-23T06:31:46.551Z</updated>
+    <updated>2023-01-10T02:43:05.601Z</updated>
     
     <summary type="html">
     
@@ -555,43 +578,6 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="信息安全" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
-      <category term="渗透测试" scheme="http://yoursite.com/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="KaliLinux渗透测试学习笔记" scheme="http://yoursite.com/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MSF-弱点扫描</title>
-    <link href="http://yoursite.com/posts/8d87f863.html"/>
-    <id>http://yoursite.com/posts/8d87f863.html</id>
-    <published>2020-11-28T08:17:13.000Z</published>
-    <updated>2021-07-31T03:55:02.381Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;MSF-弱点扫描&quot;&gt;&lt;a href=&quot;#MSF-弱点扫描&quot; class=&quot;headerlink&quot; title=&quot;MSF-弱点扫描&quot;&gt;&lt;/a&gt;MSF-弱点扫描&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;根据信息收集结果搜索漏洞利用模块&lt;/li&gt;
-&lt;li&gt;结合外部漏洞扫描系统对大IP地址段进行批量扫描&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;VNC密码破解&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;5900端口&lt;/li&gt;
-&lt;li&gt;use auxiliary/scanner/vnc/vnc_login&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;VNC无密码访问&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;use auxiliary/scanner/vnc/vnc_none_auth&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     

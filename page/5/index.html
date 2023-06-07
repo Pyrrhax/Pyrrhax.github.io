@@ -204,6 +204,68 @@
   
   <article class="article post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/c1ae7465.html">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <meta itemprop="name" content="Pyrrhax">
+        <meta itemprop="description" content="">
+        <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+        <meta itemprop="name" content="Pyrrhax">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link post-title-link-external" href="/posts/c1ae7465.html" itemprop="url">Web渗透-SSL/TLS拒绝服务、Ajax、WebService</a>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-11-05T12:06:05+08:00">2020-11-05 12:06:05</time></span>
+        </span>
+        
+        
+        
+        <span class="post-meta-divider divider">|</span>
+        
+        <span class="post-categories">
+          
+          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
+        </span>
+        
+        
+        
+        
+      </div>
+    </header>
+    <main class="post-main" itemprop="articleBody">
+      
+      <h3 id="SSL-TLS拒绝服务攻击"><a href="#SSL-TLS拒绝服务攻击" class="headerlink" title="SSL/TLS拒绝服务攻击"></a>SSL/TLS拒绝服务攻击</h3><ul>
+<li>thc-ssl-dos<ul>
+<li>ssl协商加密对性能开销大，大量握手请求会导致拒绝服务</li>
+<li>利用SSL secure Renegotiation特性，在单一TCP连接中生成数千个SSL重连接请求，造成服务器资源过载</li>
+<li>与流量式拒绝服务攻击不同，thc-ssl-dos可以利用dsl线路打垮30G带宽的服务器</li>
+<li>服务器平均可以处理300次/秒SSL握手请求</li>
+<li>对SMTPS、POP3S、等服务同样有效</li>
+<li>thc-ssl-dos 199.223.209.205 2804 -accept</li>
+</ul>
+</li>
+</ul>
+      
+    </main>
+    <footer class="post-footer">
+      
+      <div class="post-tags">
+        
+        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  <article class="article post card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/aa6f4497.html">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="Pyrrhax">
@@ -765,73 +827,6 @@
     </footer>
   </article>
   
-  <article class="article post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/posts/aaf72ae0.html">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="Pyrrhax">
-        <meta itemprop="description" content="">
-        <meta itemprop="image" content="/images/avatar.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Pyrrhax">
-      </span>
-    </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/posts/aaf72ae0.html" itemprop="url">Web扫描工具-w3af</a>
-      </h1>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i><span><time title="post-date" itemprop="dateCreated datePublished" datetime="2020-10-12T17:13:50+08:00">2020-10-12 17:13:50</time></span>
-        </span>
-        
-        
-        
-        <span class="post-meta-divider divider">|</span>
-        
-        <span class="post-categories">
-          
-          <i class="far fa-folder-open"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span><i class="fas fa-angle-right"></i><span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">渗透测试</span></a></span>
-        </span>
-        
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-main" itemprop="articleBody">
-      
-      <h2 id="w3af"><a href="#w3af" class="headerlink" title="w3af"></a>w3af</h2><ul>
-<li>Web Application Attack and Audit Framework,基于python语言开发</li>
-<li>此框架的目标是帮助你发现和利用所有WEB应用程序漏洞</li>
-<li>9大类近150个plugin<ul>
-<li>audit</li>
-<li>infrastructure</li>
-<li>grep</li>
-<li>evasion</li>
-<li>mangle 正则替换</li>
-<li>auth</li>
-<li>bruteforce</li>
-<li>output</li>
-<li>crawl</li>
-</ul>
-</li>
-</ul>
-      
-    </main>
-    <footer class="post-footer">
-      
-      <div class="post-tags">
-        
-        <a class="post-tag button" href="/tags/KaliLinux%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fas fa-tags"></i>KaliLinux渗透测试学习笔记</a>
-        
-      </div>
-      
-    </footer>
-  </article>
-  
   
   <nav class="pagination">
     <a class="extend prev" rel="prev" href="/page/4/"><i class="fas fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="fas fa-angle-right" aria-label="下一页"></i></a>
@@ -878,7 +873,7 @@
     
     <div class="archives-count count-block">
       <div class="site-count-title">归档</div>
-      <div><a href="/archives/">89</a></div>
+      <div><a href="/archives/">90</a></div>
     </div>
     
     
@@ -954,7 +949,7 @@
     <div class="footer-container">
       <div class="footer-left">
         <div class="copyright">
-          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2022</span>
+          <span class="author">Pyrrhax</span><span class="year"><i class="far fa-copyright"></i>2023</span>
         </div>
         
         <div class="busuanzi">
