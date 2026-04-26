@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPosts } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const pageSize = 12;
+  const posts = await getPosts();
+  const totalPages = Math.ceil(posts.length / pageSize);
+
+  return Array.from({ length: Math.max(totalPages - 1, 0) }, (_, index) => {
+    const pageNumber = index + 2;
+    const start = (pageNumber - 1) * pageSize;
+    return {
+      params: { page: String(pageNumber) },
+      props: {
+        pageNumber,
+        totalPages,
+        posts: posts.slice(start, start + pageSize),
+      },
+    };
+  });
+}
+
+const { pageNumber, totalPages, posts } = Astro.props;
+const previousUrl = pageNumber === 2 ? '/' : `/page/${pageNumber - 1}/`;
+const nextUrl = pageNumber < totalPages ? `/page/${pageNumber + 1}/` : undefined;
+---
+
+<BaseLayout title={`第 ${pageNumber} 页`}>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Page {pageNumber}</div>
+      <h1>最新文章</h1>
+      <p>第 {pageNumber} / {totalPages} 页。</p>
+    </section>
+
+    <section class="post-list" aria-label={`第 ${pageNumber} 页文章`}>
+      {posts.map((post) => <PostCard post={post} />)}
+    </section>
+
+    <nav class="pagination" aria-label="文章分页">
+      <a href={previousUrl}>上一页</a>
+      <span>第 {pageNumber} / {totalPages} 页</span>
+      {nextUrl ? <a href={nextUrl}>下一页</a> : <span aria-disabled="true">下一页</span>}
+    </nav>
+  </main>
+</BaseLayout>

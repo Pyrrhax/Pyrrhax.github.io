@@ -1,0 +1,50 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { categoryUrl, tagUrl } from '../lib/posts';
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { title, date, categories, tags, description, legacyPath } = entry.data;
+const formattedDate = new Intl.DateTimeFormat('zh-CN', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+}).format(date);
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="page content-grid">
+    <article class="article">
+      <header class="hero">
+        <div class="eyebrow">{formattedDate}</div>
+        <h1>{title}</h1>
+        <div class="meta-groups">
+          {categories.length > 0 && (
+            <div class="meta-group">
+              <span>分类</span>
+              <div class="tag-row">
+                {categories.map((category: string) => <a class="tag" href={categoryUrl(category)}>{category}</a>)}
+              </div>
+            </div>
+          )}
+          {tags.length > 0 && (
+            <div class="meta-group">
+              <span>标签</span>
+              <div class="tag-row">
+                {tags.map((tag: string) => <a class="tag" href={tagUrl(tag)}>{tag}</a>)}
+              </div>
+            </div>
+          )}
+        </div>
+      </header>
+      <div class="post-body">
+        <Content />
+      </div>
+    </article>
+    <aside class="sidebar">
+      <p>发布于 {formattedDate}</p>
+      {legacyPath && <p>旧路径：<code>{legacyPath}</code></p>}
+      <p><a href="/archives/">查看归档</a></p>
+    </aside>
+  </main>
+</BaseLayout>

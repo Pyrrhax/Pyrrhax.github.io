@@ -1,0 +1,32 @@
+---
+import { categoryUrl, postUrl, tagUrl } from '../lib/posts';
+
+const { post } = Astro.props;
+---
+
+<article class="post-card">
+  <div>
+    <h2><a href={postUrl(post)}>{post.data.title}</a></h2>
+    <div class="meta-groups compact">
+      {post.data.categories.length > 0 && (
+        <div class="meta-group">
+          <span>分类</span>
+          <div class="tag-row">
+            {post.data.categories.slice(0, 2).map((category: string) => <a class="tag" href={categoryUrl(category)}>{category}</a>)}
+          </div>
+        </div>
+      )}
+      {post.data.tags.length > 0 && (
+        <div class="meta-group">
+          <span>标签</span>
+          <div class="tag-row">
+            {post.data.tags.slice(0, 4).map((tag: string) => <a class="tag" href={tagUrl(tag)}>{tag}</a>)}
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+  <time class="meta" datetime={post.data.date.toISOString()}>
+    {post.data.date.toLocaleDateString('zh-CN')}
+  </time>
+</article>

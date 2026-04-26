@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getPosts } from '../lib/posts';
+
+const posts = await getPosts();
+const pageSize = 12;
+const latest = posts.slice(0, pageSize);
+const totalPages = Math.ceil(posts.length / pageSize);
+---
+
+<BaseLayout title="Pyrrhax">
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Personal knowledge base</div>
+      <h1>安全研究、编程笔记和长期写作。</h1>
+      <p>从旧 Hexo 站点迁移而来，保留历史文章，并把后续写作整理成更适合 Markdown 和 Obsidian 的 Astro 内容结构。</p>
+    </section>
+
+    <section class="post-list" aria-label="最新文章">
+      {latest.map((post) => <PostCard post={post} />)}
+    </section>
+    {totalPages > 1 && (
+      <nav class="pagination" aria-label="文章分页">
+        <span>第 1 / {totalPages} 页</span>
+        <a href="/page/2/">下一页</a>
+      </nav>
+    )}
+  </main>
+</BaseLayout>

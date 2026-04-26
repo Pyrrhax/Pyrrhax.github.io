@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPosts, postUrl } from '../../lib/posts';
+
+const posts = await getPosts();
+const groups = new Map<string, typeof posts>();
+for (const post of posts) {
+  const key = String(post.data.date.getFullYear());
+  groups.set(key, [...(groups.get(key) ?? []), post]);
+}
+const years = [...groups.entries()].sort((a, b) => Number(b[0]) - Number(a[0]));
+---
+
+<BaseLayout title="归档">
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Archive</div>
+      <h1>归档</h1>
+      <p>按年份回看所有历史文章。</p>
+    </section>
+    {years.map(([year, yearPosts]) => (
+      <section class="post-list" aria-labelledby={`year-${year}`}>
+        <h2 id={`year-${year}`}>{year}</h2>
+        {yearPosts.map((post) => (
+          <article class="post-card">
+            <div>
+              <h2><a href={postUrl(post)}>{post.data.title}</a></h2>
+              <div class="meta">{post.data.categories.join(' / ')}</div>
+            </div>
+            <time class="meta" datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('zh-CN')}</time>
+          </article>
+        ))}
+      </section>
+    ))}
+  </main>
+</BaseLayout>
