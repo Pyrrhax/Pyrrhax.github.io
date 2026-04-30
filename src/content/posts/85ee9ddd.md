@@ -3,8 +3,11 @@ title: "后渗透-文件传输"
 date: "2020-09-20T11:40:10+08:00"
 description: ""
 categories: ["信息安全","渗透测试"]
-tags: ["漏洞分析","渗透测试","内网","Windows","逆向","信息安全"]
+tags: ["渗透测试", "后渗透", "内网", "逆向", "Windows", "Kali"]
 legacyPath: "/posts/85ee9ddd.html"
+topic: security
+subtopic: post-exploitation
+qualityScore: 82
 ---
 <h2 id="后渗透——文件传输"><a href="#后渗透——文件传输" class="headerlink" title="后渗透——文件传输"></a>后渗透——文件传输</h2><ul>
 <li><p>上传工具</p>

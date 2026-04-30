@@ -4,7 +4,7 @@ import { categoryUrl, tagUrl } from '../lib/posts';
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
-const { title, date, categories, tags, description, legacyPath } = entry.data;
+const { title, date, categories, tags, description, legacyPath, qualityScore, source, sourceUrl, sourceAccount } = entry.data;
 const formattedDate = new Intl.DateTimeFormat('zh-CN', {
   year: 'numeric',
   month: '2-digit',
@@ -43,7 +43,10 @@ const formattedDate = new Intl.DateTimeFormat('zh-CN', {
     </article>
     <aside class="sidebar">
       <p>发布于 {formattedDate}</p>
+      <p>质量评分：<strong>{qualityScore}/100</strong></p>
       {legacyPath && <p>旧路径：<code>{legacyPath}</code></p>}
+      {source && <p>来源：{sourceAccount || source}</p>}
+      {sourceUrl && <p><a href={sourceUrl} target="_blank" rel="noopener noreferrer">查看原文</a></p>}
       <p><a href="/archives/">查看归档</a></p>
     </aside>
   </main>

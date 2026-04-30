@@ -3,8 +3,11 @@ title: "Web扫描工具-w3af"
 date: "2020-10-12T17:13:50+08:00"
 description: "最后安装webkit还有问题，libpango1.0-0 python-gek2 not installed 用下面的方法解决"
 categories: ["信息安全","渗透测试"]
-tags: ["Java","漏洞分析","渗透测试","信息安全"]
+tags: ["渗透测试", "Web安全", "漏洞分析", "信息收集", "CSRF", "Hexo", "博客搭建"]
 legacyPath: "/posts/aaf72ae0.html"
+topic: security
+subtopic: blogging
+qualityScore: 90
 ---
 <h2 id="w3af"><a href="#w3af" class="headerlink" title="w3af"></a>w3af</h2><ul>
 <li>Web Application Attack and Audit Framework,基于python语言开发</li>

@@ -3,8 +3,11 @@ title: "免杀-Veil、shellter"
 date: "2020-11-22T16:09:59+08:00"
 description: ""
 categories: ["信息安全","渗透测试"]
-tags: ["渗透测试","信息安全"]
+tags: ["渗透测试", "信息收集", "MSF"]
 legacyPath: "/posts/45c4bac.html"
+topic: security
+subtopic: pentest-basics
+qualityScore: 72
 ---
 <h3 id="Veil-evasion"><a href="#Veil-evasion" class="headerlink" title="Veil-evasion"></a>Veil-evasion</h3><ul>
 <li><p>属于Veil-framework框架的一部分</p>

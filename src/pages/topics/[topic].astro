@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getAllTopics, getPostsByTopic, topicLabel } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const topics = await getAllTopics();
+  return topics.map(({ topic }) => ({
+    params: { topic },
+    props: { topic },
+  }));
+}
+
+const { topic } = Astro.props;
+const posts = await getPostsByTopic(topic);
+const label = topicLabel(topic);
+---
+
+<BaseLayout title={`主题：${label}`}>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Topic</div>
+      <h1>{label}</h1>
+      <p>{posts.length} 篇文章。主题用于长期组织内容，标签用于在文章之间横向跳转。</p>
+    </section>
+
+    <section class="post-list" aria-label={`${label} 文章`}>
+      {posts.map((post) => <PostCard post={post} />)}
+    </section>
+  </main>
+</BaseLayout>

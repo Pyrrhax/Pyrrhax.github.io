@@ -3,7 +3,13 @@ title: "SQL注入（二）SQL注入进阶-报错注入、盲注"
 date: "2021-02-05T13:28:09+08:00"
 description: "select xxx into outfile ‘文件路径’，放在web服务器下，可以通过web访问。"
 categories: ["信息安全","渗透测试"]
-tags: ["SQL注入","渗透测试","信息安全"]
+tags: ["渗透测试", "Web安全", "SQL注入"]
+topic: security
+subtopic: web-security
+qualityScore: 84
+featured: false
+level: intermediate
+status: evergreen
 legacyPath: "/posts/d35cebb1.html"
 ---
 <p>上一篇是SQL语句执行结果有回显的情况，本篇为无回显的情况下的一些利用技巧。</p>

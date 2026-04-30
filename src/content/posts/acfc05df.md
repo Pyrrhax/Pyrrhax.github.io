@@ -3,8 +3,11 @@ title: "提权-利用漏洞提权"
 date: "2020-09-22T21:04:03+08:00"
 description: ""
 categories: ["信息安全","渗透测试"]
-tags: ["漏洞分析","渗透测试","Windows","信息安全"]
+tags: ["渗透测试", "漏洞分析", "MSF", "后渗透", "Windows", "Kali"]
 legacyPath: "/posts/acfc05df.html"
+topic: security
+subtopic: post-exploitation
+qualityScore: 88
 ---
 <h2 id="提权-利用漏洞提权"><a href="#提权-利用漏洞提权" class="headerlink" title="提权-利用漏洞提权"></a>提权-利用漏洞提权</h2><h2 id="Ms11-080"><a href="#Ms11-080" class="headerlink" title="Ms11-080"></a>Ms11-080</h2><ul>
 <li><p>Kb2592799</p>

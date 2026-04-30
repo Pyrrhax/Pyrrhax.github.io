@@ -1,0 +1,417 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const columns = [
+  {
+    eyebrow: 'Infrastructure',
+    title: '未来基础设施入门',
+    text: '把区块链、智能合约、Layer2、RWA、预言机这些概念放回工程系统里讲清楚。',
+    count: '13 篇基础文',
+  },
+  {
+    eyebrow: 'Cognition',
+    title: 'AI 与认知迁移',
+    text: '从提示词、agent、判断力和工作流切入，讨论智能时代个人能力如何迁移。',
+    count: '4 篇起步',
+  },
+  {
+    eyebrow: 'Security',
+    title: '系统安全与未来风险',
+    text: '延续博客原有安全研究底色，把 AI agent、自治系统和极端风险纳入威胁建模。',
+    count: '高辨识度',
+  },
+  {
+    eyebrow: 'Philosophy',
+    title: '技术史与技术哲学',
+    text: '从以太、互联网、智能合约和生命意义出发，为硬技术补上时间纵深。',
+    count: '品牌气质',
+  },
+];
+
+const readingPath = [
+  ['先懂账本', '链上/链下、公链/私链/联盟链，建立 Web3 的基本坐标系。'],
+  ['再懂信任', '共识机制、挖矿、比特币与铸币税，理解代码如何替代一部分制度。'],
+  ['进入应用', '以太坊、DEX、稳定币、Layer2、RWA、NFT/OAT，串起应用层版图。'],
+  ['回到人', 'AI 泛化认知、提示词工程、系统牺牲、流窜 AI 和判断力。'],
+];
+
+const articles = [
+  ['AI认知', 'Anthropic最强模型Mythos泄露：网络安全从业者看到了流窜AI的开端', '把 AI agent、网络安全、去中心化算力和情景推演放在同一个风险框架里。', '2026/03/28'],
+  ['Web3', '区块链基础概念：什么是 Layer2？', '解释扩容路线，是从概念走向应用体验的桥。', '2025/09/23'],
+  ['系统安全', '系统如何决定牺牲谁？', '把 CISSP、安全系统和电车难题结合，讨论极端风险下的决策逻辑。', '2025/07/29'],
+  ['技术哲学', '从光以太到以太网，从以太网到以太坊，错误如何塑造了未来？', '用技术史叙事连接物理学、互联网和以太坊命名。', '2025/11/01'],
+  ['AI认知', '提示词工程与元技能：AI 时代的底层能力', '把 prompt engineering 从工具技巧提升为人机协作的元技能。', '2025/09/16'],
+  ['Web3', '区块链基础概念：庞氏骗局与“空气币”', '面向普通读者的 Web3 风险教育，适合作为避坑手册入口。', '2025/08/24'],
+];
+---
+
+<BaseLayout title="脑机共生样例页">
+  <main class="page naoji-demo">
+    <section class="demo-hero" aria-labelledby="demo-title">
+      <div>
+        <div class="eyebrow">Knowledge product demo</div>
+        <h1 id="demo-title">脑机共生：把技术知识组织成可判断的未来地图。</h1>
+        <p>
+          这个样例页保留 Pyrrhax 当前博客的暖白底、砖红强调色和文字型气质，
+          但把公众号内容重组为栏目、专栏和精选文章，让它更像一个长期知识产品。
+        </p>
+        <div class="demo-actions">
+          <a class="cta-link strong" href="#columns">看栏目结构</a>
+          <a class="cta-link" href="#articles">看文章呈现</a>
+        </div>
+      </div>
+      <aside class="demo-panel" aria-label="编辑原则">
+        <div class="panel-label">Editorial Rule</div>
+        <strong>每篇文章都回答三个问题：</strong>
+        <ol>
+          <li>它是什么？</li>
+          <li>为什么重要？</li>
+          <li>普通人如何形成判断？</li>
+        </ol>
+      </aside>
+    </section>
+
+    <section class="home-section demo-section" id="columns" aria-labelledby="columns-heading">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Columns</div>
+          <h2 id="columns-heading">四个常设栏目</h2>
+        </div>
+        <span class="meta">适合放在博客首页或专栏页入口</span>
+      </div>
+      <div class="demo-grid columns-grid">
+        {columns.map((column) => (
+          <article class="demo-card column-card">
+            <span class="card-eyebrow">{column.eyebrow}</span>
+            <h3>{column.title}</h3>
+            <p>{column.text}</p>
+            <strong>{column.count}</strong>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="home-section demo-section" aria-labelledby="path-heading">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Start here</div>
+          <h2 id="path-heading">推荐专栏</h2>
+        </div>
+      </div>
+      <div class="path-demo">
+        {readingPath.map(([title, text], index) => (
+          <article class="path-step">
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="home-section demo-section feature-section" aria-labelledby="issue-heading">
+      <div class="issue-cover">
+        <div class="eyebrow">Monthly Issue 01</div>
+        <h2 id="issue-heading">Agent 时代，谁拥有判断力？</h2>
+        <p>
+          从提示词工程、流窜 AI、上班与判断力三篇文章出发，讨论个人如何在智能系统里保持主体性。
+        </p>
+      </div>
+      <div class="issue-notes">
+        <article>
+          <span>主稿一</span>
+          <h3>趋势</h3>
+          <p>把热点拆成技术条件、产业动机和可能后果。</p>
+        </article>
+        <article>
+          <span>主稿二</span>
+          <h3>方法</h3>
+          <p>给读者一套可以复用的判断框架，而不是只给观点。</p>
+        </article>
+        <article>
+          <span>主稿三</span>
+          <h3>风险</h3>
+          <p>明确边界、反例、失败模式和“不构成投资建议”。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section demo-section" id="articles" aria-labelledby="articles-heading">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Selected articles</div>
+          <h2 id="articles-heading">精选文章展示</h2>
+        </div>
+        <a class="text-link" href="/">回到当前博客首页</a>
+      </div>
+      <div class="article-demo-list">
+        {articles.map(([tag, title, text, date]) => (
+          <article class="demo-article">
+            <div>
+              <span class="tag">{tag}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+            <time>{date}</time>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .naoji-demo {
+    padding-top: 40px;
+  }
+
+  .demo-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+    gap: 28px;
+    align-items: stretch;
+    margin-bottom: 42px;
+  }
+
+  .demo-hero h1 {
+    max-width: 940px;
+    margin-bottom: 18px;
+  }
+
+  .demo-hero p {
+    color: var(--muted);
+    font-size: 1.08rem;
+    margin: 0;
+    max-width: 760px;
+  }
+
+  .demo-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 26px;
+  }
+
+  .cta-link.strong {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+    color: var(--surface);
+  }
+
+  .demo-panel {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    padding: 22px;
+    min-height: 100%;
+  }
+
+  .panel-label,
+  .card-eyebrow {
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+
+  .demo-panel strong {
+    display: block;
+    font-size: 1.25rem;
+    line-height: 1.35;
+    margin: 12px 0;
+  }
+
+  .demo-panel ol {
+    color: var(--muted);
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .demo-section {
+    scroll-margin-top: 90px;
+  }
+
+  .demo-grid {
+    display: grid;
+    gap: 14px;
+  }
+
+  .columns-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .demo-card,
+  .path-step,
+  .issue-notes article,
+  .demo-article {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+  }
+
+  .column-card {
+    min-height: 260px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .column-card h3 {
+    font-size: 1.25rem;
+    margin: 10px 0;
+  }
+
+  .column-card p {
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .column-card strong {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-top: auto;
+    padding-top: 24px;
+  }
+
+  .path-demo {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    counter-reset: path;
+  }
+
+  .path-step {
+    padding: 20px;
+    min-height: 210px;
+  }
+
+  .path-step span {
+    color: var(--accent);
+    font-weight: 800;
+  }
+
+  .path-step h3 {
+    font-size: 1.2rem;
+    margin: 16px 0 8px;
+  }
+
+  .path-step p {
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .feature-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+    gap: 18px;
+  }
+
+  .issue-cover {
+    border-radius: 8px;
+    min-height: 380px;
+    padding: 30px;
+    color: var(--surface);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background:
+      linear-gradient(180deg, rgba(35, 35, 35, .08), rgba(35, 35, 35, .86)),
+      url("https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80") center / cover;
+  }
+
+  .issue-cover .eyebrow {
+    color: #e7b6aa;
+  }
+
+  .issue-cover h2 {
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    margin-bottom: 12px;
+  }
+
+  .issue-cover p {
+    color: rgba(255, 253, 248, .82);
+    margin: 0;
+    max-width: 680px;
+  }
+
+  .issue-notes {
+    display: grid;
+    gap: 12px;
+  }
+
+  .issue-notes article {
+    padding: 18px;
+  }
+
+  .issue-notes span {
+    color: var(--accent);
+    font-weight: 800;
+    font-size: .82rem;
+  }
+
+  .issue-notes h3 {
+    margin: 8px 0 4px;
+  }
+
+  .issue-notes p {
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .article-demo-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .demo-article {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 20px;
+    padding: 20px 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .demo-article h3 {
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
+    margin: 10px 0 6px;
+  }
+
+  .demo-article p {
+    color: var(--muted);
+    margin: 0;
+    max-width: 780px;
+  }
+
+  .demo-article time {
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) {
+    .demo-hero,
+    .feature-section {
+      grid-template-columns: 1fr;
+    }
+
+    .columns-grid,
+    .path-demo {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 760px) {
+    .columns-grid,
+    .path-demo,
+    .demo-article {
+      grid-template-columns: 1fr;
+    }
+
+    .demo-article time {
+      white-space: normal;
+    }
+  }
+</style>

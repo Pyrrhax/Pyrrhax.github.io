@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getAllTopics, getPosts, topicUrl } from '../../lib/posts';
+
+const posts = await getPosts();
+const topics = await getAllTopics(posts);
+---
+
+<BaseLayout title="主题">
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Topics</div>
+      <h1>主题入口</h1>
+      <p>以长期知识库的方式进入内容。主题负责方向，标签负责关键词，避免把同一种导航做三遍。</p>
+    </section>
+
+    <section class="topic-grid" aria-label="主题列表">
+      {topics.map(({ topic, label, count }) => (
+        <a class="topic-card" href={topicUrl(topic)}>
+          <span>{label}</span>
+          <strong>{count}</strong>
+        </a>
+      ))}
+    </section>
+  </main>
+</BaseLayout>

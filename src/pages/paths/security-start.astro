@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPosts } from '../../lib/posts';
+
+const posts = await getPosts();
+const pathNodes = [
+  {
+    title: '入门与环境',
+    keywords: ['渗透测试及Kali初探', 'Kali定制', '渗透测试实验环境搭建'],
+  },
+  {
+    title: '被动信息收集',
+    keywords: ['被动信息收集', 'GoogleHacking', 'Recon-ng'],
+  },
+  {
+    title: '主动探测与扫描',
+    keywords: ['主动信息收集', '主机发现', '端口扫描', '服务扫描', 'OS识别'],
+  },
+  {
+    title: 'Web 攻击面与漏洞扫描',
+    keywords: ['Web扫描', '漏洞扫描', 'Burpsuite', '手动漏洞挖掘'],
+  },
+  {
+    title: 'SQL 注入与自动化利用',
+    keywords: ['SQL注入', 'SQLMap'],
+  },
+  {
+    title: '漏洞利用与 MSF',
+    keywords: ['MSF', '缓冲区溢出', 'exploit', 'payload', 'meterpreter'],
+  },
+  {
+    title: '提权与后渗透',
+    keywords: ['提权', '后渗透', '持久后门', '嗅探', '痕迹'],
+  },
+  {
+    title: '内网、隧道与横向移动',
+    keywords: ['内网', '流量操控', '隧道', '跳板', '域渗透'],
+  },
+  {
+    title: '靶场与综合实践',
+    keywords: ['靶机', '靶场', 'UploadLabs', 'Kioptrix'],
+  },
+];
+
+function matchesKeywords(post: (typeof posts)[number], keywords: string[]) {
+  const haystack = [
+    post.data.title,
+    post.data.description,
+    ...post.data.categories,
+    ...post.data.tags,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+
+  return keywords.some((keyword) => haystack.includes(keyword.toLowerCase()));
+}
+---
+
+<BaseLayout title="渗透测试学习笔记专栏">
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Columns</div>
+      <h1>渗透测试学习笔记专栏</h1>
+      <p>按学习顺序重新分组：先环境和信息收集，再进入 Web、注入、利用、后渗透、内网和综合靶场；每组内按发布时间从早到晚阅读。</p>
+    </section>
+
+    <section class="path-list" aria-label="渗透测试学习笔记专栏节点">
+      {pathNodes.map((node, index) => {
+        const matchedPosts = posts
+          .filter((post) => matchesKeywords(post, node.keywords))
+          .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
+          .slice(0, 8);
+        return (
+          <section class="path-node">
+            <div class="path-node-heading">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h2>{node.title}</h2>
+            </div>
+            {matchedPosts.length > 0 ? (
+              <div class="post-list compact-list">
+                {matchedPosts.map((post) => <PostCard post={post} />)}
+              </div>
+            ) : (
+              <p class="empty-state">这一站暂时还没有匹配到文章，后续补内容时可以优先填上。</p>
+            )}
+          </section>
+        );
+      })}
+    </section>
+  </main>
+</BaseLayout>

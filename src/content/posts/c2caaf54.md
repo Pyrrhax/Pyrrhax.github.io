@@ -3,8 +3,11 @@ title: "MSF-信息收集、发现和端口扫描"
 date: "2020-11-26T16:16:47+08:00"
 description: ""
 categories: ["信息安全","渗透测试"]
-tags: ["渗透测试","Windows","信息安全"]
+tags: ["渗透测试", "信息收集", "MSF", "后渗透", "Windows"]
 legacyPath: "/posts/c2caaf54.html"
+topic: security
+subtopic: pentest-basics
+qualityScore: 73
 ---
 <h4 id="MSF–信息收集"><a href="#MSF–信息收集" class="headerlink" title="MSF–信息收集"></a>MSF–信息收集</h4><ul>
 <li><p>Nmap扫描</p>

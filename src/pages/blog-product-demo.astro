@@ -1,0 +1,881 @@
+---
+import { getAllTopics, getPosts, postTopic, postUrl, topicLabel } from '../lib/posts';
+
+const posts = await getPosts();
+const topics = await getAllTopics(posts);
+const totalPosts = posts.length;
+const securityPosts = posts.filter((post) => postTopic(post) === 'security');
+const programmingPosts = posts.filter((post) => postTopic(post) === 'programming');
+const toolingPosts = posts.filter((post) => postTopic(post) === 'tooling');
+const thinkingPosts = posts.filter((post) => postTopic(post) === 'thinking');
+const featured = [
+  ...securityPosts.slice(0, 3),
+  ...programmingPosts.slice(0, 1),
+  ...toolingPosts.slice(0, 1),
+  ...thinkingPosts.slice(0, 1),
+].slice(0, 6);
+
+const pillars = [
+  {
+    key: 'security',
+    label: '攻防与漏洞研究',
+    count: securityPosts.length,
+    text: '把历史安全笔记重组为可检索的攻防知识库：Java/Spring 漏洞、内网、靶场、工具链与复盘。',
+    accent: 'blue',
+  },
+  {
+    key: 'programming',
+    label: '工程与代码理解',
+    count: programmingPosts.length,
+    text: '承接编程语言、Java、参数绑定、源码阅读等内容，让安全研究和工程能力互相支撑。',
+    accent: 'green',
+  },
+  {
+    key: 'tooling',
+    label: '工具与构建',
+    count: toolingPosts.length,
+    text: '沉淀环境搭建、网络运维、站点迁移和知识库构建方法，减少重复摸索。',
+    accent: 'gold',
+  },
+  {
+    key: 'thinking',
+    label: '认知与长期思考',
+    count: thinkingPosts.length,
+    text: '给技术学习补上判断、表达和长期主义，让博客不只是资料仓库。',
+    accent: 'red',
+  },
+];
+
+const paths = [
+  {
+    title: '渗透测试起步',
+    kicker: 'Pentest Track',
+    text: '从 Kali、信息收集、漏洞利用、内网和 Cobalt Strike 串起攻防基本路线。',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80',
+    posts: securityPosts.slice(0, 3),
+  },
+  {
+    title: 'Java / Spring 漏洞线',
+    kicker: 'Framework Security',
+    text: '围绕 Spring 参数绑定、SpEL、CVE 分析，把单篇漏洞复盘变成专栏学习链。',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80',
+    posts: posts.filter((post) => post.data.tags.includes('Spring') || post.data.tags.includes('Java')).slice(0, 3),
+  },
+  {
+    title: '靶场与实战复盘',
+    kicker: 'Practice Notes',
+    text: '把靶机、专项靶场和内网笔记变成可反复练习的训练路线。',
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1400&q=80',
+    posts: posts.filter((post) => post.data.tags.includes('靶机') || post.data.tags.includes('内网')).slice(0, 3),
+  },
+];
+
+const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' });
+---
+
+<!doctype html>
+<html lang="zh-CN" data-bg-theme="wechat">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pyrrhax 内容产品样例页</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f5ef;
+        --panel: #fffdf8;
+        --ink: #232323;
+        --muted: #6f6a61;
+        --line: #ded8cc;
+        --deep: #232323;
+        --green: #2f7565;
+        --blue: #426f8f;
+        --red: #a94f36;
+        --accent: #b54a3a;
+        --accent-strong: #7d2f25;
+        --gold: #9a761d;
+        --soft-green: #edf6ef;
+        --soft-blue: #eef4f7;
+        --soft-red: #fbf0ec;
+        --soft-gold: #f8f0d8;
+        --header-bg: rgba(255, 253, 248, .9);
+        --shadow: 0 18px 45px rgba(35, 35, 35, .08);
+      }
+
+      :root[data-bg-theme="wechat"] {
+        --bg: #f6f8f7;
+        --panel: #ffffff;
+        --line: #dbe2df;
+        --muted: #627077;
+        --header-bg: rgba(255, 255, 255, .9);
+      }
+
+      :root[data-bg-theme="warm"] {
+        --bg: #f7f5ef;
+        --panel: #fffdf8;
+        --line: #ded8cc;
+        --muted: #6f6a61;
+        --header-bg: rgba(255, 253, 248, .9);
+      }
+
+      :root[data-bg-theme="mist"] {
+        --bg: #f2f6f8;
+        --panel: #ffffff;
+        --line: #d6e0e5;
+        --muted: #60717a;
+        --header-bg: rgba(255, 255, 255, .9);
+      }
+
+      :root[data-bg-theme="sage"] {
+        --bg: #f1f5ee;
+        --panel: #ffffff;
+        --line: #d7e0d2;
+        --muted: #65705f;
+        --header-bg: rgba(255, 255, 255, .88);
+      }
+
+      * { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+        background: var(--bg);
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        background: var(--header-bg);
+        backdrop-filter: blur(16px);
+      }
+
+      .primary-nav {
+        width: min(1120px, calc(100% - 32px));
+        min-height: 68px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        color: var(--ink);
+        font-size: 1.05rem;
+        font-weight: 750;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: var(--accent-strong);
+        font-size: .95rem;
+      }
+
+      .header-tools {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 36px;
+        padding: 0 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        color: var(--ink);
+        font-size: 14px;
+      }
+
+      .button.primary {
+        border-color: var(--accent-strong);
+        background: var(--accent-strong);
+        color: #fff;
+      }
+
+      .content {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 40px 0 72px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(300px, .8fr);
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .hero-main {
+        min-height: 430px;
+        padding: 34px;
+        border-radius: 8px;
+        overflow: hidden;
+        color: #fff;
+        background:
+          linear-gradient(90deg, rgba(10, 30, 34, .92), rgba(15, 70, 76, .58)),
+          url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80") center / cover;
+        box-shadow: var(--shadow);
+      }
+
+      .kicker {
+        margin: 0 0 12px;
+        color: rgba(255,255,255,.72);
+        font-size: 13px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 860px;
+        margin: 0;
+        font-size: clamp(34px, 5vw, 60px);
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .hero-main .lead {
+        max-width: 720px;
+        margin: 18px 0 0;
+        color: rgba(255,255,255,.86);
+        font-size: 18px;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+
+      .hero-actions .button {
+        border-color: rgba(255,255,255,.24);
+        background: rgba(255,255,255,.12);
+        color: #fff;
+      }
+
+      .hero-actions .button.primary {
+        border-color: #fffdf8;
+        background: #fffdf8;
+        color: var(--accent-strong);
+      }
+
+      .signal-panel,
+      .rules {
+        display: grid;
+        gap: 12px;
+      }
+
+      .stat-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .stat,
+      .module,
+      .pillar,
+      .path-card,
+      .article-card,
+      .rule-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 0 10px 28px rgba(18, 31, 35, .04);
+      }
+
+      .stat {
+        min-height: 112px;
+        padding: 18px;
+      }
+
+      .stat strong {
+        display: block;
+        color: var(--accent);
+        font-size: 30px;
+        line-height: 1.1;
+        margin-bottom: 8px;
+      }
+
+      .stat span,
+      .caption {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .module {
+        padding: 20px;
+      }
+
+      .theme-switcher {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .theme-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 34px;
+        padding: 0 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        color: var(--ink);
+        cursor: pointer;
+        font: inherit;
+        font-size: 13px;
+      }
+
+      .header-tools .theme-button {
+        width: 30px;
+        min-height: 30px;
+        padding: 0;
+        justify-content: center;
+        background: transparent;
+      }
+
+      .theme-button[aria-pressed="true"] {
+        border-color: var(--accent-strong);
+        color: var(--accent-strong);
+      }
+
+      .swatch {
+        width: 16px;
+        height: 16px;
+        border: 1px solid rgba(35, 35, 35, .16);
+        border-radius: 999px;
+      }
+
+      .swatch.warm { background: #f7f5ef; }
+      .swatch.wechat { background: #f6f8f7; }
+      .swatch.mist { background: #f2f6f8; }
+      .swatch.sage { background: #f1f5ee; }
+
+      .module h2,
+      .section-head h2 {
+        margin: 0;
+        font-size: 26px;
+        line-height: 1.22;
+      }
+
+      .module p,
+      .section-head p {
+        margin: 10px 0 0;
+        color: var(--muted);
+      }
+
+      section {
+        padding-top: 42px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+
+      .section-head p {
+        max-width: 650px;
+      }
+
+      .pillars {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .pillar {
+        min-height: 290px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .pillar.blue { background: var(--soft-blue); }
+      .pillar.green { background: var(--soft-green); }
+      .pillar.gold { background: var(--soft-gold); }
+      .pillar.red { background: var(--soft-red); }
+
+      .pillar h3 {
+        margin: 0 0 10px;
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
+      .pillar p {
+        margin: 0;
+        color: #425057;
+        font-size: 14px;
+      }
+
+      .pillar-count {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .path-showcase {
+        display: grid;
+        gap: 12px;
+      }
+
+      .path-slide {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(330px, .92fr);
+        gap: 14px;
+        align-items: stretch;
+      }
+
+      .path-slide[hidden] {
+        display: none;
+      }
+
+      .path-cover {
+        min-height: 350px;
+        padding: 34px;
+        border-radius: 8px;
+        color: #fff;
+        background-position: center;
+        background-size: cover;
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+      }
+
+      .path-cover h2 {
+        max-width: 620px;
+        margin: 0;
+        font-size: clamp(28px, 3.5vw, 44px);
+        line-height: 1.08;
+      }
+
+      .path-cover p {
+        max-width: 620px;
+        margin: 16px 0 0;
+        color: rgba(255,255,255,.84);
+      }
+
+      .path-list {
+        display: grid;
+        align-content: stretch;
+      }
+
+      .path-card {
+        min-height: 350px;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .mini-list {
+        display: grid;
+        grid-template-rows: repeat(3, minmax(0, 1fr));
+        height: 100%;
+      }
+
+      .mini-list a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 7px;
+        min-height: 0;
+        padding: 18px;
+        border-top: 1px solid var(--line);
+        color: var(--ink);
+        line-height: 1.35;
+      }
+
+      .mini-list a:first-child {
+        border-top: 0;
+      }
+
+      .mini-list strong {
+        display: block;
+        font-size: 16px;
+        line-height: 1.32;
+      }
+
+      .mini-list span {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .path-controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .path-arrows,
+      .path-dots {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .icon-button,
+      .path-dot {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        cursor: pointer;
+      }
+
+      .icon-button {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        color: var(--ink);
+        font: inherit;
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      .path-dot {
+        width: 10px;
+        height: 10px;
+        padding: 0;
+        border-radius: 999px;
+      }
+
+      .path-dot[aria-pressed="true"] {
+        width: 28px;
+        background: var(--accent-strong);
+        border-color: var(--accent-strong);
+      }
+
+      .articles {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .article-card {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        min-height: 230px;
+        padding: 18px;
+      }
+
+      .article-card h3 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.32;
+      }
+
+      .article-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .article-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: auto;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 0 8px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #f6f8f8;
+        color: #44535a;
+        font-size: 12px;
+      }
+
+      .rule-card {
+        padding: 18px;
+      }
+
+      .rule-card h3 {
+        margin: 0 0 6px;
+        font-size: 17px;
+      }
+
+      .rule-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .footer {
+        margin-top: 42px;
+        padding: 26px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 1080px) {
+        .hero-grid, .path-slide { grid-template-columns: 1fr; }
+        .pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .articles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+
+      @media (max-width: 680px) {
+        .primary-nav {
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          padding: 14px 0;
+        }
+
+        .header-tools {
+          flex-wrap: wrap;
+        }
+
+        .content { padding-top: 28px; }
+        .hero-main { min-height: 520px; padding: 24px; }
+        .path-cover, .path-card { min-height: auto; padding: 24px; }
+        .path-cover { min-height: 360px; }
+        .path-controls { align-items: flex-start; flex-direction: column; }
+        .stat-row, .pillars, .articles { grid-template-columns: 1fr; }
+        .section-head { align-items: flex-start; flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="primary-nav" aria-label="主导航">
+        <a class="brand" href="/">Pyrrhax</a>
+        <div class="nav-links">
+          <a href="/">首页</a>
+          <a href="/topics/">主题</a>
+          <a href="/paths/">专栏</a>
+          <a href="/tags/">标签</a>
+          <a href="/about/">关于</a>
+        </div>
+        <div class="header-tools" aria-label="背景颜色切换">
+          <button class="theme-button" type="button" data-theme="warm" aria-label="切换为当前暖白背景" aria-pressed="false">
+            <span class="swatch warm"></span>
+          </button>
+          <button class="theme-button" type="button" data-theme="wechat" aria-label="切换为公众号灰绿背景" aria-pressed="true">
+            <span class="swatch wechat"></span>
+          </button>
+          <button class="theme-button" type="button" data-theme="mist" aria-label="切换为冷蓝纸面背景" aria-pressed="false">
+            <span class="swatch mist"></span>
+          </button>
+          <button class="theme-button" type="button" data-theme="sage" aria-label="切换为鼠尾草绿背景" aria-pressed="false">
+            <span class="swatch sage"></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="main" id="top">
+      <div class="content">
+        <section class="hero-grid" aria-label="首页">
+          <div class="hero-main">
+            <p class="kicker">Personal Security Knowledge Base</p>
+            <h1>把安全研究、工程笔记和长期思考，组织成可学习的地图。</h1>
+            <p class="lead">这个样例页使用你当前博客的真实内容，但呈现方式采用之前公众号展示页的产品化风格：模块入口、专栏、精选文章和月度专栏，同时顶部导航与当前博客保持一致。</p>
+            <div class="hero-actions">
+              <a class="button primary" href="#paths">从专栏开始</a>
+              <a class="button" href="#pillars">看主题入口</a>
+              <a class="button" href="#articles">看精选文章</a>
+              <a class="button" href="/">返回当前博客</a>
+            </div>
+          </div>
+
+          <div class="signal-panel">
+            <div class="stat-row">
+              <div class="stat"><strong>{totalPosts}</strong><span>历史文章</span></div>
+              <div class="stat"><strong>{topics.length}</strong><span>内容主题</span></div>
+            </div>
+            <div class="module">
+              <h2>今日入口</h2>
+              <p>首屏只保留一个明确动作：从“专栏化阅读”进入，把旧文章当成可连续学习的路线，而不是一页一页翻归档。</p>
+            </div>
+            <div class="module">
+              <h2>内容秩序</h2>
+              <p>主题负责分区，专栏负责路径，精选文章负责把最值得读的节点露出来。</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="pillars">
+          <div class="section-head">
+            <div>
+              <h2>内容主题入口</h2>
+              <p>把博客现有主题做成清晰入口，读者不需要翻标签云，也能知道该从哪里进入。</p>
+            </div>
+          </div>
+          <div class="pillars">
+            {pillars.map((pillar) => (
+              <article class={`pillar ${pillar.accent}`}>
+                <div>
+                  <h3>{pillar.label}</h3>
+                  <p>{pillar.text}</p>
+                </div>
+                <div class="pillar-count">
+                  <span>{pillar.count} 篇</span>
+                  <span>{pillar.key}</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="paths">
+          <div class="section-head">
+            <div>
+              <h2>推荐专栏</h2>
+              <p>每个专栏独立成一张封面，右侧只显示这个专栏的三篇文章。</p>
+            </div>
+          </div>
+          <div class="path-showcase">
+            {paths.map((path, index) => (
+              <div class="path-slide" data-path-slide={String(index)} hidden={index !== 0}>
+                <article
+                  class="path-cover"
+                  style={`background-image: linear-gradient(180deg, rgba(16,39,44,.04), rgba(16,39,44,.9)), url("${path.image}")`}
+                >
+                  <p class="kicker">{path.kicker}</p>
+                  <h2>{path.title}</h2>
+                  <p>{path.text}</p>
+                </article>
+                <article class="path-card">
+                  <div class="mini-list">
+                    {path.posts.map((post) => (
+                      <a href={postUrl(post)}>
+                        <strong>{post.data.title}</strong>
+                        <span>{post.data.description || `标签：${post.data.tags.slice(0, 4).join('、') || '技术笔记'}`}</span>
+                      </a>
+                    ))}
+                  </div>
+                </article>
+              </div>
+            ))}
+            <div class="path-controls" aria-label="推荐专栏轮播控制">
+              <div class="path-dots">
+                {paths.map((path, index) => (
+                  <button
+                    class="path-dot"
+                    type="button"
+                    data-path-target={String(index)}
+                    aria-label={`查看${path.title}`}
+                    aria-pressed={index === 0 ? 'true' : 'false'}
+                  ></button>
+                ))}
+              </div>
+              <div class="path-arrows">
+                <button class="icon-button" type="button" data-path-prev aria-label="上一个专栏">‹</button>
+                <button class="icon-button" type="button" data-path-next aria-label="下一个专栏">›</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="articles">
+          <div class="section-head">
+            <div>
+              <h2>精选文章展示</h2>
+              <p>用卡片替代纯列表，强调文章所属主题、价值和阅读入口。</p>
+            </div>
+            <a class="button" href="/archives/">全部文章</a>
+          </div>
+          <div class="articles">
+            {featured.map((post) => (
+              <article class="article-card">
+                <span class="tag">{topicLabel(postTopic(post))}</span>
+                <h3><a href={postUrl(post)}>{post.data.title}</a></h3>
+                <p>{post.data.description || `标签：${post.data.tags.slice(0, 4).join('、') || '技术笔记'}`}</p>
+                <div class="article-meta">
+                  <span>{formatDate(post.data.date)}</span>
+                  {post.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <footer class="footer">
+          <p>这是新增演示页，未修改博客首页、布局、全局样式或文章源文件。</p>
+        </footer>
+      </div>
+    </main>
+    <script>
+      const themeButtons = [...document.querySelectorAll<HTMLButtonElement>('.theme-button')];
+      const root = document.documentElement;
+      const storageKey = 'pyrrhax-demo-bg-theme-v2';
+      const applyTheme = (theme: string) => {
+        root.dataset.bgTheme = theme;
+        themeButtons.forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.theme === theme));
+        });
+        localStorage.setItem(storageKey, theme);
+      };
+
+      themeButtons.forEach((button) => {
+        button.addEventListener('click', () => applyTheme(button.dataset.theme || 'warm'));
+      });
+
+      applyTheme(localStorage.getItem(storageKey) || 'wechat');
+
+      const pathSlides = [...document.querySelectorAll<HTMLElement>('[data-path-slide]')];
+      const pathDots = [...document.querySelectorAll<HTMLButtonElement>('[data-path-target]')];
+      const prevPathButton = document.querySelector<HTMLButtonElement>('[data-path-prev]');
+      const nextPathButton = document.querySelector<HTMLButtonElement>('[data-path-next]');
+      let activePathIndex = 0;
+
+      const showPath = (index: number) => {
+        if (!pathSlides.length) return;
+        activePathIndex = (index + pathSlides.length) % pathSlides.length;
+        pathSlides.forEach((slide, slideIndex) => {
+          slide.hidden = slideIndex !== activePathIndex;
+        });
+        pathDots.forEach((dot, dotIndex) => {
+          dot.setAttribute('aria-pressed', String(dotIndex === activePathIndex));
+        });
+      };
+
+      pathDots.forEach((dot) => {
+        dot.addEventListener('click', () => showPath(Number(dot.dataset.pathTarget || 0)));
+      });
+
+      prevPathButton?.addEventListener('click', () => showPath(activePathIndex - 1));
+      nextPathButton?.addEventListener('click', () => showPath(activePathIndex + 1));
+    </script>
+  </body>
+</html>

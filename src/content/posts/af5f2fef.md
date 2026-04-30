@@ -3,8 +3,11 @@ title: "计算机取证"
 date: "2020-12-29T12:26:07+08:00"
 description: ""
 categories: ["信息安全","渗透测试"]
-tags: ["KaliLinux渗透测试学习笔记","渗透测试","文件上传","信息安全"]
+tags: ["渗透测试", "后渗透", "无线安全"]
 legacyPath: "/posts/af5f2fef.html"
+topic: security
+subtopic: wireless-security
+qualityScore: 74
 ---
 <h4 id="取证科学"><a href="#取证科学" class="headerlink" title="取证科学"></a>取证科学</h4><ul>
 <li>Forensic<ul>

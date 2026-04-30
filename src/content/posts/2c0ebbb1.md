@@ -3,8 +3,14 @@ title: "主动信息收集--主机发现"
 date: "2020-09-13T17:57:46+08:00"
 description: "traceroute(发的UDP,IP段的TTL=0后会返回ICMP)，每一跳是路由器的内侧网口"
 categories: ["信息安全","渗透测试"]
-tags: ["渗透测试","Windows","信息安全"]
+tags: ["渗透测试", "信息收集", "后渗透", "无线安全", "Windows"]
+topic: security
+featured: false
+level: beginner
+status: evergreen
 legacyPath: "/posts/2c0ebbb1.html"
+subtopic: wireless-security
+qualityScore: 86
 ---
 <h1 id="主动信息收集"><a href="#主动信息收集" class="headerlink" title="主动信息收集"></a>主动信息收集</h1><ul>
 <li><p>直接与目标系统交互通信</p>

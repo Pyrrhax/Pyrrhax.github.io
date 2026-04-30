@@ -3,8 +3,11 @@ title: "网络工具中的瑞士军刀-NETCAT"
 date: "2020-08-27T18:24:08+08:00"
 description: ""
 categories: ["信息安全","渗透测试"]
-tags: ["渗透测试","Windows","信息安全"]
+tags: ["渗透测试", "信息收集", "内网", "Windows"]
 legacyPath: "/posts/caae728a.html"
+topic: security
+subtopic: pentest-basics
+qualityScore: 79
 ---
 <h1 id="NC——TELNET-BANNER"><a href="#NC——TELNET-BANNER" class="headerlink" title="NC——TELNET / BANNER"></a>NC——TELNET / BANNER</h1><ul>
 <li>nc -nv 1.1.1.1 110</li>

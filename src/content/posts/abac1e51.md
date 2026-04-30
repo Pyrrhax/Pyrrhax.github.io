@@ -3,8 +3,11 @@ title: "Web扫描工具-Arachni"
 date: "2020-10-12T22:22:00+08:00"
 description: "安装后，输入用户名密码登录提示错误，google发现很多人有同样错误，暂时无解。"
 categories: ["信息安全","渗透测试"]
-tags: ["漏洞分析","渗透测试","Windows","信息安全"]
+tags: ["渗透测试", "Web安全", "漏洞分析", "信息收集", "CSRF", "Windows"]
 legacyPath: "/posts/abac1e51.html"
+topic: security
+subtopic: web-security
+qualityScore: 70
 ---
 <h3 id="Arachni"><a href="#Arachni" class="headerlink" title="Arachni"></a>Arachni</h3><ul>
 <li><p>官网</p>
