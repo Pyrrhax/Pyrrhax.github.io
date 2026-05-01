@@ -1,13 +1,537 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const profileItems = [
+  {
+    title: '技术背景',
+    text: '我有 Web2 开发、渗透测试和信息安全管理经验，目前主要从事网络安全相关工作。技术对我来说不是标签，而是一种理解系统、拆解问题、验证现实的工具。',
+  },
+  {
+    title: '当前方向',
+    text: '我正在系统学习 Web3、智能合约安全、区块链投资和 AI 工具应用，希望把组织经验、技术能力、投资判断与独立表达连接起来，形成更可持续的个人能力系统。',
+  },
+  {
+    title: '写作主题',
+    text: '我写 AI、区块链、投资、网络安全，也写个人成长、组织协作和长期能力建设。表面看主题很多，本质上都指向同一个问题：个体如何在复杂系统中保持清醒，并积累真正属于自己的能力和资产。',
+  },
+];
+
+const focusItems = [
+  {
+    title: '区块链与 Web3 判断',
+    text: '我正在观察的不只是某个项目会不会涨，而是它的叙事、机制、代币模型、用户需求和长期价值是否成立。我希望训练的是判断能力，而不是单纯下注能力。',
+  },
+  {
+    title: '智能合约安全',
+    text: '我对区块链安全最感兴趣，目前正在从 Solidity、Move、审计方法和真实漏洞案例入手，尝试把已有的安全经验迁移到 Web3 世界。',
+  },
+  {
+    title: 'AI 与个人生产力',
+    text: 'AI 对我而言不是替代思考的工具，而是放大表达、开发、研究和整理能力的杠杆。我正在把 AI 融入写作、博客、项目开发和知识管理流程。',
+  },
+  {
+    title: '投资与选择权',
+    text: '我关注投资，不只是为了收益，也是在学习如何理解周期、风险和选择权。比起短期结果，我更在意能否建立长期、稳健的判断框架。',
+  },
+];
+
+const growthItems = [
+  {
+    stage: '2014',
+    title: '从开发进入技术世界',
+    text: '2014 年，我从 Web2 开发进入技术行业。那段经历让我第一次理解，许多复杂、重复、低效的流程，本质上都可以被代码重新组织，也让我建立起早期的互联网思维：用产品化、规模化和效率提升的方式看待问题。技术从那时起，不再只是工具，而成为我理解世界的方法之一。',
+  },
+  {
+    stage: '2020',
+    title: '从渗透测试到安全视角',
+    text: '2020 年，我进入网络安全领域，参与攻防渗透与安全实践。相比开发阶段关注如何构建系统，安全工作让我开始理解系统如何失效，也逐渐认识到攻击、防御、权限、信任与风险之间的关系，这段经历塑造了我的底线思维与风险意识。',
+  },
+  {
+    stage: '2024',
+    title: '从安全技术到安全管理',
+    text: '2024 年后，我的工作重心逐步从纯技术执行转向安全管理与项目推进，开始更多面对组织协同、流程治理、资源分配与责任边界等问题。这让我明白，真正复杂的系统往往不是代码，而是人、流程与利益关系的组合，也让我具备了更完整的系统视角。',
+  },
+  {
+    stage: '现在',
+    title: '职业路径与个人系统建设并行',
+    text: '现在，我一边延续既有职业路径，在安全管理与系统协作中持续积累经验；一边投入更长期的个人系统建设，包括 Web3 安全、AI 开发、投资判断与内容表达。职业经历提供了阶段性的训练场，而更长期有效的，是可迁移的能力、持续输出的表达，以及独立创造价值的能力。',
+  },
+  {
+    stage: '未来',
+    title: 'Web3 安全、AI 杠杆与独立表达',
+    text: '接下来，我会继续学习智能合约审计、Move / Solidity、区块链安全研究，以及 AI 辅助开发工具链，同时持续经营个人博客与公众号，把经验、判断与思考沉淀为长期可复用的数字资产。',
+  },
+];
+
+const questions = [
+  '技术如何改变个体的生存方式？',
+  '区块链到底创造了什么新的信任结构？',
+  'AI 会如何重塑知识工作者的价值？',
+  '普通人如何通过投资、技能和表达获得更多自由？',
+  '在工具越来越强、系统越来越复杂的时代，一个人能做到什么程度？',
+];
+
+const tags = ['网络安全', 'Web3', '智能合约审计', 'AI', '投资判断', '个人成长', '脑机共生'];
+
 ---
 
-<BaseLayout title="关于">
-  <main class="page">
-    <section class="hero">
-      <div class="eyebrow">About</div>
-      <h1>Pyrrhax</h1>
-      <p>这里是从 Hexo 迁移到 Astro 的个人博客。历史页面已保存在 <code>backup-hexo-content</code>，新的文章会放在 <code>src/content/posts</code>。</p>
+<BaseLayout
+  title="关于"
+  description="Pyrrhax 的个人介绍页，关注网络安全、Web3、AI、投资判断与个人成长。"
+>
+  <main class="page about-page">
+    <section class="about-hero" aria-labelledby="about-title">
+      <div class="about-hero-copy">
+        <h1 id="about-title">在复杂世界中，建立自己的系统。</h1>
+        <p class="hero-lede">技术、安全、投资与表达的长期实验。</p>
+        <p>
+          这里是 Pyrrhax 的个人空间。我长期关注网络安全、Web3、AI、投资判断与个人成长。相比追逐热点，我更关心如何在变化越来越快的时代，持续建设自己的能力系统、判断系统、资产系统与表达系统。
+        </p>
+      </div>
+
+      <aside class="identity-panel" aria-label="个人定位摘要">
+        <article class="profile-card">
+          <img src="/images/avatar.png" alt="Pyrrhax 头像" />
+          <div>
+            <h2>Pyrrhax</h2>
+            <p>网络安全 / Web3 / AI / 投资判断</p>
+          </div>
+        </article>
+        <div class="identity-list">
+          <div>
+            <strong>当前状态</strong>
+            <span>在安全管理与系统协作中持续积累经验，同时关注 Web3、AI 与个人长期成长。</span>
+          </div>
+          <div>
+            <strong>长期方向</strong>
+            <span>把技术理解、投资判断、写作表达和 AI 工具能力连接成可持续的个人系统。</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="about-section" aria-labelledby="growth-heading">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Trajectory</div>
+          <h2 id="growth-heading">路径演化</h2>
+        </div>
+      </div>
+      <div class="timeline">
+        {growthItems.map((item) => (
+          <article class="timeline-item">
+            <div class="timeline-stage">{item.stage}</div>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="focus-heading">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Current Bets</div>
+          <h2 id="focus-heading">正在投入的方向</h2>
+        </div>
+      </div>
+      <div class="about-grid focus-grid">
+        {focusItems.map((item) => (
+          <article class="about-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="profile-heading">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Orientation</div>
+          <h2 id="profile-heading">我的坐标</h2>
+        </div>
+      </div>
+      <div class="about-grid profile-grid">
+        {profileItems.map((item) => (
+          <article class="about-card">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="about-section question-section" aria-labelledby="question-heading">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">Open Questions</div>
+          <h2 id="question-heading">长期问题</h2>
+        </div>
+      </div>
+      <ul class="question-list">
+        {questions.map((question) => <li>{question}</li>)}
+      </ul>
+    </section>
+
+    <section class="contact-panel" aria-labelledby="contact-heading">
+      <div>
+        <div class="eyebrow">Connect</div>
+        <h2 id="contact-heading">联系我</h2>
+        <p>
+          如果你也关注 AI、Web3、安全、投资、个人成长，或者也在思考个体如何在复杂系统中建立自己的路径，可以通过博客、公众号或其他公开渠道找到我。
+        </p>
+        <a class="contact-email" href="mailto:pyrrhax.hf@gmail.com">pyrrhax.hf@gmail.com</a>
+        <p class="contact-note">持续学习，保持判断，慢慢积累选择权。</p>
+      </div>
+      <div class="tag-cloud" aria-label="标签">
+        {tags.map((tag) => <span>{tag}</span>)}
+      </div>
     </section>
   </main>
 </BaseLayout>
+
+<style>
+  .about-page {
+    max-width: min(1120px, calc(100vw - 32px));
+    padding-top: 44px;
+    overflow-x: hidden;
+    overflow-wrap: anywhere;
+    font-size: 16px;
+    line-height: 1.82;
+  }
+
+  .about-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+    gap: 28px;
+    align-items: stretch;
+    margin-bottom: 56px;
+  }
+
+  .about-hero-copy {
+    display: grid;
+    align-content: center;
+    gap: 18px;
+    min-width: 0;
+    min-height: 410px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: clamp(28px, 5vw, 54px) 0;
+  }
+
+  .about-hero h1 {
+    max-width: 940px;
+    margin: 0;
+    font-size: clamp(2.35rem, 4.8vw, 4.35rem);
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
+  .about-hero p {
+    max-width: 780px;
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(1rem, 1.2vw, 1.08rem);
+    line-height: 1.9;
+  }
+
+  .about-hero .hero-lede {
+    color: var(--text);
+    font-size: clamp(1.12rem, 1.45vw, 1.26rem);
+    font-weight: 700;
+    line-height: 1.55;
+  }
+
+  .identity-panel,
+  .about-card,
+  .timeline-item,
+  .contact-panel {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 14px 36px rgba(35, 35, 35, 0.05);
+  }
+
+  .identity-panel {
+    display: grid;
+    gap: 14px;
+    align-content: start;
+    min-width: 0;
+    padding: 18px;
+  }
+
+  .profile-card {
+    display: grid;
+    grid-template-columns: 74px minmax(0, 1fr);
+    gap: 16px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 18px;
+  }
+
+  .profile-card img {
+    width: 74px;
+    height: 74px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    object-fit: cover;
+    background: var(--surface);
+  }
+
+  .profile-card h2 {
+    margin: 0 0 8px;
+    font-size: 1.52rem;
+    line-height: 1.2;
+  }
+
+  .profile-card p,
+  .identity-list span,
+  .about-card p,
+  .timeline-item p,
+  .contact-panel p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.82;
+  }
+
+  .identity-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .identity-list div {
+    display: grid;
+    gap: 5px;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--soft-green);
+  }
+
+  .identity-list div:nth-child(2) {
+    background: var(--soft-blue);
+  }
+
+  .identity-list strong {
+    color: var(--text);
+    font-size: 0.98rem;
+    line-height: 1.35;
+  }
+
+  .about-section {
+    margin-top: 52px;
+  }
+
+  .section-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .section-heading h2 {
+    margin-bottom: 0;
+    font-size: clamp(1.65rem, 2.6vw, 2.3rem);
+    line-height: 1.25;
+  }
+
+  .about-page .eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+
+  .about-grid {
+    display: grid;
+    gap: 16px;
+  }
+
+  .profile-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .focus-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-card {
+    min-width: 0;
+    min-height: 100%;
+    padding: 22px;
+  }
+
+  .about-card h3,
+  .timeline-item h3 {
+    margin-bottom: 10px;
+    font-size: clamp(1.08rem, 1.25vw, 1.22rem);
+    line-height: 1.35;
+  }
+
+  .timeline {
+    display: grid;
+    gap: 14px;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 108px minmax(0, 1fr);
+    gap: 18px;
+    padding: 22px;
+  }
+
+  .timeline-stage {
+    padding-top: 3px;
+    color: color-mix(in srgb, var(--accent) 76%, var(--muted));
+    font-size: clamp(1rem, 1.25vw, 1.12rem);
+    font-weight: 650;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .question-section {
+    border-top: 1px solid var(--border);
+    padding-top: 34px;
+  }
+
+  .question-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .question-list li {
+    position: relative;
+    padding-left: 22px;
+    color: #3f4a50;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .question-list li::before {
+    position: absolute;
+    top: 0.78em;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--accent);
+    content: '';
+  }
+
+  .contact-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr);
+    gap: 24px;
+    align-items: end;
+    margin-top: 56px;
+    padding: clamp(24px, 4vw, 34px);
+  }
+
+  .about-hero h1,
+  .about-hero p,
+  .profile-card,
+  .identity-list,
+  .about-card,
+  .timeline-item,
+  .contact-panel {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .contact-panel h2 {
+    margin-bottom: 12px;
+    font-size: clamp(1.65rem, 2.6vw, 2.3rem);
+    line-height: 1.25;
+  }
+
+  .contact-panel .contact-note {
+    margin-top: 18px;
+    font-size: 0.94rem;
+    line-height: 1.75;
+  }
+
+  .contact-email {
+    display: inline-flex;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 0.96rem;
+    font-weight: 500;
+    text-decoration-color: color-mix(in srgb, var(--muted) 32%, transparent);
+    text-underline-offset: 4px;
+  }
+
+  .contact-email:hover {
+    color: var(--text);
+    text-decoration-color: color-mix(in srgb, var(--accent) 48%, transparent);
+  }
+
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+
+  .tag-cloud span {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 10px;
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 860px) {
+    .about-page {
+      padding-top: 30px;
+    }
+
+    .about-hero,
+    .profile-grid,
+    .focus-grid,
+    .contact-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .about-hero-copy {
+      min-height: 0;
+    }
+
+    .tag-cloud {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .about-hero {
+      gap: 18px;
+      margin-bottom: 42px;
+    }
+
+    .about-hero h1 {
+      font-size: clamp(2rem, 8vw, 2.45rem);
+    }
+
+    .about-hero p {
+      font-size: 1rem;
+    }
+
+    .profile-card,
+    .timeline-item {
+      grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+      gap: 8px;
+    }
+
+    .timeline-stage {
+      font-size: 1rem;
+    }
+  }
+</style>
