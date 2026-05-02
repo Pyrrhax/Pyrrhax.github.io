@@ -4,6 +4,24 @@ import { getAllTopics, getPosts, topicUrl } from '../../lib/posts';
 
 const posts = await getPosts();
 const topics = await getAllTopics(posts);
+
+const topicAccent: Record<string, string> = {
+  security: 'blue',
+  web3: 'gold',
+  ai: 'red',
+  programming: 'green',
+  thinking: 'red',
+  tooling: 'blue',
+};
+
+const topicDescriptions: Record<string, string> = {
+  security: '漏洞、攻防、靶场和工具链，是这座笔记库里最厚的一条线。',
+  web3: '从概念到风险，把链上世界拆成能判断、能讨论的问题。',
+  ai: '观察 AI 如何改变能力结构、协作方式和安全边界。',
+  programming: '工程基础、源码理解和旧笔记，很多安全问题仍从这里长出来。',
+  thinking: '不只写技术，也记录一些关于选择、系统和现实处境的思考。',
+  tooling: '博客、环境、工具和构建过程里值得留下的经验。',
+};
 ---
 
 <BaseLayout title="主题">
@@ -11,14 +29,15 @@ const topics = await getAllTopics(posts);
     <section class="hero">
       <div class="eyebrow">Topics</div>
       <h1>主题入口</h1>
-      <p>以长期知识库的方式进入内容。主题负责方向，标签负责关键词，避免把同一种导航做三遍。</p>
+      <p>我把一些长期问题放在这里：安全、Web3、AI、工程，还有少量关于选择和现实处境的记录。</p>
     </section>
 
     <section class="topic-grid" aria-label="主题列表">
       {topics.map(({ topic, label, count }) => (
-        <a class="topic-card" href={topicUrl(topic)}>
+        <a class={`topic-card ${topicAccent[topic] || ''}`} href={topicUrl(topic)}>
           <span>{label}</span>
-          <strong>{count}</strong>
+          <p>{topicDescriptions[topic] || '一些仍然值得回头看的笔记。'}</p>
+          <strong>{count} 篇</strong>
         </a>
       ))}
     </section>

@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import {
   columnUrl,
   getAllColumns,
-  getAllTopics,
   getFeaturedPosts,
   getPosts,
   postTopic,
@@ -13,7 +12,6 @@ import {
 } from '../lib/posts';
 
 const posts = await getPosts();
-const topics = await getAllTopics(posts);
 const featuredPosts = await getFeaturedPosts();
 const securityPosts = posts.filter((post) => postTopic(post) === 'security');
 const programmingPosts = posts.filter((post) => postTopic(post) === 'programming');
@@ -46,28 +44,28 @@ const valueThemes = [
     key: 'security',
     label: '安全研究主线',
     count: securityPosts.length,
-    text: '博客最核心的内容资产：从漏洞原理、Web 攻防、内网、靶场到工具链，适合按路径连续学习。',
+    text: '这里是我写得最多、也最愿意反复回看的主线：漏洞原理、Web 攻防、内网、靶场和工具链。',
     accent: 'blue',
   },
   {
     key: 'web3',
     label: 'Web3 基础判断',
     count: web3Posts.length,
-    text: '把链上链下、DEX、共识、以太坊、稳定币、Layer2 等概念整理成可理解、可判断的入门地图。',
+    text: '从链上链下、DEX、共识、以太坊到稳定币和 Layer2，先把判断所需的概念放稳。',
     accent: 'gold',
   },
   {
     key: 'ai',
     label: 'AI 与认知推演',
     count: aiPosts.length,
-    text: '关注 AI 时代的底层能力、群智涌现、提示词工程、安全风险和人机协作方式。',
+    text: '记录我对 AI 能力、群智涌现、提示词、安全风险和人机协作方式的持续观察。',
     accent: 'red',
   },
   {
     key: 'programming',
     label: '工程能力底座',
     count: programmingPosts.length,
-    text: '保留 Java、汇编、算法题和源码理解等基础工程内容，为安全研究提供实现层支撑。',
+    text: 'Java、汇编、算法题和源码理解这些旧笔记，仍然是很多安全问题的实现层背景。',
     accent: 'green',
   },
 ];
@@ -127,15 +125,14 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
             data-hero-slide={String(index)}
             data-active={index === 0 ? 'true' : 'false'}
             hidden={index !== 0}
-            style={`background-image: linear-gradient(90deg, rgba(10,30,34,.92), rgba(15,70,76,.58)), url("${heroImages[index % heroImages.length]}")`}
+            style={`--hero-image: url("${heroImages[index % heroImages.length]}")`}
           >
-            <p class="kicker">质量 {post.data.qualityScore}/100 · {topicLabel(postTopic(post))} · #{index + 1}</p>
+            <p class="kicker">精选 #{index + 1} · {topicLabel(postTopic(post))}</p>
             <h1 title={post.data.title}>{homeTitle(post)}</h1>
             <p class="lead">{homeDescription(post)}</p>
+            <p class="hero-score">AI 质量评分 {post.data.qualityScore}</p>
             <div class="hero-actions">
               <a class="button primary" href={postUrl(post)}>阅读这篇</a>
-              <a class="button" href="#themes">看核心主题</a>
-              <a class="button" href="#articles">看精选文章</a>
             </div>
           </article>
         ))}
@@ -153,17 +150,22 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
       </div>
 
       <div class="signal-panel">
+        <aside class="author-card" aria-label="作者简介">
+          <div class="author-card-head">
+            <img src="https://github.com/Pyrrhax.png?size=160" alt="Pyrrhax GitHub 头像" />
+            <div>
+              <strong>Pyrrhax</strong>
+              <span>Security / Web3 / AI</span>
+            </div>
+          </div>
+          <p>从信息安全、Web3、AI 与投资判断出发，记录一个技术从业者如何理解系统、风险与未来。</p>
+          <div class="author-actions">
+            <a class="button primary" href="/about/">关于我</a>
+          </div>
+        </aside>
         <div class="stat-row">
           <a class="stat" href="/archives/"><strong>{posts.length}</strong><span>历史文章</span></a>
-          <a class="stat" href="/topics/"><strong>{topics.length}</strong><span>内容主题</span></a>
-        </div>
-        <div class="module">
-          <h2>质量排序</h2>
-          <p>所有文章按观点原创度、信息价值、思考深度、现实解释力四维评分；精选文章自动取排名前 6，首屏大屏展示排名前 3。</p>
-        </div>
-        <div class="module">
-          <h2>内容秩序</h2>
-          <p>首页只展示最有价值的主题和路径；完整主题索引仍在顶部导航里。</p>
+          <a class="stat" href="#articles"><strong>{featured.length}</strong><span>精选文章</span></a>
         </div>
       </div>
     </section>
@@ -171,8 +173,8 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
     <section id="themes" class="product-section">
       <div class="product-section-head">
         <div>
-          <h2>高价值主题</h2>
-          <p>不是把所有分类都摊开，而是先给读者 4 个最值得投入时间的阅读方向。</p>
+          <h2>从这些主题开始</h2>
+          <p>几条长期写作线索：安全、Web3、AI，以及工程基础。</p>
         </div>
         <a class="button" href="/topics/">全部主题</a>
       </div>
@@ -195,8 +197,8 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
     <section id="paths" class="product-section">
       <div class="product-section-head">
         <div>
-          <h2>推荐专栏</h2>
-          <p>每个专栏独立成一张封面，右侧只显示这个专栏的三篇文章。</p>
+          <h2>连续阅读的专栏</h2>
+          <p>有些笔记单篇看不够，串起来才更像一条能走下去的路。</p>
         </div>
         <a class="button" href="/paths/">全部专栏</a>
       </div>
@@ -252,8 +254,8 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
     <section id="articles" class="product-section">
       <div class="product-section-head">
         <div>
-          <h2>精选文章展示</h2>
-          <p>按内容价值挑出的 6 篇文章，优先展示能代表博客深度和学习路径的节点。</p>
+          <h2>值得先读的文章</h2>
+          <p>这些是我更愿意让新读者先看到的文章：有问题意识，也能接到后面的长线阅读。</p>
         </div>
         <a class="button" href="/archives/">全部文章</a>
       </div>

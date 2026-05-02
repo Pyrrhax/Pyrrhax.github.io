@@ -1,5 +1,5 @@
 ---
-title: "Anthropic最强模型Mythos泄露：网络安全从业者看到了流窜AI的开端"
+title: "从 Mythos 泄露看 AI 代理的安全风险"
 date: "2026-03-28T00:00:00+08:00"
 description: "一、模型信息泄露 就在昨天，一份Anthropic的内部博客草稿因CMS配置失误意外泄露。 泄露内容显示，他们正在测试的新模型Claude Mythos（也被称为Capybara）在软件编程、学术推理，尤其是网络安全能力上，大幅超越了此前最强的Claude Opus 4.6。 Anthropic自己的措辞相当惊人——他们称该模型“目前远超任何其他AI模型”，并直言它“预示着一波即将到来的AI驱动漏洞利用浪潮，其速度将远超防守方”。"
 featuredDescription: "以模型泄露和自主代理为情景入口，推演 AI、网络安全、区块链和去中心化算力交汇后可能出现的新型系统性风险。"
