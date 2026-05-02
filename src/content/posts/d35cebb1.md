@@ -6,7 +6,7 @@ categories: ["信息安全","渗透测试"]
 tags: ["渗透测试", "Web安全", "SQL注入"]
 topic: security
 subtopic: web-security
-qualityScore: 84
+qualityScore: 52
 featured: false
 level: intermediate
 status: evergreen

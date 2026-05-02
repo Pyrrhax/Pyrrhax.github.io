@@ -7,7 +7,7 @@ tags: ["渗透测试", "后渗透", "无线安全"]
 legacyPath: "/posts/af5f2fef.html"
 topic: security
 subtopic: wireless-security
-qualityScore: 74
+qualityScore: 49
 ---
 <h4 id="取证科学"><a href="#取证科学" class="headerlink" title="取证科学"></a>取证科学</h4><ul>
 <li>Forensic<ul>

@@ -7,7 +7,7 @@ tags: ["渗透测试", "信息收集", "MSF", "后渗透", "Windows"]
 legacyPath: "/posts/c2caaf54.html"
 topic: security
 subtopic: pentest-basics
-qualityScore: 73
+qualityScore: 48
 ---
 <h4 id="MSF–信息收集"><a href="#MSF–信息收集" class="headerlink" title="MSF–信息收集"></a>MSF–信息收集</h4><ul>
 <li><p>Nmap扫描</p>

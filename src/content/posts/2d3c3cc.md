@@ -7,7 +7,7 @@ tags: ["渗透测试", "Windows"]
 legacyPath: "/posts/2d3c3cc.html"
 topic: security
 subtopic: pentest-basics
-qualityScore: 73
+qualityScore: 54
 ---
 <h2 id="Windows身份认证过程"><a href="#Windows身份认证过程" class="headerlink" title="Windows身份认证过程"></a>Windows身份认证过程</h2><ul>
 <li>开机加载操作系统内核，windows启动之后，进入ntlogon.exe，即输入用户名和密码的界面。</li>

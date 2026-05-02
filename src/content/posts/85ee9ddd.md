@@ -7,7 +7,7 @@ tags: ["渗透测试", "后渗透", "内网", "逆向", "Windows", "Kali"]
 legacyPath: "/posts/85ee9ddd.html"
 topic: security
 subtopic: post-exploitation
-qualityScore: 82
+qualityScore: 57
 ---
 <h2 id="后渗透——文件传输"><a href="#后渗透——文件传输" class="headerlink" title="后渗透——文件传输"></a>后渗透——文件传输</h2><ul>
 <li><p>上传工具</p>

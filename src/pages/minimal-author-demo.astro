@@ -1,0 +1,862 @@
+---
+import {
+  comparePostQuality,
+  getAllColumns,
+  getAllTopics,
+  getPosts,
+  postUrl,
+  topicUrl,
+} from '../lib/posts';
+
+const posts = await getPosts();
+const featuredPosts = [...posts].sort(comparePostQuality).slice(0, 4);
+const latestPosts = posts.slice(0, 5);
+const columns = getAllColumns(posts).slice(0, 4);
+const topics = (await getAllTopics(posts)).slice(0, 5);
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat('zh-CN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(date);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pyrrhax 高级极简主义博客首页 UI demo，参考 Vercel Blog、Stripe Docs 与独立作者主页。"
+    />
+    <title>高级极简博客 UI Demo | Pyrrhax</title>
+    <link rel="icon" href="/favicons/favicon.ico" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="wordmark" href="/">Pyrrhax</a>
+        <nav aria-label="样例页导航">
+          <a href="#writing">Writing</a>
+          <a href="#library">Library</a>
+          <a href="#notes">Notes</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="切换明暗模式" data-theme-toggle>
+          <span class="theme-icon" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <h1 id="hero-title">Pyrrhax</h1>
+            <p>
+              写安全、工程、Web3 与 AI 时代的判断力。少一点喧哗，多一点可以反复回看的结构。
+            </p>
+            <div class="hero-actions">
+              <a class="primary-link" href="#writing">阅读最新文章</a>
+              <a class="secondary-link" href="#library">查看知识库</a>
+            </div>
+          </div>
+
+          <aside class="author-panel" aria-label="作者简介">
+            <img src="/images/avatar.png" alt="Pyrrhax 头像" />
+            <div>
+              <strong>独立技术写作者</strong>
+              <p>Security notes, systems thinking, and long-form technical essays.</p>
+            </div>
+            <dl>
+              <div>
+                <dt>{posts.length}</dt>
+                <dd>Posts</dd>
+              </div>
+              <div>
+                <dt>{topics.length}</dt>
+                <dd>Topics</dd>
+              </div>
+              <div>
+                <dt>{columns.length}</dt>
+                <dd>Paths</dd>
+              </div>
+            </dl>
+          </aside>
+        </section>
+
+        <section class="writing-section" id="writing" aria-labelledby="writing-title">
+          <div class="section-head">
+            <h2 id="writing-title">Latest Writing</h2>
+            <a href="/archives/">Archive</a>
+          </div>
+
+          <div class="writing-list">
+            {latestPosts.map((post) => (
+              <a class="writing-row" href={postUrl(post)}>
+                <span class="row-date">{formatDate(post.data.date)}</span>
+                <span class="row-main">
+                  <strong>{post.data.title}</strong>
+                  {post.data.description && <span>{post.data.description}</span>}
+                </span>
+                <span class="row-score">{post.data.qualityScore}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section class="library-section" id="library" aria-labelledby="library-title">
+          <div class="library-intro">
+            <h2 id="library-title">Library</h2>
+            <p>
+              像文档一样组织博客：每个主题都有入口、路径和可继续深入的文章。列表保持克制，交互只在需要时浮现。
+            </p>
+          </div>
+
+          <div class="library-layout">
+            <aside class="library-nav" aria-label="主题索引">
+              {topics.map((topic) => (
+                <a href={topicUrl(topic.topic)}>
+                  <span>{topic.label}</span>
+                  <strong>{topic.count}</strong>
+                </a>
+              ))}
+            </aside>
+
+            <div class="library-content">
+              {columns.map((column) => (
+                <article class="doc-row">
+                  <div>
+                    <span>{column.label}</span>
+                    <h3>{column.title}</h3>
+                    <p>{column.description}</p>
+                  </div>
+                  <a href={`/paths/${column.slug}/`} aria-label={`查看 ${column.title}`}>
+                    Open
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section class="notes-section" id="notes" aria-labelledby="notes-title">
+          <div class="section-head">
+            <h2 id="notes-title">Featured Notes</h2>
+            <span>Quality ranked</span>
+          </div>
+
+          <div class="feature-grid">
+            {featuredPosts.map((post, index) => (
+              <a class="feature-card" href={postUrl(post)}>
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h3>{post.data.title}</h3>
+                <p>{post.data.description || '一篇值得重新整理和回看的技术笔记。'}</p>
+                <small>{post.data.qualityScore}/100</small>
+              </a>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Pyrrhax UI style demo</span>
+        <a href="/">Back to current site</a>
+      </footer>
+    </div>
+
+    <script>
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      const storageKey = 'pyrrhax-minimal-demo-theme';
+      const savedTheme = localStorage.getItem(storageKey);
+
+      if (savedTheme === 'dark' || savedTheme === 'light') {
+        root.dataset.theme = savedTheme;
+      }
+
+      toggle?.addEventListener('click', () => {
+        const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = nextTheme;
+        localStorage.setItem(storageKey, nextTheme);
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #fbfaf7;
+    --bg-soft: #f3f1ec;
+    --surface: rgba(255, 255, 255, 0.74);
+    --surface-strong: #ffffff;
+    --text: #111111;
+    --muted: #66635d;
+    --faint: #96918a;
+    --line: rgba(17, 17, 17, 0.1);
+    --line-strong: rgba(17, 17, 17, 0.18);
+    --accent: #635bff;
+    --accent-soft: rgba(99, 91, 255, 0.09);
+    --shadow: 0 22px 80px rgba(18, 16, 12, 0.08);
+    --radius: 18px;
+    --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #050505;
+      --bg-soft: #101010;
+      --surface: rgba(18, 18, 18, 0.74);
+      --surface-strong: #121212;
+      --text: #f5f3ee;
+      --muted: #aaa49b;
+      --faint: #77716a;
+      --line: rgba(245, 243, 238, 0.12);
+      --line-strong: rgba(245, 243, 238, 0.2);
+      --accent: #9b95ff;
+      --accent-soft: rgba(155, 149, 255, 0.13);
+      --shadow: 0 22px 90px rgba(0, 0, 0, 0.34);
+    }
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #fbfaf7;
+    --bg-soft: #f3f1ec;
+    --surface: rgba(255, 255, 255, 0.74);
+    --surface-strong: #ffffff;
+    --text: #111111;
+    --muted: #66635d;
+    --faint: #96918a;
+    --line: rgba(17, 17, 17, 0.1);
+    --line-strong: rgba(17, 17, 17, 0.18);
+    --accent: #635bff;
+    --accent-soft: rgba(99, 91, 255, 0.09);
+    --shadow: 0 22px 80px rgba(18, 16, 12, 0.08);
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #050505;
+    --bg-soft: #101010;
+    --surface: rgba(18, 18, 18, 0.74);
+    --surface-strong: #121212;
+    --text: #f5f3ee;
+    --muted: #aaa49b;
+    --faint: #77716a;
+    --line: rgba(245, 243, 238, 0.12);
+    --line-strong: rgba(245, 243, 238, 0.2);
+    --accent: #9b95ff;
+    --accent-soft: rgba(155, 149, 255, 0.13);
+    --shadow: 0 22px 90px rgba(0, 0, 0, 0.34);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background:
+      radial-gradient(circle at 80% 0%, var(--accent-soft), transparent 28rem),
+      var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-width: 320px;
+    margin: 0;
+    background: transparent;
+    color: var(--text);
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+
+  body::selection {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .shell {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    min-height: 76px;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 84%, transparent);
+    backdrop-filter: blur(18px);
+  }
+
+  .wordmark {
+    font-size: 15px;
+    font-weight: 720;
+    letter-spacing: 0;
+  }
+
+  .topbar nav {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .topbar nav a {
+    transition: color 180ms ease;
+  }
+
+  .topbar nav a:hover {
+    color: var(--text);
+  }
+
+  .theme-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    transition:
+      border-color 180ms ease,
+      transform 180ms ease,
+      background 180ms ease;
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--line-strong);
+    background: var(--surface-strong);
+    transform: translateY(-1px);
+  }
+
+  .theme-icon {
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-radius: 999px;
+    box-shadow: inset -5px -4px 0 currentColor;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: clamp(40px, 8vw, 110px);
+    align-items: end;
+    min-height: calc(100svh - 76px);
+    padding: clamp(76px, 11vw, 132px) 0 72px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(72px, 16vw, 188px);
+    font-weight: 760;
+    line-height: 0.88;
+    letter-spacing: 0;
+  }
+
+  .hero-copy p {
+    max-width: 660px;
+    margin: 34px 0 0;
+    color: var(--muted);
+    font-size: clamp(20px, 3vw, 31px);
+    font-weight: 450;
+    line-height: 1.35;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 34px;
+  }
+
+  .primary-link,
+  .secondary-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    border-radius: 999px;
+    padding: 0 17px;
+    font-size: 14px;
+    font-weight: 620;
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      background 180ms ease;
+  }
+
+  .primary-link {
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .secondary-link {
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+
+  .primary-link:hover,
+  .secondary-link:hover {
+    transform: translateY(-2px);
+  }
+
+  .secondary-link:hover {
+    border-color: var(--line-strong);
+    background: var(--surface);
+  }
+
+  .author-panel {
+    display: grid;
+    gap: 24px;
+    border-radius: var(--radius);
+    background: var(--surface);
+    padding: 22px;
+    box-shadow: var(--shadow);
+  }
+
+  .author-panel img {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--line);
+  }
+
+  .author-panel strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 17px;
+  }
+
+  .author-panel p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .author-panel dl {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 0;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  .author-panel dt {
+    margin: 0;
+    font-size: 23px;
+    font-weight: 720;
+    line-height: 1;
+  }
+
+  .author-panel dd {
+    margin: 6px 0 0;
+    color: var(--faint);
+    font-size: 12px;
+  }
+
+  .writing-section,
+  .library-section,
+  .notes-section {
+    padding: clamp(70px, 11vw, 126px) 0;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 92px;
+  }
+
+  .section-head,
+  .library-intro {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 28px;
+    margin-bottom: 36px;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: clamp(34px, 6vw, 72px);
+    font-weight: 710;
+    line-height: 0.98;
+    letter-spacing: 0;
+  }
+
+  .section-head a,
+  .section-head span {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .section-head a {
+    transition: color 180ms ease;
+  }
+
+  .section-head a:hover {
+    color: var(--text);
+  }
+
+  .writing-list {
+    border-top: 1px solid var(--line);
+  }
+
+  .writing-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr) 46px;
+    gap: 30px;
+    align-items: start;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+    transition:
+      padding-left 190ms ease,
+      background 190ms ease;
+  }
+
+  .writing-row::after {
+    content: "";
+    position: absolute;
+    right: 3px;
+    top: 36px;
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid currentColor;
+    border-top: 1.5px solid currentColor;
+    color: var(--faint);
+    opacity: 0;
+    transform: translate(-8px, 8px) rotate(45deg);
+    transition:
+      opacity 190ms ease,
+      transform 190ms ease,
+      color 190ms ease;
+  }
+
+  .writing-row:hover {
+    padding-left: 14px;
+    background: linear-gradient(90deg, var(--accent-soft), transparent 56%);
+  }
+
+  .writing-row:hover::after {
+    opacity: 1;
+    color: var(--accent);
+    transform: translate(0, 0) rotate(45deg);
+  }
+
+  .row-date,
+  .row-score {
+    color: var(--faint);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .row-score {
+    justify-self: end;
+  }
+
+  .row-main strong {
+    display: block;
+    color: var(--text);
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 660;
+    line-height: 1.16;
+    letter-spacing: 0;
+  }
+
+  .row-main span {
+    display: -webkit-box;
+    max-width: 760px;
+    margin-top: 12px;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .library-intro {
+    align-items: start;
+  }
+
+  .library-intro p {
+    max-width: 520px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .library-layout {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: clamp(30px, 6vw, 86px);
+    align-items: start;
+  }
+
+  .library-nav {
+    position: sticky;
+    top: 96px;
+    display: grid;
+    gap: 2px;
+    padding: 8px;
+    border-radius: 16px;
+    background: var(--bg-soft);
+  }
+
+  .library-nav a {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    border-radius: 11px;
+    padding: 10px 12px;
+    color: var(--muted);
+    font-size: 14px;
+    transition:
+      color 160ms ease,
+      background 160ms ease;
+  }
+
+  .library-nav a:hover {
+    background: var(--surface-strong);
+    color: var(--text);
+  }
+
+  .library-nav strong {
+    color: var(--faint);
+    font-size: 12px;
+  }
+
+  .library-content {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .doc-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 26px;
+    align-items: center;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .doc-row span {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 680;
+  }
+
+  .doc-row h3 {
+    margin: 0;
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.18;
+    letter-spacing: 0;
+  }
+
+  .doc-row p {
+    max-width: 680px;
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .doc-row a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0 13px;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 620;
+    transition:
+      color 160ms ease,
+      border-color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .doc-row:hover a {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateX(2px);
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .feature-card {
+    min-height: 310px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: var(--radius);
+    background:
+      linear-gradient(180deg, transparent, color-mix(in srgb, var(--accent-soft) 72%, transparent)),
+      var(--surface);
+    padding: 22px;
+    transition:
+      transform 180ms ease,
+      background 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    background: var(--surface-strong);
+    box-shadow: var(--shadow);
+  }
+
+  .feature-card span,
+  .feature-card small {
+    color: var(--faint);
+    font-size: 13px;
+  }
+
+  .feature-card h3 {
+    margin: 32px 0 0;
+    font-size: 22px;
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+
+  .feature-card p {
+    display: -webkit-box;
+    margin: 16px 0 auto;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 30px 0 48px;
+    color: var(--faint);
+    font-size: 13px;
+  }
+
+  .footer a {
+    color: var(--muted);
+  }
+
+  .footer a:hover {
+    color: var(--text);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      transition: none !important;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero,
+    .library-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .hero {
+      align-items: start;
+      min-height: auto;
+    }
+
+    .author-panel {
+      max-width: 420px;
+    }
+
+    .library-nav {
+      position: static;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .shell {
+      width: min(100% - 28px, 1180px);
+    }
+
+    .topbar {
+      grid-template-columns: 1fr auto;
+    }
+
+    .topbar nav {
+      display: none;
+    }
+
+    .hero {
+      padding-top: 66px;
+    }
+
+    .hero h1 {
+      font-size: clamp(58px, 20vw, 86px);
+    }
+
+    .hero-copy p {
+      font-size: 20px;
+    }
+
+    .section-head,
+    .library-intro,
+    .footer {
+      align-items: start;
+      flex-direction: column;
+    }
+
+    .writing-row,
+    .doc-row {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .row-score {
+      justify-self: start;
+    }
+
+    .library-nav,
+    .feature-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .feature-card {
+      min-height: 260px;
+    }
+  }
+</style>

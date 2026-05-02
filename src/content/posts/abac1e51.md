@@ -7,7 +7,7 @@ tags: ["渗透测试", "Web安全", "漏洞分析", "信息收集", "CSRF", "Win
 legacyPath: "/posts/abac1e51.html"
 topic: security
 subtopic: web-security
-qualityScore: 70
+qualityScore: 25
 ---
 <h3 id="Arachni"><a href="#Arachni" class="headerlink" title="Arachni"></a>Arachni</h3><ul>
 <li><p>官网</p>

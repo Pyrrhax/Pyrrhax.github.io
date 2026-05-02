@@ -120,7 +120,7 @@ function inferTopic(article) {
 }
 
 function inferTags(article, topic) {
-  const tags = ['公众号', article.account].filter(Boolean);
+  const tags = [];
   if (topic === 'web3') {
     tags.push('Web3', '区块链');
   }
@@ -131,6 +131,18 @@ function inferTags(article, topic) {
     tags.push('提示词工程');
   }
   return [...new Set(tags)];
+}
+
+function categoryForTopic(topic) {
+  return (
+    {
+      ai: 'AI',
+      web3: 'Web3',
+      security: '安全',
+      programming: '编程',
+      thinking: '认知与思考',
+    }[topic] ?? '认知与思考'
+  );
 }
 
 let imported = 0;
@@ -158,25 +170,20 @@ for (const article of articles) {
   const slug = `wechat-article-${String(article.i).padStart(2, '0')}`;
   const topic = inferTopic(article);
   const tags = inferTags(article, topic);
-  const sourceNote = `<p><em>本文归档自微信公众号「${article.account}」。</em></p>`;
   const frontmatter = [
     '---',
     `title: ${yamlString(article.title)}`,
     `date: ${yamlString(`${article.date}T00:00:00+08:00`)}`,
     `description: ${yamlString(article.excerpt || '')}`,
-    `categories: ${yamlArray(['公众号'])}`,
+    `categories: ${yamlArray([categoryForTopic(topic)])}`,
     `tags: ${yamlArray(tags)}`,
     `topic: ${topic}`,
-    'subtopic: wechat',
     'status: note',
-    'source: wechat',
-    `sourceAccount: ${yamlString(article.account)}`,
-    `sourceUrl: ${yamlString(article.url)}`,
     '---',
     '',
   ].join('\n');
 
-  fs.writeFileSync(path.join(outputDir, `${slug}.md`), `${frontmatter}${sourceNote}\n\n${content}\n`);
+  fs.writeFileSync(path.join(outputDir, `${slug}.md`), `${frontmatter}${content}\n`);
   imported += 1;
 }
 

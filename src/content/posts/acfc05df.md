@@ -7,7 +7,7 @@ tags: ["渗透测试", "漏洞分析", "MSF", "后渗透", "Windows", "Kali"]
 legacyPath: "/posts/acfc05df.html"
 topic: security
 subtopic: post-exploitation
-qualityScore: 88
+qualityScore: 58
 ---
 <h2 id="提权-利用漏洞提权"><a href="#提权-利用漏洞提权" class="headerlink" title="提权-利用漏洞提权"></a>提权-利用漏洞提权</h2><h2 id="Ms11-080"><a href="#Ms11-080" class="headerlink" title="Ms11-080"></a>Ms11-080</h2><ul>
 <li><p>Kb2592799</p>

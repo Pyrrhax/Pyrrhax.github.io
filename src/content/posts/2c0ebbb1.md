@@ -10,7 +10,7 @@ level: beginner
 status: evergreen
 legacyPath: "/posts/2c0ebbb1.html"
 subtopic: wireless-security
-qualityScore: 86
+qualityScore: 56
 ---
 <h1 id="主动信息收集"><a href="#主动信息收集" class="headerlink" title="主动信息收集"></a>主动信息收集</h1><ul>
 <li><p>直接与目标系统交互通信</p>

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
-import { getAllTopics, getPostsByTopic, topicLabel } from '../../lib/posts';
+import { comparePostQuality, getAllTopics, getPostsByTopic, topicLabel } from '../../lib/posts';
 
 export async function getStaticPaths() {
   const topics = await getAllTopics();
@@ -13,6 +13,7 @@ export async function getStaticPaths() {
 
 const { topic } = Astro.props;
 const posts = await getPostsByTopic(topic);
+const qualityPosts = [...posts].sort(comparePostQuality);
 const label = topicLabel(topic);
 ---
 
@@ -20,12 +21,45 @@ const label = topicLabel(topic);
   <main class="page">
     <section class="hero">
       <div class="eyebrow">Topic</div>
-      <h1>{label}</h1>
-      <p>{posts.length} 篇文章。主题用于长期组织内容，标签用于在文章之间横向跳转。</p>
+      <div class="hero-sort-head">
+        <div>
+          <h1>{label}</h1>
+          <p>{posts.length} 篇文章。主题用于长期组织内容，标签用于在文章之间横向跳转。</p>
+        </div>
+        <div class="sort-segment" aria-label={`${label} 排序方式`}>
+          <button class="sort-option" type="button" data-topic-sort="quality" aria-pressed="true">质量排序</button>
+          <button class="sort-option" type="button" data-topic-sort="time" aria-pressed="false">时间排序</button>
+        </div>
+      </div>
     </section>
 
-    <section class="post-list" aria-label={`${label} 文章`}>
+    <section class="post-list topic-sort-view" data-topic-view="quality" aria-label={`${label} 文章，按质量排序`}>
+      {qualityPosts.map((post) => <PostCard post={post} />)}
+    </section>
+
+    <section class="post-list topic-sort-view" data-topic-view="time" aria-label={`${label} 文章，按时间排序`} hidden>
       {posts.map((post) => <PostCard post={post} />)}
     </section>
+
+    <script>
+      const sortButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-topic-sort]')];
+      const qualityView = document.querySelector<HTMLElement>('[data-topic-view="quality"]');
+      const timeView = document.querySelector<HTMLElement>('[data-topic-view="time"]');
+
+      const showTopicSort = (sort: string) => {
+        if (!qualityView || !timeView) return;
+
+        const showingTime = sort === 'time';
+        qualityView.hidden = showingTime;
+        timeView.hidden = !showingTime;
+        sortButtons.forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.topicSort === sort));
+        });
+      };
+
+      sortButtons.forEach((button) => {
+        button.addEventListener('click', () => showTopicSort(button.dataset.topicSort || 'quality'));
+      });
+    </script>
   </main>
 </BaseLayout>

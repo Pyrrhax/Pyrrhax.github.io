@@ -7,7 +7,7 @@ tags: ["渗透测试", "信息收集", "MSF"]
 legacyPath: "/posts/45c4bac.html"
 topic: security
 subtopic: pentest-basics
-qualityScore: 72
+qualityScore: 53
 ---
 <h3 id="Veil-evasion"><a href="#Veil-evasion" class="headerlink" title="Veil-evasion"></a>Veil-evasion</h3><ul>
 <li><p>属于Veil-framework框架的一部分</p>

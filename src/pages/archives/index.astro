@@ -3,6 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getPosts, postUrl } from '../../lib/posts';
 
 const posts = await getPosts();
+const qualityPosts = [...posts].sort(
+  (a, b) =>
+    b.data.qualityScore - a.data.qualityScore ||
+    b.data.date.valueOf() - a.data.date.valueOf() ||
+    a.data.title.localeCompare(b.data.title, 'zh-CN'),
+);
 const groups = new Map<string, typeof posts>();
 for (const post of posts) {
   const key = String(post.data.date.getFullYear());
@@ -15,22 +21,110 @@ const years = [...groups.entries()].sort((a, b) => Number(b[0]) - Number(a[0]));
   <main class="page">
     <section class="hero">
       <div class="eyebrow">Archive</div>
-      <h1>归档</h1>
-      <p>按年份回看所有历史文章。</p>
+      <div class="hero-sort-head">
+        <div>
+          <h1>归档</h1>
+          <p>默认按四维质量评分排序，也可以切回发布时间线回看历史文章。</p>
+        </div>
+        <div class="sort-segment" aria-label="归档排序方式">
+          <button class="sort-option" type="button" data-archive-sort="quality" aria-pressed="true">质量排序</button>
+          <button class="sort-option" type="button" data-archive-sort="time" aria-pressed="false">时间排序</button>
+        </div>
+      </div>
     </section>
-    {years.map(([year, yearPosts]) => (
-      <section class="post-list" aria-labelledby={`year-${year}`}>
-        <h2 id={`year-${year}`}>{year}</h2>
-        {yearPosts.map((post) => (
+    <section class="archive-view" data-archive-view="quality" aria-labelledby="quality-archive-title">
+      <h2 id="quality-archive-title">质量排序</h2>
+      <div class="post-list">
+        {qualityPosts.map((post, index) => (
           <article class="post-card">
             <div>
+              <div class="archive-rank">#{index + 1}</div>
               <h2><a href={postUrl(post)}>{post.data.title}</a></h2>
-              <div class="meta">{post.data.categories.join(' / ')}</div>
+              <div class="archive-meta">{post.data.categories.join(' / ')}</div>
             </div>
-            <time class="meta" datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('zh-CN')}</time>
+            <div class="archive-card-side">
+              <span class="score-pill">质量 {post.data.qualityScore}/100</span>
+              <time class="archive-date" datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('zh-CN')}</time>
+            </div>
           </article>
         ))}
-      </section>
-    ))}
+      </div>
+    </section>
+
+    <div class="archive-view" data-archive-view="time" hidden>
+      {years.map(([year, yearPosts]) => (
+        <section class="post-list" aria-labelledby={`year-${year}`}>
+          <h2 id={`year-${year}`}>{year}</h2>
+          {yearPosts.map((post) => (
+            <article class="post-card">
+              <div>
+                <h2><a href={postUrl(post)}>{post.data.title}</a></h2>
+                <div class="archive-meta">{post.data.categories.join(' / ')}</div>
+              </div>
+              <div class="archive-card-side">
+                <span class="score-pill">质量 {post.data.qualityScore}/100</span>
+                <time class="archive-date" datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('zh-CN')}</time>
+              </div>
+            </article>
+          ))}
+        </section>
+      ))}
+    </div>
+
+    <script>
+      const sortButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-archive-sort]')];
+      const qualityView = document.querySelector<HTMLElement>('[data-archive-view="quality"]');
+      const timeView = document.querySelector<HTMLElement>('[data-archive-view="time"]');
+
+      const showArchiveSort = (sort: string) => {
+        if (!qualityView || !timeView) return;
+
+        const showingTime = sort === 'time';
+        qualityView.hidden = showingTime;
+        timeView.hidden = !showingTime;
+        sortButtons.forEach((button) => {
+          button.setAttribute('aria-pressed', String(button.dataset.archiveSort === sort));
+        });
+      };
+
+      sortButtons.forEach((button) => {
+        button.addEventListener('click', () => showArchiveSort(button.dataset.archiveSort || 'quality'));
+      });
+    </script>
+
+    <style>
+      .archive-view[hidden] {
+        display: none;
+      }
+
+      .archive-rank {
+        color: var(--accent);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 0.86rem;
+        font-weight: 750;
+        margin-bottom: 8px;
+      }
+
+      .archive-meta,
+      .archive-date {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .archive-card-side {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 640px) {
+        .archive-card-side {
+          align-items: flex-start;
+          white-space: normal;
+        }
+      }
+    </style>
   </main>
 </BaseLayout>

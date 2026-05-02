@@ -10,6 +10,135 @@ const formattedDate = new Intl.DateTimeFormat('zh-CN', {
   month: '2-digit',
   day: '2-digit',
 }).format(date);
+
+function cleanText(content: string) {
+  return content
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&[a-zA-Z#0-9]+;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function countMatches(content: string, pattern: RegExp) {
+  return content.match(pattern)?.length ?? 0;
+}
+
+function scoreTone(score: number) {
+  if (score >= 90) {
+    return {
+      label: '强观点文章',
+      summary: '有清晰判断和解释框架，能把现象、机制与现实后果连起来，适合优先阅读或回看。',
+    };
+  }
+
+  if (score >= 80) {
+    return {
+      label: '高认知价值',
+      summary: '能提供明确的新信息或新视角，虽然未必每一处都展开到底，但已经能建立有效认知。',
+    };
+  }
+
+  if (score >= 70) {
+    return {
+      label: '有效解释',
+      summary: '具备基本信息价值和现实参照，适合用来理解一个主题、工具、案例或问题切面。',
+    };
+  }
+
+  if (score >= 60) {
+    return {
+      label: '基础记录',
+      summary: '保留了有用材料，但原创判断、深层推导或现实解释力相对有限，阅读时建议结合上下文判断。',
+    };
+  }
+
+  return {
+    label: '待完善',
+    summary: '当前更像草稿、索引或简短记录，距离形成稳定观点和可复用认知还有明显空间。',
+  };
+}
+
+const rawBody = entry.body ?? '';
+const textLength = cleanText(rawBody).length;
+const headingCount = countMatches(rawBody, /<h[1-4]\b|^#{1,4}\s/gm);
+const codeCount = countMatches(rawBody, /<code\b|```|<figure class="[^"]*(?:highlight|hljs)/g);
+const imageCount = countMatches(rawBody, /<img\b|!\[[^\]]*\]\(/g);
+const listCount = countMatches(rawBody, /<li\b|^\s*[-*]\s/gm);
+const haystack = [
+  title,
+  description ?? '',
+  entry.data.topic ?? '',
+  entry.data.subtopic ?? '',
+  ...(tags ?? []),
+  ...(categories ?? []),
+  cleanText(rawBody),
+].join(' ');
+const isOpinionTopic = ['ai', 'web3', 'thinking'].includes(entry.data.topic ?? '');
+const conceptSignals = countMatches(haystack, /本质|核心|底层|结构|机制|模型|框架|悖论|矛盾|边界|路径|范式|系统|演化|趋势|长期|判断|认知|共识|信任|激励/g);
+const thesisSignals = countMatches(haystack, /我认为|在我看来|不是.+而是|并不是|真正|意味着|换句话说|也就是说|可以理解为|结论|必须|应该如何看待|我们要看|问题是|关键在于/g);
+const realitySignals = countMatches(haystack, /现实|真实|案例|实践|实操|场景|业务|成本|收益|风险|攻击|防御|市场|用户|开发者|投资者|公司|治理|监管|资源|约束|当前|今天|已经出现|比如|例如|长期来看|未来/g);
+const infoSignals = countMatches(haystack, /什么是|原理|流程|步骤|示例|代码|参数|命令|配置|安装|利用|漏洞|协议|工具|环境|扫描|注入|提权|认证|加密|数据库|合约|PoW|PoS|Layer2|RWA|预言机|ERC-20/gi);
+const deepTechSignals = countMatches(haystack, /源码|CVE|RCE|SpEL|Spring|ShellCode|缓冲区溢出|参数绑定|表达式注入|协议栈|认证过程|漏洞分析|手动漏洞挖掘/gi);
+const practicalSignals = countMatches(haystack, /靶机|Kioptrix|UploadLabs|实操|实践|复现|绕过|Bypass|payload|meterpreter|sqlmap|Burpsuite|mimikatz|MSF|命令执行|文件上传|SSRF|XSS|CSRF|SQL注入|提权/gi);
+const scoreMeta = scoreTone(qualityScore);
+const scoreBarWidth = `${qualityScore}%`;
+const rubricReasons = [
+  {
+    name: '观点原创度',
+    weight: 30,
+    text:
+      thesisSignals >= 5 || /理论|Theory|模型|框架|推演|悖论|判断力|系统如何|不可修改|流窜AI/i.test(haystack)
+        ? '提出了明确判断或表达框架，不只是材料整理。'
+        : conceptSignals >= 5 || deepTechSignals >= 2
+          ? '有一定自我组织的分析角度，但原创表达还可以继续加强。'
+          : '主要是知识归档或步骤记录，原创观点信号较弱。',
+  },
+  {
+    name: '信息价值',
+    weight: 25,
+    text:
+      infoSignals >= 12 || headingCount >= 6 || codeCount >= 4 || listCount >= 12
+        ? '信息密度较高，能补齐概念、流程或操作细节。'
+        : textLength >= 1200
+          ? '提供了基本上下文和关键材料，具备一定认知增量。'
+          : '内容较短，信息增量更偏局部。',
+  },
+  {
+    name: '思考深度',
+    weight: 25,
+    text:
+      conceptSignals >= 12 || deepTechSignals >= 5
+        ? '触及机制、结构或底层约束，深度表现较强。'
+        : conceptSignals >= 5
+          ? '不只停留在现象层面，已经开始追问原因和关系。'
+          : '更多停留在现象、工具或步骤层面。',
+  },
+  {
+    name: '现实解释力',
+    weight: 20,
+    text:
+      realitySignals >= 10 || practicalSignals >= 6 || isOpinionTopic
+        ? '能连接现实案例、成本、风险或长期趋势，解释力较好。'
+        : practicalSignals >= 2 || imageCount >= 3
+          ? '有实践场景支撑，可用于理解具体问题。'
+          : '现实参照相对有限，更适合作为概念或资料记录。',
+  },
+];
+const qualityReasons = [
+  `观点原创度（30）：${rubricReasons[0].text}`,
+  `信息价值（25）：${rubricReasons[1].text}`,
+  `思考深度（25）：${rubricReasons[2].text}`,
+  `现实解释力（20）：${rubricReasons[3].text}`,
+  entry.data.status === 'evergreen'
+    ? '状态标记为长期有效，现实参考周期更稳定。'
+    : entry.data.status === 'outdated'
+      ? '状态标记为过期，历史价值高于当前解释力。'
+      : source === 'wechat'
+        ? '更偏观点表达和长期主题串联，评分侧重判断框架和解释力。'
+        : '当前状态偏笔记归档，评分更看重认知增量和可解释性。',
+].slice(0, 5);
 ---
 
 <BaseLayout title={title} description={description}>
@@ -42,12 +171,28 @@ const formattedDate = new Intl.DateTimeFormat('zh-CN', {
       </div>
     </article>
     <aside class="sidebar">
-      <p>发布于 {formattedDate}</p>
-      <p>质量评分：<strong>{qualityScore}/100</strong></p>
-      {legacyPath && <p>旧路径：<code>{legacyPath}</code></p>}
-      {source && <p>来源：{sourceAccount || source}</p>}
-      {sourceUrl && <p><a href={sourceUrl} target="_blank" rel="noopener noreferrer">查看原文</a></p>}
-      <p><a href="/archives/">查看归档</a></p>
+      <div class="sidebar-meta">
+        <p>发布于 {formattedDate}</p>
+        <p>质量评分：<strong>{qualityScore}/100</strong></p>
+        {legacyPath && <p>旧路径：<code>{legacyPath}</code></p>}
+        {source && source !== 'wechat' && <p>来源：{sourceAccount || source}</p>}
+        {sourceUrl && source !== 'wechat' && <p><a href={sourceUrl} target="_blank" rel="noopener noreferrer">查看原文</a></p>}
+        <p><a href="/archives/">查看归档</a></p>
+      </div>
+      <section class="quality-panel" aria-labelledby="quality-panel-title">
+        <div class="quality-panel-head">
+          <span class="quality-kicker">文章评价</span>
+          <strong>{qualityScore}</strong>
+        </div>
+        <h2 id="quality-panel-title">{scoreMeta.label}</h2>
+        <div class="quality-meter" aria-label={`质量评分 ${qualityScore}/100`}>
+          <span style={`width: ${scoreBarWidth}`}></span>
+        </div>
+        <p>{scoreMeta.summary}</p>
+        <ul>
+          {qualityReasons.map((reason: string) => <li>{reason}</li>)}
+        </ul>
+      </section>
     </aside>
   </main>
 </BaseLayout>

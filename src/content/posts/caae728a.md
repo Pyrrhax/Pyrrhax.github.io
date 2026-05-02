@@ -7,7 +7,7 @@ tags: ["渗透测试", "信息收集", "内网", "Windows"]
 legacyPath: "/posts/caae728a.html"
 topic: security
 subtopic: pentest-basics
-qualityScore: 79
+qualityScore: 38
 ---
 <h1 id="NC——TELNET-BANNER"><a href="#NC——TELNET-BANNER" class="headerlink" title="NC——TELNET / BANNER"></a>NC——TELNET / BANNER</h1><ul>
 <li>nc -nv 1.1.1.1 110</li>

@@ -7,9 +7,8 @@ tags: ["渗透测试", "信息收集", "MSF", "内网", "Windows"]
 legacyPath: "/posts/f39c1fdc.html"
 topic: security
 subtopic: post-exploitation
-qualityScore: 93
-featured: true
-featuredOrder: 4
+qualityScore: 71
+featured: false
 ---
 <p>CS官方教程的学习笔记，目前进度到Weaponization。</p>
 

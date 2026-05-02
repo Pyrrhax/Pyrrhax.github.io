@@ -7,7 +7,7 @@ tags: ["渗透测试", "无线安全", "Windows"]
 legacyPath: "/posts/8ebcc27a.html"
 topic: security
 subtopic: wireless-security
-qualityScore: 73
+qualityScore: 50
 ---
 <h2 id="WEP-WPA工作原理"><a href="#WEP-WPA工作原理" class="headerlink" title="WEP/WPA工作原理"></a>WEP/WPA工作原理</h2><h3 id="WEP加密"><a href="#WEP加密" class="headerlink" title="WEP加密"></a>WEP加密</h3><ul>
 <li>使用Rivest Cipher4（RC4）算法加密流量内容，实现机密性</li>
