@@ -8,13 +8,17 @@ const tags = getAllTerms(posts, 'tags');
 
 <BaseLayout title="标签">
   <main class="page">
-    <section class="hero">
+    <section class="hero plain-hero">
       <div class="eyebrow">Tags</div>
       <h1>标签</h1>
-      <p>按主题快速浏览历史文章。</p>
     </section>
     <div class="term-grid">
-      {tags.map(([tag, count]) => <a href={tagUrl(tag)}>{tag} · {count}</a>)}
+      {tags.map(([tag, count]) => (
+        <a href={tagUrl(tag)}>
+          <span>{tag}</span>
+          <strong>{count}</strong>
+        </a>
+      ))}
     </div>
   </main>
 </BaseLayout>

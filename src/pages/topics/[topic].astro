@@ -19,12 +19,12 @@ const label = topicLabel(topic);
 
 <BaseLayout title={`主题：${label}`}>
   <main class="page">
-    <section class="hero">
+    <section class="hero plain-hero">
       <div class="eyebrow">Topic</div>
       <div class="hero-sort-head">
         <div>
           <h1>{label}</h1>
-          <p>{posts.length} 篇文章。主题用于长期组织内容，标签用于在文章之间横向跳转。</p>
+          <p>{posts.length} 篇文章</p>
         </div>
         <div class="sort-segment" aria-label={`${label} 排序方式`}>
           <button class="sort-option" type="button" data-topic-sort="quality" aria-pressed="true">质量排序</button>

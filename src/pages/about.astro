@@ -50,14 +50,6 @@ const growthItems = [
   },
 ];
 
-const questions = [
-  '技术如何改变个体机会结构？',
-  'AI 会如何重塑知识工作的价值？',
-  '普通人如何建立自己的能力与选择权？',
-];
-
-const tags = ['网络安全', 'Web3', '智能合约审计', 'AI', '投资判断', '个人成长'];
-
 ---
 
 <BaseLayout
@@ -68,7 +60,6 @@ const tags = ['网络安全', 'Web3', '智能合约审计', 'AI', '投资判断'
     <section class="about-hero" aria-labelledby="about-title">
       <div class="about-hero-copy">
         <h1 id="about-title">在复杂世界中，<span class="hero-nowrap">建立自己的系统。</span></h1>
-        <p class="hero-lede">技术、安全、投资与表达的长期实验。</p>
       </div>
     </section>
 
@@ -126,31 +117,17 @@ const tags = ['网络安全', 'Web3', '智能合约审计', 'AI', '投资判断'
       </div>
     </section>
 
-    <section class="about-section question-section" aria-labelledby="question-heading">
+    <section class="about-section contact-section" aria-labelledby="contact-heading">
       <div class="section-heading">
         <div>
-          <div class="eyebrow">Open Questions</div>
-          <h2 id="question-heading">长期问题</h2>
+          <div class="eyebrow">Connect</div>
+          <h2 id="contact-heading">联系我</h2>
         </div>
       </div>
-      <ul class="question-list">
-        {questions.map((question) => <li>{question}</li>)}
+      <ul class="contact-list">
+        <li>如果你也关注技术、Web3、AI、投资与个人成长，欢迎交流。</li>
+        <li><a class="contact-email" href="mailto:pyrrhax.hf@gmail.com">pyrrhax.hf@gmail.com</a></li>
       </ul>
-    </section>
-
-    <section class="contact-panel" aria-labelledby="contact-heading">
-      <div>
-        <div class="eyebrow">Connect</div>
-        <h2 id="contact-heading">联系我</h2>
-        <p>
-          如果你也关注技术、Web3、AI、投资与个人成长，欢迎交流。
-        </p>
-        <a class="contact-email" href="mailto:pyrrhax.hf@gmail.com">pyrrhax.hf@gmail.com</a>
-        <p class="contact-note">记录长期问题，也记录自己的判断如何变化。</p>
-      </div>
-      <div class="tag-cloud" aria-label="标签">
-        {tags.map((tag) => <span>{tag}</span>)}
-      </div>
     </section>
   </main>
 </BaseLayout>
@@ -170,14 +147,18 @@ const tags = ['网络安全', 'Web3', '智能合约审计', 'AI', '投资判断'
   }
 
   .about-hero-copy {
+    position: relative;
     display: grid;
     align-content: center;
     gap: 16px;
     min-width: 0;
-    min-height: clamp(220px, 28vw, 310px);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: clamp(38px, 6.5vw, 66px) 0 clamp(32px, 5.4vw, 54px);
+    min-height: 0;
+    overflow: visible;
+    padding: clamp(34px, 6.5vw, 58px) 0 clamp(30px, 5.4vw, 48px);
+  }
+
+  .about-hero-copy::before {
+    content: none;
   }
 
   .about-hero h1 {
@@ -212,17 +193,17 @@ const tags = ['网络安全', 'Web3', '智能合约审计', 'AI', '投资判断'
   }
 
   .about-card,
-  .timeline-item,
-  .contact-panel {
+  .timeline-item {
     border: 1px solid var(--border);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.72);
-    box-shadow: 0 14px 36px rgba(35, 35, 35, 0.05);
+    border-radius: 4px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(248, 251, 252, 0.98)),
+      var(--surface);
+    box-shadow: 0 10px 28px rgba(16, 35, 42, 0.04);
   }
 
   .about-card p,
-  .timeline-item p,
-  .contact-panel p {
+  .timeline-item p {
     margin: 0;
     color: var(--muted);
     line-height: 1.82;
@@ -268,9 +249,21 @@ const tags = ['网络安全', 'Web3', '智能合约审计', 'AI', '投资判断'
   }
 
   .about-card {
+    position: relative;
     min-width: 0;
     min-height: 100%;
+    overflow: hidden;
     padding: 22px;
+  }
+
+  .about-card::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background: var(--accent);
+    content: '';
   }
 
   .about-card h3,
@@ -294,20 +287,21 @@ const tags = ['网络安全', 'Web3', '智能合约审计', 'AI', '投资判断'
 
   .timeline-stage {
     padding-top: 3px;
-    color: color-mix(in srgb, var(--accent) 76%, var(--muted));
+    color: var(--accent);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
     font-size: clamp(1rem, 1.25vw, 1.12rem);
-    font-weight: 650;
+    font-weight: 760;
     line-height: 1.35;
-    letter-spacing: 0.01em;
+    letter-spacing: 0;
     font-variant-numeric: tabular-nums;
   }
 
-  .question-section {
+  .contact-section {
     border-top: 1px solid var(--border);
     padding-top: 34px;
   }
 
-  .question-list {
+  .contact-list {
     display: grid;
     gap: 10px;
     margin: 0;
@@ -315,7 +309,7 @@ const tags = ['网络安全', 'Web3', '智能合约审计', 'AI', '投资判断'
     list-style: none;
   }
 
-  .question-list li {
+  .contact-list li {
     position: relative;
     padding-left: 22px;
     color: #3f4a50;
@@ -323,53 +317,29 @@ const tags = ['网络安全', 'Web3', '智能合约审计', 'AI', '投资判断'
     line-height: 1.8;
   }
 
-  .question-list li::before {
+  .contact-list li::before {
     position: absolute;
     top: 0.78em;
     left: 0;
-    width: 7px;
-    height: 7px;
-    border-radius: 999px;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
     background: var(--accent);
     content: '';
-  }
-
-  .contact-panel {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.72fr);
-    gap: 24px;
-    align-items: end;
-    margin-top: 56px;
-    padding: clamp(24px, 4vw, 34px);
   }
 
   .about-hero h1,
   .about-hero p,
   .about-card,
   .timeline-item,
-  .contact-panel {
+  .contact-section {
     max-width: 100%;
     overflow-wrap: anywhere;
   }
 
-  .contact-panel h2 {
-    margin-bottom: 12px;
-    font-size: clamp(1.65rem, 2.6vw, 2.3rem);
-    line-height: 1.25;
-  }
-
-  .contact-panel .contact-note {
-    margin-top: 18px;
-    font-size: 0.94rem;
-    line-height: 1.75;
-  }
-
   .contact-email {
-    display: inline-flex;
-    margin-top: 18px;
-    color: var(--muted);
-    font-size: 0.96rem;
-    font-weight: 500;
+    color: #3f4a50;
+    font-weight: 650;
     text-decoration-color: color-mix(in srgb, var(--muted) 32%, transparent);
     text-underline-offset: 4px;
   }
@@ -379,31 +349,13 @@ const tags = ['网络安全', 'Web3', '智能合约审计', 'AI', '投资判断'
     text-decoration-color: color-mix(in srgb, var(--accent) 48%, transparent);
   }
 
-  .tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: flex-end;
-  }
-
-  .tag-cloud span {
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 4px 10px;
-    background: var(--surface);
-    color: var(--muted);
-    font-size: 0.92rem;
-    line-height: 1.5;
-  }
-
   @media (max-width: 860px) {
     .about-page {
       padding-top: 30px;
     }
 
     .profile-grid,
-    .focus-grid,
-    .contact-panel {
+    .focus-grid {
       grid-template-columns: 1fr;
     }
 
@@ -411,9 +363,6 @@ const tags = ['网络安全', 'Web3', '智能合约审计', 'AI', '投资判断'
       min-height: 0;
     }
 
-    .tag-cloud {
-      justify-content: flex-start;
-    }
   }
 
   @media (max-width: 620px) {

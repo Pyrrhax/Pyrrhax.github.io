@@ -44,28 +44,28 @@ const valueThemes = [
     key: 'security',
     label: '安全研究主线',
     count: securityPosts.length,
-    text: '这里是我写得最多、也最愿意反复回看的主线：漏洞原理、Web 攻防、内网、靶场和工具链。',
+    text: '漏洞原理、Web 攻防、内网与工具链，按问题场景归档，保留可复盘的判断路径。',
     accent: 'blue',
   },
   {
     key: 'web3',
     label: 'Web3 基础判断',
     count: web3Posts.length,
-    text: '从链上链下、DEX、共识、以太坊到稳定币和 Layer2，先把判断所需的概念放稳。',
+    text: '把链上机制、DEX、以太坊、稳定币与 Layer2 拆成可验证的概念坐标。',
     accent: 'gold',
   },
   {
     key: 'ai',
     label: 'AI 与认知推演',
     count: aiPosts.length,
-    text: '记录我对 AI 能力、群智涌现、提示词、安全风险和人机协作方式的持续观察。',
+    text: '观察模型能力、人机协作与安全风险，记录正在变化的边界条件。',
     accent: 'red',
   },
   {
     key: 'programming',
     label: '工程能力底座',
     count: programmingPosts.length,
-    text: 'Java、汇编、算法题和源码理解这些旧笔记，仍然是很多安全问题的实现层背景。',
+    text: 'Java、汇编、算法与源码笔记，为安全分析保留实现层的上下文。',
     accent: 'green',
   },
 ];
@@ -127,12 +127,15 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
             hidden={index !== 0}
             style={`--hero-image: url("${heroImages[index % heroImages.length]}")`}
           >
-            <p class="kicker">精选 #{index + 1} · {topicLabel(postTopic(post))}</p>
+            <p class="hero-meta">
+              <span>Selected 0{index + 1}</span>
+              <span>{topicLabel(postTopic(post))}</span>
+              <span>Quality {post.data.qualityScore}/100</span>
+            </p>
             <h1 title={post.data.title}>{homeTitle(post)}</h1>
             <p class="lead">{homeDescription(post)}</p>
-            <p class="hero-score">AI 质量评分 {post.data.qualityScore}</p>
             <div class="hero-actions">
-              <a class="button primary" href={postUrl(post)}>阅读这篇</a>
+              <a class="button primary" href={postUrl(post)}>阅读全文</a>
             </div>
           </article>
         ))}
@@ -155,12 +158,21 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
             <img src="https://github.com/Pyrrhax.png?size=160" alt="Pyrrhax GitHub 头像" />
             <div>
               <strong>Pyrrhax</strong>
-              <span>Security / Web3 / AI</span>
             </div>
           </div>
-          <p>从信息安全、Web3、AI 与投资判断出发，记录一个技术从业者如何理解系统、风险与未来。</p>
+          <p>从信息安全出发，关注 Web3 基础设施、AI 工具链与独立开发。</p>
+          <dl class="author-meta">
+            <div>
+              <dt>Focus</dt>
+              <dd>Security · Web3 · AI</dd>
+            </div>
+            <div>
+              <dt>Method</dt>
+              <dd>Concepts · Cases · Reviews</dd>
+            </div>
+          </dl>
           <div class="author-actions">
-            <a class="button primary" href="/about/">关于我</a>
+            <a class="button primary" href="/about/">查看档案</a>
           </div>
         </aside>
         <div class="stat-row">
@@ -173,14 +185,14 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
     <section id="themes" class="product-section">
       <div class="product-section-head">
         <div>
-          <h2>从这些主题开始</h2>
-          <p>几条长期写作线索：安全、Web3、AI，以及工程基础。</p>
+          <h2>长期观察的四条线索</h2>
         </div>
         <a class="button" href="/topics/">全部主题</a>
       </div>
       <div class="pillars">
-        {valueThemes.map((theme) => (
+        {valueThemes.map((theme, index) => (
           <a class={`pillar ${theme.accent}`} href={topicUrl(theme.key)}>
+            <span class="pillar-id">0{index + 1}</span>
             <div>
               <h3>{theme.label}</h3>
               <p>{theme.text}</p>
@@ -198,7 +210,6 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
       <div class="product-section-head">
         <div>
           <h2>连续阅读的专栏</h2>
-          <p>有些笔记单篇看不够，串起来才更像一条能走下去的路。</p>
         </div>
         <a class="button" href="/paths/">全部专栏</a>
       </div>
@@ -244,8 +255,16 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
             ))}
           </div>
           <div class="path-arrows">
-            <button class="icon-button" type="button" data-path-prev aria-label="上一个专栏">‹</button>
-            <button class="icon-button" type="button" data-path-next aria-label="下一个专栏">›</button>
+            <button class="icon-button" type="button" data-path-prev aria-label="上一个专栏">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <button class="icon-button" type="button" data-path-next aria-label="下一个专栏">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -255,7 +274,6 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
       <div class="product-section-head">
         <div>
           <h2>值得先读的文章</h2>
-          <p>这些是我更愿意让新读者先看到的文章：有问题意识，也能接到后面的长线阅读。</p>
         </div>
         <a class="button" href="/archives/">全部文章</a>
       </div>
@@ -266,7 +284,7 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
             <h3><a href={postUrl(post)} title={post.data.title}>{homeTitle(post)}</a></h3>
             <p>{homeDescription(post)}</p>
             <div class="article-meta">
-              <span>质量 {post.data.qualityScore}/100</span>
+              <span>AI质量评分 {post.data.qualityScore}/100</span>
               <span>{formatDate(post.data.date)}</span>
               {post.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}
             </div>
