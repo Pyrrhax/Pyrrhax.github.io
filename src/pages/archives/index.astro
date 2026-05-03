@@ -19,7 +19,7 @@ const years = [...groups.entries()].sort((a, b) => Number(b[0]) - Number(a[0]));
 
 <BaseLayout title="归档">
   <main class="page">
-    <section class="hero">
+    <section class="hero plain-hero">
       <div class="eyebrow">Archive</div>
       <div class="hero-sort-head">
         <div>
@@ -95,6 +95,11 @@ const years = [...groups.entries()].sort((a, b) => Number(b[0]) - Number(a[0]));
     <style>
       .archive-view[hidden] {
         display: none;
+      }
+
+      .archive-view > h2,
+      .archive-view .post-list > h2 {
+        margin-bottom: 16px;
       }
 
       .archive-rank {

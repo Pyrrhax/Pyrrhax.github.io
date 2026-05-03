@@ -80,7 +80,7 @@ const growthItems = [
       </div>
     </section>
 
-    <section class="about-section" aria-labelledby="focus-heading">
+    <section class="about-section focus-section" aria-labelledby="focus-heading">
       <div class="section-heading">
         <div>
           <div class="eyebrow">Current Bets</div>
@@ -217,6 +217,11 @@ const growthItems = [
     margin-top: 42px;
   }
 
+  .focus-section {
+    border-top: 1px solid var(--border);
+    padding-top: 34px;
+  }
+
   .section-heading {
     display: flex;
     justify-content: space-between;
@@ -246,6 +251,20 @@ const growthItems = [
 
   .focus-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .focus-grid .about-card {
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    padding: 22px 0;
+  }
+
+  .focus-grid .about-card::before {
+    content: none;
   }
 
   .about-card {

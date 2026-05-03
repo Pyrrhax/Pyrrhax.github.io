@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import {
   columnUrl,
+  comparePostQuality,
   getAllColumns,
   getFeaturedPosts,
   getPosts,
@@ -96,7 +97,7 @@ const paths = columns.slice(0, 4).map((column, index) => ({
   text: column.description,
   href: columnUrl(column.slug),
   image: columnImages[index % columnImages.length],
-  posts: posts.filter(column.match).slice(0, 3),
+  posts: posts.filter(column.match).sort(comparePostQuality).slice(0, 3),
 }));
 
 if (paths.length === 0) {

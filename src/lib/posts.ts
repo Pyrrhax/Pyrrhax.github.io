@@ -105,6 +105,10 @@ function hasTag(post: PostEntry, tag: string) {
   return post.data.tags.includes(tag);
 }
 
+function isSpringVulnerabilityPost(post: PostEntry) {
+  return hasTag(post, 'Spring') || matches(post, /Spring|SpEL|springMVC|SpringBeansRCE|CVE-2010-1622|CNVD-2016-04742/i);
+}
+
 function matches(post: PostEntry, pattern: RegExp) {
   return pattern.test(postHaystack(post));
 }
@@ -178,12 +182,13 @@ export const COLUMN_DEFINITIONS: ColumnDefinition[] = [
     label: 'Security',
     sort: (a, b) => rankPost(a, PENTEST_ORDER) - rankPost(b, PENTEST_ORDER) || chronological(a, b),
     match: (post) =>
-      hasTag(post, 'KaliLinux渗透测试学习笔记') ||
-      hasTag(post, '漏洞利用及渗透测试基础学习笔记') ||
-      post.data.categories.includes('渗透测试') ||
-      post.data.categories.includes('靶机') ||
-      post.data.categories.includes('专项靶场') ||
-      matchesColumn(post, /渗透|Kali|信息收集|SQL注入|SQLMap|Burpsuite|MSF|后渗透|提权|内网|靶机|Aircrack|缓冲区溢出/i),
+      !isSpringVulnerabilityPost(post) &&
+      (hasTag(post, 'KaliLinux渗透测试学习笔记') ||
+        hasTag(post, '漏洞利用及渗透测试基础学习笔记') ||
+        post.data.categories.includes('渗透测试') ||
+        post.data.categories.includes('靶机') ||
+        post.data.categories.includes('专项靶场') ||
+        matchesColumn(post, /渗透|Kali|信息收集|SQL注入|SQLMap|Burpsuite|MSF|后渗透|提权|内网|靶机|Aircrack|缓冲区溢出/i)),
   },
   {
     slug: 'blockchain-basics',
@@ -206,7 +211,7 @@ export const COLUMN_DEFINITIONS: ColumnDefinition[] = [
     description: '围绕 Spring、SpEL、参数绑定和历史 CVE 的源码跟踪与漏洞复现，适合从 Java Web 框架理解安全问题。',
     label: 'Java Security',
     sort: chronological,
-    match: (post) => hasTag(post, 'Spring') || matches(post, /Spring|SpEL|springMVC|SpringBeansRCE|CVE-2010-1622|CNVD-2016-04742/i),
+    match: isSpringVulnerabilityPost,
   },
   {
     slug: 'ai-cognition-futures',
