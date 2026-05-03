@@ -49,7 +49,7 @@ const valueThemes = [
   },
   {
     key: 'web3',
-    label: 'Web3 基础判断',
+    label: 'Web3机制判断',
     count: web3Posts.length,
     text: '把链上机制、DEX、以太坊、稳定币与 Layer2 拆成可验证的概念坐标。',
     accent: 'gold',
@@ -155,7 +155,7 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
       <div class="signal-panel">
         <aside class="author-card" aria-label="作者简介">
           <div class="author-card-head">
-            <img src="https://github.com/Pyrrhax.png?size=160" alt="Pyrrhax GitHub 头像" />
+            <img src="/images/avatar.png" alt="Pyrrhax 头像" />
             <div>
               <strong>Pyrrhax</strong>
             </div>
@@ -185,7 +185,7 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
     <section id="themes" class="product-section">
       <div class="product-section-head">
         <div>
-          <h2>长期观察的四条线索</h2>
+          <h2>长期追踪的四条线索</h2>
         </div>
         <a class="button" href="/topics/">全部主题</a>
       </div>
@@ -209,7 +209,7 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
     <section id="paths" class="product-section">
       <div class="product-section-head">
         <div>
-          <h2>连续阅读的专栏</h2>
+          <h2>适合连续阅读的专栏</h2>
         </div>
         <a class="button" href="/paths/">全部专栏</a>
       </div>
@@ -279,7 +279,13 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
       </div>
       <div class="articles">
         {featured.map((post) => (
-          <article class="article-card">
+          <article
+            class="article-card"
+            data-card-link={postUrl(post)}
+            role="link"
+            tabindex="0"
+            aria-label={`阅读文章：${homeTitle(post)}`}
+          >
             <a class="tag" href={topicUrl(postTopic(post))}>{topicLabel(postTopic(post))}</a>
             <h3><a href={postUrl(post)} title={post.data.title}>{homeTitle(post)}</a></h3>
             <p>{homeDescription(post)}</p>
@@ -301,6 +307,7 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
     const pathDots = [...document.querySelectorAll<HTMLButtonElement>('[data-path-target]')];
     const prevPathButton = document.querySelector<HTMLButtonElement>('[data-path-prev]');
     const nextPathButton = document.querySelector<HTMLButtonElement>('[data-path-next]');
+    const articleCards = [...document.querySelectorAll<HTMLElement>('[data-card-link]')];
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let activeHeroIndex = 0;
     let activePathIndex = 0;
@@ -351,6 +358,25 @@ const formatDate = (date: Date) => date.toLocaleDateString('zh-CN', { year: 'num
 
     prevPathButton?.addEventListener('click', () => showPath(activePathIndex - 1));
     nextPathButton?.addEventListener('click', () => showPath(activePathIndex + 1));
+
+    articleCards.forEach((card) => {
+      const openCardLink = () => {
+        const href = card.dataset.cardLink;
+        if (href) window.location.href = href;
+      };
+
+      card.addEventListener('click', (event) => {
+        if ((event.target as HTMLElement).closest('a, button')) return;
+        openCardLink();
+      });
+
+      card.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        if ((event.target as HTMLElement).closest('a, button')) return;
+        event.preventDefault();
+        openCardLink();
+      });
+    });
 
     if (!reduceMotion) {
       window.setInterval(() => showHero(activeHeroIndex + 1), 6200);
