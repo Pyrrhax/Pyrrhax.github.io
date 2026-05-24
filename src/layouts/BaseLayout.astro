@@ -4,13 +4,15 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  bodyClass?: string;
 }
 
 const {
-  title = 'Pyrrhax',
-  description = 'Security, programming, and notes by Pyrrhax.',
+  title = '0rbs',
+  description = '0rbs is a personal system for observation, judgment, and structured thinking.',
+  bodyClass = '',
 } = Astro.props;
-const pageTitle = title === 'Pyrrhax' ? title : `${title} | Pyrrhax`;
+const pageTitle = title === '0rbs' ? title : `${title} | 0rbs`;
 ---
 
 <!doctype html>
@@ -19,32 +21,127 @@ const pageTitle = title === 'Pyrrhax' ? title : `${title} | Pyrrhax`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <script is:inline>
+      (() => {
+        const storageKey = '0rbs-theme';
+        const isTheme = (theme) => theme === 'light' || theme === 'dark';
+
+        try {
+          const storedTheme = window.localStorage.getItem(storageKey);
+          const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          const theme = isTheme(storedTheme) ? storedTheme : systemTheme;
+
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.style.colorScheme = theme;
+        } catch {
+          document.documentElement.dataset.theme = 'light';
+          document.documentElement.style.colorScheme = 'light';
+        }
+      })();
+    </script>
     <title>{pageTitle}</title>
     <link rel="icon" href="/favicons/favicon.ico" />
+    <link rel="alternate" href="/atom.xml" title="0rbs" type="application/atom+xml" />
   </head>
-  <body>
+  <body class={bodyClass}>
     <div class="site-shell">
       <header class="site-header">
         <nav class="nav" aria-label="主导航">
-          <a class="brand" href="/" aria-label="Pyrrhax 首页">
+          <a class="brand" href="/" aria-label="0rbs Home">
             <span class="brand-lockup">
-              <strong>Pyrrhax</strong>
-              <span>理解系统，识别风险，记录技术周期中的个人判断。</span>
+              <strong>0rbs</strong>
+              <span>Observation · Judgment · Structured Thinking</span>
             </span>
           </a>
           <div class="nav-links">
-            <a href="/">首页</a>
-            <a href="/topics/" data-tooltip="按方向浏览全部文章">主题</a>
-            <a href="/paths/" data-tooltip="按一条连续路径系统阅读">专栏</a>
-            <a href="/tags/" data-tooltip="查找具体技术点">标签</a>
-            <a href="/about/">关于</a>
+            <a href="/">Home</a>
+            <a href="/blog/">Blog</a>
+            <a href="/systems/">Systems</a>
+            <a href="/about/">About</a>
+            <a href="https://github.com/Pyrrhax" rel="noreferrer">GitHub</a>
+            <a href="/atom.xml">RSS</a>
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换主题">
+              <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.2 14.7A7.6 7.6 0 0 1 9.3 3.8 8.5 8.5 0 1 0 20.2 14.7Z" />
+              </svg>
+              <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2.5v2.2M12 19.3v2.2M4.7 4.7l1.6 1.6M17.7 17.7l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.7 19.3l1.6-1.6M17.7 6.3l1.6-1.6" />
+              </svg>
+              <span class="visually-hidden" data-theme-toggle-label>切换主题</span>
+            </button>
           </div>
         </nav>
       </header>
       <slot />
       <footer class="site-footer">
-        <div>© {new Date().getFullYear()} Pyrrhax. Built with Astro.</div>
+        <div class="footer-inner">
+          <span>© {new Date().getFullYear()} 0rbs. Built with Astro.</span>
+          <nav aria-label="页脚导航">
+            <a href="/blog/">Blog</a>
+            <a href="/about/">About</a>
+            <a href="https://github.com/Pyrrhax" rel="noreferrer">GitHub</a>
+            <a href="/atom.xml">RSS</a>
+          </nav>
+        </div>
       </footer>
     </div>
+    <script is:inline>
+      (() => {
+        const storageKey = '0rbs-theme';
+        const isTheme = (theme) => theme === 'light' || theme === 'dark';
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        const toggle = document.querySelector('[data-theme-toggle]');
+        const label = document.querySelector('[data-theme-toggle-label]');
+
+        const storedTheme = () => {
+          try {
+            return window.localStorage.getItem(storageKey);
+          } catch {
+            return null;
+          }
+        };
+
+        const preferredTheme = () => {
+          const theme = storedTheme();
+          return isTheme(theme) ? theme : mediaQuery.matches ? 'dark' : 'light';
+        };
+
+        const applyTheme = (theme) => {
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.style.colorScheme = theme;
+
+          if (toggle) {
+            const nextTheme = theme === 'dark' ? 'light' : 'dark';
+            const labelText = nextTheme === 'dark' ? '切换为深色模式' : '切换为浅色模式';
+            toggle.setAttribute('aria-label', labelText);
+            toggle.setAttribute('title', labelText);
+          }
+
+          if (label) {
+            label.textContent = theme === 'dark' ? '切换为浅色模式' : '切换为深色模式';
+          }
+        };
+
+        applyTheme(preferredTheme());
+
+        toggle?.addEventListener('click', () => {
+          const currentTheme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+          const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+          try {
+            window.localStorage.setItem(storageKey, nextTheme);
+          } catch {
+            // The visual toggle should still work when storage is unavailable.
+          }
+          applyTheme(nextTheme);
+        });
+
+        mediaQuery.addEventListener('change', () => {
+          if (!isTheme(storedTheme())) {
+            applyTheme(preferredTheme());
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

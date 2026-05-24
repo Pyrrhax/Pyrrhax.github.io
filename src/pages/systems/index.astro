@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const systems = [
+  {
+    name: '0rbs Judgment',
+    axis: 'decision review',
+    text: '把观察转化为可追踪的判断记录。',
+  },
+  {
+    name: '0rbs Models',
+    axis: 'mental models',
+    text: '沉淀概念、变量与可复用的解释框架。',
+  },
+  {
+    name: '0rbs Review',
+    axis: 'retrospective',
+    text: '复盘决策、错误、收益与风险暴露。',
+  },
+  {
+    name: '0rbs Lens',
+    axis: 'observation layer',
+    text: '持续观察安全、Web3、AI、投资与复杂系统。',
+  },
+];
+---
+
+<BaseLayout title="Systems" description="0rbs system entry for Judgment, Models, Review, and Lens.">
+  <main class="page systems-page">
+    <section class="hero plain-hero systems-hero">
+      <div class="eyebrow">Systems</div>
+      <h1>System surfaces under construction.</h1>
+      <p>这里会逐步承载 0rbs 的判断、模型、复盘与观察入口。现在先保留为一个克制的系统目录。</p>
+    </section>
+
+    <section class="systems-grid" aria-label="0rbs systems">
+      {systems.map((system, index) => (
+        <article class="system-entry">
+          <span class="system-index">0{index + 1}</span>
+          <div>
+            <h2>{system.name}</h2>
+            <p>{system.text}</p>
+          </div>
+          <span class="system-axis">{system.axis}</span>
+        </article>
+      ))}
+    </section>
+  </main>
+</BaseLayout>

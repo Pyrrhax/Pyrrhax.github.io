@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatPostDate, postTopic, postUrl, topicLabel, topicUrl } from '../lib/posts';
+
+interface Props {
+  posts?: CollectionEntry<'posts'>[];
+}
+
+const { posts = [] }: Props = Astro.props;
+const recentPosts = posts.slice(0, 3);
+const signals = ['Security', 'Web3', 'AI', 'Investing', 'Personal Systems'];
+---
+
+<section class="current-signal" aria-labelledby="current-signal-title">
+  <div class="signal-copy">
+    <p class="section-label">Current Signal</p>
+    <h2 id="current-signal-title">A small surface for what is being watched now.</h2>
+    <div class="signal-tags" aria-label="当前关注方向">
+      {signals.map((signal) => <span>{signal}</span>)}
+    </div>
+  </div>
+
+  <div class="recent-notes" aria-label="最近文章">
+    <div class="recent-notes-head">
+      <span>Recent Notes</span>
+      <a href="/blog/">Blog</a>
+    </div>
+    <div class="note-list">
+      {recentPosts.map((post) => (
+        <article class="note-row">
+          <a class="note-topic" href={topicUrl(postTopic(post))}>{topicLabel(postTopic(post))}</a>
+          <h3><a href={postUrl(post)}>{post.data.title}</a></h3>
+          <time datetime={post.data.date.toISOString()}>{formatPostDate(post.data.date)}</time>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

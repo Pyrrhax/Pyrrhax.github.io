@@ -1,6 +1,6 @@
-# Pyrrhax Blog
+# 0rbs
 
-This repository has been migrated from a generated Hexo/GitHub Pages site to Astro.
+This repository hosts 0rbs, an Astro-powered personal system and blog published to GitHub Pages.
 
 ## Local Development
 
@@ -65,7 +65,9 @@ backup-hexo-content/   Complete backup of the previous static site
 
 The site includes:
 
-- Home page with latest posts
+- Brand home page at `/`
+- Blog module at `/blog/` with paginated post lists
+- System entry page at `/systems/`
 - Post detail pages
 - Tag index and tag detail pages
 - Category index and category detail pages

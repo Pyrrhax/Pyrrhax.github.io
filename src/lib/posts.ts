@@ -1,5 +1,7 @@
 import { getCollection } from 'astro:content';
 
+export const POSTS_PER_PAGE = 12;
+
 export const TOPIC_LABELS: Record<string, string> = {
   security: '信息安全',
   programming: '编程与工程',
@@ -31,6 +33,8 @@ export async function getPosts() {
   const posts = await getCollection('posts');
   return posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 }
+
+export type PostEntry = Awaited<ReturnType<typeof getPosts>>[number];
 
 export function postSlug(post: { id: string }) {
   return post.id.replace(/\.md$/, '');
@@ -64,7 +68,18 @@ export function topicUrl(topic: string) {
   return `/topics/${encodeURIComponent(topic)}/`;
 }
 
-type PostEntry = Awaited<ReturnType<typeof getPosts>>[number];
+export function formatPostDate(date: Date) {
+  return date.toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' });
+}
+
+export function groupPostsByTopic(posts: PostEntry[]) {
+  return posts.reduce<Record<string, PostEntry[]>>((groups, post) => {
+    const topic = postTopic(post);
+    groups[topic] = groups[topic] ?? [];
+    groups[topic].push(post);
+    return groups;
+  }, {});
+}
 
 type ColumnDefinition = {
   slug: string;

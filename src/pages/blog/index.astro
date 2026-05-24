@@ -1,0 +1,384 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {
+  columnUrl,
+  comparePostQuality,
+  formatPostDate,
+  getAllColumns,
+  getFeaturedPosts,
+  getPosts,
+  groupPostsByTopic,
+  type PostEntry,
+  postTopic,
+  postUrl,
+  topicLabel,
+  topicUrl,
+} from '../../lib/posts';
+
+const posts = await getPosts();
+const featuredPosts = await getFeaturedPosts();
+const postsByTopic = groupPostsByTopic(posts);
+const topicPosts = (topic: string) => postsByTopic[topic] ?? [];
+const securityPosts = topicPosts('security');
+const programmingPosts = topicPosts('programming');
+const toolingPosts = topicPosts('tooling');
+const thinkingPosts = topicPosts('thinking');
+const aiPosts = topicPosts('ai');
+const web3Posts = topicPosts('web3');
+const featured =
+  featuredPosts.length > 0
+    ? featuredPosts.slice(0, 6)
+    : [
+        ...securityPosts.slice(0, 3),
+        ...programmingPosts.slice(0, 1),
+        ...toolingPosts.slice(0, 1),
+        ...thinkingPosts.slice(0, 1),
+    ].slice(0, 6);
+const heroPosts = featured.slice(0, 3);
+const columns = getAllColumns(posts).slice(0, 4);
+const postFallback = (post: PostEntry) => `标签：${post.data.tags.slice(0, 4).join('、') || '技术笔记'}`;
+const homeDescription = (post: PostEntry) =>
+  post.data.featuredDescription || post.data.description || postFallback(post);
+const homeTitle = (post: PostEntry) =>
+  post.data.title
+    .replace(/^区块链基础概念：/, '')
+    .replace(/^什么是(.+?)？(.+)$/, '$1：$2')
+    .replace(/^什么是(.+?)？$/, '$1');
+
+const valueThemes = [
+  {
+    key: 'security',
+    label: '安全研究主线',
+    count: securityPosts.length,
+    text: '漏洞原理、Web 攻防、内网与工具链，按问题场景归档，保留可复盘的判断路径。',
+    accent: 'blue',
+  },
+  {
+    key: 'web3',
+    label: 'Web3机制判断',
+    count: web3Posts.length,
+    text: '把链上机制、DEX、以太坊、稳定币与 Layer2 拆成可验证的概念坐标。',
+    accent: 'gold',
+  },
+  {
+    key: 'ai',
+    label: 'AI 与认知推演',
+    count: aiPosts.length,
+    text: '观察模型能力、人机协作与安全风险，记录正在变化的边界条件。',
+    accent: 'red',
+  },
+  {
+    key: 'programming',
+    label: '工程能力底座',
+    count: programmingPosts.length,
+    text: 'Java、汇编、算法与源码笔记，为安全分析保留实现层的上下文。',
+    accent: 'green',
+  },
+];
+
+const columnImages = [
+  'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80',
+  'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80',
+  'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1400&q=80',
+  'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80',
+];
+
+const heroImages = [
+  'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1600&q=80',
+];
+
+const columnFallbacks = [
+  securityPosts.slice(0, 3),
+  posts.filter((post) => post.data.tags.includes('Spring') || post.data.tags.includes('Java')).slice(0, 3),
+  posts.filter((post) => post.data.tags.includes('靶机') || post.data.tags.includes('内网')).slice(0, 3),
+  posts.filter((post) => postTopic(post) === 'ai' || postTopic(post) === 'thinking').slice(0, 3),
+];
+
+const paths = columns.slice(0, 4).map((column, index) => ({
+  title: column.shortTitle,
+  kicker: column.label,
+  text: column.description,
+  href: columnUrl(column.slug),
+  image: columnImages[index % columnImages.length],
+  posts: posts.filter(column.match).sort(comparePostQuality).slice(0, 3),
+}));
+
+if (paths.length === 0) {
+  paths.push(
+    ...['渗透测试起步', 'Java / Spring 漏洞线', '靶场与实战复盘'].map((title, index) => ({
+      title,
+      kicker: ['Pentest Track', 'Framework Security', 'Practice Notes'][index],
+      text: ['从 Kali、信息收集、漏洞利用、内网和 Cobalt Strike 串起攻防基本路线。', '围绕 Spring 参数绑定、SpEL、CVE 分析，把单篇漏洞复盘变成专栏学习链。', '把靶机、专项靶场和内网笔记变成可反复练习的训练路线。'][index],
+      href: '/paths/',
+      image: columnImages[index],
+      posts: columnFallbacks[index],
+    })),
+  );
+}
+---
+
+<BaseLayout title="Blog" description="0rbs blog homepage with selected posts, paths, topics, and notes.">
+  <main class="page home-product" id="top">
+    <section class="home-hero-grid" aria-label="首页">
+      <div class="home-hero-main">
+        {heroPosts.map((post, index) => (
+          <article
+            class="hero-slide"
+            data-hero-slide={String(index)}
+            data-active={index === 0 ? 'true' : 'false'}
+            hidden={index !== 0}
+            style={`--hero-image: url("${heroImages[index % heroImages.length]}")`}
+          >
+            <p class="hero-meta">
+              <span>Selected 0{index + 1}</span>
+              <span>{topicLabel(postTopic(post))}</span>
+              <span>Quality {post.data.qualityScore}/100</span>
+            </p>
+            <h1 title={post.data.title}>{homeTitle(post)}</h1>
+            <p class="lead">{homeDescription(post)}</p>
+            <div class="hero-actions">
+              <a class="button primary" href={postUrl(post)}>阅读全文</a>
+            </div>
+          </article>
+        ))}
+        <div class="hero-controls" aria-label="首屏精选文章轮播控制">
+          {heroPosts.map((post, index) => (
+            <button
+              class="path-dot"
+              type="button"
+              data-hero-target={String(index)}
+              aria-label={`查看${post.data.title}`}
+              aria-pressed={index === 0 ? 'true' : 'false'}
+            ></button>
+          ))}
+        </div>
+      </div>
+
+      <div class="signal-panel">
+        <aside class="author-card" aria-label="作者简介">
+          <div class="author-card-head">
+            <img src="/images/avatar.png" alt="Pyrrhax 头像" />
+            <div>
+              <strong>Pyrrhax</strong>
+            </div>
+          </div>
+          <p>从信息安全出发，关注 Web3 基础设施、AI 工具链与独立开发。</p>
+          <dl class="author-meta">
+            <div>
+              <dt>Focus</dt>
+              <dd>Security · Web3 · AI</dd>
+            </div>
+            <div>
+              <dt>Method</dt>
+              <dd>Concepts · Cases · Reviews</dd>
+            </div>
+          </dl>
+          <div class="author-actions">
+            <a class="button primary" href="/about/">查看档案</a>
+          </div>
+        </aside>
+        <div class="stat-row">
+          <a class="stat" href="/archives/"><strong>{posts.length}</strong><span>历史文章</span></a>
+          <a class="stat" href="#articles"><strong>{featured.length}</strong><span>精选文章</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="themes" class="product-section">
+      <div class="product-section-head">
+        <div>
+          <h2>长期追踪的四条线索</h2>
+        </div>
+        <a class="button" href="/topics/">全部主题</a>
+      </div>
+      <div class="pillars">
+        {valueThemes.map((theme, index) => (
+          <a class={`pillar ${theme.accent}`} href={topicUrl(theme.key)}>
+            <span class="pillar-id">0{index + 1}</span>
+            <div>
+              <h3>{theme.label}</h3>
+              <p>{theme.text}</p>
+            </div>
+            <div class="pillar-count">
+              <span>{theme.count} 篇</span>
+              <span>{topicLabel(theme.key)}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section id="paths" class="product-section">
+      <div class="product-section-head">
+        <div>
+          <h2>适合连续阅读的专栏</h2>
+        </div>
+        <a class="button" href="/paths/">全部专栏</a>
+      </div>
+      <div class="path-showcase">
+        {paths.map((path, index) => (
+          <div
+            class="path-slide"
+            data-path-slide={String(index)}
+            data-active={index === 0 ? 'true' : 'false'}
+            hidden={index !== 0}
+          >
+            <a
+              class="path-cover"
+              href={path.href}
+              style={`background-image: linear-gradient(180deg, rgba(16,39,44,.04), rgba(16,39,44,.9)), url("${path.image}")`}
+            >
+              <p class="kicker">{path.kicker}</p>
+              <h2>{path.title}</h2>
+              <p>{path.text}</p>
+            </a>
+            <article class="path-card">
+              <div class="mini-list">
+                {path.posts.map((post) => (
+                  <a href={postUrl(post)}>
+                    <strong title={post.data.title}>{homeTitle(post)}</strong>
+                    <span>{post.data.description || `标签：${post.data.tags.slice(0, 4).join('、') || '技术笔记'}`}</span>
+                  </a>
+                ))}
+              </div>
+            </article>
+          </div>
+        ))}
+        <div class="path-controls" aria-label="推荐专栏轮播控制">
+          <div class="path-dots">
+            {paths.map((path, index) => (
+              <button
+                class="path-dot"
+                type="button"
+                data-path-target={String(index)}
+                aria-label={`查看${path.title}`}
+                aria-pressed={index === 0 ? 'true' : 'false'}
+              ></button>
+            ))}
+          </div>
+          <div class="path-arrows">
+            <button class="icon-button" type="button" data-path-prev aria-label="上一个专栏">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+            <button class="icon-button" type="button" data-path-next aria-label="下一个专栏">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="articles" class="product-section">
+      <div class="product-section-head">
+        <div>
+          <h2>值得先读的文章</h2>
+        </div>
+        <a class="button" href="/archives/">全部文章</a>
+      </div>
+      <div class="articles">
+        {featured.map((post) => (
+          <article
+            class="article-card"
+            data-card-link={postUrl(post)}
+            role="link"
+            tabindex="0"
+            aria-label={`阅读文章：${homeTitle(post)}`}
+          >
+            <a class="tag" href={topicUrl(postTopic(post))}>{topicLabel(postTopic(post))}</a>
+            <h3><a href={postUrl(post)} title={post.data.title}>{homeTitle(post)}</a></h3>
+            <p>{homeDescription(post)}</p>
+            <div class="article-meta">
+              <span>AI质量评分 {post.data.qualityScore}/100</span>
+              <span>{formatPostDate(post.data.date)}</span>
+              {post.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const heroSlides = [...document.querySelectorAll<HTMLElement>('[data-hero-slide]')];
+    const heroDots = [...document.querySelectorAll<HTMLButtonElement>('[data-hero-target]')];
+    const pathSlides = [...document.querySelectorAll<HTMLElement>('[data-path-slide]')];
+    const pathDots = [...document.querySelectorAll<HTMLButtonElement>('[data-path-target]')];
+    const prevPathButton = document.querySelector<HTMLButtonElement>('[data-path-prev]');
+    const nextPathButton = document.querySelector<HTMLButtonElement>('[data-path-next]');
+    const articleCards = [...document.querySelectorAll<HTMLElement>('[data-card-link]')];
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const createCarousel = (
+      slides: HTMLElement[],
+      dots: HTMLButtonElement[],
+      targetDatasetKey: 'heroTarget' | 'pathTarget',
+    ) => {
+      let activeIndex = 0;
+
+      slides.forEach((slide) => {
+        slide.hidden = false;
+        slide.setAttribute('aria-hidden', String(slide.dataset.active !== 'true'));
+      });
+
+      const show = (index: number) => {
+        if (!slides.length) return;
+        activeIndex = (index + slides.length) % slides.length;
+        slides.forEach((slide, slideIndex) => {
+          const isActive = slideIndex === activeIndex;
+          slide.dataset.active = String(isActive);
+          slide.setAttribute('aria-hidden', String(!isActive));
+        });
+        dots.forEach((dot, dotIndex) => {
+          dot.setAttribute('aria-pressed', String(dotIndex === activeIndex));
+        });
+      };
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => show(Number(dot.dataset[targetDatasetKey] || 0)));
+      });
+
+      return {
+        show,
+        get activeIndex() {
+          return activeIndex;
+        },
+      };
+    };
+
+    const heroCarousel = createCarousel(heroSlides, heroDots, 'heroTarget');
+    const pathCarousel = createCarousel(pathSlides, pathDots, 'pathTarget');
+
+    prevPathButton?.addEventListener('click', () => pathCarousel.show(pathCarousel.activeIndex - 1));
+    nextPathButton?.addEventListener('click', () => pathCarousel.show(pathCarousel.activeIndex + 1));
+
+    articleCards.forEach((card) => {
+      const openCardLink = () => {
+        const href = card.dataset.cardLink;
+        if (href) window.location.href = href;
+      };
+
+      card.addEventListener('click', (event) => {
+        if ((event.target as HTMLElement).closest('a, button')) return;
+        openCardLink();
+      });
+
+      card.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        if ((event.target as HTMLElement).closest('a, button')) return;
+        event.preventDefault();
+        openCardLink();
+      });
+    });
+
+    if (!reduceMotion) {
+      window.setInterval(() => heroCarousel.show(heroCarousel.activeIndex + 1), 6200);
+      window.setInterval(() => pathCarousel.show(pathCarousel.activeIndex + 1), 7200);
+    }
+  </script>
+</BaseLayout>
